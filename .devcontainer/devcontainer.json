@@ -6,5 +6,6 @@
 		"ghcr.io/devcontainers-extra/features/bun:1": {},
 		"ghcr.io/devcontainers-extra/features/tsx:1": {},
 		"ghcr.io/devcontainers-extra/features/typescript:2": {}
-	}
+	},
+	"remoteUser": "node"
 }

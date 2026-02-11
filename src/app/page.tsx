@@ -3,7 +3,7 @@ import AirportText from "@/components/home/AirportText";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
+    <div className="flex min-h-screen items-center justify-center font-sans bg-black text-white">
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center bg-cover bg-center">
         <div className="text-center h-150">
           <h1 className="text-8xl font-black mb-4 leading-loose">NOMADIA</h1>
