@@ -1,7 +1,7 @@
 'use client';
 
 import { useScramble } from 'use-scramble';
-import { useEffect, useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
 
 interface AirportTextProps {
   words: string[];
@@ -24,8 +24,12 @@ export default function AirportText({
     seed: 0,
   });
 
-  useEffect(() => {
+  const handleMount = useEffectEvent(() => {
     setMounted(true);
+  });
+
+  useEffect(() => {
+    handleMount();
   }, []);
 
   useEffect(() => {

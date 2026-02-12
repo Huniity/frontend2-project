@@ -8,7 +8,6 @@ export default function ScrollIndicator() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Hide indicator after scrolling a bit
       if (window.scrollY > 100) {
         setIsVisible(false);
       } else {
@@ -23,7 +22,7 @@ export default function ScrollIndicator() {
   if (!isVisible) return null;
 
   return (
-    <div className="flex flex-col items-center gap-2 animate-bounce cursor-pointer">
+    <div className="flex flex-col items-center gap-2 animate-bounce cursor-pointer py-8">
       <div className="w-7 h-11 border-2 border-white rounded-full flex justify-center pt-2">
         <div className="w-1 h-2 bg-white rounded-full animate-scroll" />
       </div>

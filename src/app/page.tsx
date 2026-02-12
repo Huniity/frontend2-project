@@ -1,10 +1,11 @@
-import AirportText from "@/components/home/AirportText";
-import ScrollIndicator from "@/components/home/ScrollIndicator";
-import Counter from "@/components/home/Counter";
-import BackgroundCycle from "@/components/home/BackgroundCycle";
+import AirportText from "@/components/ui/AirportText";
+import ScrollIndicator from "@/components/ui/ScrollIndicator";
+import Counter from "@/components/ui/Counter";
+import BackgroundCycle from "@/components/ui/BackgroundCycle";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Card from "@/components/ui/Card";
 
 export default function Home() {
   return (
@@ -55,10 +56,10 @@ export default function Home() {
                   />
                 </h1>
               </div>
-              <div className="flex flex-col items-center gap-8">
+              <div className="flex flex-col items-center gap-8 mt-4">
                 <Link
                   href="/signin"
-                  className="rounded-full bg-white/90 px-10 py-3 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition"
+                  className="rounded-full bg-white/90 px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition"
                 >
                   Start Exploring
                 </Link>
@@ -102,14 +103,14 @@ export default function Home() {
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
             <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
-                SUBS PLANS BECAUSE MONEY IS THE ONLY THING THAT MATTERS IN THIS LIFE
+            <Card title="Backpacker" price="$0" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="450px"></Card>
             </h1>
           </div>
         </section>
         <section className="snap-start w-full bg-white h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
             <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-               MORE IMAGES BECAUSE AI GENERATED IMAGES THAT WE DIDN'T  PAY FOR
+               MORE IMAGES BECAUSE AI GENERATED IMAGES THAT WE DIDN`T  PAY FOR
             </h1>
           </div>
         </section>

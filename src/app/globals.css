@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 
 @font-face {
@@ -151,4 +152,3 @@ h1, h2, h3, h4, h5, h6 {
 .font-made-outer-alt {
   font-family: "MADE Outer Sans Alt", sans-serif;
 }
-
