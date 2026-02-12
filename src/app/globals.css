@@ -1,9 +1,154 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+
+
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../../public/fonts/GlacialIndifference-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../../public/fonts/GlacialIndifference-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HK Grotesk Wide";
+  src: url("../../public/fonts/HKGroteskWide-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Medel";
+  src: url("../../public/fonts/Medel.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Akira Expanded";
+  src: url("../../public/fonts/Akira Expanded Demo.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../../public/fonts/MADE-Outer-Sans-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../../public/fonts/MADE-Outer-Sans-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans Alt";
+  src: url("../../public/fonts/MADE-Outer-Sans-Alt-Bold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans Alt";
+  src: url("../../public/fonts/MADE-Outer-Sans-Alt-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans Alt";
+  src: url("../../public/fonts/MADE-Outer-Sans-Alt-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
 * {
-  font-family: "Geist", sans-serif;
+  font-family: "Glacial Indifference", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+body {
+  background-color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.02em;
+}
+
+.font-medel {
+  font-family: "Medel", sans-serif;
+}
+
+.font-glacial {
+  font-family: "Glacial Indifference Bold", sans-serif;
+}
+
+.font-hk-grotesk {
+  font-family: "HK Grotesk Wide", sans-serif;
+}
+
+.font-akira {
+  font-family: "Akira Expanded", sans-serif;
+}
+
+.font-made-outer {
+  font-family: "MADE Outer Sans", sans-serif;
+}
+
+.font-made-outer-alt {
+  font-family: "MADE Outer Sans Alt", sans-serif;
 }
 

@@ -1,49 +1,46 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useScramble } from 'use-scramble';
+import { useEffect, useState } from 'react';
 
-export default function AirportText({ words }: { words: string[] }) {
-  const h1Ref = useRef<HTMLHeadingElement>(null);
-  const [currentWord, setCurrentWord] = useState(words[0]);
-  const abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const wordIndexRef = useRef(0);
+interface AirportTextProps {
+  words: string[];
+  intervalMs?: number;
+}
+
+export default function AirportText({ 
+  words, 
+  intervalMs = 5000,
+}: AirportTextProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  
+  const { ref } = useScramble({
+    text: words[currentIndex],
+    speed: 0.6,
+    tick: 1,
+    step: 1,
+    scramble: 4,
+    seed: 0,
+  });
 
   useEffect(() => {
-    const animateText = (text: string) => {
-      if (!h1Ref.current) return;
+    setMounted(true);
+  }, []);
 
-      const element = h1Ref.current;
-      let interactions = 0;
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % words.length);
+    }, intervalMs);
 
-      const interval = setInterval(() => {
-        element.innerText = text
-          .split("")
-          .map((letter, index) => {
-            if (index < interactions) {
-              return text[index];
-            } else {
-              return abc[Math.floor(Math.random() * abc.length)];
-            }
-          })
-          .join("");
+    return () => clearInterval(interval);
+  }, [words.length, intervalMs, mounted]);
 
-        interactions += 1 / 3;
+  if (!mounted) {
+    return <span className="font-made-outer-alt font-black">{words[0]}</span>;
+  }
 
-        if (interactions > text.length) {
-          clearInterval(interval);
-        }
-      }, 30);
-    };
-
-    animateText(currentWord);
-
-    const repeatInterval = setInterval(() => {
-      wordIndexRef.current = (wordIndexRef.current + 1) % words.length;
-      setCurrentWord(words[wordIndexRef.current]);
-    }, 5000);
-
-    return () => clearInterval(repeatInterval);
-  }, [currentWord, words, abc]);
-
-  return <span ref={h1Ref} className="font-mono">{currentWord}</span>;
+  return <span ref={ref} className="font-made-outer-alt font-black" />;
 }
