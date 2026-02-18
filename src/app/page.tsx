@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Card from "@/components/ui/Card";
+import GoldCard from "@/components/ui/GoldCard";
 
 export default function Home() {
   return (
@@ -102,9 +103,15 @@ export default function Home() {
         </section>
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
-            <Card title="Backpacker" price="$0" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="450px"></Card>
+            <h1 className="text-5xl font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
+              Start your journey with us and explore the world like never before
             </h1>
+            <div className="flex flex-row gap-12 justify-center">
+              <Card title="Backpacker" price="$0" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></Card>
+              {/* <Card title="Globetrotter" price="$9,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="575px"></Card> */}
+              <GoldCard title="Nomad" price="$19,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></GoldCard>
+              <Card title="Nomad" price="$19,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></Card>
+            </div>
           </div>
         </section>
         <section className="snap-start w-full bg-white h-screen">

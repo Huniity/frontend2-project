@@ -37,10 +37,13 @@ const Card = (
                         ))}
                     </ul>
                 </div>
-            <Button name="Get Started" color="white" width="100%" height="50px" textSize="16px" />
+            </div>
+            <div className="mt-6 ">
+                <Button name="Get Started" color="white" width="100%" height="4rem" textSize="16px" />
             </div>
         </div>
     )
 }
 
-export default Card;
+
+export default Card ;
