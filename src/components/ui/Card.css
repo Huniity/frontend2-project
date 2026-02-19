@@ -1,28 +1,28 @@
 :root {
-  --electric-border-color: #dd8448;
-  --electric-light-color: oklch(from var(--electric-border-color) l c h);
-  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
-  --color-neutral-900: oklch(0.185 0 0);
+  --electric-border-color: white;  /* Original white color */
+  --electric-light-color: white;  /* OKLCH representation of white */
+  --gradient-color: white;     /* Same as above */
+  --color-neutral-900: white;  /* Neutral white, fully light, no saturation */
 }
 
-.gold-card-container {
+
+.white-card-container {
   padding: 2px;
   border-radius: 24px;
   position: relative;
-  background: linear-gradient(-30deg, var(--gradient-color), transparent, var(--gradient-color));
-  background-color: rgb(15, 15, 15);
+  background: var(--color-neutral-900)
 }
 
-.gold-card-border {
-  border: 2px solid rgba(221, 132, 72, 0.5);
+.white-card-border {
+  border: 2px solid rgba(224, 224, 224, 0.5);
   border-radius: 24px;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.gold-card-glow-1 {
-  border: 2px solid rgba(221, 132, 72, 0.6);
+.white-card-glow-1 {
+  border: 2px solid rgba(213, 213, 213, 0.6);
   border-radius: 24px;
   width: 100%;
   height: 100%;
@@ -33,8 +33,8 @@
   pointer-events: none;
 }
 
-.gold-card-glow-2 {
-  border: 2px solid var(--electric-light-color);
+.white-card-glow-2 {
+  border: 2px solid white;
   border-radius: 24px;
   width: 100%;
   height: 100%;
@@ -45,7 +45,7 @@
   pointer-events: none;
 }
 
-.gold-card-overlay-1 {
+.white-card-overlay-1 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -60,7 +60,7 @@
   pointer-events: none;
 }
 
-.gold-card-overlay-2 {
+.white-card-overlay-2 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -75,7 +75,7 @@
   pointer-events: none;
 }
 
-.gold-card-background-glow {
+.white-card-background-glow {
   position: absolute;
   width: 100%;
   height: 100%;

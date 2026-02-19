@@ -1,22 +1,38 @@
+'use client';
+
 import { FaCheck } from 'react-icons/fa';
-import Button from './Button';
+import { GoldSubButton } from './Button';
 import './GoldCard.css';
+import { useContext } from "react";
+import { subPlanContext } from "@/components/context/SubPlanContext";
 
 type CardProps = {
     title: string;
-    price: string;
+    priceMonth: string;
+    priceYear: string;
     features: string[];
     width: string;
     height: string;
+    buttonName: string;
+    subtype?: string;
 };
 
 const GoldCard = ({
     title,
-    price,
+    priceMonth,
+    priceYear,
     features = [],
     width,
     height,
-}: CardProps) => {
+    buttonName,
+    subtype,
+}: CardProps
+
+) => {
+    const context = useContext(subPlanContext);
+    if (!context) return null;
+    const { selectedPlanDuration } = context;
+
     return (
         <div className="gold-card-container " style={{ width, height }}>
             <div className="relative w-full h-full ">
@@ -32,11 +48,11 @@ const GoldCard = ({
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
                     <h2 className="text-2xl font-bold mb-4 text-gray-300 text-left mb-2">{title}</h2>
-                    <p className="text-4xl font-bold mb-6 text-gray-300 text-left mb-10">{price}</p>
+                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}{selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}</p>
                     <div>
-                        <ul className="mb-6 text-gray-300 text-left space-y-4">
+                        <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (
-                                <li key={index} className="grid grid-cols-[auto_1fr] gap-3 items-center text-lg">
+                                <li key={index} className="grid grid-cols-[auto_1fr] gap-3 items-center text-md">
                                     <FaCheck className="flex-shrink-0" />
                                     <span>{feature}</span>
                                 </li>
@@ -45,7 +61,7 @@ const GoldCard = ({
                     </div>
                 </div>
                 <div className="mt-6">
-                    <Button name="Get Started" color="white" width="100%" height="4rem" textSize="16px" />
+                    <GoldSubButton name={buttonName} color="white" width="100%" height="3rem" textSize="18px"/>
                 </div>
             </div>
         </div>

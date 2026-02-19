@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { SubPlanProvider } from "@/components/context/SubPlanContext";
 
 
 
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <SubPlanProvider>
+          <Navbar />
+          {children}
+        </SubPlanProvider>
       </body>
     </html>
   );

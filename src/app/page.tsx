@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Card from "@/components/ui/Card";
 import GoldCard from "@/components/ui/GoldCard";
+import PlanButton from "@/components/ui/PlanButton";
 
 export default function Home() {
   return (
@@ -101,16 +102,21 @@ export default function Home() {
             </h1>
           </div>
         </section>
-        <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
-              Start your journey with us and explore the world like never before
+        <section className="snap-start w-full bg-black h-screen bg-cover bg-center" style={{ backgroundImage: 'url(/smoke.png)' }}>
+          <div className="flex flex-col h-full w-full justify-center items-center">
+            <h1 className="text-7xl font-black text-white ml-48 mr-48 text-center">
+              Start your journey
             </h1>
-            <div className="flex flex-row gap-12 justify-center">
-              <Card title="Backpacker" price="$0" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></Card>
-              {/* <Card title="Globetrotter" price="$9,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="575px"></Card> */}
-              <GoldCard title="Nomad" price="$19,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></GoldCard>
-              <Card title="Nomad" price="$19,99" features={["Essential features", "Access everywhere", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="350px" height="500px"></Card>
+            <h2 className="text-6xl font-black font-semibold text-gray-400 ml-48 mr-48 text-center leading-28">
+              Be Nomad
+            </h2>
+            <div className="mt-12">
+              <PlanButton leftName="Monthly" rightName="Yearly (Save 20%)" color="#8890a1" width="200px" height="50px" textSize="18px" />
+            </div>
+            <div className="flex flex-row gap-18 justify-center mt-12">
+              <Card subtype="monthly" title="Backpacker" priceMonth="$0" priceYear="$0" features={["Essential features", "One time access", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="325px" height="450px" buttonName="Get Started"></Card>
+              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$4,99" priceYear="$49,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="350px" height="500px" buttonName="Subscribe Now"></GoldCard>
+              <Card subtype="monthly" title="Nomad" priceMonth="$9,99" priceYear="$99,99" features={["All features available", "Access everywhere", "Priority support", "Unlimited trips", "Save to device"]} width="325px" height="450px" buttonName="Go Nomad"></Card>
             </div>
           </div>
         </section>
