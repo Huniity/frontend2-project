@@ -1,8 +1,8 @@
 'use client';
 
 import { FaCheck } from "react-icons/fa";
-import { SubButton } from "./Button";
-import "./Card.css";
+import { SubButton } from "../../buttons/Button";
+import "./SubCard.css";
 import { useContext } from "react";
 import { subPlanContext } from "@/components/context/SubPlanContext";
 
@@ -48,7 +48,15 @@ const Card = (
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
                     <h2 className="text-2xl font-bold mb-4 text-gray-300 text-left mb-2">{title}</h2>
-                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}{selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}</p>
+                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">
+                        {selectedPlanDuration === 'monthly' ? priceMonth : priceYear}
+                        
+                        {(selectedPlanDuration === 'monthly' ? priceMonth : priceYear) !== "Free" && (
+                            <span className="text-xl">
+                            {selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}
+                            </span>
+                        )}
+                    </p>
                     <div>
                         <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (

@@ -1,13 +1,19 @@
-import AirportText from "@/components/ui/AirportText";
-import ScrollIndicator from "@/components/ui/ScrollIndicator";
-import Counter from "@/components/ui/Counter";
-import BackgroundCycle from "@/components/ui/BackgroundCycle";
+import AirportText from "@/components/ui/cyclingtext/AirportText";
+import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
+import Counter from "@/components/ui/counter/Counter";
+import BackgroundCycle from "@/components/ui/bgcycle/BackgroundCycle";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Card from "@/components/ui/Card";
-import GoldCard from "@/components/ui/GoldCard";
-import PlanButton from "@/components/ui/PlanButton";
+import Card from "@/components/ui/cards/subcard/SubCard";
+import GoldCard from "@/components/ui/cards/goldcard/GoldCard";
+import PlanButton from "@/components/ui/buttons/PlanButton";
+import { Button } from "@/components/ui/buttons/Button";
+import { PiNumberCircleSevenBold } from "react-icons/pi";
+import { HiOutlineReceiptTax } from "react-icons/hi";
+import { TbCancel } from "react-icons/tb";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { MdOutlineHourglassDisabled } from "react-icons/md";
 
 export default function Home() {
   return (
@@ -111,34 +117,40 @@ export default function Home() {
               Be Nomad
             </h2>
             <div className="mt-12">
-              <PlanButton leftName="Monthly" rightName="Yearly (Save 20%)" color="#8890a1" width="200px" height="50px" textSize="18px" />
+              <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="150px" height="50px" textSize="18px" />
             </div>
             <div className="flex flex-row gap-18 justify-center mt-12">
-              <Card subtype="monthly" title="Backpacker" priceMonth="$0" priceYear="$0" features={["Essential features", "One time access", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="325px" height="450px" buttonName="Get Started"></Card>
-              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$4,99" priceYear="$49,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="350px" height="500px" buttonName="Subscribe Now"></GoldCard>
-              <Card subtype="monthly" title="Nomad" priceMonth="$9,99" priceYear="$99,99" features={["All features available", "Access everywhere", "Priority support", "Unlimited trips", "Save to device"]} width="325px" height="450px" buttonName="Go Nomad"></Card>
+              <Card subtype="monthly" title="Backpacker" priceMonth="Free" priceYear="Free" features={["Essential features", "One time access", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="325px" height="450px" buttonName="Get Started"></Card>
+              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="350px" height="500px" buttonName="Subscribe Now"></GoldCard>
+              <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Priority support", "Unlimited trips", "Save to device"]} width="325px" height="450px" buttonName="Go Nomad"></Card>
             </div>
-          </div>
-        </section>
-        <section className="snap-start w-full bg-white h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-               MORE IMAGES BECAUSE AI GENERATED IMAGES THAT WE DIDN`T  PAY FOR
-            </h1>
-          </div>
-        </section>
-        <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
-                    DAMN MORE ANIMATIONS, BECAUSE WE LOVE CRAZY ANIMATIONS, AND WE LOVE MONEY
-            </h1>
-          </div>
-        </section>
-        <section className="snap-start w-full bg-white h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-                ANOTHER FUCKING CTA BECAUSE WE LOVE FUCKING MONEY
-            </h1>
+            <div className="mt-8 flex flex-row gap-2">
+              <div>
+                <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+                  <PiNumberCircleSevenBold size="18px"/>
+                </Button>
+              </div>
+              <div>
+                <Button name="VAT Included" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+                  <HiOutlineReceiptTax size="18px"/>
+                </Button>
+              </div>
+              <div>
+                <Button name="Cancel Anytime" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+                  <TbCancel size="18px"/>
+                </Button>
+              </div>
+              <div>
+                <Button name="Secure Payment" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+                  <RiSecurePaymentFill size="18px"/>
+                </Button>
+              </div>
+              <div>
+                <Button name="Instant Access" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+                  <MdOutlineHourglassDisabled size="18px"/>
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen">
@@ -149,6 +161,13 @@ export default function Home() {
             <p className="text-lg font-made-outer-alt font-semi-bold mb-4 text-white">(AND GET MONEY)</p>
           </div>
         </section>  
+        <section className="snap-start w-full bg-white h-screen">
+          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
+            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
+                ANOTHER FUCKING CTA BECAUSE WE LOVE FUCKING MONEY
+            </h1>
+          </div>
+        </section>
         <Footer />
       </SmoothScroll>
     </>

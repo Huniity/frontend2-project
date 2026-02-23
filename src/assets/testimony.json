@@ -1,0 +1,126 @@
+{
+  "testimony": [
+    {
+      "person_name": "Emily Carter",
+      "date": "2026-01-14",
+      "image": "https://example.com/images/emily-carter.jpg",
+      "description": "I used the travel AI agent to plan my two-week trip across Japan. It created a detailed itinerary, optimized transportation routes, and recommended amazing local restaurants. It saved me hours of research and made the entire experience seamless."
+    },
+    {
+      "person_name": "Daniel Thompson",
+      "date": "2025-12-03",
+      "image": "https://example.com/images/daniel-thompson.jpg",
+      "description": "Planning a family vacation to Italy was overwhelming until I tried the travel AI agent. It balanced sightseeing with kid-friendly activities and gave us smart scheduling tips to avoid crowds. The budget breakdown was especially helpful."
+    },
+    {
+      "person_name": "Sophia Martinez",
+      "date": "2026-02-01",
+      "image": "https://example.com/images/sophia-martinez.jpg",
+      "description": "As a solo traveler, I loved how the travel AI agent customized my South America backpacking route. It suggested hiking trails, cultural experiences, and safe neighborhoods to stay in."
+    },
+    {
+      "person_name": "Liam Anderson",
+      "date": "2025-11-22",
+      "image": "https://example.com/images/liam-anderson.jpg",
+      "description": "The AI agent planned my business trip to Singapore perfectly. It found efficient flight options, recommended hotels near my meetings, and even suggested great places to unwind after work."
+    },
+    {
+      "person_name": "Olivia Bennett",
+      "date": "2026-01-05",
+      "image": "https://example.com/images/olivia-bennett.jpg",
+      "description": "Our honeymoon in Greece was unforgettable thanks to the travel AI agent. It curated romantic experiences, sunset spots, and boutique hotels that matched our style."
+    },
+    {
+      "person_name": "Noah Wilson",
+      "date": "2025-10-18",
+      "image": "https://example.com/images/noah-wilson.jpg",
+      "description": "I planned a last-minute trip to New York and the AI agent handled everything — from Broadway suggestions to food tours. It made spontaneous travel easy."
+    },
+    {
+      "person_name": "Ava Rodriguez",
+      "date": "2026-02-10",
+      "image": "https://example.com/images/ava-rodriguez.jpg",
+      "description": "The travel AI agent helped me plan a road trip across California. It mapped scenic routes, suggested must-see stops, and recommended cozy places to stay."
+    },
+    {
+      "person_name": "William Harris",
+      "date": "2025-09-30",
+      "image": "https://example.com/images/william-harris.jpg",
+      "description": "For our anniversary trip to Paris, the AI agent organized museum visits, restaurant reservations, and even suggested hidden cafes. It felt like a luxury concierge."
+    },
+    {
+      "person_name": "Isabella Clark",
+      "date": "2026-01-28",
+      "image": "https://example.com/images/isabella-clark.jpg",
+      "description": "I used the AI agent to plan my Southeast Asia adventure. It provided visa information, packing suggestions, and cultural etiquette tips."
+    },
+    {
+      "person_name": "James Lewis",
+      "date": "2025-12-15",
+      "image": "https://example.com/images/james-lewis.jpg",
+      "description": "The AI agent made my ski trip planning effortless. It compared resorts, recommended equipment rentals, and scheduled lessons for beginners."
+    },
+    {
+      "person_name": "Mia Walker",
+      "date": "2026-02-12",
+      "image": "https://example.com/images/mia-walker.jpg",
+      "description": "Planning a girls’ trip to Miami was so simple with the travel AI agent. It suggested nightlife spots, brunch locations, and beachfront hotels."
+    },
+    {
+      "person_name": "Benjamin Hall",
+      "date": "2025-11-08",
+      "image": "https://example.com/images/benjamin-hall.jpg",
+      "description": "I used the AI agent to organize a multi-city Europe tour. The train schedules and time management suggestions were incredibly accurate."
+    },
+    {
+      "person_name": "Charlotte Allen",
+      "date": "2026-01-19",
+      "image": "https://example.com/images/charlotte-allen.jpg",
+      "description": "The travel AI agent helped me plan a wellness retreat in Bali. From yoga studios to eco-resorts, every suggestion matched my preferences."
+    },
+    {
+      "person_name": "Elijah Young",
+      "date": "2025-10-02",
+      "image": "https://example.com/images/elijah-young.jpg",
+      "description": "I planned a hiking trip to Patagonia using the AI agent. It recommended gear lists, trail maps, and safety guidelines that were extremely useful."
+    },
+    {
+      "person_name": "Amelia King",
+      "date": "2026-02-15",
+      "image": "https://example.com/images/amelia-king.jpg",
+      "description": "The AI agent organized our Disney vacation with ride scheduling tips and dining reservations. It saved us hours of waiting in line."
+    },
+    {
+      "person_name": "Lucas Wright",
+      "date": "2025-12-27",
+      "image": "https://example.com/images/lucas-wright.jpg",
+      "description": "For my adventure trip to Iceland, the travel AI agent suggested glacier tours, northern lights viewing spots, and rental car options."
+    },
+    {
+      "person_name": "Harper Scott",
+      "date": "2026-01-09",
+      "image": "https://example.com/images/harper-scott.jpg",
+      "description": "The AI agent built a customized food tour itinerary for my trip to Thailand. I experienced authentic street food safely and confidently."
+    },
+    {
+      "person_name": "Henry Green",
+      "date": "2025-11-14",
+      "image": "https://example.com/images/henry-green.jpg",
+      "description": "I used the travel AI agent for a cruise vacation. It compared cruise lines, cabins, and shore excursions with detailed insights."
+    },
+    {
+      "person_name": "Evelyn Adams",
+      "date": "2026-02-18",
+      "image": "https://example.com/images/evelyn-adams.jpg",
+      "description": "Planning my graduation trip to Spain was stress-free thanks to the AI agent. It recommended festivals, museums, and affordable stays."
+    },
+    {
+      "person_name": "Alexander Baker",
+      "date": "2025-10-25",
+      "image": "https://example.com/images/alexander-baker.jpg",
+      "description": "The travel AI agent helped me coordinate a group trip to Canada. It managed shared itineraries and kept everyone updated in real time."
+    }
+  ]
+}
+
+// https://stackblitz.com/edit/stackblitz-starters-gyrdgu?file=src%2FApp.tsx

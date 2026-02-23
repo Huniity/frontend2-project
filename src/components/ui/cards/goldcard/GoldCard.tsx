@@ -1,10 +1,11 @@
 'use client';
 
 import { FaCheck } from 'react-icons/fa';
-import { GoldSubButton } from './Button';
+import { GoldSubButton } from '../../buttons/Button';
 import './GoldCard.css';
 import { useContext } from "react";
 import { subPlanContext } from "@/components/context/SubPlanContext";
+import { ImFire } from "react-icons/im";
 
 type CardProps = {
     title: string;
@@ -47,8 +48,8 @@ const GoldCard = ({
 
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-300 text-left mb-2">{title}</h2>
-                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}{selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}</p>
+                    <h2 className="text-2xl font-bold mb-4 text-gray-300 text-left mb-2 flex items-center justify-between">{title}<ImFire size="24px" color="rgba(221, 132, 72, 0.92)"/></h2>
+                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}<span className="text-xl">{selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}</span></p>
                     <div>
                         <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (

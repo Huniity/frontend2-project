@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import FullYear from "./FullYear";
 
 const Footer = () => {
     return (
@@ -35,7 +36,7 @@ const Footer = () => {
                     </div>
             </div>
             <div className='py-4'>
-                <p className='text-m text-gray-400 text-center'>© 2024 Nomadia. All rights reserved.</p>
+                <p className='text-m text-gray-400 text-center'>© <FullYear /> Nomadia. All rights reserved.</p>
             </div>
         </footer>
     )
