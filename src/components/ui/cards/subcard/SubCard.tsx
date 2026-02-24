@@ -68,7 +68,7 @@ const Card = (
                         </ul>
                     </div>
                 </div>
-                <div className="mt-6">
+                <div className="mt-3">
                     <SubButton name={buttonName} color="lightgray" width="100%" height="3rem" textSize="18px"/>
                 </div>
             </div>
