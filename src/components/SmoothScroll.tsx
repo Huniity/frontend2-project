@@ -26,7 +26,7 @@ export default function SmoothScroll({
     const setHeight = () => {
       container.style.height = '100vh';
       container.style.overflow = 'hidden';
-      // Remove footer calculation since it's now inside
+
       document.body.style.height = `${content.offsetHeight}px`;
     };
 
@@ -38,13 +38,11 @@ export default function SmoothScroll({
       const viewportHeight = window.innerHeight;
       const currentScroll = window.scrollY;
       
-      // Find the last section's bottom position
       const lastSection = sections[sections.length - 1];
       if (lastSection) {
         const lastSectionRect = lastSection.getBoundingClientRect();
         const lastSectionBottom = lastSectionRect.bottom + currentScrollRef.current;
         
-        // Don't snap if we've scrolled past the last section (we're in footer area)
         if (currentScroll > lastSectionBottom - viewportHeight) {
           return;
         }

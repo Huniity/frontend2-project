@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 
@@ -82,6 +81,13 @@
 
 @font-face {
   font-family: "MADE Outer Sans";
+  src: url("../../public/fonts/MADE Outer Sans Regular PERSONAL USE.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
   src: url("../../public/fonts/MADE-Outer-Sans-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
@@ -151,4 +157,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-made-outer-alt {
   font-family: "MADE Outer Sans Alt", sans-serif;
+}
+
+.text-shadow-lg {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.gradient-fade-black {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}
+
+/* Hide scrollbar but keep scrolling functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

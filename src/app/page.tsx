@@ -19,6 +19,7 @@ export default function Home() {
   return (
     <>
       <SmoothScroll>
+        
         <section className="snap-start">
           <div className="flex h-screen w-full items-center justify-center relative overflow-hidden">
             <BackgroundCycle 
@@ -44,15 +45,15 @@ export default function Home() {
               ]}
             />
             <div className="absolute inset-0 bg-black/40 z-10"></div>
-            <main className="flex w-full flex-1 flex-col items-center justify-between px-24 py-4 text-center relative z-10">
-              <div className="text-center h-50vh flex flex-col items-center justify-center py-32">
-                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white">
+            <main className="fixed w-full h-screen flex flex-col items-center px-24 py-4 text-center z-10 top-[-40] left-0 pointer-events-none">
+              <div className="text-center h-50vh flex flex-col items-center justify-center py-32 flex-1">
+                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
                   ExplorE
                 </h1>
-                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white">
+                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
                   ThE BEst
                 </h1>
-                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white">
+                <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
                   <AirportText
                     words={[
                       "LandsCapEs",
@@ -64,47 +65,49 @@ export default function Home() {
                   />
                 </h1>
               </div>
-              <div className="flex flex-col items-center gap-8 mt-4">
-                <Link
-                  href="/signin"
-                  className="rounded-full bg-white/90 px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition"
-                >
-                  Start Exploring
-                </Link>
-              <ScrollIndicator />
-              </div>
             </main>
-          </div>
-        </section>
-        <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center px-24 gap-">
-            <div className="flex justify-start ml-88">
-              <div className="relative p-12">
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="Trips" value={86} />
-              </div>
-            </div>
-            <div className="flex justify-end mr-48">
-              <div className="relative p-12">
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="CoUntriEs" value={37} />
-              </div>
-            </div>
-            <div className="flex justify-start ml-48">
-              <div className="relative p-12">
-               <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="Nomads" value={3274} />
-              </div>
+            <div className="fixed bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 z-10 pointer-events-auto" style={{ top: 'calc(100vh - 180px)' }}>
+              <Link
+                href="/signin"
+                className="rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs"
+              >
+                Start Exploring
+              </Link>
+              <ScrollIndicator />
             </div>
           </div>
         </section>
+        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
+        <section className="snap-start w-full bg-black h-screen relative">
+          <div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>
+          <div className="relative z-10 h-full">
+            <h1 className="text-5xl font-made-outer font-normal ml-39 mb-4 text-white text-left absolute top-30 left-0 right-0 z-20 text-shadow-lg">
+              Trusted by modern travelers worldwide.
+            </h1>
+            <div className="flex flex-row h-full w-full justify-center items-center px-24 gap-24 text-shadow-lg">
+              <div className="relative p-12 h-64 flex flex-col justify-center items-center">
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
+                <Counter name="Trips" value={86} description="Planned with Nomadia"/>
+              </div>
+              <div className="relative p-12 h-64 flex flex-col justify-center items-center">
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
+                <Counter name="CoUntriEs" value={37} description="Explored by our users"/>
+              </div>
+              <div className="relative p-12 h-64 flex flex-col justify-center items-center">
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
+                <Counter name="Nomads" value={3274} description="Growing community"/>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
         <section className="snap-start w-full bg-white h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-              WE ARE THE BEST TRAVEL AGENCY IN THE WORLD BECAUSE WE HAVE A TREMENDOUS AI 
+            <h1 className="text-5xl font-medel font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
+              NOMADIA 
             </h1>
           </div>
         </section>
@@ -153,6 +156,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
             <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">

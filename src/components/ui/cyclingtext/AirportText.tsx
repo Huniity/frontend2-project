@@ -43,8 +43,8 @@ export default function AirportText({
   }, [words.length, intervalMs, mounted]);
 
   if (!mounted) {
-    return <span className="font-made-outer-alt font-black">{words[0]}</span>;
+    return <span className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</span>;
   }
 
-  return <span ref={ref} className="font-made-outer-alt font-black" />;
+  return <span ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
 }
