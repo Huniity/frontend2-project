@@ -24,18 +24,20 @@ export default function Home() {
           <div className="flex h-screen w-full items-center justify-center relative overflow-hidden">
             <BackgroundCycle 
               images={[
-                '/fuji2.png',
-                '/fuji4.jpg',
-                '/fuji5.jpg',
-                '/fuji6.jpg'
+                '/city2.avif',
+                // '/fuji2.png',
+                // '/fuji4.jpg',
+                // '/fuji5.jpg',
+                // '/fuji6.jpg'
 
               ]}
               interval={10000}
               backgroundSizes={[
-                'auto 150%',
-                'auto 145%',
-                'auto 150%',
-                'auto 150%'
+                'auto 110%'
+                // 'auto 150%',
+                // 'auto 145%',
+                // 'auto 150%',
+                // 'auto 150%'
               ]}
               backgroundPositions={[
                 'center -100px',
@@ -54,32 +56,21 @@ export default function Home() {
                   ThE BEst
                 </h1>
                 <h1 className="text-7xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
-                  <AirportText
-                    words={[
-                      "LandsCapEs",
-                      "CitIEs",
-                      "CUltuREs",
-                      "With Us",
-                      "Any TimE",
-                    ]}
+                  <AirportText  words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]}
                   />
                 </h1>
               </div>
             </main>
             <div className="fixed bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 z-10 pointer-events-auto" style={{ top: 'calc(100vh - 180px)' }}>
-              <Link
-                href="/signin"
-                className="rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs"
-              >
+              <Link href="/signin" className="rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs">
                 Start Exploring
               </Link>
               <ScrollIndicator />
             </div>
           </div>
         </section>
-        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
         <section className="snap-start w-full bg-black h-screen relative">
-          <div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>
+          {<div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>}
           <div className="relative z-10 h-full">
             <h1 className="text-5xl font-made-outer font-normal ml-39 mb-4 text-white text-left absolute top-30 left-0 right-0 z-20 text-shadow-lg">
               Trusted by modern travelers worldwide.
@@ -103,8 +94,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
-        <section className="snap-start w-full bg-white h-screen">
+        <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
             <h1 className="text-5xl font-medel font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
               NOMADIA 
@@ -112,22 +102,22 @@ export default function Home() {
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen bg-cover bg-center" style={{ backgroundImage: 'url(/smoke.png)' }}>
-          <div className="flex flex-col h-full w-full justify-center items-center">
-            <h1 className="text-7xl font-black text-white ml-48 mr-48 text-center">
+          <div className="flex flex-col h-full w-full justify-center items-center mt-22 gap-0">
+            <h1 className="text-6xl font-black text-white ml-48 mr-48 text-center">
               Start your journey
             </h1>
-            <h2 className="text-6xl font-black font-semibold text-gray-400 ml-48 mr-48 text-center leading-28">
+            <h2 className="text-5xl font-black font-semibold text-gray-400 ml-48 mr-48 text-center leading-22">
               Be Nomad
             </h2>
-            <div className="mt-12">
-              <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="150px" height="50px" textSize="18px" />
+            <div className="mt-4">
+              <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="125px" height="45px" textSize="16px" />
             </div>
             <div className="flex flex-row gap-18 justify-center mt-12">
-              <Card subtype="monthly" title="Backpacker" priceMonth="Free" priceYear="Free" features={["Essential features", "One time access", "Basic support", "Limitation on trips (days, number of booked trips)"]} width="325px" height="450px" buttonName="Get Started"></Card>
-              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="350px" height="500px" buttonName="Subscribe Now"></GoldCard>
-              <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Priority support", "Unlimited trips", "Save to device"]} width="325px" height="450px" buttonName="Go Nomad"></Card>
+              <Card subtype="monthly" title="Backpacker" priceMonth="Free" priceYear="Free" features={["Essential features", "One time access", "Basic support", "Limitated on trips"]} width="300px" height="400px" buttonName="Get Started"></Card>
+              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="325px" height="450px" buttonName="Subscribe Now"></GoldCard>
+              <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Unlimited trips", "Save to device"]} width="300px" height="400px" buttonName="Go Nomad"></Card>
             </div>
-            <div className="mt-8 flex flex-row gap-2">
+            <div className="mt-12 flex flex-row gap-2">
               <div>
                 <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
                   <PiNumberCircleSevenBold size="18px"/>
@@ -156,7 +146,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="h-64 w-full pointer-events-none relative z-50 -mt-32 -mb-32 gradient-fade-black"></div>
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-12">
             <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
@@ -165,11 +154,17 @@ export default function Home() {
             <p className="text-lg font-made-outer-alt font-semi-bold mb-4 text-white">(AND GET MONEY)</p>
           </div>
         </section>  
-        <section className="snap-start w-full bg-white h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-                ANOTHER FUCKING CTA BECAUSE WE LOVE FUCKING MONEY
+        <section className="snap-start w-full bg-black h-screen">
+          <div className="flex flex-col h-full w-full justify-center items-center gap-12" style={{ backgroundImage: 'url(/dubai.jpg)', backgroundSize: 'auto', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}>
+            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
+                Plan Today
             </h1>
+            <h2 className="text-5xl font-made-outer-alt font-semibold mb-4 text-white text-shadow-lg">
+                Explore Tomorrow
+            </h2>
+            <Link href="/signin" className="mt-48 rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs">
+                Explore Now
+              </Link>
           </div>
         </section>
         <Footer />

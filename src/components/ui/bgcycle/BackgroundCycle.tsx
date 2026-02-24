@@ -30,7 +30,8 @@ const BackgroundCycle = ({
       {images.map((image, index) => (
         <div
           key={index}
-          className="absolute inset-0 transition-opacity duration-1000 grayscale contrast-175 sepia-5 brightness-100"
+          // className="absolute inset-0 transition-opacity duration-1000 grayscale contrast-175 sepia-5 brightness-100"
+          className="absolute inset-0 transition-opacity duration-1000 contrast-125 sepia-30 brightness-95 grayscale-0 hue-rotate-5"
           style={{
             backgroundImage: `url('${image}')`,
             backgroundSize: backgroundSizes[index] || "auto 150%",
