@@ -14,6 +14,7 @@ import { HiOutlineReceiptTax } from "react-icons/hi";
 import { TbCancel } from "react-icons/tb";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { MdOutlineHourglassDisabled } from "react-icons/md";
+import Gallery from "@/components/ui/gallery/Gallery";
 
 export default function Home() {
   return (
@@ -67,6 +68,14 @@ export default function Home() {
               </Link>
               <ScrollIndicator />
             </div>
+          </div>
+        </section>
+        <section className="snap-start w-full bg-white h-screen">
+          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
+            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
+                
+            </h1>
+            <p className="text-lg font-made-outer-alt font-semi-bold mb-4 text-white">(AND GET MONEY)</p>
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen relative">
@@ -146,12 +155,17 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white ml-48 mr-48 text-center leading-20">
-                TESTIMONIES BECAUSE WE WANT TO FLEX ON OUR COMPETITORS
+        <section className="snap-start w-full bg-white h-screen">
+          <div className="flex flex-col h-full w-full justify-center items-center gap-6">
+            <h1 className="text-5xl font-made-outer-alt font-black text-black ml-48 mr-48 text-center">
+              Rated by the Road
             </h1>
-            <p className="text-lg font-made-outer-alt font-semi-bold mb-4 text-white">(AND GET MONEY)</p>
+            <h2 className="text-5xl font-made-outer-alt font-semibold text-gray-800 ml-48 mr-48 text-center">
+              Loved by the Nomads
+            </h2>
+          </div>
+          <div className="flex flex-row h-full w-full justify-center items-center px-24 gap-24">
+            < Gallery />
           </div>
         </section>  
         <section className="snap-start w-full bg-black h-screen">
@@ -163,7 +177,7 @@ export default function Home() {
                 Explore Tomorrow
             </h2>
             <Link href="/signin" className="mt-48 rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs">
-                Explore Now
+                sign Up now
               </Link>
           </div>
         </section>
