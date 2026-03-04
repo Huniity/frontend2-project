@@ -2,6 +2,7 @@
 @import "shadcn/tailwind.css";
 
 
+
 @font-face {
   font-family: "Glacial Indifference";
   src: url("../../public/fonts/GlacialIndifference-Regular.otf") format("opentype");

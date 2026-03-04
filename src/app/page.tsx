@@ -165,7 +165,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="flex flex-row h-full w-full justify-center items-center px-24 gap-24">
-            < Gallery />
+
           </div>
         </section>  
         <section className="snap-start w-full bg-black h-screen">

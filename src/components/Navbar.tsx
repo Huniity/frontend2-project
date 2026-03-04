@@ -28,7 +28,6 @@ const Navbar = () => {
             const firstSectionHeight = sections[0]?.offsetHeight || window.innerHeight;
             const shrinkThreshold = firstSectionHeight / 2;
 
-            // Check if at top of page
             setIsAtTop(currentScrollY < 100);
 
             setIsShrunken(currentScrollY > shrinkThreshold);
