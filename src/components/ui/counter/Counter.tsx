@@ -58,7 +58,7 @@ const Counter = ({ name, value, description }: CounterProps) => {
                 <p className="font-made-outer-alt font-bold text-white text-8xl tracking-widest">{Math.floor(count)}</p>
             </div>
             <p className="absolute right-[-60] top-35 -translate-y-1/2 text-xl font-made-outer-alt text-white" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg) translateY(50%)' }}>{name}</p>
-            <p className="absolute top-40 text-xl font-made-outer font-normal text-white text-center w-full">{description}</p>
+            <p className="absolute top-40 text-lg font-made-outer-alt font-normal text-white text-center w-full">{description}</p>
         </div>
     )
 }

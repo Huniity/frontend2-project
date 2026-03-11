@@ -51,6 +51,7 @@ const Login = () => {
                     <h1 className="mb-3 text-2xl font-bold text-white text-shadow-lg font-made-outer text-center">Welcome back <span className="font-made-outer">Nomad</span></h1>
                     <p className="mb-6 text-sm text-white text-shadow-lg font-made-outer text-center">Let{"'"}s continue your journey.</p>
                     <LoginCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />
+                    <p className="mt-6 text-xs text-gray-400 text-center font-made-outer">Don{"'"}t have an account? <span className="text-white font-made-outer cursor-pointer">Sign up</span></p>
                 </div>
               </div>
             </div>

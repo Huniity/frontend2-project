@@ -17,13 +17,24 @@ import { MdOutlineHourglassDisabled } from "react-icons/md";
 import Gallery from "@/components/ui/gallery/Gallery";
 import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
 import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
+import HomeShape from "@/components/ui/home/Shape";
 
 export default function Home() {
   return (
     <>
       <SmoothScroll>
-        
-        <section className="snap-start">
+        <section className="snap-start w-full bg-black h-screen">
+          <div className="flex flex-col h-full w-full justify-center items-center gap-6">
+            <HomeShape />
+          </div>
+          <div className="fixed bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8 z-10 pointer-events-auto" style={{ top: 'calc(100vh - 180px)' }}>
+              <Link href="/signin" className="rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs">
+                Start Exploring
+              </Link>
+              <ScrollIndicator />
+          </div>
+        </section>  
+        {/* <section className="snap-start">
           <div className="flex h-screen w-full items-center justify-center relative overflow-hidden">
             <BackgroundCycle 
               images={[
@@ -69,42 +80,46 @@ export default function Home() {
                 Start Exploring
               </Link>
               <ScrollIndicator />
-            </div>
+              </div>
           </div>
-        </section>
+        </section> */}
         <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-start items-center gap-12 pt-16">
-            <div className="text-center">
-              <h1 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-2">
-                How It Works
-              </h1>
-              <p className="text-xl font-made-outer-alt font-semi-bold text-gray-400">Four simple steps to start your nomadic journey</p>
+          <div className="flex flex-col h-full w-full justify-start items-center gap-2 pt-56">
+            <div className="text-center gap-26 flex flex-col items-center justify-center">
+              <div>
+                <h1 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-12">
+                  how It Works
+                </h1>
+                <p className="text-xl font-made-outer-alt font-semi-bold text-gray-400">FOUR simplE stEps to start yoUr nomadia journey</p>
+              </div>
+              <div>
+                <HowItWorks />
+              </div>
             </div>
-            <HowItWorks />
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen relative">
           {<div className="absolute inset-0" ></div>}
           {/* style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }} */}
           <div className="relative z-10 h-full">
-            <h1 className="text-5xl font-made-outer font-normal ml-39 mb-4 text-white text-left absolute top-30 left-0 right-0 z-20 text-shadow-lg">
+            <h1 className="text-4xl font-made-outer-alt font-normal ml-60 mb-4 text-white text-left absolute top-50 left-0 right-0 z-20 text-shadow-lg">
               Trusted by modern travelers worldwide.
             </h1>
             <div className="flex flex-row h-full w-full justify-center items-center px-24 gap-24 text-shadow-lg">
               <div className="relative p-12 h-64 flex flex-col justify-center items-center">
                 <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
                 <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="Trips" value={86} description="Planned with Nomadia"/>
+                <Counter name="Trips" value={86} description="PlannEd with Nomadia"/>
               </div>
               <div className="relative p-12 h-64 flex flex-col justify-center items-center">
                 <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
                 <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="CoUntriEs" value={37} description="Explored by our users"/>
+                <Counter name="CoUntriEs" value={37} description="ExplorEd by oUr UsErs"/>
               </div>
               <div className="relative p-12 h-64 flex flex-col justify-center items-center">
                 <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white"></div>
                 <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white"></div>
-                <Counter name="Nomads" value={3274} description="Growing community"/>
+                <Counter name="Nomads" value={3274} description="growing CommUnity"/>
               </div>
             </div>
           </div>
@@ -115,18 +130,18 @@ export default function Home() {
         <section className="snap-start w-full bg-black h-screen bg-cover bg-center" >
           {/* style={{ backgroundImage: 'url(/smoke.png)' }} */}
           <div className="flex flex-col h-full w-full justify-center items-center mt-22 gap-0">
-            <h1 className="text-6xl font-black text-white ml-48 mr-48 text-center">
-              Start your journey
+            <h1 className="font-made-outer-alt text-6xl font-black text-white ml-48 mr-48 text-center">
+              Start yoUr joUrnEy
             </h1>
-            <h2 className="text-5xl font-black font-semibold text-gray-400 ml-48 mr-48 text-center leading-22">
-              Be Nomad
+            <h2 className="font-made-outer-alt text-5xl font-black font-semibold text-gray-400 ml-48 mr-48 text-center leading-22">
+              bE Nomad
             </h2>
             <div className="mt-4">
               <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="125px" height="45px" textSize="16px" />
             </div>
             <div className="flex flex-row gap-18 justify-center mt-12">
-              <Card subtype="monthly" title="Backpacker" priceMonth="Free" priceYear="Free" features={["Essential features", "One time access", "Basic support", "Limitated on trips"]} width="300px" height="400px" buttonName="Get Started"></Card>
-              <GoldCard subtype="monthly" title="Globetrotter" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="325px" height="450px" buttonName="Subscribe Now"></GoldCard>
+              <Card subtype="monthly" title="BackpackEr" priceMonth="FrEE" priceYear="FrEE" features={["Essential features", "One time access", "Basic support", "Limitated on trips"]} width="300px" height="400px" buttonName="gEt StartEd"></Card>
+              <GoldCard subtype="monthly" title="globEtrottEr" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="325px" height="450px" buttonName="SUbsCribE Now"></GoldCard>
               <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Unlimited trips", "Save to device"]} width="300px" height="400px" buttonName="Go Nomad"></Card>
             </div>
             <div className="mt-12 flex flex-row gap-2">

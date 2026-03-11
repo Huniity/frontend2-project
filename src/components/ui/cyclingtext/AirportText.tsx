@@ -8,10 +8,10 @@ interface AirportTextProps {
   intervalMs?: number;
 }
 
-export default function AirportText({ 
+const AirportText = ({ 
   words, 
   intervalMs = 5000,
-}: AirportTextProps) {
+}: AirportTextProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
   
@@ -43,8 +43,10 @@ export default function AirportText({
   }, [words.length, intervalMs, mounted]);
 
   if (!mounted) {
-    return <span className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</span>;
+    return <tspan className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</tspan>;
   }
 
-  return <span ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
+  return <tspan ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
 }
+
+export default AirportText;

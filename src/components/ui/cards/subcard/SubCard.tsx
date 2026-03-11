@@ -47,13 +47,13 @@ const Card = (
 
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold mb-4 text-gray-300 text-left mb-2">{title}</h2>
-                    <p className="text-3xl font-bold mb-6 text-white text-left mb-10">
+                    <h2 className="text-2xl font-bold font-made-outer-alt mb-4 text-gray-300 text-left mb-2">{title}</h2>
+                    <p className="text-3xl font-bold font-made-outer-alt mb-6 text-white text-left mb-10">
                         {selectedPlanDuration === 'monthly' ? priceMonth : priceYear}
                         
-                        {(selectedPlanDuration === 'monthly' ? priceMonth : priceYear) !== "Free" && (
-                            <span className="text-xl">
-                            {selectedPlanDuration === 'monthly' ? ' /month' : ' /year'}
+                        {(selectedPlanDuration === 'monthly' ? priceMonth : priceYear) !== "FrEE" && (
+                            <span className="text-xl font-made-outer-alt">
+                            {selectedPlanDuration === 'monthly' ? ' /month' : ' /yEar'}
                             </span>
                         )}
                     </p>

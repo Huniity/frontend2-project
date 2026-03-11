@@ -13,7 +13,7 @@ const DreamDestinations = () => {
   const features: Feature[] = [
     {
       icon: <HiOutlineEye size={32} />,
-      title: "Vast peaks",
+      title: "Vast pEaks",
       bgGradient: 'linear-gradient(135deg, rgba(147, 51, 234, 0.4), rgba(59, 130, 246, 0.4))'
     },
     {
@@ -23,37 +23,37 @@ const DreamDestinations = () => {
     },
     {
       icon: <HiOutlineSparkles size={32} />,
-      title: "Lush forests",
+      title: "LUsh forEsts",
       bgGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(59, 130, 246, 0.4))'
     },
     {
       icon: <HiOutlineRectangleStack size={32} />,
-      title: "Night skyline",
+      title: "Night skylinE",
       bgGradient: 'linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.4))'
     },
     {
       icon: <HiOutlineMap size={32} />,
-      title: "Night skyline",
+      title: "Night skylinE",
       bgGradient: 'linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.4))'
     },
     {
       icon: <HiOutlineSun size={32} />,
-      title: "Golden light",
+      title: "goldEn light",
       bgGradient: 'linear-gradient(135deg, rgba(249, 115, 22, 0.4), rgba(251, 191, 36, 0.4))'
     },
     {
       icon: <GiCampfire size={32} />,
-      title: "Outdoor life",
+      title: "OUtdoor lifE",
       bgGradient: 'linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(249, 115, 22, 0.4))'
     },
     {
       icon: <HiOutlineMapPin size={32} />,
-      title: "Unique spots",
+      title: "UniqUE spots",
       bgGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4))'
     },
     {
       icon: <HiOutlineMapPin size={32} />,
-      title: "Bustling streets",
+      title: "bUstling strEEts",
       bgGradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(99, 102, 241, 0.4))'
     },
     {
@@ -64,16 +64,18 @@ const DreamDestinations = () => {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-start items-center p-12">
-      <div className="text-center mb-16">
-        <h1 className="text-5xl font-black text-white font-made-outer-alt mb-4 text-shadow-lg">
-          Dream Destinations
-        </h1>
-        <p className="text-lg text-gray-300 font-made-outer-alt">
-          Features we know you'll love about our trips
-        </p>
+    <div className="w-full h-full flex flex-col justify-start p-36">
+      <div className="mb-16">
+        {/* <div className=" w-24 h-1 bg-white to-pink-500 mx-auto mb-4 rounded-full"></div> */}
+        <div className="text-left flex flex-col gap-2">
+          <h1 className="text-9xl font-black text-white font-made-outer-alt mb-4 text-shadow-lg">
+            drEam
+          </h1>
+          <h1 className="text-9xl font-black text-white font-made-outer-alt mb-4 text-shadow-lg">
+            dEstinations
+          </h1>
+        </div>
       </div>
-
       <div 
         className="grid gap-6 w-full max-w-6xl place-items-center"
         style={{

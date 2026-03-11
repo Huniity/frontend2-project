@@ -45,6 +45,7 @@ const Signin = () => {
                     <h1 className="mb-3 text-2xl font-bold text-white text-shadow-lg font-made-outer text-center">Become a Nomad</h1>
                     <p className="mb-6 text-sm text-white text-shadow-lg font-made-outer text-center">Let{"'"}s plan your next adventure.</p>
                     <SigninCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />
+                    <p className="mt-6 text-xs text-gray-400 text-center font-made-outer">Already have an account? <span className="text-white font-made-outer cursor-pointer">Log in</span></p>
                 </div>
                 <div className="flex flex-col col-span-2 w-full h-full items-center justify-center"  style={{ backgroundImage: 'url(/mountain1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0.3) contrast(1) saturate(2) sepia(0.15)', borderTopRightRadius: '0.5rem', borderBottomRightRadius: '0.5rem' }} >
                     <h1 className="text-5xl font-bold text-white text-shadow-lg font-made-outer"></h1>
