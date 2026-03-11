@@ -26,22 +26,22 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
 
     return (
                     <>
-                    <form className="flex flex-col w-3/4 gap-4" onSubmit={handleSubmit}>
+                    <form className="flex flex-col w-3/4 gap-3" onSubmit={handleSubmit}>
                         <div className="relative">
                             <FaUserAstronaut className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
-                            <input type="text" placeholder="Username" disabled={isLoading} className="w-full pl-10 px-4 py-3 rounded-md bg-black/50 border border-white/50 font-made-outer text-white focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
+                            <input type="text" placeholder="Username" disabled={isLoading} className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
                         </div>
                         <div className="relative">
                             <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
-                            <input type="email" placeholder="Email" disabled={isLoading} className="w-full pl-10 px-4 py-3 rounded-md bg-black/50 border border-white/50 font-made-outer text-white focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
+                            <input type="email" placeholder="Email" disabled={isLoading} className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
                         </div>
                         <div className="relative ">
                             <MdOutlineKey className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
-                            <input type="password" placeholder="Password" aria-label="Password" disabled={isLoading} className="w-full pl-10 px-4 py-3 rounded-md bg-black/50 border border-white/50 font-made-outer text-white focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
+                            <input type="password" placeholder="Password" aria-label="Password" disabled={isLoading} className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
                         </div>
                         <div className="relative ">
                             <MdOutlineKey className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
-                            <input type="password" placeholder="Confirm Password" aria-label="Confirm Password" disabled={isLoading} className="w-full pl-10 px-4 py-3 rounded-md bg-black/50 border border-white/50 font-made-outer text-white focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
+                            <input type="password" placeholder="Confirm Password" aria-label="Confirm Password" disabled={isLoading} className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg" />
                         </div>
                         <LoginButton isLoading={isLoading} name={name} mutatedName={mutatedName} />
                     </form>

@@ -15,6 +15,8 @@ import { TbCancel } from "react-icons/tb";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { MdOutlineHourglassDisabled } from "react-icons/md";
 import Gallery from "@/components/ui/gallery/Gallery";
+import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
+import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
 
 export default function Home() {
   return (
@@ -25,7 +27,7 @@ export default function Home() {
           <div className="flex h-screen w-full items-center justify-center relative overflow-hidden">
             <BackgroundCycle 
               images={[
-                '/city2.avif',
+                //'/city2.avif',
                 // '/fuji2.png',
                 // '/fuji4.jpg',
                 // '/fuji5.jpg',
@@ -34,7 +36,7 @@ export default function Home() {
               ]}
               interval={10000}
               backgroundSizes={[
-                'auto 110%'
+                //'auto 110%'
                 // 'auto 150%',
                 // 'auto 145%',
                 // 'auto 150%',
@@ -70,16 +72,20 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="snap-start w-full bg-white h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-                
-            </h1>
-            <p className="text-lg font-made-outer-alt font-semi-bold mb-4 text-white">(AND GET MONEY)</p>
+        <section className="snap-start w-full bg-black h-screen">
+          <div className="flex flex-col h-full w-full justify-start items-center gap-12 pt-16">
+            <div className="text-center">
+              <h1 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-2">
+                How It Works
+              </h1>
+              <p className="text-xl font-made-outer-alt font-semi-bold text-gray-400">Four simple steps to start your nomadic journey</p>
+            </div>
+            <HowItWorks />
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen relative">
-          {<div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>}
+          {<div className="absolute inset-0" ></div>}
+          {/* style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }} */}
           <div className="relative z-10 h-full">
             <h1 className="text-5xl font-made-outer font-normal ml-39 mb-4 text-white text-left absolute top-30 left-0 right-0 z-20 text-shadow-lg">
               Trusted by modern travelers worldwide.
@@ -104,13 +110,10 @@ export default function Home() {
           </div>
         </section>
         <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-            <h1 className="text-5xl font-medel font-black mb-4 text-black ml-48 mr-48 text-center leading-20">
-              NOMADIA 
-            </h1>
-          </div>
+          <DreamDestinations />
         </section>
-        <section className="snap-start w-full bg-black h-screen bg-cover bg-center" style={{ backgroundImage: 'url(/smoke.png)' }}>
+        <section className="snap-start w-full bg-black h-screen bg-cover bg-center" >
+          {/* style={{ backgroundImage: 'url(/smoke.png)' }} */}
           <div className="flex flex-col h-full w-full justify-center items-center mt-22 gap-0">
             <h1 className="text-6xl font-black text-white ml-48 mr-48 text-center">
               Start your journey
@@ -155,7 +158,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="snap-start w-full bg-white h-screen">
+        <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-6">
             <h1 className="text-5xl font-made-outer-alt font-black text-black ml-48 mr-48 text-center">
               Rated by the Road
@@ -169,7 +172,8 @@ export default function Home() {
           </div>
         </section>  
         <section className="snap-start w-full bg-black h-screen">
-          <div className="flex flex-col h-full w-full justify-center items-center gap-12" style={{ backgroundImage: 'url(/dubai.jpg)', backgroundSize: 'auto', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}>
+          <div className="flex flex-col h-full w-full justify-center items-center gap-12" >
+            {/* style={{ backgroundImage: 'url(/dubai.jpg)', backgroundSize: 'auto', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }} */}
             <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
                 Plan Today
             </h1>
