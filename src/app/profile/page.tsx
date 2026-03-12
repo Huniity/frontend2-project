@@ -45,7 +45,9 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white">
+    {<div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>}
+          {/* style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }} */}
       {/* Sidebar + Content Layout */}
       <div className="flex">
         {/* Sidebar */}
@@ -57,8 +59,8 @@ export default function Profile() {
                 <RiUserLine className="text-white" size={28} />
               </div>
               <div>
-                <p className="font-bold text-lg">Adrien Dejonc</p>
-                <p className="text-xs text-gray-500">Globetrotter Plan</p>
+                <p className="font-made-outer-alt font-bold text-lg">Adrien Dejonc</p>
+                <p className="text-xs text-gray-500 font-made-outer">Globetrotter Plan</p>
               </div>
             </div>
 
@@ -104,22 +106,22 @@ export default function Profile() {
           </div>
 
           {/* Logout */}
-          <button className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer bg-transparent border-none">
+          <button className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium font-made-outer text-gray-500 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer bg-transparent border-none">
             <FiLogOut size={18} />
             Log out
           </button>
         </aside>
 
         {/* Main Content */}
-        <main className="ml-72 flex-1 pt-32 px-16 pb-24 min-h-screen">
+        <main className="ml-72 flex-1 pt-4 px-16 pb-12 min-h-screen">
           {activeTab === "overview" && (
             <div>
               {/* Welcome Header */}
               <div className="mb-12">
-                <h1 className="text-3xl font-bold mb-2">
+                <h1 className="text-3xl font-made-outer-alt font-bold mb-2">
                   Welcome back, <span className="italic">Adrien</span>
                 </h1>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-sm font-made-outer">
                   Here&apos;s a summary of your Nomadia activity.
                 </p>
               </div>
@@ -127,25 +129,25 @@ export default function Profile() {
               {/* Stats Cards */}
               <div className="grid grid-cols-4 gap-6 mb-14">
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
-                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider">
+                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">
                     Total Trips
                   </p>
                   <p className="text-3xl font-bold">12</p>
                 </div>
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
-                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider">
+                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">
                     Countries
                   </p>
                   <p className="text-3xl font-bold">7</p>
                 </div>
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
-                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider">
+                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">
                     Trophies
                   </p>
                   <p className="text-3xl font-bold">3</p>
                 </div>
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
-                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider">
+                  <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">
                     Plan
                   </p>
                   <p className="text-xl font-bold mt-1">Globetrotter</p>
@@ -157,10 +159,10 @@ export default function Profile() {
                 {/* Recent Trips */}
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
                   <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-lg font-bold">Recent Trips</h2>
+                    <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>
                     <Link
                       href="/trips"
-                      className="text-xs text-gray-500 hover:text-white transition-colors no-underline flex items-center gap-1"
+                      className="text-xs text-gray-500 hover:text-white transition-colors no-underline flex items-center gap-1 font-made-outer"
                     >
                       View all <FiChevronRight size={12} />
                     </Link>
@@ -172,13 +174,13 @@ export default function Profile() {
                         className="flex items-center justify-between py-3 border-b border-white/5 last:border-none"
                       >
                         <div>
-                          <p className="font-medium text-sm">
+                          <p className="font-medium text-sm font-made-outer">
                             {trip.destination}
                           </p>
-                          <p className="text-xs text-gray-500">{trip.date}</p>
+                          <p className="text-xs text-gray-500 font-made-outer">{trip.date}</p>
                         </div>
                         <span
-                          className={`text-xs px-3 py-1 rounded-full ${
+                          className={`text-xs px-3 py-1 rounded-full font-made-outer ${
                             trip.status === "Upcoming"
                               ? "bg-white/10 backdrop-blur-sm text-white border border-white/15"
                               : "bg-white/5 text-gray-500"
@@ -194,10 +196,10 @@ export default function Profile() {
                 {/* Trophies */}
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
                   <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-lg font-bold">Trophies</h2>
+                    <h2 className="text-lg font-made-outer-alt font-bold">Trophies</h2>
                     <Link
                       href="/trophies"
-                      className="text-xs text-gray-500 hover:text-white transition-colors no-underline flex items-center gap-1"
+                      className="text-xs text-gray-500 hover:text-white transition-colors no-underline flex items-center gap-1 font-made-outer"
                     >
                       View all <FiChevronRight size={12} />
                     </Link>
@@ -215,8 +217,8 @@ export default function Profile() {
                           />
                         </div>
                         <div>
-                          <p className="font-medium text-sm">{trophy.name}</p>
-                          <p className="text-xs text-gray-500">
+                          <p className="font-medium text-sm font-made-outer">{trophy.name}</p>
+                          <p className="text-xs text-gray-500 font-made-outer">
                             {trophy.description}
                           </p>
                         </div>
@@ -228,7 +230,7 @@ export default function Profile() {
 
               {/* Quick Actions */}
               <div className="mt-14">
-                <h2 className="text-lg font-bold mb-6">Quick Actions</h2>
+                <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
                 <div className="grid grid-cols-3 gap-6">
                   <Link
                     href="/trips"
@@ -238,8 +240,8 @@ export default function Profile() {
                       className="text-gray-400 group-hover:text-white transition-colors mb-3"
                       size={24}
                     />
-                    <p className="font-medium text-sm">Plan a New Trip</p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
+                    <p className="text-xs text-gray-500 mt-1 font-made-outer">
                       Start building your next adventure
                     </p>
                   </Link>
@@ -251,8 +253,8 @@ export default function Profile() {
                       className="text-gray-400 group-hover:text-white transition-colors mb-3"
                       size={24}
                     />
-                    <p className="font-medium text-sm">Upgrade Plan</p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="font-medium text-sm font-made-outer">Upgrade Plan</p>
+                    <p className="text-xs text-gray-500 mt-1 font-made-outer">
                       Unlock more features and destinations
                     </p>
                   </Link>
@@ -264,8 +266,8 @@ export default function Profile() {
                       className="text-gray-400 group-hover:text-white transition-colors mb-3"
                       size={24}
                     />
-                    <p className="font-medium text-sm">Edit Preferences</p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="font-medium text-sm font-made-outer">Edit Preferences</p>
+                    <p className="text-xs text-gray-500 mt-1 font-made-outer">
                       Customize your Nomadia experience
                     </p>
                   </button>
@@ -277,10 +279,10 @@ export default function Profile() {
           {activeTab === "settings" && (
             <div>
               <div className="mb-12">
-                <h1 className="text-2xl font-bold italic mb-4">
+                <h1 className="text-2xl font-made-outer-alt font-bold italic mb-4">
                   Profile Settings
                 </h1>
-                <div className="space-y-4 text-sm text-gray-400 leading-relaxed max-w-xl">
+                <div className="space-y-4 text-sm text-gray-400 leading-relaxed max-w-xl font-made-outer">
                   <p>
                     Manage your profile details and account preferences in a
                     simple, user-friendly way.
@@ -302,7 +304,7 @@ export default function Profile() {
                       className="text-gray-400 group-hover:text-white transition-colors duration-200"
                       size={32}
                     />
-                    <span className="text-sm font-bold text-white">
+                    <span className="text-sm font-bold text-white font-made-outer">
                       {item.label}
                     </span>
                   </button>
