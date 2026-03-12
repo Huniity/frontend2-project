@@ -12,13 +12,14 @@ const Navbar = () => {
     const [isAtTop, setIsAtTop] = useState(true);
     const prevScrollY = useRef(0);
     const forceShowTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+    const lastUserScrollTimeRef = useRef(0);
 
     useEffect(() => {
-        let lastScrollTime = 0;
+        const lastScrollTime = 0;
         const isWheeling = () => Date.now() - lastScrollTime < 150;
 
         const handleWheel = () => {
-            lastScrollTime = Date.now();
+            lastUserScrollTimeRef.current = Date.now();
         };
 
         const handleScroll = () => {
@@ -29,24 +30,30 @@ const Navbar = () => {
             const shrinkThreshold = firstSectionHeight / 2;
 
             const wasAtTop = isAtTop;
-            setIsAtTop(currentScrollY < 100);
+            const currentIsAtTop = currentScrollY < 100;
+            setIsAtTop(currentIsAtTop);
 
             setIsShrunken(currentScrollY > shrinkThreshold);
 
-            if (isWheeling()) {
-                if (currentScrollY > prevScrollY.current && currentScrollY > 100) {
-                    setScrollDirection('down');
-                } else if (currentScrollY < prevScrollY.current) {
-                    setScrollDirection('up');
-                }
-                
-                // Auto-show and hide navbar when not at top
-                if (currentScrollY > 100) {
-                    setForceShowNavbar(true);
+            if (currentIsAtTop) {
+                if (!wasAtTop) {
                     clearTimeout(forceShowTimeoutRef.current);
-                    forceShowTimeoutRef.current = setTimeout(() => {
+                }
+            } else {
+                const isUserScroll = Date.now() - lastUserScrollTimeRef.current < 150;
+                
+                if (isUserScroll) {
+                    if (currentScrollY > prevScrollY.current) {
+                        setScrollDirection('down');
                         setForceShowNavbar(false);
-                    }, 5000);
+                    } else if (currentScrollY < prevScrollY.current) {
+                        setScrollDirection('up');
+                        setForceShowNavbar(true);
+                        clearTimeout(forceShowTimeoutRef.current);
+                        forceShowTimeoutRef.current = setTimeout(() => {
+                            setForceShowNavbar(false);
+                        }, 5000);
+                    }
                 }
             }
             prevScrollY.current = currentScrollY;

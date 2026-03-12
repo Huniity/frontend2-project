@@ -2,20 +2,20 @@
 
 import { toast } from "react-toastify";
 
-interface LoginButtonProps {
+interface SigninButtonProps {
     name: string;
     mutatedName: string;
     isLoading: boolean;
     isDisabled?: boolean;
 }
 
-const LoginButton = ({ name, mutatedName, isLoading, isDisabled }: LoginButtonProps) => {
+const SigninButton = ({ name, mutatedName, isLoading, isDisabled }: SigninButtonProps) => {
     return (
         <button 
             type="submit"
-            name="login"
+            name="signin"
             disabled={isLoading || isDisabled} 
-            onClick={() => toast.success("Logged in successfully")}
+            onClick={() => toast.success("Account created successfully and you are now logged in")}
             className="border border-white/50 w-full py-3 rounded-md bg-white/90 font-made-outer text-xl text-black font-bold hover:from-stone-500 hover:to-black/50 transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
             {isLoading ? (
@@ -33,4 +33,4 @@ const LoginButton = ({ name, mutatedName, isLoading, isDisabled }: LoginButtonPr
     );
 };
 
-export default LoginButton;
+export default SigninButton;

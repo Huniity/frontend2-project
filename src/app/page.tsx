@@ -13,9 +13,14 @@ import { MdOutlineHourglassDisabled } from "react-icons/md";
 import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
 import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
 import HomeShape from "@/components/ui/home/Shape";
+import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+
+
 export default function Home() {
   return (
     <>      
+    <SmoothScroll>
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-6">
             <HomeShape />
@@ -193,6 +198,8 @@ export default function Home() {
               </Link>
           </div>
         </section>
+        <Footer />
+      </SmoothScroll>
     </>
   );
 }

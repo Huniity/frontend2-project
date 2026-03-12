@@ -1,4 +1,9 @@
 import SigninCard from "@/components/ui/cards/signin/SigninCard";
+import Link from "next/link";
+import DiscordButton from "@/components/ui/buttons/DiscordButton";
+import GoogleButton from "@/components/ui/buttons/GoogleButton";
+import AppleButton from "@/components/ui/buttons/AppleButton";
+
 
 const Signin = () => {
     return (
@@ -41,10 +46,15 @@ const Signin = () => {
 
               <div className="grid grid-cols-5 w-full h-full relative z-10 col-span-5" >
                 <div className="flex flex-col col-span-3 w-full h-full items-center justify-center" >
-                    <h1 className="mb-3 text-2xl font-bold text-white text-shadow-lg font-made-outer text-center">Become a Nomad</h1>
-                    <p className="mb-6 text-sm text-white text-shadow-lg font-made-outer text-center">Let{"'"}s plan your next adventure.</p>
+                    <h1 className="mb-3 text-4xl font-bold text-white text-shadow-lg font-made-outer-alt text-center">bEComE a Nomad</h1>
+                    <p className="mb-12 text-lg text-white text-shadow-lg font-made-outer-alt text-center">LEt{"'"}s plan yoUr nExt advEntUrE.</p>
                     <SigninCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />
-                    <p className="mt-6 text-xs text-gray-400 text-center font-made-outer">Already have an account? <span className="text-white font-made-outer cursor-pointer">Log in</span></p>
+                    <div className="flex flex-row gap-4 mt-12">
+                        <DiscordButton name="Discord" showName={true} isLoading={false} />
+                        <GoogleButton name="Google" showName={true} isLoading={false} />
+                        <AppleButton name="Apple" showName={true} isLoading={false} />
+                    </div>
+                    <p className="mt-6 text-md text-gray-400 text-center font-made-outer">Already have an account? <Link href="/login" className="text-white font-made-outer cursor-pointer">Login</Link></p>
                 </div>
                 <div className="flex flex-col col-span-2 w-full h-full items-center justify-center"  style={{ backgroundImage: 'url(/mountain1.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0.3) contrast(1) saturate(2) sepia(0.15)', borderTopRightRadius: '0.5rem', borderBottomRightRadius: '0.5rem' }} >
                     <h1 className="text-5xl font-bold text-white text-shadow-lg font-made-outer"></h1>

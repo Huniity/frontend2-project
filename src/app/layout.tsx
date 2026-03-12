@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { SubPlanProvider } from "@/components/context/SubPlanContext";
-import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const metadata: Metadata = {
@@ -21,12 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <SmoothScroll>
           <SubPlanProvider>
             {children}
-            <Footer />
           </SubPlanProvider>
-        </SmoothScroll>
+          <ToastContainer position="top-center" theme="dark"/>
       </body>
     </html>
   );
