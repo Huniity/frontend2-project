@@ -43,10 +43,10 @@ const AirportText = ({
   }, [words.length, intervalMs, mounted]);
 
   if (!mounted) {
-    return <tspan className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</tspan>;
+    return <span className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</span>;
   }
 
-  return <tspan ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
+  return <span ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
 }
 
 export default AirportText;

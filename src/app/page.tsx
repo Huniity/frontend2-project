@@ -18,11 +18,9 @@ import Gallery from "@/components/ui/gallery/Gallery";
 import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
 import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
 import HomeShape from "@/components/ui/home/Shape";
-
 export default function Home() {
   return (
-    <>
-      <SmoothScroll>
+    <>      <SmoothScroll>
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-6">
             <HomeShape />
