@@ -2,9 +2,8 @@ import Footer from "@/components/Footer";
 
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto pt-40 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
-        {/* Header */}
+    <div className="min-h-screen bg-black text-white mt-48">
+      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
         <div className="mb-16">
           <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
             TErms & COnditiOns
@@ -14,22 +13,20 @@ export default function Terms() {
           </p>
         </div>
 
-        {/* Introduction */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             WElcOmE
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
-            Welcome to Nomadia ("Company", "we", "our", or "us"). These Terms and
-            Conditions ("Terms") govern your access to and use of our website, mobile
+            Welcome to Nomadia ({"'"}Company{"'"}, {"'"}we{"'"}, {"'"}our{"'"}, or {"'"}us{"'"}). These Terms and
+            Conditions ({"'"}Terms{"'"}) govern your access to and use of our website, mobile
             application, and all services provided by Nomadia (collectively, the
-            "Service"). By accessing or using Nomadia, you agree to be bound by these
+            {"'"}Service{"'"}). By accessing or using Nomadia, you agree to be bound by these
             Terms. If you do not agree with any part of these Terms, you may not use
             the Service.
           </p>
         </section>
 
-        {/* Use License */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             UsE LicEnsE
@@ -45,11 +42,10 @@ export default function Terms() {
             <li>Using the materials for any commercial purpose or for any public display</li>
             <li>Attempting to reverse engineer any software contained on Nomadia</li>
             <li>Removing any copyright or other proprietary notations from the materials</li>
-            <li>Transferring the materials to another person or "mirroring" the materials on any other server</li>
+            <li>Transferring the materials to another person or {"'"}mirroring{"'"} the materials on any other server</li>
           </ul>
         </section>
 
-        {/* User Accounts */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             UsEr AccOUnts
@@ -63,7 +59,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* User Responsibilities */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             UsEr REspOnsibilitiEs
@@ -81,7 +76,6 @@ export default function Terms() {
           </ul>
         </section>
 
-        {/* Subscription Plans */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             SUbscriptiOn Plans
@@ -95,7 +89,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Limitation of Liability */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             LimitatiOn Of Liability
@@ -108,13 +101,12 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Disclaimer */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             DisclaimEr
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
-            The Service is provided on an "AS IS" and "AS AVAILABLE" basis. Nomadia
+            The Service is provided on an {"'"}AS IS{"'"} and {"'"}AS AVAILABLE{"'"} basis. Nomadia
             makes no representations or warranties of any kind, express or implied,
             including but not limited to the warranties of merchantability, fitness for
             a particular purpose, and non-infringement. We do not warrant that the
@@ -122,7 +114,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Indemnification */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             IndEmnificatiOn
@@ -135,7 +126,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Modifications */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             MOdificatiOns
@@ -148,7 +138,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Termination */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             TErminatiOn
@@ -161,7 +150,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Governing Law */}
         <section className="mb-16">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             GOvErning Law
@@ -174,7 +162,6 @@ export default function Terms() {
           </p>
         </section>
 
-        {/* Contact */}
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             COntact Us
@@ -189,8 +176,6 @@ export default function Terms() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { SubPlanProvider } from "@/components/context/SubPlanContext";
+import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 
 
 
@@ -18,10 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SubPlanProvider>
-          <Navbar />
-          {children}
-        </SubPlanProvider>
+        <Navbar />
+        <SmoothScroll>
+          <SubPlanProvider>
+            {children}
+            <Footer />
+          </SubPlanProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

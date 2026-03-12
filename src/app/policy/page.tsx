@@ -2,9 +2,8 @@ import Footer from "@/components/Footer";
 
 export default function Policy() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto pt-40 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
-        {/* Header */}
+    <div className="min-h-screen bg-black text-white mt-48">
+      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
         <div className="mb-16">
           <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
             Privacy POlicy
@@ -14,7 +13,6 @@ export default function Policy() {
           </p>
         </div>
 
-        {/* Introduction */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             OUr COmmitmEnt tO YOUr Privacy
@@ -28,7 +26,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Information We Collect */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             InfOrmatiOn WE COllEct
@@ -71,7 +68,6 @@ export default function Policy() {
           </div>
         </section>
 
-        {/* How We Use Your Information */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             HOw WE UsE YOUR InfOrmatiOn
@@ -90,7 +86,6 @@ export default function Policy() {
           </ul>
         </section>
 
-        {/* Data Sharing & Disclosure */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             DATA SHAring & DisCLOsUrE
@@ -108,7 +103,6 @@ export default function Policy() {
           </ul>
         </section>
 
-        {/* Data Security */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             DATA SEcUrIty
@@ -123,7 +117,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Your Rights */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             YOUR RIGHTS
@@ -141,7 +134,6 @@ export default function Policy() {
           </ul>
         </section>
 
-        {/* Cookies */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             COOkiEs
@@ -153,7 +145,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Third-Party Links */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             THIRD-PARTY LINKS
@@ -167,21 +158,19 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Children's Privacy */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            CHILDREN'S PRIVACY
+            CHILDREN{"'"}S PRIVACY
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Our Service is not intended for children under the age of 13. We do not
             knowingly collect personal information from children under 13. If we
             discover that a child under 13 has provided us with personal information,
-            we will delete such information and terminate the child's account
+            we will delete such information and terminate the child{"'"}s account
             immediately.
           </p>
         </section>
 
-        {/* Data Retention */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             DATA RETENTION
@@ -193,7 +182,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* International Transfers */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             INTERNATIONAL TRANSFERS
@@ -206,7 +194,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Changes to This Policy */}
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             CHANGES TO THIS POLICY
@@ -219,7 +206,6 @@ export default function Policy() {
           </p>
         </section>
 
-        {/* Contact */}
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
             COntact Us
@@ -234,8 +220,6 @@ export default function Policy() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }

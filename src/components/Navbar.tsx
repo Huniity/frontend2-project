@@ -28,6 +28,7 @@ const Navbar = () => {
             const firstSectionHeight = sections[0]?.offsetHeight || window.innerHeight;
             const shrinkThreshold = firstSectionHeight / 2;
 
+            const wasAtTop = isAtTop;
             setIsAtTop(currentScrollY < 100);
 
             setIsShrunken(currentScrollY > shrinkThreshold);
@@ -37,6 +38,15 @@ const Navbar = () => {
                     setScrollDirection('down');
                 } else if (currentScrollY < prevScrollY.current) {
                     setScrollDirection('up');
+                }
+                
+                // Auto-show and hide navbar when not at top
+                if (currentScrollY > 100) {
+                    setForceShowNavbar(true);
+                    clearTimeout(forceShowTimeoutRef.current);
+                    forceShowTimeoutRef.current = setTimeout(() => {
+                        setForceShowNavbar(false);
+                    }, 5000);
                 }
             }
             prevScrollY.current = currentScrollY;
@@ -67,7 +77,7 @@ const Navbar = () => {
         clearTimeout(forceShowTimeoutRef.current);
         forceShowTimeoutRef.current = setTimeout(() => {
             setForceShowNavbar(false);
-        }, 10000);
+        }, 5000);
     };
 
     const textColor = isLightBackground ? 'text-black' : 'text-white';
@@ -76,9 +86,16 @@ const Navbar = () => {
     return (
         <>
             <div 
-                className={`fixed top-0 left-0 z-1000 flex w-screen justify-between items-center py-8 px-8 transition-all duration-300 ${
-                    isAtTop ? 'translate-y-0' : (forceShowNavbar ? 'translate-y-0' : (scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'))
-                } ${isShrunken ? 'pl-124 pr-104' : 'pl-12 pr-12'}`}
+                className={`fixed top-0 z-1000 flex justify-between items-center py-8 transition-all duration-300 ${
+                    isAtTop ? 'translate-y-0' : (forceShowNavbar ? 'translate-y-0' : (scrollDirection === 'down' ? '-translate-y-[150%]' : 'translate-y-0'))
+                } ${isShrunken && !isAtTop ? 'left-1/2 -translate-x-1/2 w-11/12 max-w-6xl px-8 rounded-2xl mt-4' : 'left-1/2 -translate-x-1/2 w-11/12 max-w-full px-8'}`}
+                style={
+                    isShrunken && !isAtTop ? {
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                    } : {}
+                }
             >
                 <div className={`flex items-center gap-5 text-xs transition-colors duration-300 ${textColor}`}>
                     <p className='font-made-outer-alt font-bold text-xl tracking-widest text-shadow-lg'>ExplorE</p>

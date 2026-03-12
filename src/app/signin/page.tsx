@@ -6,12 +6,11 @@ const Signin = () => {
             <div className="absolute inset-0" ></div>
             {/* style={{ backgroundImage: 'url(/smoke.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0.3) contrast(1) saturate(2) sepia(0.15) blur(0px)' }} */}
             <div 
-              className="grid grid-cols-5 w-3/5 h-96 rounded-lg overflow-hidden relative p-0.5 backdrop-blur-xl"
+              className="grid grid-cols-5 w-3/5 h-146 rounded-lg overflow-hidden relative p-0.5 backdrop-blur-xl"
               style={{
                 background: 'linear-gradient(-30deg, rgba(255, 255, 255, 0.05), transparent, rgba(255, 255, 255, 0.05))',
               }}
             >
-              {/* Glassmorphism borders and glows */}
               <div 
                 className="border-2 rounded-lg absolute inset-0 pointer-events-none"
                 style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}

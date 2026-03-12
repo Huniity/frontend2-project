@@ -1,9 +1,5 @@
-import AirportText from "@/components/ui/cyclingtext/AirportText";
 import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
 import Counter from "@/components/ui/counter/Counter";
-import BackgroundCycle from "@/components/ui/bgcycle/BackgroundCycle";
-import SmoothScroll from "@/components/SmoothScroll";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import Card from "@/components/ui/cards/subcard/SubCard";
 import GoldCard from "@/components/ui/cards/goldcard/GoldCard";
@@ -14,13 +10,12 @@ import { HiOutlineReceiptTax } from "react-icons/hi";
 import { TbCancel } from "react-icons/tb";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { MdOutlineHourglassDisabled } from "react-icons/md";
-import Gallery from "@/components/ui/gallery/Gallery";
 import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
 import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
 import HomeShape from "@/components/ui/home/Shape";
 export default function Home() {
   return (
-    <>      <SmoothScroll>
+    <>      
         <section className="snap-start w-full bg-black h-screen">
           <div className="flex flex-col h-full w-full justify-center items-center gap-6">
             <HomeShape />
@@ -198,8 +193,6 @@ export default function Home() {
               </Link>
           </div>
         </section>
-        <Footer />
-      </SmoothScroll>
     </>
   );
 }

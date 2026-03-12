@@ -58,7 +58,7 @@ const HomeShape = () => {
             transform: 'translate(-50%, -50%)' 
         }}
       >
-        EXPLORE
+        ExplorE
     </h1>
     <div 
         className="absolute text-white text-6xl font-made-outer-alt" 

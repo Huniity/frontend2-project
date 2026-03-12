@@ -46,13 +46,8 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen text-white">
-    {<div className="absolute inset-0" style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }}></div>}
-          {/* style={{ backgroundImage: 'url(/counters2.png)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(0) contrast(0.9) saturate(1.5) sepia(0.15)' }} */}
-      {/* Sidebar + Content Layout */}
       <div className="flex">
-        {/* Sidebar */}
         <aside className="fixed top-0 left-0 h-screen w-72 border-r border-white/15 bg-white/5 backdrop-blur-xl pt-32 px-8 flex flex-col justify-between pb-8">
-          {/* User info */}
           <div>
             <div className="flex items-center gap-4 mb-10">
               <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center">
@@ -64,7 +59,6 @@ export default function Profile() {
               </div>
             </div>
 
-            {/* Navigation */}
             <nav className="flex flex-col gap-1">
               <button
                 onClick={() => setActiveTab("overview")}
@@ -105,18 +99,15 @@ export default function Profile() {
             </nav>
           </div>
 
-          {/* Logout */}
           <button className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium font-made-outer text-gray-500 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer bg-transparent border-none">
             <FiLogOut size={18} />
             Log out
           </button>
         </aside>
 
-        {/* Main Content */}
         <main className="ml-72 flex-1 pt-4 px-16 pb-12 min-h-screen">
           {activeTab === "overview" && (
             <div>
-              {/* Welcome Header */}
               <div className="mb-12">
                 <h1 className="text-3xl font-made-outer-alt font-bold mb-2">
                   Welcome back, <span className="italic">Adrien</span>
@@ -126,7 +117,6 @@ export default function Profile() {
                 </p>
               </div>
 
-              {/* Stats Cards */}
               <div className="grid grid-cols-4 gap-6 mb-14">
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
                   <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">
@@ -154,9 +144,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              {/* Two-column: Recent Trips + Trophies */}
               <div className="grid grid-cols-2 gap-8">
-                {/* Recent Trips */}
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>
@@ -193,7 +181,6 @@ export default function Profile() {
                   </div>
                 </div>
 
-                {/* Trophies */}
                 <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-lg font-made-outer-alt font-bold">Trophies</h2>
@@ -228,7 +215,6 @@ export default function Profile() {
                 </div>
               </div>
 
-              {/* Quick Actions */}
               <div className="mt-14">
                 <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
                 <div className="grid grid-cols-3 gap-6">
