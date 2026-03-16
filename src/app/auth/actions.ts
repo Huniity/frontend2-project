@@ -20,13 +20,18 @@ export async function signUpWithEmail(formData: FormData) {
   if (error) return { error: error.message };
 
   if (data.user) {
+    const fullName = formData.get("name") as string;
+    const [firstName, ...lastNameParts] = fullName.split(" ");
+    const lastName = lastNameParts.join(" ") || null;
+
     await prisma.user.upsert({
       where: { id: data.user.id },
       update: {},
       create: {
         id: data.user.id,
         email: data.user.email!,
-        name: formData.get("name") as string,
+        first_name: firstName,
+        last_name: lastName,
       },
     });
   }
@@ -44,13 +49,18 @@ export async function signInWithEmail(formData: FormData) {
   if (error) return { error: error.message };
 
   if (data.user) {
+    const fullName = data.user.user_metadata?.full_name ?? "";
+    const [firstName, ...lastNameParts] = fullName.split(" ");
+    const lastName = lastNameParts.join(" ") || null;
+
     await prisma.user.upsert({
       where: { id: data.user.id },
       update: {},
       create: {
         id: data.user.id,
         email: data.user.email!,
-        name: data.user.user_metadata?.full_name ?? null,
+        first_name: firstName || null,
+        last_name: lastName,
       },
     });
   }

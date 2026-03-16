@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { FaBars } from "react-icons/fa";
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/client';
 
 const Navbar = () => {
     const pathname = usePathname();
@@ -12,6 +13,7 @@ const Navbar = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const [forceShowNavbar, setForceShowNavbar] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const prevScrollY = useRef(0);
     const forceShowTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
@@ -19,6 +21,15 @@ const Navbar = () => {
 
     useEffect(() => {
         setIsMounted(true);
+        
+        // Check if user is logged in
+        const checkAuth = async () => {
+            const supabase = createClient();
+            const { data: { user } } = await supabase.auth.getUser();
+            setIsLoggedIn(!!user);
+        };
+        
+        checkAuth();
     }, []);
 
     useEffect(() => {
@@ -104,14 +115,14 @@ const Navbar = () => {
                 </div>
                 <nav className='flex items-center gap-5 text-md'>
                     <Link
-                        href="/signin"
+                        href={isLoggedIn ? "/dashboard" : "/signin"}
                         className={`rounded-full px-10 py-3 font-made-outer-alt font-semibold no-underline transition-all duration-300 shadow-black/25 shadow-md ${
                             isLightBackground
                                 ? 'bg-black text-white hover:bg-black'
                                 : 'bg-white text-black hover:bg-white'
                         }`}
                     >
-                        gEt startEd
+                        {isLoggedIn ? 'dashboard' : 'gEt startEd'}
                     </Link>
                 </nav>
             </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { toast } from "react-toastify";
+import { forwardRef } from "react";
 
 interface LoginButtonProps {
     name: string;
@@ -9,13 +10,22 @@ interface LoginButtonProps {
     isDisabled?: boolean;
 }
 
-const LoginButton = ({ name, mutatedName, isLoading, isDisabled }: LoginButtonProps) => {
+const LoginButton = forwardRef<HTMLButtonElement, LoginButtonProps>(({ name, mutatedName, isLoading, isDisabled }, ref) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            (e.currentTarget as HTMLButtonElement).click();
+        }
+    };
+
     return (
         <button 
+            ref={ref}
             type="submit"
             name="login"
             disabled={isLoading || isDisabled} 
             onClick={() => toast.success("Logged in successfully")}
+            onKeyDown={handleKeyDown}
             className="border border-white/50 w-full py-3 rounded-md bg-white/90 font-made-outer text-xl text-black font-bold hover:from-stone-500 hover:to-black/50 transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
             {isLoading ? (
@@ -31,6 +41,8 @@ const LoginButton = ({ name, mutatedName, isLoading, isDisabled }: LoginButtonPr
             )}
         </button>
     );
-};
+});
+
+LoginButton.displayName = "LoginButton";
 
 export default LoginButton;

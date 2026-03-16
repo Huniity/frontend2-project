@@ -1,7 +1,7 @@
 'use client'
 import { MdEmail } from "react-icons/md";
 import { MdOutlineKey } from "react-icons/md";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import LoginButton from "@/components/ui/buttons/LoginButton";
 import ForgotPasswordButton from "@/components/ui/buttons/ForgotPasswordButoon";
 import { signInWithEmail } from "@/app/auth/actions";
@@ -19,6 +19,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const loginButtonRef = useRef<HTMLButtonElement>(null);
 
     const isLoginDisabled = !email.trim() || !password.trim() || isLoading;
 
@@ -46,9 +47,16 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
         }
     };
 
+    const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            loginButtonRef.current?.click();
+        }
+    };
+
     return (
         <>
-            <form className="flex flex-col w-3/4 gap-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                 <div className="relative">
                     <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
@@ -56,6 +64,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={handleInputKeyDown}
                         disabled={isLoading || isLoadingPassword}
                         className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 text-shadow-lg"
                     />
@@ -68,13 +77,14 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
                         aria-label="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyDown={handleInputKeyDown}
                         disabled={isLoading || isLoadingPassword}
                         className="w-full pl-10 px-3 py-2 rounded-md bg-black/50 border border-white/50 font-made-outer text-white text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50"
                     />
                 </div>
                 {error && <p className="text-red-500 text-sm text-center">{error}</p>}
                 <ForgotPasswordButton isLoadingPassword={isLoadingPassword} namePassword={namePassword} mutatedNamePassword={mutatedNamePassword} />
-                <LoginButton isLoading={isLoading} isDisabled={isLoginDisabled} name={name} mutatedName={mutatedName} />
+                <LoginButton ref={loginButtonRef} isLoading={isLoading} isDisabled={isLoginDisabled} name={name} mutatedName={mutatedName} />
             </form>
         </>
     );

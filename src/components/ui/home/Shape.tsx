@@ -94,7 +94,7 @@ const HomeShape = () => {
             position: "absolute", inset: 0,
             backgroundImage: "url(/hawaii3.jpg)",
             backgroundSize: "cover", backgroundPosition: "center",
-            clipPath: "polygon(50% 30%, 56.5% 44.5%, 50% 59%, 43.5% 44.5%)",
+            clipPath: "polygon(50% 30%, 57.5% 44.5%, 50% 59%, 42.5% 44.5%)",
           }}
         />
       </div>

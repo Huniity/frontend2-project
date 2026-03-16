@@ -16,6 +16,7 @@ import { RiShieldKeyholeLine } from "react-icons/ri";
 import { BiLink } from "react-icons/bi";
 import { FiLogOut, FiChevronRight, FiLock, FiEdit2 } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 import { signOut } from "@/app/auth/actions";
 import type { User, Trip, UserTrophy, Trophy } from "@/generated/prisma/client";
 
@@ -51,8 +52,8 @@ const settingsItems = [
   { icon: AiOutlineStar, label: "Preferences" },
   { icon: IoNotificationsOutline, label: "Notifications" },
   { icon: RiShieldKeyholeLine, label: "Privacy" },
-  { icon: MdOutlineLanguage, label: "Language" },
-  { icon: BiLink, label: "Connect Accounts" },
+  { icon: MdOutlineLanguage, label: "Language", description: "Coming Soon" },
+  { icon: BiLink, label: "Connect Accounts", description: "Coming Soon" },
 ];
 
 type Tab = "overview" | "settings" | "trophies" | "mytrips";
@@ -62,7 +63,7 @@ export default function Profile({ user, allTrophies }: { user: UserWithRelations
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [trophyFilter, setTrophyFilter] = useState<Filter>("all");
 
-  const firstName = user.name?.split(" ")[0] ?? "Traveler";
+  const firstName = user.username ?? "Traveler";
   const earnedIds = new Set(user.trophies.map((ut) => ut.trophyId));
 
   return (
@@ -77,13 +78,13 @@ export default function Profile({ user, allTrophies }: { user: UserWithRelations
             <div className="flex flex-col items-center gap-4 mb-10">
               <div className="w-32 h-32 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center overflow-hidden">
                 {user.avatarUrl ? (
-                  <img src={user.avatarUrl} alt={user.name ?? ""} className="w-full h-full object-cover" />
+                  <Image src={user.avatarUrl} alt={user.username ?? ""} width={128} height={128} className="w-full h-full object-cover" />
                 ) : (
                   <RiUserLine className="text-white" size={28} />
                 )}
               </div>
               <div className="text-center">
-                <p className="font-made-outer-alt font-bold text-lg">{user.name ?? "Traveler"}</p>
+                <p className="font-made-outer-alt font-bold text-lg">{user.first_name} {user.last_name}</p>
                 <p className="text-xs text-gray-500 font-made-outer">{user.email}</p>
               </div>
             </div>
@@ -213,7 +214,7 @@ export default function Profile({ user, allTrophies }: { user: UserWithRelations
                     {user.trophies.length === 0 && (
                       <p className="text-gray-500 text-sm font-made-outer">No trophies yet. Start exploring!</p>
                     )}
-                    {user.trophies.map(({ trophy, awardedAt }) => (
+                    {user.trophies.map(({ trophy }) => (
                       <div key={trophy.id} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-none">
                         <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center shrink-0 text-xl">
                           {trophy.icon}
@@ -265,6 +266,7 @@ export default function Profile({ user, allTrophies }: { user: UserWithRelations
                   <button key={item.label} className="flex flex-col items-center gap-3 group cursor-pointer border border-white/15 rounded-2xl py-8 px-4 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300">
                     <item.icon className="text-gray-400 group-hover:text-white transition-colors duration-200" size={32} />
                     <span className="text-sm font-bold text-white font-made-outer">{item.label}</span>
+                    {item.description && <p className="text-xs text-gray-500 font-made-outer">{item.description}</p>}
                   </button>
                 ))}
               </div>

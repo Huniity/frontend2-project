@@ -43,7 +43,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
 
     return (
         <>
-            <form className="flex flex-col w-3/4 gap-4" onSubmit={handleSubmit}>
+            <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                 <div className="relative">
                     <FaUserAstronaut className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
