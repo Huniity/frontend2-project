@@ -1,0 +1,268 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+// ─────────────────────────────────────────
+// USER
+// Mirrors Supabase Auth — id matches auth.users.id
+// ─────────────────────────────────────────
+
+enum Plan {
+  FREE
+  EXPLORER
+  GLOBETROTTER
+}
+
+model User {
+  id            String    @id // same UUID as Supabase auth.users.id
+  email         String    @unique
+  name          String?
+  avatarUrl     String?
+  plan          Plan      @default(FREE)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  trips         Trip[]
+  reviews       Review[]
+  trophies      UserTrophy[]
+}
+
+// ─────────────────────────────────────────
+// TRIP
+// ─────────────────────────────────────────
+enum TripType {
+  ROMANTIC
+  ADVENTUROUS
+  FAMILY
+  CULTURAL
+  RELAXATION
+  BUSINESS
+  SOLO
+}
+
+enum BudgetLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TripStatus {
+  GENERATING   // AI is streaming the trip
+  DRAFT        // AI done, user hasn't confirmed
+  CONFIRMED    // User confirmed/saved
+  COMPLETED    // Trip is in the past
+}
+
+model Trip {
+  id              String      @id @default(cuid())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title           String
+  destination     String
+  tripType        TripType
+  status          TripStatus  @default(GENERATING)
+
+  // Dates & duration
+  startDate       DateTime?
+  endDate         DateTime?
+  numberOfDays    Int
+
+  // Budget
+  budgetLevel     BudgetLevel
+  totalBudget     Float?       // optional fixed total
+  budgetPerDay    Float?       // computed or user-set
+
+  // AI generation tracking
+  aiPrompt        String?      // the original prompt sent to AI
+  aiModel         String?      // e.g. "claude-sonnet-4"
+  generatedAt     DateTime?
+
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  days            Day[]
+  hotel           Hotel?
+  transportation  Transportation?
+  review          Review?
+}
+
+// ─────────────────────────────────────────
+// DAY
+// ─────────────────────────────────────────
+model Day {
+  id          String      @id @default(cuid())
+  tripId      String
+  trip        Trip        @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  dayNumber   Int          // 1, 2, 3...
+  date        DateTime?
+  summary     String?      // AI-generated day summary
+  dailyCost   Float?       // estimated total for the day
+
+  activities  Activity[]
+
+  @@unique([tripId, dayNumber])
+}
+
+// ─────────────────────────────────────────
+// ACTIVITY / POI
+// ─────────────────────────────────────────
+enum ActivityCategory {
+  SIGHTSEEING
+  FOOD
+  ADVENTURE
+  CULTURE
+  RELAXATION
+  SHOPPING
+  TRANSPORT
+  OTHER
+}
+
+model Activity {
+  id          String           @id @default(cuid())
+  dayId       String
+  day         Day              @relation(fields: [dayId], references: [id], onDelete: Cascade)
+
+  order       Int              // position within the day (1st, 2nd...)
+  title       String
+  description String?
+  location    String?
+  mapsUrl     String?
+  category    ActivityCategory @default(OTHER)
+  startTime   String?          // e.g. "09:00"
+  endTime     String?          // e.g. "11:00"
+  estimatedCost Float?
+
+  // Editable by user after AI generation
+  isCustomized Boolean        @default(false)
+  notes        String?
+
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+// ─────────────────────────────────────────
+// HOTEL
+// ─────────────────────────────────────────
+model Hotel {
+  id            String   @id @default(cuid())
+  tripId        String   @unique
+  trip          Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  name          String
+  address       String?
+  mapsUrl       String?
+  checkIn       DateTime?
+  checkOut      DateTime?
+  pricePerNight Float?
+  totalCost     Float?
+  stars         Int?
+  bookingUrl    String?
+  notes         String?
+
+  isCustomized  Boolean  @default(false)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────
+// TRANSPORTATION
+// ─────────────────────────────────────────
+enum TransportMode {
+  FLIGHT
+  TRAIN
+  BUS
+  CAR
+  FERRY
+  OTHER
+}
+
+model Transportation {
+  id            String        @id @default(cuid())
+  tripId        String        @unique
+  trip          Trip          @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  mode          TransportMode
+  provider      String?       // e.g. "TAP Air Portugal"
+  departureFrom String?
+  arrivalTo     String?
+  estimatedCost Float?
+  budgetNote    String?       // e.g. "~€120 round trip"
+  notes         String?
+
+  isCustomized  Boolean       @default(false)
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+// ─────────────────────────────────────────
+// REVIEW
+// ─────────────────────────────────────────
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tripId    String   @unique
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  rating    Int      // 1–5
+  title     String?
+  body      String?
+  isPublic  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────
+// TROPHIES
+// ─────────────────────────────────────────
+enum TrophyKey {
+  FIRST_TRIP          // Generated first trip
+  THIRD_TRIP          // 3 trips generated
+  TEN_TRIPS           // 10 trips generated
+  FIRST_REVIEW        // Left first review
+  ADVENTURER          // Generated an ADVENTUROUS trip
+  ROMANTIC            // Generated a ROMANTIC trip
+  WORLD_EXPLORER      // 3 different countries visited
+  BUDGET_MASTER       // Generated a LOW budget trip
+  LUXURY_TRAVELER     // Generated a HIGH budget trip
+  TRIP_EDITOR         // Customized a trip after AI generation
+}
+
+model Trophy {
+  id          String       @id @default(cuid())
+  key         TrophyKey    @unique
+  name        String       // "First Trip"
+  description String       // "Generated your very first trip"
+  icon        String       // emoji or icon name e.g. "🏆"
+  xp          Int          @default(10)
+
+  users       UserTrophy[]
+}
+
+model UserTrophy {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trophyId  String
+  trophy    Trophy    @relation(fields: [trophyId], references: [id])
+
+  awardedAt DateTime  @default(now())
+
+  @@unique([userId, trophyId]) // can't earn the same trophy twice
+}

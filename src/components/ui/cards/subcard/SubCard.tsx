@@ -47,8 +47,8 @@ const Card = (
 
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold font-made-outer-alt mb-4 text-gray-300 text-left mb-2">{title}</h2>
-                    <p className="text-3xl font-bold font-made-outer-alt mb-6 text-white text-left mb-10">
+                    <h2 className="text-2xl font-bold font-made-outer-alt mb-4 text-gray-300 text-left">{title}</h2>
+                    <p className="text-3xl font-bold font-made-outer-alt text-white text-left mb-10">
                         {selectedPlanDuration === 'monthly' ? priceMonth : priceYear}
                         
                         {(selectedPlanDuration === 'monthly' ? priceMonth : priceYear) !== "FrEE" && (
@@ -61,7 +61,7 @@ const Card = (
                         <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (
                                 <li key={index} className="grid grid-cols-[auto_1fr] gap-3 items-center text-md">
-                                    <FaCheck className="flex-shrink-0" />
+                                    <FaCheck className="shrink-0" />
                                     <span>{feature}</span>
                                 </li>
                             ))}

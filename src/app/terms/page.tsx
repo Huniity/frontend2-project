@@ -6,7 +6,7 @@ export default function Terms() {
       <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
         <div className="mb-16">
           <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
-            TErms & COnditiOns
+            tErms & Conditions
           </h1>
           <p className="text-gray-400 font-made-outer text-lg">
             Last updated: March 12, 2026
@@ -15,7 +15,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            WElcOmE
+            WElCOmE
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Welcome to Nomadia ({"'"}Company{"'"}, {"'"}we{"'"}, {"'"}our{"'"}, or {"'"}us{"'"}). These Terms and
@@ -29,7 +29,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            UsE LicEnsE
+            UsE liCEnsE
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Permission is granted to temporarily download one copy of the materials
@@ -48,7 +48,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            UsEr AccOUnts
+            UsEr aCCoUnts
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             When you create an account on Nomadia, you must provide accurate, complete,
@@ -61,7 +61,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            UsEr REspOnsibilitiEs
+            UsEr rEspOnsibilitiEs
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             You agree that you will not:
@@ -78,7 +78,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            SUbscriptiOn Plans
+            sUbsCriptiOn plans
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Nomadia offers different subscription tiers with varying features and
@@ -91,7 +91,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            LimitatiOn Of Liability
+            limitatiOn OF liability
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             In no event shall Nomadia be liable for any indirect, incidental, special,
@@ -103,7 +103,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            DisclaimEr
+            disClaImEr
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             The Service is provided on an {"'"}AS IS{"'"} and {"'"}AS AVAILABLE{"'"} basis. Nomadia
@@ -116,7 +116,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            IndEmnificatiOn
+            indEmnifiCatiOn
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             You agree to indemnify, defend, and hold harmless Nomadia and its
@@ -128,7 +128,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            MOdificatiOns
+            mOdifiCatiOns
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Nomadia reserves the right to modify these Terms at any time. We will
@@ -140,7 +140,7 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            TErminatiOn
+            tErminatiOn
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Nomadia may terminate or suspend your account and access to the Service at
@@ -152,7 +152,7 @@ export default function Terms() {
 
         <section className="mb-16">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            GOvErning Law
+            gOvErning law
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             These Terms are governed by and construed in accordance with the laws of
@@ -164,7 +164,7 @@ export default function Terms() {
 
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            COntact Us
+            COntaCt Us
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             If you have any questions about these Terms and Conditions, please contact
@@ -176,6 +176,7 @@ export default function Terms() {
           </div>
         </section>
       </div>
+    <Footer />
     </div>
   );
 }

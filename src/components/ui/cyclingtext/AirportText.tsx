@@ -1,20 +1,17 @@
 'use client';
 
 import { useScramble } from 'use-scramble';
-import { useEffect, useEffectEvent, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface AirportTextProps {
   words: string[];
   intervalMs?: number;
 }
 
-const AirportText = ({ 
-  words, 
-  intervalMs = 5000,
-}: AirportTextProps) => {
+const AirportText = ({ words, intervalMs = 5000 }: AirportTextProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
-  
+
   const { ref } = useScramble({
     text: words[currentIndex],
     speed: 0.6,
@@ -24,29 +21,29 @@ const AirportText = ({
     seed: 0,
   });
 
-  const handleMount = useEffectEvent(() => {
-    setMounted(true);
-  });
-
   useEffect(() => {
-    handleMount();
+    setMounted(true);
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % words.length);
     }, intervalMs);
-
     return () => clearInterval(interval);
   }, [words.length, intervalMs, mounted]);
 
-  if (!mounted) {
-    return <span className="font-made-outer-alt font-black text-shadow-lg">{words[0]}</span>;
-  }
-
-  return <span ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />;
-}
+  // ✅ Always render the same element type — never swap between
+  // a <span> with children and a <span> with ref, as React sees
+  // these as different nodes and crashes on navigation
+  return (
+    <span
+      ref={mounted ? ref : undefined}
+      className="font-made-outer-alt font-black text-shadow-lg"
+    >
+      {!mounted ? words[0] : undefined}
+    </span>
+  );
+};
 
 export default AirportText;

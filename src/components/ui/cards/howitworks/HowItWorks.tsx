@@ -39,7 +39,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center p-6">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <div 
         className="grid gap-12 w-full max-w-5xl place-items-center"
         style={{

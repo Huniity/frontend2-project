@@ -1,121 +1,126 @@
-import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
-import Counter from "@/components/ui/counter/Counter";
-import Link from "next/link";
+import SmoothScroll from "@/components/SmoothScroll";
 import { GiCompass, GiEarthAmerica, GiHearts } from "react-icons/gi";
 import { MdGroups, MdTravelExplore, MdSecurity } from "react-icons/md";
 
 export default function About() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="snap-start w-full bg-black h-screen">
-        <div className="flex flex-col h-full w-full justify-center items-center gap-6 px-12">
-          <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg text-center">
-            OUr Story
+    <SmoothScroll>
+      {/* Hero */}
+      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-8 px-12">
+        <div className="text-center space-y-6 max-w-4xl">
+          <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg">
+            aboUt
           </h1>
-          <p className="text-xl font-made-outer-alt text-gray-400 text-center max-w-2xl mt-4">
-            Born from a passion for discovEry, Nomadia was crEatEd to makE travEl
-            planning EfFortless, pErsonalizEd, and Unforgettable.
+          <h2 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg leading-tight">
+            nomaDia
+          </h2>
+          <p className="text-lg font-made-outer text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Born from a passion for discovery, we're redefining how the world travels with smart tools, curated destinations, and a vibrant community.
           </p>
         </div>
-      </section>
+      </div>
 
-      {/* Mission Section */}
-      <section className="snap-start w-full bg-black h-screen">
-        <div className="flex flex-col h-full w-full justify-center items-center gap-16 px-24">
-          <div className="text-center">
-            <h2 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-6">
-              OUr Mission
-            </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              We believe everyone deserves to explore the world without the hassle of
-              complex planning. Nomadia empowers modern travelers with smart tools,
-              curated destinations, and a vibrant community — so you can focus on what
-              matters most: the experience.
+      {/* Mission */}
+      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-12 px-24">
+        <div className="text-center">
+          <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg mb-8 leading-tight">
+            oUr
+          </h1>
+          <h1 className="text-6xl font-made-outer-alt font-black text-gray-400 text-shadow-lg mb-12">
+            mIssion
+          </h1>
+          <p className="text-xl font-made-outer text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Everyone deserves to explore the world without the hassle of complex planning. We empower modern travelers with smart tools, curated destinations, and a vibrant community — so you can focus on what matters most: the experience.
+          </p>
+        </div>
+      </div>
+
+      {/* What We Offer */}
+      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-16 px-24">
+        <h1 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg text-center">
+          what wE offEr
+        </h1>
+        <div className="flex flex-row gap-12">
+          <div className="flex-1 flex flex-col items-center gap-6 text-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
+              <GiCompass className="text-white" size={48} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
+                pErsOnalizEd
+              </h3>
+              <p className="text-gray-400 font-made-outer">
+                Smart recommendations tailored to your travel style and dreams.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col items-center gap-6 text-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
+              <GiEarthAmerica className="text-white" size={48} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
+                glObal
+              </h3>
+              <p className="text-gray-400 font-made-outer">
+                Access destinations across every continent, iconic to hidden.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col items-center gap-6 text-center">
+            <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
+              <GiHearts className="text-white" size={48} />
+            </div>
+            <div>
+              <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
+                passiOn
+              </h3>
+              <p className="text-gray-400 font-made-outer">
+                Built by travelers, for travelers. Crafted with love for adventure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Values */}
+      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-16 px-24">
+        <h1 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg text-center">
+          what wE stand for
+        </h1>
+        <div className="grid grid-cols-3 gap-12 max-w-5xl">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <MdTravelExplore className="text-white" size={44} />
+            <h3 className="text-xl font-made-outer-alt font-black text-white">
+              advEntUrE first
+            </h3>
+            <p className="text-gray-400 font-made-outer text-sm">
+              Exploration at the heart of everything. Every trip is a new chapter.
             </p>
           </div>
-          <div className="flex flex-row gap-24">
-            <div className="flex flex-col items-center gap-4 max-w-xs text-center">
-              <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <GiCompass className="text-white" size={36} />
-              </div>
-              <h3 className="text-xl font-made-outer-alt font-bold text-white">
-                GUidancE
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Personalized recommendations tailored to your travel style, budget, and
-                dream destinations.
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 max-w-xs text-center">
-              <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <GiEarthAmerica className="text-white" size={36} />
-              </div>
-              <h3 className="text-xl font-made-outer-alt font-bold text-white">
-                Global REach
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Access destinations across every continent, from iconic cities to hidden
-                gems off the beaten path.
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 max-w-xs text-center">
-              <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <GiHearts className="text-white" size={36} />
-              </div>
-              <h3 className="text-xl font-made-outer-alt font-bold text-white">
-                Passion
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Built by travelers, for travelers. Every feature is crafted with love
-                for exploration and adventure.
-              </p>
-            </div>
+          <div className="flex flex-col items-center gap-4 text-center">
+            <MdGroups className="text-white" size={44} />
+            <h3 className="text-xl font-made-outer-alt font-black text-white">
+              cOmmUnity
+            </h3>
+            <p className="text-gray-400 font-made-outer text-sm">
+              Growing nomads sharing tips, stories, and inspiration together.
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-4 text-center">
+            <MdSecurity className="text-white" size={44} />
+            <h3 className="text-xl font-made-outer-alt font-black text-white">
+              trust & sAfEty
+            </h3>
+            <p className="text-gray-400 font-made-outer text-sm">
+              Secure, verified, transparent. Travel with peace of mind.
+            </p>
           </div>
         </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="snap-start w-full bg-black h-screen">
-        <div className="flex flex-col h-full w-full justify-center items-center gap-16 px-24">
-          <h2 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg">
-            What WE Stand For
-          </h2>
-          <div className="grid grid-cols-3 gap-12 max-w-5xl">
-            <div className="relative p-10 flex flex-col items-center gap-4 text-center">
-              <MdTravelExplore className="text-white" size={40} />
-              <h3 className="text-lg font-made-outer-alt font-bold text-white">
-                AdVEntUrE First
-              </h3>
-              <p className="text-gray-400 text-sm">
-                We put exploration at the heart of everything we build. Every trip
-                should feel like a new chapter.
-              </p>
-            </div>
-            <div className="relative p-10 flex flex-col items-center gap-4 text-center">
-              <MdGroups className="text-white" size={40} />
-              <h3 className="text-lg font-made-outer-alt font-bold text-white">
-                CommUnity DriVEn
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Our growing community of nomads shares tips, stories, and inspiration
-                to help each other travel better.
-              </p>
-            </div>
-            <div className="relative p-10 flex flex-col items-center gap-4 text-center">
-              <MdSecurity className="text-white" size={40} />
-              <h3 className="text-lg font-made-outer-alt font-bold text-white">
-                TrUst & SafEty
-              </h3>
-              <p className="text-gray-400 text-sm">
-                Secure payments, verified destinations, and transparent pricing — so you
-                travel with peace of mind.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
       </div>
+
+      <Footer />
+    </SmoothScroll>
   );
 }

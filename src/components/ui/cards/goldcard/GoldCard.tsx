@@ -48,13 +48,13 @@ const GoldCard = ({
 
             <div className="absolute inset-0 rounded-xl p-6 flex flex-col justify-between">
                 <div>
-                    <h2 className="text-xl font-bold font-made-outer-alt mb-4 text-gray-300 text-left mb-2 flex items-center justify-between">{title}<ImFire size="24px" color="rgba(221, 132, 72, 0.92)"/></h2>
-                    <p className="text-3xl font-bold font-made-outer-alt mb-6 text-white text-left mb-10">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}<span className="text-xl font-made-outer-alt">{selectedPlanDuration === 'monthly' ? ' /month' : ' /yEar'}</span></p>
+                    <h2 className="text-xl font-bold font-made-outer-alt mb-4 text-gray-300 text-left flex items-center justify-between">{title}<ImFire size="24px" color="rgba(221, 132, 72, 0.92)"/></h2>
+                    <p className="text-3xl font-bold font-made-outer-alt mb-10 text-white text-left">{selectedPlanDuration === 'monthly' ? priceMonth : priceYear}<span className="text-xl font-made-outer-alt">{selectedPlanDuration === 'monthly' ? ' /month' : ' /yEar'}</span></p>
                     <div>
                         <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (
                                 <li key={index} className="grid grid-cols-[auto_1fr] gap-3 items-center text-md">
-                                    <FaCheck className="flex-shrink-0" />
+                                    <FaCheck className="shrink-0" />
                                     <span>{feature}</span>
                                 </li>
                             ))}

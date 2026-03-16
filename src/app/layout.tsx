@@ -17,13 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+     <head suppressHydrationWarning />
       <body>
-        <Navbar />
+        <div id="__app">
+          <Navbar />
           <SubPlanProvider>
             {children}
           </SubPlanProvider>
           <ToastContainer position="top-center" theme="dark"/>
+        </div>
       </body>
     </html>
   );
