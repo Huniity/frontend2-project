@@ -17,8 +17,21 @@ const HomeShape = () => {
   const nextSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Ensure ScrollTrigger is refreshed on mount
     ScrollTrigger.refresh();
+
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const size = Math.min(window.innerWidth, window.innerHeight) * 0.15;
+
+    const polygonEl = document.getElementById("diamond-polygon");
+    if (polygonEl) {
+      polygonEl.setAttribute(
+        "points",
+        `${cx},${cy - size} ${cx + size},${cy} ${cx},${cy + size} ${cx - size},${cy}`
+      );
+    }
+
+    const expand = size * 12;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -29,10 +42,8 @@ const HomeShape = () => {
           scrub: 1.2,
           pin: true,
           anticipatePin: 1,
-          // ✅ This ensures the pin spacer is cleaned up properly
           pinSpacing: true,
           onKill: () => {
-            // Reset inline styles GSAP applied when the trigger is killed
             if (sectionRef.current) {
               sectionRef.current.style.transform = "";
               sectionRef.current.style.position = "";
@@ -47,21 +58,31 @@ const HomeShape = () => {
       tl.to(decoratorsRef.current, { opacity: 0, duration: 0.2, ease: "power1.out" }, 0);
       tl.to(textLeftRef.current, { x: 250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
       tl.to(textRightRef.current, { x: -250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
-      tl.to(imageRef.current, { clipPath: "polygon(50% -150%, 160% 50%, 50% 250%, -60% 50%)", duration: 0.8, ease: "power2.inOut" }, 0.1);
+
+      tl.to(
+        "#diamond-polygon",
+        {
+          attr: {
+            points: `${cx},${cy - expand} ${cx + expand},${cy} ${cx},${cy + expand} ${cx - expand},${cy}`,
+          },
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        0.1
+      );
+
       tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.75);
       tl.to(nextSectionRef.current, { duration: 0.5 }, 1.05);
     }, sectionRef);
 
     return () => {
-      // ✅ Kill ALL ScrollTriggers first, THEN revert the context
-      // Order matters — revert() alone doesn't fully unpin
       ScrollTrigger.getAll().forEach((t) => t.kill());
       ctx.revert();
     };
   }, []);
 
-  const squareCenter = { x: 500, y: 400 };
-  const squareSize = 65;
+  const squareCenter = { x: 500, y: 425 };
+  const squareSize = 67;
   const corners = [
     { x: squareCenter.x,              y: squareCenter.y - squareSize },
     { x: squareCenter.x + squareSize, y: squareCenter.y },
@@ -88,13 +109,22 @@ const HomeShape = () => {
 
       {/* Diamond shadow wrapper */}
       <div style={{ position: "absolute", inset: 0, zIndex: 2, filter: "drop-shadow(0px 0px 20px rgba(0,0,0,0.95))" }}>
+        <svg width="0" height="0" style={{ position: "absolute" }}>
+          <defs>
+            <clipPath id="diamond-clip" clipPathUnits="userSpaceOnUse">
+              {/* Points are set dynamically in useEffect */}
+              <polygon id="diamond-polygon" points="0,0" />
+            </clipPath>
+          </defs>
+        </svg>
+
         <div
           ref={imageRef}
           style={{
             position: "absolute", inset: 0,
             backgroundImage: "url(/hawaii3.jpg)",
             backgroundSize: "cover", backgroundPosition: "center",
-            clipPath: "polygon(50% 30%, 57.5% 44.5%, 50% 59%, 42.5% 44.5%)",
+            clipPath: "url(#diamond-clip)",
           }}
         />
       </div>
