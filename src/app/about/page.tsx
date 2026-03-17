@@ -1,12 +1,10 @@
 import Footer from "@/components/Footer";
-import SmoothScroll from "@/components/SmoothScroll";
 import { GiCompass, GiEarthAmerica, GiHearts } from "react-icons/gi";
 import { MdGroups, MdTravelExplore, MdSecurity } from "react-icons/md";
 
 export default function About() {
   return (
-    <SmoothScroll>
-      {/* Hero */}
+      <>
       <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-8 px-12">
         <div className="text-center space-y-6 max-w-4xl">
           <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg">
@@ -119,8 +117,7 @@ export default function About() {
           </div>
         </div>
       </div>
-
       <Footer />
-    </SmoothScroll>
+      </>
   );
 }
