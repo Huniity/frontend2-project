@@ -1,9 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import Profile from "./Profile";
+import Dashboard from "./Dashboard";
 
-export default async function ProfilePage() {
+export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -13,24 +13,18 @@ export default async function ProfilePage() {
     prisma.user.findUnique({
       where: { id: user.id },
       include: {
-        trips: {
-          orderBy: { createdAt: "desc" },
-          take: 3,
-        },
+        trips: { orderBy: { createdAt: "desc" } },         // all trips, slice in Overview
         trophies: {
           include: { trophy: true },
           orderBy: { awardedAt: "desc" },
-          take: 3,
         },
-        _count: {
-          select: { trips: true, trophies: true }
-        }
-      }
+        _count: { select: { trips: true, trophies: true } },
+      },
     }),
     prisma.trophy.findMany({ orderBy: { xp: "asc" } }),
   ]);
 
   if (!dbUser) redirect("/login");
 
-  return <Profile user={dbUser} allTrophies={allTrophies} />;
+  return <Dashboard user={dbUser} allTrophies={allTrophies} />;
 }
