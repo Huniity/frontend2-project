@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "TrophyKey" ADD VALUE 'CONTINENT_HOPPER';

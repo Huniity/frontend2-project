@@ -4,68 +4,11 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import { ImFire } from "react-icons/im";
+import { pricing } from "../../lib/pricing";
+
 
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false);
-
-  const plans = [
-    {
-      name: "baCkpaCkEr",
-      price: "frEE",
-      description: "Perfect for casual travelers",
-      monthlyPrice: 0,
-      annualPrice: 0,
-      features: [
-        "Up to 5 trips per year",
-        "Basic itinerary planning",
-        "Mobile app access",
-        "Community forum access",
-        "Email support",
-        "Standard maps and navigation",
-      ],
-      highlighted: false,
-    },
-    {
-      name: "glObEtrOttEr",
-      price: "$7.99",
-      period: "/month",
-      description: "For frequent adventures",
-      monthlyPrice: 7.99,
-      annualPrice: 79.99,
-      features: [
-        "Unlimited trips",
-        "Advanced itinerary planning",
-        "Offline map downloads",
-        "AI trip recommendations",
-        "Priority email support",
-        "Travel budget tracking",
-        "Collaboration with friends",
-        "Photo gallery storage (5GB)",
-      ],
-      highlighted: true,
-    },
-    {
-      name: "nOmad",
-      price: "$11.99",
-      period: "/month",
-      description: "The ultimate travel experience",
-      monthlyPrice: 11.99,
-      annualPrice: 119.99,
-      features: [
-        "Everything in Globetrotter",
-        "Offline access to all features",
-        "Live chat support (24/7)",
-        "Premium AI insights",
-        "Photo gallery storage (100GB)",
-        "Custom trip templates",
-        "Travel insurance quotes",
-        "VIP community access",
-        "Monthly travel magazine",
-        "Exclusive travel deals",
-      ],
-      highlighted: false,
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-black text-white mt-48">
@@ -115,7 +58,7 @@ export default function Pricing() {
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-36">
-          {plans.map((plan, index) => (
+          {pricing.map((plan, index) => (
             <div
               key={index}
               className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${

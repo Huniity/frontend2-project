@@ -25,7 +25,7 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-6 mb-14">
+      <div className="grid grid-cols-4 gap-6 mb-6">
         {[
           { label: "Total Trips", value: user._count.trips },
           { label: "Countries", value: new Set(user.trips.map(t => t.destination.split(",").pop()?.trim())).size },
@@ -40,7 +40,7 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       </div>
 
       {/* Recent trips + trophies */}
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-6">
         <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>

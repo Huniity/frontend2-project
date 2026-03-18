@@ -15,14 +15,15 @@ import Overview from "./components/Overview";
 import Settings from "./components/Settings";
 import Trophies from "./components/Trophies";
 import MyTrips from "./components/MyTrips";
+import ChatBox from "@/components/ui/chat/ChatBox";
 
 export type UserWithRelations = User & {
-  trips: Trip[];
+  trips: (Trip & { _count: { days: number } })[];
   trophies: (UserTrophy & { trophy: Trophy })[];
   _count: { trips: number; trophies: number };
 };
 
-export type Tab = "overview" | "settings" | "trophies" | "mytrips";
+export type Tab = "overview" | "settings" | "trophies" | "mytrips" | "chat";
 
 export default function Dashboard({ user, allTrophies }: { user: UserWithRelations; allTrophies: Trophy[] }) {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
@@ -32,6 +33,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
     { tab: "settings" as Tab, icon: AiOutlineStar, label: "Settings" },
     { tab: "trophies" as Tab, icon: MdOutlineEmojiEvents, label: "Trophies" },
     { tab: "mytrips" as Tab, icon: MdOutlineFlightTakeoff, label: "My Trips" },
+    { tab: "chat" as Tab, icon: MdOutlineFlightTakeoff, label: "Chat" },
   ];
 
   return (
@@ -101,6 +103,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           {activeTab === "settings" && <Settings />}
           {activeTab === "trophies" && <Trophies  user={user} allTrophies={allTrophies} />}
           {activeTab === "mytrips"  && <MyTrips   user={user} />}
+          {activeTab === "chat"     && <ChatBox />}
         </main>
       </div>
     </div>

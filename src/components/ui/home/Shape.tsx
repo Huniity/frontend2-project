@@ -101,7 +101,7 @@ const HomeShape = () => {
       <div
         style={{
           position: "absolute", inset: 0, zIndex: 0,
-          backgroundImage: "url(/hawaii2.jpg)",
+          backgroundImage: "url(/anapurna.jpg)",
           backgroundSize: "cover", backgroundPosition: "center",
           filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
         }}
@@ -122,7 +122,7 @@ const HomeShape = () => {
           ref={imageRef}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url(/hawaii3.jpg)",
+            backgroundImage: "url(/city.jpg)",
             backgroundSize: "cover", backgroundPosition: "center",
             clipPath: "url(#diamond-clip)",
           }}
