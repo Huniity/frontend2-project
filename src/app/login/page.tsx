@@ -47,7 +47,7 @@ const Login = () => {
               <div className="relative z-10 p-8 flex flex-col items-center justify-center gap-6">
                 <div className="text-center space-y-2 mb-2">
                     <h1 className="text-3xl font-bold text-white text-shadow-lg font-made-outer-alt">WElComE baCk</h1>
-                    <p className="text-sm text-white text-shadow-lg font-made-outer">LEt{"'"}s ContinUE yoUr joUrnEy.</p>
+                    <p className="text-sm text-white text-shadow-lg font-made-outer">Let{"'"}s Continue your journey.</p>
                 </div>
                 
                 <LoginCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" namePassword="Forgot Password?" mutatedNamePassword="Processing..." />

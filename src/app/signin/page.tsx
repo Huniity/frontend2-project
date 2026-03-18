@@ -46,7 +46,7 @@ const Signin = () => {
               <div className="relative z-10 p-8 flex flex-col items-center justify-center gap-6">
                 <div className="text-center space-y-2 mb-2">
                     <h1 className="text-3xl font-bold text-white text-shadow-lg font-made-outer-alt">bEComE a Nomad</h1>
-                    <p className="text-sm text-white text-shadow-lg font-made-outer">LEt{"'"}s plan yoUr nExt advEntUrE.</p>
+                    <p className="text-sm text-white text-shadow-lg font-made-outer">Let{"'"}s plan your next adventure.</p>
                 </div>
                 
                 <SigninCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />

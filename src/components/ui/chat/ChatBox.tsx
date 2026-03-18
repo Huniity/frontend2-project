@@ -17,13 +17,13 @@ type TripData = {
   tripType: string;
   budgetLevel: string;
   numberOfPersons: number;
-  departureCity: string; // ← add this
+  departureCity: string;
 };
 
 const INITIAL_MESSAGE: Message = {
   id: '1',
   role: 'assistant',
-  content: "Hey! I'm nomad.ia ✈️ Where in the world are you dreaming of going?",
+  content: "Hey! I'm NomadIA. \nWhere in the world are you dreaming of going?",
 };
 
 const ChatBox = () => {
@@ -39,7 +39,6 @@ const ChatBox = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // When all 5 answers collected → call generate-trip → redirect
   useEffect(() => {
     if (!tripData) return;
 
@@ -80,7 +79,7 @@ const ChatBox = () => {
     };
 
     generate();
-  }, [tripData]);
+  }, [tripData, router]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -127,15 +126,16 @@ const ChatBox = () => {
         setTripData(data.tripData);
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'unknown_error';
       setMessages((prev) => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: err.message === 'rate_limit'
+          content: errorMessage === 'rate_limit'
             ? "I'm a bit busy right now, try again in a few seconds 🙏"
-            : "Sorry, something went wrong. Please try again 🙏",
+            : "Sorry, something went wrong. Please try again later 🙏",
         },
       ]);
     } finally {
@@ -152,7 +152,6 @@ const ChatBox = () => {
 
   return (
     <div className="border border-white/15 rounded-2xl p-8 w-full max-w-2xl flex flex-col text-white h-150 bg-linear-to-br from-white/8 to-white/3 backdrop-blur-xl shadow-2xl mx-auto">
-      {/* Header */}
       <div className="mb-6 pb-6 border-b border-white/10 shrink-0">
         <h3 className="text-2xl font-made-outer-alt font-bold text-white">nomad.ia Assistant</h3>
         <p className="text-sm text-gray-400 font-made-outer mt-1">Plan your next adventure</p>

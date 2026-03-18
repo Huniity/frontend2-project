@@ -44,9 +44,9 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
         <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>
-            <Link href="/trips" className="text-xs text-gray-500 hover:text-white transition-colors no-underline flex items-center gap-1 font-made-outer">
+            <button onClick={() => setActiveTab("mytrips")} className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1 font-made-outer bg-transparent border-none cursor-pointer">
               View all <FiChevronRight size={12} />
-            </Link>
+            </button>
           </div>
           <div className="space-y-4">
             {user.trips.length === 0 && (
@@ -100,11 +100,16 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       <div className="mt-14">
         <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
         <div className="grid grid-cols-3 gap-6">
-          <Link href="/trips" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
+          {/* <Link href="/agent" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <MdOutlineFlightTakeoff className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
-          </Link>
+          </Link> */}
+          <button onClick={() => setActiveTab("mytrips")} className="text-left border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
+            <MdOutlineFlightTakeoff className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
+            <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
+            <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
+            </button>
           <Link href="/pricing" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <FiEdit2 className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Upgrade Plan</p>

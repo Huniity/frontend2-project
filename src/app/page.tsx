@@ -10,11 +10,14 @@ import { HiOutlineReceiptTax } from "react-icons/hi";
 import { TbCancel } from "react-icons/tb";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { MdOutlineHourglassDisabled } from "react-icons/md";
-import HowItWorks from "@/components/ui/cards/howitworks/HowItWorks";
-import DreamDestinations from "@/components/ui/cards/dreamdestinations/DreamDestinations";
-import HomeShape from "@/components/ui/home/Shape";
+import HowItWorks from "@/app/components/howitworks/HowItWorks";
+import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
+import HomeShape from "@/app/components/intro/Intro";
 import Footer from "@/components/Footer";
-import Pricing from "./pricing/page";
+import Cta from "@/app/components/cta/Cta";
+import Reviews from "./components/Reviews/Reviews";
+import Pricing from "./components/pricing/Pricing";
+import Counters from "./components/counter/Counters";
 
 // export default function Home() {
 //   return (
@@ -129,71 +132,68 @@ export default function Home() {
   return (
     <div>
       <HomeShape />
-      <Counter name="Trips" value={86} description="PlannEd with Nomadia" />
+      {/* /// COUNTER /// */}
+      <Counters />
+      {/* <Counter name="Trips" value={86} description="PlannEd with Nomadia" />
       <Counter name="CoUntriEs" value={37} description="ExplorEd by oUr UsErs" />
-      <Counter name="Nomads" value={3274} description="growing CommUnity" />
+      <Counter name="Nomads" value={3274} description="growing CommUnity" /> */}
+      {/* /// Dream Destination /// */}
       <DreamDestinations />
-      <section className="snap-start w-full bg-black h-screen bg-cover bg-center">
-         <div className="flex flex-col h-full w-full justify-center items-center mt-22 gap-0">
-           <h1 className="font-made-outer-alt text-6xl font-black text-white ml-48 mr-48 text-center">
-             Start yoUr joUrnEy
-           </h1>
-           <h2 className="font-made-outer-alt text-5xl font-black text-gray-400 ml-48 mr-48 text-center leading-22">
-             bE Nomad
-           </h2>
-           <div className="mt-4">
-             <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="125px" height="45px" textSize="16px" />
-           </div>
-           <div className="flex flex-row gap-18 justify-center mt-12">
-             <Card subtype="monthly" title="BackpackEr" priceMonth="FrEE" priceYear="FrEE" features={["Essential features", "One time access", "Basic support", "Limitated on trips"]} width="300px" height="400px" buttonName="gEt StartEd" />
-             <GoldCard subtype="monthly" title="globEtrottEr" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="325px" height="450px" buttonName="SUbsCribE Now" />
-             <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Unlimited trips", "Save to device"]} width="300px" height="400px" buttonName="Go Nomad" />
-           </div>
-           <div className="mt-12 flex flex-row gap-2">
-             <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-               <PiNumberCircleSevenBold size="18px" />
-             </Button>
-             <Button name="VAT Included" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-               <HiOutlineReceiptTax size="18px" />
-             </Button>
-             <Button name="Cancel Anytime" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-               <TbCancel size="18px" />
-             </Button>
-             <Button name="Secure Payment" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-               <RiSecurePaymentFill size="18px" />
-             </Button>
-             <Button name="Instant Access" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-               <MdOutlineHourglassDisabled size="18px" />
-             </Button>
-           </div>
-         </div>
-       </section>
-      <section className="snap-start w-full bg-black h-screen">
-         <div className="flex flex-col h-full w-full justify-center items-center gap-6">
-           <h1 className="text-5xl font-made-outer-alt font-black text-white ml-48 mr-48 text-center">
-             Rated by the Road
-           </h1>
-           <h2 className="text-5xl font-made-outer-alt font-semibold text-gray-400 ml-48 mr-48 text-center">
-             Loved by the Nomads
-           </h2>
-         </div>
-       </section>
-       <section className="snap-start w-full bg-black h-screen">
-         <div className="flex flex-col h-full w-full justify-center items-center gap-12">
-           <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
-             Plan Today
-           </h1>
-           <h2 className="text-5xl font-made-outer-alt font-semibold mb-4 text-white text-shadow-lg">
-             Explore Tomorrow
-           </h2>
-           <Link
-             href="/signin"
-             className="mt-48 rounded-full bg-white px-10 py-4 font-made-outer-alt font-semibold text-black no-underline hover:bg-white transition shadow-black/50 shadow-xs"
-           >
-             sign Up now
-           </Link>
-         </div>
-       </section>
+      {/* /// SUB PLANS /// */}
+      <Pricing />
+      {/* <section className="snap-start w-full bg-black h-screen bg-cover bg-center">
+        <div className="flex flex-col h-full w-full justify-center items-center mt-22 gap-0">
+          <h1 className="font-made-outer-alt text-6xl font-black text-white ml-48 mr-48 text-center">
+            Start yoUr joUrnEy
+          </h1>
+          <h2 className="font-made-outer-alt text-5xl font-black text-gray-400 ml-48 mr-48 text-center leading-22">
+            bE Nomad
+          </h2>
+          <div className="mt-4">
+            <PlanButton leftName="Monthly" rightName="Save 20%" color="#0f0f0f" textColor="#ffffff" width="125px" height="45px" textSize="16px" />
+          </div>
+          <div className="flex flex-row gap-18 justify-center mt-12">
+            <Card subtype="monthly" title="BackpackEr" priceMonth="FrEE" priceYear="FrEE" features={["Essential features", "One time access", "Basic support", "Limitated on trips"]} width="300px" height="400px" buttonName="gEt StartEd" />
+            <GoldCard subtype="monthly" title="globEtrottEr" priceMonth="$7,99" priceYear="$79,99" features={["Premium features", "Access everywhere", "Priority support", "5 trips limitation", "Offline access"]} width="325px" height="450px" buttonName="SUbsCribE Now" />
+            <Card subtype="monthly" title="Nomad" priceMonth="$11,99" priceYear="$109,99" features={["All features available", "Access everywhere", "Unlimited trips", "Save to device"]} width="300px" height="400px" buttonName="Go Nomad" />
+          </div>
+          <div className="mt-12 flex flex-row gap-2">
+            <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+              <PiNumberCircleSevenBold size="18px" />
+            </Button>
+            <Button name="VAT Included" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+              <HiOutlineReceiptTax size="18px" />
+            </Button>
+            <Button name="Cancel Anytime" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+              <TbCancel size="18px" />
+            </Button>
+            <Button name="Secure Payment" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+              <RiSecurePaymentFill size="18px" />
+            </Button>
+            <Button name="Instant Access" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
+              <MdOutlineHourglassDisabled size="18px" />
+            </Button>
+          </div>
+        </div>
+      </section> */}
+      {/* /// REVIEWS /// */}
+      <Reviews />
+      {/* <section className="snap-start w-full bg-black h-screen">
+        <div className="flex flex-col h-full w-full justify-center items-center gap-6">
+          <h1 className="text-5xl font-made-outer-alt font-black text-white ml-48 mr-48 text-center">
+            Rated by the Road
+          </h1>
+          <h2 className="text-5xl font-made-outer-alt font-semibold text-gray-400 ml-48 mr-48 text-center">
+            Loved by the Nomads
+          </h2>
+        </div>
+      </section> */}
+      {/* /// CTA /// */}
+      <Cta />
+      {/* <section className="snap-start w-full bg-black h-screen">
+        
+      </section> */}
+      {/* /// Footer /// */}
       <Footer />
     </div>
   );

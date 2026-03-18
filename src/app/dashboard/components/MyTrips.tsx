@@ -5,15 +5,6 @@ import { useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import type { UserWithRelations } from "../Dashboard";
 
-const TRIP_TYPE_EMOJI: Record<string, string> = {
-  ROMANTIC: "💑",
-  ADVENTUROUS: "🧗",
-  FAMILY: "👨‍👩‍👧",
-  CULTURAL: "🏛️",
-  RELAXATION: "🧘",
-  BUSINESS: "💼",
-  SOLO: "🎒",
-};
 
 const STATUS_STYLES: Record<string, string> = {
   GENERATING: "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
@@ -22,17 +13,23 @@ const STATUS_STYLES: Record<string, string> = {
   COMPLETED:  "bg-gray-500/10 text-gray-300 border-gray-500/30",
 };
 
-const BUDGET_LABEL: Record<string, string> = {
-  LOW:    "Budget 🎒",
-  MEDIUM: "Comfortable 😊",
-  HIGH:   "Luxury ✨",
-};
 
 type Filter = "ALL" | "DRAFT" | "CONFIRMED" | "COMPLETED";
 
+type Trip = {
+  id: string;
+  title: string;
+  destination: string;
+  numberOfDays: number;
+  budgetLevel: string;
+  totalBudget?: number | null;
+  status: string;
+  createdAt: Date | string;
+};
+
 export default function MyTrips({ user }: { user: UserWithRelations }) {
   const [filter, setFilter] = useState<Filter>("ALL");
-  const [trips, setTrips] = useState<any[]>(user.trips);
+  const [trips, setTrips] = useState<Trip[]>(user.trips);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
@@ -116,7 +113,7 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
 
       {/* Cards grid */}
       <div className="grid grid-cols-3 gap-6">
-        {filtered.map((trip: any) => (
+        {filtered.map((trip) => (
           <div key={trip.id} className="relative group">
             <Link href={`/trips/${trip.id}`} className="no-underline">
               <div className="border border-white/15 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-lg hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col">
@@ -126,18 +123,15 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                   trip.status === "CONFIRMED"
                     ? "bg-linear-to-r from-black/10 to-emerald-500"
                     : trip.status === "DRAFT"
-                    ? "bg-linear-to-r from-blue-500 to-indigo-500"
+                    ? "bg-linear-to-r from-black/10 to-indigo-500"
                     : trip.status === "GENERATING"
-                    ? "bg-linear-to-r from-yellow-500 to-amber-500"
-                    : "bg-linear-to-r from-gray-500 to-gray-600"
+                    ? "bg-linear-to-r from-black/10 to-amber-500"
+                    : "bg-linear-to-r from-black/10 to-gray-600"
                 }`} />
 
                 <div className="p-5 flex flex-col flex-1 gap-3">
                   {/* Top row */}
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl">
-                      {TRIP_TYPE_EMOJI[trip.tripType] ?? "✈️"}
-                    </span>
                     <span className={`text-[11px] px-2.5 py-1 rounded-full border font-medium font-made-outer ${STATUS_STYLES[trip.status]}`}>
                       {trip.status.charAt(0) + trip.status.slice(1).toLowerCase()}
                     </span>
@@ -158,14 +152,14 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     <span className="text-xs text-gray-400 font-made-outer">
                       📅 {trip.numberOfDays} days
                     </span>
+                    <span className="text-xs text-gray-400 font-made-outer">
+                      Budget Type: {trip.budgetLevel}
+                    </span>
                     {trip.totalBudget && (
                       <span className="text-xs text-gray-400 font-made-outer">
                         💰 ${trip.totalBudget.toLocaleString()}
                       </span>
                     )}
-                    <span className="text-xs text-gray-400 font-made-outer">
-                      {BUDGET_LABEL[trip.budgetLevel]}
-                    </span>
                   </div>
 
                   {/* Date */}

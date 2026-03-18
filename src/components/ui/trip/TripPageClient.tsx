@@ -1,20 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { IoArrowBack } from "react-icons/io5";
-import DaySidebar from "./DaySidebar";
 import DayDetail from "./DayDetail";
 import TripMap from "./TripMap";
 import DayNarrative from "./DayNarrative";
 import ConfirmTripButton from "./ConfirmTripButton";
+import { getDayColor } from "@/lib/utils";
 
-const TRIP_TYPE_EMOJI: Record<string, string> = {
-  ROMANTIC: "💑", ADVENTUROUS: "🧗", FAMILY: "👨‍👩‍👧",
-  CULTURAL: "🏛️", RELAXATION: "🧘", BUSINESS: "💼", SOLO: "🎒",
-};
 
-export default function TripPageClient({ trip, aiTips }: { trip: any; aiTips: string[] }) {
+export default function TripPageClient({ trip }: { trip: any }) {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
 
   const activeDays = trip.days ?? [];
@@ -141,7 +135,7 @@ export default function TripPageClient({ trip, aiTips }: { trip: any; aiTips: st
                 {trip.totalBudget && (
                   <div className="bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 backdrop-blur-md rounded-2xl p-6">
                     <p className="text-xs text-emerald-300 uppercase tracking-wider font-made-outer mb-2">Total Budget</p>
-                    <p className="text-3xl font-bold font-made-outer-alt text-emerald-300">${trip.totalBudget}</p>
+                    <p className="text-3xl font-bold font-made-outer-alt text-emerald-300">€{trip.totalBudget}</p>
                   </div>
                 )}
               </div>
@@ -156,7 +150,7 @@ export default function TripPageClient({ trip, aiTips }: { trip: any; aiTips: st
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 flex items-center justify-center font-made-outer-alt font-bold shrink-0">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center font-made-outer-alt font-bold shrink-0" style={{ backgroundColor: `${getDayColor(day.dayNumber)}20`, borderColor: getDayColor(day.dayNumber), color: getDayColor(day.dayNumber), borderWidth: '1px' }}>
                           {day.dayNumber}
                         </div>
                         <div>
@@ -168,12 +162,12 @@ export default function TripPageClient({ trip, aiTips }: { trip: any; aiTips: st
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {day.activities.slice(0, 3).map((a: any) => (
-                        <span key={a.id} className="text-xs bg-white/10 border border-white/15 rounded-full px-3 py-1.5 text-gray-300 font-made-outer">
+                        <span key={a.id} className="text-xs bg-white/10 border border-white/15 rounded-lg px-3 py-1.5 text-gray-300 font-made-outer">
                           {a.title}
                         </span>
                       ))}
                       {day.activities.length > 3 && (
-                        <span className="text-xs bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-gray-500 font-made-outer">
+                        <span className="text-xs bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-gray-500 font-made-outer">
                           +{day.activities.length - 3}
                         </span>
                       )}

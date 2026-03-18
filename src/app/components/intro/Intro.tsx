@@ -2,9 +2,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AirportText from "../cyclingtext/AirportText";
-import HowItWorks from "../cards/howitworks/HowItWorks";
-import ScrollIndicator from "../scrollindicator/ScrollIndicator";
+import AirportText from "../../../components/ui/cyclingtext/AirportText";
+import HowItWorks from "../howitworks/HowItWorks";
+import ScrollIndicator from "../../../components/ui/scrollindicator/ScrollIndicator";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,7 +101,7 @@ const HomeShape = () => {
       <div
         style={{
           position: "absolute", inset: 0, zIndex: 0,
-          backgroundImage: "url(/anapurna.jpg)",
+          backgroundImage: "url(/anapurna2.jpg)",
           backgroundSize: "cover", backgroundPosition: "center",
           filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
         }}
@@ -122,7 +122,7 @@ const HomeShape = () => {
           ref={imageRef}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url(/city.jpg)",
+            backgroundImage: "url(/city2.jpg)",
             backgroundSize: "cover", backgroundPosition: "center",
             clipPath: "url(#diamond-clip)",
           }}
@@ -147,7 +147,7 @@ const HomeShape = () => {
       <h1
         ref={textLeftRef}
         className="absolute text-white text-6xl font-made-outer-alt pointer-events-none text-shadow-lg"
-        style={{ left: "17.5%", top: "38%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
+        style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
       </h1>
@@ -156,7 +156,7 @@ const HomeShape = () => {
       <div
         ref={textRightRef}
         className="absolute text-white text-6xl font-made-outer-alt pointer-events-none"
-        style={{ right: "15%", top: "50%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
+        style={{ right: "13%", top: "52%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
       >
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
