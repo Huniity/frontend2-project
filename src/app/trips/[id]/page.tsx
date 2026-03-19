@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import TripPageClient from "@/components/ui/trip/TripPageClient";
 
 export default async function TripPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params; // ← await params
+  const { id } = await params;
 
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -31,5 +31,5 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
     if (trip.aiPrompt) aiTips = JSON.parse(trip.aiPrompt);
   } catch {}
 
-  return <TripPageClient trip={trip as any} aiTips={aiTips} />;
+  return <TripPageClient trip={trip as any}/>;
 }
