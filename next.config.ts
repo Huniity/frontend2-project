@@ -5,7 +5,14 @@ const nextConfig: NextConfig = {
     scrollRestoration: false,
   },
   images: {
-    domains: ["picsum.photos"],
+    domains: ["picsum.photos", "ilnxkatlbohmcsfjboxx.supabase.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ilnxkatlbohmcsfjboxx.supabase.co",
+        pathname: "/storage/v1/object/**",
+      },
+    ],
   },
 };
 

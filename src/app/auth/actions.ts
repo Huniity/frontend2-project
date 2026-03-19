@@ -86,3 +86,39 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/login");
 }
+
+export async function updatePassword (formData: FormData) {
+  const supabase = await createClient();
+
+  const currentPassword = formData.get("currentPassword") as string;
+  const newPassword = formData.get("newPassword") as string;
+
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+
+  if (userError || !userData.user) {
+    return { error: "User not authenticated" };
+  }
+
+  const email = userData.user.email!;
+
+  // Re-authenticate the user with their current password
+  const { error: signInError } = await supabase.auth.signInWithPassword({
+    email,
+    password: currentPassword,
+  });
+
+  if (signInError) {
+    return { error: "Current password is incorrect" };
+  }
+
+  // Update to the new password
+  const { error: updateError } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+
+  if (updateError) {
+    return { error: updateError.message };
+  }
+
+  return { success: true };
+}

@@ -36,6 +36,8 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
     { tab: "chat" as Tab, icon: MdOutlineFlightTakeoff, label: "Chat" },
   ];
 
+  const [avatarError, setAvatarError] = useState(false);
+
   return (
     <div className="min-h-screen text-white">
       <div className="flex">
@@ -49,8 +51,16 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
 
             <div className="flex flex-col items-center gap-4 mb-10">
               <div className="w-32 h-32 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center overflow-hidden">
-                {user.avatarUrl ? (
-                  <Image src={user.avatarUrl} alt={user.username ?? ""} width={128} height={128} className="w-full h-full object-cover" />
+                {user.avatarUrl && !avatarError ? (
+                  <Image 
+                    src={user.avatarUrl} 
+                    alt={user.username ?? ""} 
+                    width={128} 
+                    height={128} 
+                    className="w-full h-full object-cover"
+                    unoptimized
+                    onError={() => setAvatarError(true)}
+                  />
                 ) : (
                   <RiUserLine className="text-white" size={28} />
                 )}
