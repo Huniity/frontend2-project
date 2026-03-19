@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import { SubPlanProvider } from "@/components/context/SubPlanContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import AuthProvider from "@/components/auth/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,14 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-     <head suppressHydrationWarning />
+      <head suppressHydrationWarning />
       <body>
         <div id="__app">
           <Navbar />
           <SubPlanProvider>
-            {children}
+            <AuthProvider>
+              {children}
+            </AuthProvider>
           </SubPlanProvider>
-          <ToastContainer position="top-center" theme="dark"/>
+          <ToastContainer position="top-center" theme="dark" />
         </div>
       </body>
     </html>
