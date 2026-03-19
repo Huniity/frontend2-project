@@ -1,6 +1,6 @@
 'use client'
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 import { useState } from "react";
 
 export default function Help() {

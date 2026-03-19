@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import FullYear from "./FullYear";
+import FullYear from "../../utils/FullYear";
 
 const Footer = () => {
     return (

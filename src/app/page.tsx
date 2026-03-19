@@ -13,7 +13,7 @@ import { MdOutlineHourglassDisabled } from "react-icons/md";
 import HowItWorks from "@/app/components/howitworks/HowItWorks";
 import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
 import HomeShape from "@/app/components/intro/Intro";
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 import Cta from "@/app/components/cta/Cta";
 import Reviews from "./components/Reviews/Reviews";
 import Pricing from "./components/pricing/Pricing";

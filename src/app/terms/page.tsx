@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 
 export default function Terms() {
   return (

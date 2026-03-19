@@ -1,10 +1,10 @@
 'use client'
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 import { useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import { ImFire } from "react-icons/im";
-import { pricing } from "../../lib/pricing";
+import { pricing } from "../../lib/utils/pricing";
 
 
 export default function Pricing() {

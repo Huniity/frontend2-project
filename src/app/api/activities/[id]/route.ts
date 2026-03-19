@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { prisma } from "@/lib/prisma";
-import { awardTrophy } from "@/lib/trophies";
+import { prisma } from "@/lib/prisma/prisma";
+import { awardTrophy } from "@/lib/utils/trophies";
 
 export async function PATCH(
   req: NextRequest,

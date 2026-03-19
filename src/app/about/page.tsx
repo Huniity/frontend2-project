@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 import { GiCompass, GiEarthAmerica, GiHearts } from "react-icons/gi";
 import { MdGroups, MdTravelExplore, MdSecurity } from "react-icons/md";
 

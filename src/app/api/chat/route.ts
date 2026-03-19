@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
-import { prisma } from "@/lib/prisma";
-import { PLAN_LIMITS, PlanKey } from "@/lib/plans";
-import { TRAVEL_AGENT_SYSTEM_PROMPT } from "@/lib/prompts";
+import { prisma } from "@/lib/prisma/prisma";
+import { PLAN_LIMITS, PlanKey } from "@/lib/utils/plans";
+import { TRAVEL_AGENT_SYSTEM_PROMPT } from "@/lib/prompts/prompts";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 

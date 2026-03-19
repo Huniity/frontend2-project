@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
-import { TripStatus } from "../generated/prisma/client";
+import { prisma } from "@/lib/prisma/prisma";
+import { TripStatus } from "../../generated/prisma/client";
 
 
 type TrophyKey =

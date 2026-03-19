@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/ui/navbar/Navbar";
 import { SubPlanProvider } from "@/components/context/SubPlanContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "@/components/auth/AuthProvider";
+import ReloadToTop from "@/components/utils/ReloadToTop";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +25,8 @@ export default function RootLayout({
           <Navbar />
           <SubPlanProvider>
             <AuthProvider>
-              {children}
+              <ReloadToTop />
+                {children}
             </AuthProvider>
           </SubPlanProvider>
           <ToastContainer position="top-center" theme="dark" />

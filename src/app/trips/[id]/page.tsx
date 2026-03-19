@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma/prisma";
 import TripPageClient from "@/components/ui/trip/TripPageClient";
 
 export default async function TripPage({ params }: { params: Promise<{ id: string }> }) {
@@ -11,7 +11,7 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
   if (!user) redirect("/login");
 
   const trip = await prisma.trip.findUnique({
-    where: { id }, // ← use destructured id
+    where: { id },
     include: {
       days: {
         orderBy: { dayNumber: "asc" },
@@ -26,10 +26,6 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
 
   if (!trip || trip.userId !== user.id) notFound();
 
-  let aiTips: string[] = [];
-  try {
-    if (trip.aiPrompt) aiTips = JSON.parse(trip.aiPrompt);
-  } catch {}
 
   return <TripPageClient trip={trip as any}/>;
 }

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/ui/navbar/Navbar'
+import Footer from '@/components/ui/footer/Footer'
 
 interface Post {
     id: number

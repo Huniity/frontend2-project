@@ -1,6 +1,6 @@
 'use client'
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/ui/footer/Footer";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { useState } from "react";
 

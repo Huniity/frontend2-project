@@ -5,7 +5,7 @@ import DayDetail from "./DayDetail";
 import TripMap from "./TripMap";
 import DayNarrative from "./DayNarrative";
 import ConfirmTripButton from "./ConfirmTripButton";
-import { getDayColor } from "@/lib/utils";
+import { getDayColor } from "@/lib/utils/utils";
 
 
 export default function TripPageClient({ trip }: { trip: any }) {

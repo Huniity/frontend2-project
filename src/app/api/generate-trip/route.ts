@@ -174,10 +174,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@/lib/supabase/server";
-import { prisma } from "@/lib/prisma";
-import { PLAN_LIMITS, PlanKey } from "@/lib/plans";
-import { buildTripGenerationPrompt } from "@/lib/tripPrompt";
-import { checkAndAwardTrophies } from "@/lib/trophies";
+import { prisma } from "@/lib/prisma/prisma";
+import { PLAN_LIMITS, PlanKey } from "@/lib/utils/plans";
+import { buildTripGenerationPrompt } from "@/lib/prompts/tripPrompt";
+import { checkAndAwardTrophies } from "@/lib/utils/trophies";
 import type { TripType, BudgetLevel } from "@/generated/prisma/client";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });

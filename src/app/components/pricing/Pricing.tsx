@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { FiCheck } from "react-icons/fi";
 import { ImFire } from "react-icons/im";
-import { pricing } from "@/lib/pricing";
+import { pricing } from "@/lib/utils/pricing";
 import { Button } from "@/components/ui/buttons/Button";
 import { PiNumberCircleSevenBold } from "react-icons/pi";
 import { HiOutlineReceiptTax } from "react-icons/hi";
