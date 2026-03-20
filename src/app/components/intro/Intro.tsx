@@ -185,7 +185,7 @@ const HomeShape = () => {
           <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
             <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
             <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
-            <h1 className="text-[8rem] font-made-outer-alt font-black mb-12 leading-12 pb-4">works</h1>
+            <h1 className="text-[8rem] font-made-outer-alt font-black mb-10 leading-12">works</h1>
           </div>
           <HowItWorks />
         </div>
