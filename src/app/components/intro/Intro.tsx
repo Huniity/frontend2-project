@@ -182,10 +182,10 @@ const HomeShape = () => {
         style={{ zIndex: 10 }}
       >
         <div className="text-center gap-12 flex flex-col items-center justify-center">
-          <div>
-            <h1 className="text-[12rem] font-made-outer-alt font-black text-white mb-12 leading-24 text-shadow-lg">how</h1>
-            <h1 className="text-[10rem] font-made-outer-alt font-black text-white mb-12 leading-17 text-shadow-lg">it</h1>
-            <h1 className="text-[8rem] font-made-outer-alt font-black text-white mb-12 leading-12 text-shadow-lg">works</h1>
+          <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
+            <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
+            <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
+            <h1 className="text-[8rem] font-made-outer-alt font-black mb-12 leading-12 pb-4">works</h1>
           </div>
           <HowItWorks />
         </div>

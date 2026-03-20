@@ -66,16 +66,45 @@ const DreamDestinations = () => {
   return (
     <div className="w-full h-full flex flex-col justify-start items-center">
       <div className="mb-16">
-        {/* <div className=" w-24 h-1 bg-white to-pink-500 mx-auto mb-4 rounded-full"></div> */}
-        <div className="text-left flex flex-col gap-2 mt-54">
-          <h1 className="text-[11.5rem] font-black text-white font-made-outer-alt mb-4 text-shadow-lg leading-14">
-            drEam
-          </h1>
-          <h1 className="text-9xl font-black text-white font-made-outer-alt mb-4 text-shadow-lg">
-            dEstinations
-          </h1>
-        </div>
-      </div>
+  <div className="text-left flex flex-col mt-54">
+    <h1
+      className="text-[16rem] font-black font-made-outer-alt"
+      style={{
+        backgroundImage: "url(/hawaii1.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        lineHeight: "0",
+        paddingTop: "0.30em",
+        paddingBottom: "0.40em",
+        overflow: "visible",
+      }}
+    >
+      drEam
+    </h1>
+    <h1
+      className="text-[10rem] font-black font-made-outer-alt"
+      style={{
+        backgroundImage: "url(/hawaii1.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        lineHeight: "0",
+        paddingTop: "0.35em",
+        paddingBottom: "0.5em",
+        overflow: "visible",
+      }}
+    >
+      dEstinations
+    </h1>
+  </div>
+</div>
       <div 
         className="grid gap-6 w-full max-w-6xl place-items-center"
         style={{
