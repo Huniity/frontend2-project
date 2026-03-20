@@ -4,7 +4,7 @@ export const PLAN_LIMITS = {
     tripsPerMonth: 2,
     model: "gemini-2.5-flash",
   },
-  EXPLORER: {
+  NOMAD: {
     max_tokens: 12000,
     tripsPerMonth: 10,
     model: "gemini-2.5-flash",

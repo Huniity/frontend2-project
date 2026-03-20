@@ -152,7 +152,7 @@ model UserTrophy {
 
 enum Plan {
   FREE
-  EXPLORER
+  NOMAD
   GLOBETROTTER
 }
 

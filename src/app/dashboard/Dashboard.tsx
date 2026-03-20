@@ -1,21 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { MdOutlineFlightTakeoff, MdOutlineEmojiEvents } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 import { RiUserLine } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
+import { GiMoneyStack } from "react-icons/gi";
 import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/app/auth/actions";
 import type { User, Trip, UserTrophy, Trophy } from "@/generated/prisma/client";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import Overview from "./components/Overview";
 import Settings from "./components/Settings";
 import Trophies from "./components/Trophies";
 import MyTrips from "./components/MyTrips";
 import ChatBox from "@/components/ui/chat/ChatBox";
+import Pricing from "@/components/ui/pricing/Pricing";
 
 export type UserWithRelations = User & {
   trips: (Trip & { _count: { days: number } })[];
@@ -23,10 +26,22 @@ export type UserWithRelations = User & {
   _count: { trips: number; trophies: number };
 };
 
-export type Tab = "overview" | "settings" | "trophies" | "mytrips" | "chat";
+export type Tab = "overview" | "settings" | "trophies" | "mytrips" | "chat" | "pricing";
 
 export default function Dashboard({ user, allTrophies }: { user: UserWithRelations; allTrophies: Trophy[] }) {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab") as Tab | null;
+    if (tab) setActiveTab(tab);
+
+    if (tab) {
+      router.replace("/dashboard", { scroll: false });
+    }
+  }, [searchParams]);
+
 
   const navItems = [
     { tab: "overview" as Tab, icon: MdOutlineFlightTakeoff, label: "Overview" },
@@ -34,6 +49,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
     { tab: "trophies" as Tab, icon: MdOutlineEmojiEvents, label: "Trophies" },
     { tab: "mytrips" as Tab, icon: MdOutlineFlightTakeoff, label: "My Trips" },
     { tab: "chat" as Tab, icon: MdOutlineFlightTakeoff, label: "Chat" },
+    { tab: "pricing" as Tab, icon: GiMoneyStack, label: "Pricing" },
   ];
 
   const [avatarError, setAvatarError] = useState(false);
@@ -110,10 +126,11 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
         {/* Main content */}
         <main className="ml-72 flex-1 pt-16 px-16 pb-12 min-h-screen">
           {activeTab === "overview"  && <Overview  user={user} setActiveTab={setActiveTab} />}
-          {activeTab === "settings" && <Settings />}
+          {activeTab === "settings" && <Settings user={user} />}
           {activeTab === "trophies" && <Trophies  user={user} allTrophies={allTrophies} />}
           {activeTab === "mytrips"  && <MyTrips   user={user} />}
           {activeTab === "chat"     && <ChatBox />}
+          {activeTab === "pricing" && <Pricing userPlan={user.plan} />}
         </main>
       </div>
     </div>

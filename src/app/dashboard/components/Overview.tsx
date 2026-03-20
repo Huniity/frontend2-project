@@ -2,16 +2,42 @@ import { FiChevronRight, FiEdit2 } from "react-icons/fi";
 import { MdOutlineFlightTakeoff } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import type { UserWithRelations, Tab } from "../Dashboard";
 
 const planLabel: Record<string, string> = {
   FREE: "Free",
-  EXPLORER: "Explorer",
+  NOMAD: "Nomad",
   GLOBETROTTER: "Globetrotter",
 };
 
 export default function Overview({ user, setActiveTab }: { user: UserWithRelations; setActiveTab: (tab: Tab) => void }) {
   const firstName = user.first_name ?? "Traveler";
+  const [subscriptionEnd, setSubscriptionEnd] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user.plan === "FREE") return;
+
+    const fetchSubscription = async () => {
+      try {
+        const res = await fetch("/api/stripe/subscription");
+        const data = await res.json();
+        if (data.currentPeriodEnd) {
+          setSubscriptionEnd(
+            new Date(data.currentPeriodEnd * 1000).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })
+          );
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchSubscription();
+  }, [user.plan]);
 
   return (
     <div>
@@ -35,6 +61,20 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
           <div key={label} className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
             <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">{label}</p>
             <p className={`font-bold ${small ? "text-xl mt-1" : "text-3xl"}`}>{value}</p>
+            {/* Show expiry only on the Plan card */}
+            {label === "Plan" && subscriptionEnd && (
+              <p className="text-sm text-emerald-300 font-made-outer mt-1">
+                Expires {subscriptionEnd}
+              </p>
+            )}
+            {label === "Plan" && user.plan === "FREE" && (
+              <button
+                onClick={() => setActiveTab("pricing")}
+                className="text-[11px] text-orange-400 font-made-outer mt-1 hover:text-orange-300 transition-colors bg-transparent border-none cursor-pointer p-0"
+              >
+                Upgrade →
+              </button>
+            )}
           </div>
         ))}
       </div>
@@ -100,16 +140,11 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       <div className="mt-14">
         <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
         <div className="grid grid-cols-3 gap-6">
-          {/* <Link href="/agent" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
-            <MdOutlineFlightTakeoff className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
-            <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
-            <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
-          </Link> */}
           <button onClick={() => setActiveTab("mytrips")} className="text-left border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <MdOutlineFlightTakeoff className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
-            </button>
+          </button>
           <Link href="/pricing" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <FiEdit2 className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Upgrade Plan</p>

@@ -13,6 +13,7 @@
         "Advanced itinerary planning"
       ],
       highlighted: false,
+      stripePlan: null,
     },
     {
       name: "glObEtrOttEr",
@@ -29,6 +30,7 @@
         "Travel budget tracking",
       ],
       highlighted: true,
+      stripePlan: "GLOBETROTTER" as const,
     },
     {
       name: "nOmad",
@@ -45,5 +47,6 @@
         "VIP community access",
       ],
       highlighted: false,
+      stripePlan: "NOMAD" as const,
     },
   ];
