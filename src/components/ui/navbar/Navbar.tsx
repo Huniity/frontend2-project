@@ -88,7 +88,7 @@ const Navbar = () => {
     return (
         <>
             <div
-                className={`fixed top-0 left-1/2 z-[1000] flex justify-between items-center px-8 py-8 transition-all duration-700`}
+                className={`fixed top-0 left-1/2 z-1000 flex justify-between items-center px-8 py-8 transition-all duration-700`}
                 style={{
                     // ✅ Always rendered — visibility controlled via transform + opacity
                     transform: `translateX(-50%) translateY(${!isMounted || shouldHideNavbar || hideNavbar ? '-150%' : '0'})`,
@@ -129,10 +129,11 @@ const Navbar = () => {
 
             <button
                 onClick={handleShowNavbar}
-                className={`fixed top-4 right-4 z-[1001] w-12 h-12 rounded-full transition-all duration-300 ${
+                className={`fixed top-4 right-4 z-1001 w-12 h-12 rounded-full transition-all duration-300 ${
                     isLightBackground ? 'bg-black text-white' : 'bg-white text-black'
                 } flex items-center justify-center font-bold text-lg hover:scale-110`}
                 title="Show navigation"
+                aria-label="Show navigation menu"
                 style={{
                     opacity: isMounted && isHidden && !hideNavbar ? 1 : 0,
                     pointerEvents: isMounted && isHidden && !hideNavbar ? 'auto' : 'none'

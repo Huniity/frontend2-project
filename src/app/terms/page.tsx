@@ -1,5 +1,11 @@
 import Footer from "@/components/ui/footer/Footer";
 
+export const metadata = {
+  title: "Terms & Conditions",
+  description: "Read NomadIA's Terms and Conditions to understand the rules and guidelines for using our AI travel planning services.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/terms" },
+};
+
 export default function Terms() {
   return (
     <div className="min-h-screen bg-black text-white mt-48">

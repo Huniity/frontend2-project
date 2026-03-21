@@ -13,6 +13,7 @@ const AppleButton = ({ name, showName = true, isLoading }: AppleButtonProps) => 
         <button
             type="button"
             disabled={true}
+            aria-label={showName ? undefined : "Sign up with Apple"}
             className="group border border-white/50 w-full py-3 px-7 rounded-md bg-black/90 font-made-outer text-white font-bold hover:bg-white hover:text-black transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 perspective-1000"
         >
             <FaApple

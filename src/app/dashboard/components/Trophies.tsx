@@ -90,9 +90,10 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
             const config = trophyConfig[trophy.key] ?? { icon: "🏆", color: "from-gray-400 to-gray-600", gradient: "from-gray-500/20 to-gray-600/20" };
 
             return (
-              <div
+              <button
                 key={trophy.id}
-                className={`relative group rounded-2xl overflow-hidden backdrop-blur-lg transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                aria-label={`Trophy: ${trophy.name} - ${trophy.description}`}
+                className={`relative group rounded-2xl overflow-hidden backdrop-blur-lg transition-all duration-300 transform hover:scale-105 cursor-pointer text-left ${
                   isEarned
                     ? `border border-white/20 bg-linear-to-br ${config.gradient} hover:border-white/40 hover:shadow-lg`
                     : "border border-white/10 bg-white/5 hover:border-white/20"
@@ -133,7 +134,7 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
                     <p className="text-xs text-gray-500 font-made-outer pt-2 italic">Keep exploring to unlock!</p>
                   )}
                 </div>
-              </div>
+              </button>
             );
           })}
       </div>

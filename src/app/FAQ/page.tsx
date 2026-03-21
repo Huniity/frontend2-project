@@ -12,6 +12,11 @@ import { HiCloudDownload } from "react-icons/hi";
 import { MdContactSupport } from "react-icons/md";
 import { IoAccessibility } from "react-icons/io5";
 
+export const metadata = {
+  title: "FAQ",
+  description: "Find answers to frequently asked questions about NomadIA.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/faq" },
+};
 
 const FAQ = () => {
     return (

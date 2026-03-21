@@ -209,11 +209,13 @@ const ChatBox = () => {
             isLoading ? 'nomad.ia is thinking...' :
             'Tell me about your dream trip...'
           }
+          aria-label="Message input"
           disabled={isLoading || isGenerating}
           className="flex-1 bg-white/6 backdrop-blur-md border border-white/15 rounded-xl px-6 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-white/40 focus:bg-white/10 font-made-outer text-base transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         />
         <button
           onClick={handleSend}
+          aria-label="Send message"
           disabled={isLoading || isGenerating || !input.trim()}
           className="bg-linear-to-br from-blue-500/70 to-blue-600/70 backdrop-blur-md border border-blue-400/30 rounded-xl px-5 py-3 hover:from-blue-500/90 hover:to-blue-600/90 hover:border-blue-400/50 transition-all duration-200 cursor-pointer flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
         >

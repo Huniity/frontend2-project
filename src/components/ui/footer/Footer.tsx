@@ -36,7 +36,7 @@ const Footer = () => {
                     </div>
             </div>
             <div className='py-4'>
-                <p className='text-m text-gray-400 text-center'>© <FullYear /> Nomadia. All rights reserved.</p>
+                <p className='text-m text-gray-400 text-center'>© <FullYear /> NomadIA. All rights reserved.</p>
             </div>
         </footer>
     )

@@ -2,6 +2,12 @@ import Footer from "@/components/ui/footer/Footer";
 import { GiCompass, GiEarthAmerica, GiHearts } from "react-icons/gi";
 import { MdGroups, MdTravelExplore, MdSecurity } from "react-icons/md";
 
+export const metadata = {
+  title: "About",
+  description: "Learn about NomadIA and our mission to make travel planning effortless with AI.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/about" },
+};
+
 export default function About() {
   return (
       <>

@@ -1,8 +1,15 @@
 'use client'
 
 import Footer from "@/components/ui/footer/Footer";
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { MdEmail, MdLocationOn } from "react-icons/md";
+import { IoMdArrowRoundDown } from "react-icons/io";
 import { useState } from "react";
+
+export const metadata = {
+  title: "Contact",
+  description: "Get in touch with the NomadIA team.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/contact" },
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -52,21 +59,21 @@ export default function Contact() {
                   EmaiL
                 </h3>
                 <p className="text-gray-400 font-made-outer">
-                  hello@nomadia.com
+                  support@nomadia.com
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <MdPhone className="text-white" size={40} />
+                <IoMdArrowRoundDown className="text-white" size={40} />
               </div>
               <div>
                 <h3 className="text-xl font-made-outer-alt font-black text-white mb-2">
-                  phonE
+                  Contact Us
                 </h3>
                 <p className="text-gray-400 font-made-outer">
-                  +1 (555) 123-4567
+                  Send us a message below!
                 </p>
               </div>
             </div>
@@ -80,7 +87,7 @@ export default function Contact() {
                   lOcatiOn
                 </h3>
                 <p className="text-gray-400 font-made-outer">
-                  San Francisco, CA
+                  Portugal, FARO
                 </p>
               </div>
             </div>

@@ -4,6 +4,10 @@ import DiscordButton from "@/components/ui/buttons/DiscordButton";
 import GoogleButton from "@/components/ui/buttons/GoogleButton";
 import AppleButton from "@/components/ui/buttons/AppleButton";
 
+export const metadata = {
+  title: "Sign Up",
+  robots: { index: false, follow: false },
+};
 
 const Signin = () => {
     return (

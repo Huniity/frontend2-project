@@ -3,6 +3,12 @@
 import Footer from "@/components/ui/footer/Footer";
 import { useState } from "react";
 
+export const metadata = {
+  title: "Help",
+  description: "Get help with NomadIA — guides, tutorials and support.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/help" },
+};
+
 export default function Help() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
@@ -67,38 +73,38 @@ export default function Help() {
             gEt hElp fast
           </h2>
           <div className="grid grid-cols-2 gap-4">
-            <div className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer">
+            <button className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-left">
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
                 Account & Login
               </h3>
               <p className="text-gray-400 font-made-outer text-sm">
                 Help with creating accounts, passwords, and profile settings
               </p>
-            </div>
-            <div className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer">
+            </button>
+            <button className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-left">
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
                 Bookings & Trips
               </h3>
               <p className="text-gray-400 font-made-outer text-sm">
                 Questions about booking, modifying, or canceling trips
               </p>
-            </div>
-            <div className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer">
+            </button>
+            <button className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-left">
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
                 Payments & Billing
               </h3>
               <p className="text-gray-400 font-made-outer text-sm">
                 Payment methods, invoices, and subscription management
               </p>
-            </div>
-            <div className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer">
+            </button>
+            <button className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-left">
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
                 Technical Issues
               </h3>
               <p className="text-gray-400 font-made-outer text-sm">
                 App crashes, bugs, and technical troubleshooting
               </p>
-            </div>
+            </button>
           </div>
         </section>
 

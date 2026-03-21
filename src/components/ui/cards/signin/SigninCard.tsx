@@ -49,6 +49,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     <input
                         type="text"
                         placeholder="Username"
+                        aria-label="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         disabled={isLoading}
@@ -60,6 +61,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     <input
                         type="email"
                         placeholder="Email"
+                        aria-label="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         disabled={isLoading}
@@ -74,6 +76,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     <input
                         type="password"
                         placeholder="Password"
+                        aria-label="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         disabled={isLoading}
@@ -85,6 +88,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     <input
                         type="password"
                         placeholder="Confirm Password"
+                        aria-label="Confirm Password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         disabled={isLoading}

@@ -3,6 +3,11 @@ import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma/prisma";
 import TripPageClient from "@/components/ui/trip/TripPageClient";
 
+export const metadata = {
+  title: "Trip Details",
+  robots: { index: false, follow: false },
+};
+
 export default async function TripPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 

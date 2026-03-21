@@ -62,6 +62,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
                     <input
                         type="email"
                         placeholder="Email"
+                        aria-label="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         onKeyDown={handleInputKeyDown}

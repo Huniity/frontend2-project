@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react'
 import Navbar from '@/components/ui/navbar/Navbar'
 import Footer from '@/components/ui/footer/Footer'
 
+export const metadata = {
+  title: "Blog",
+  description: "Travel tips, destination guides, and AI travel planning insights from NomadIA.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/blog" },
+};
+
 interface Post {
     id: number
     title: string

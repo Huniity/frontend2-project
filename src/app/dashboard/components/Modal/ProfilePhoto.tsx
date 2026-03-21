@@ -199,6 +199,7 @@ const ProfilePhoto = ({ isOpen, onClose }: ProfilePhotoProps) => {
           type="file"
           className="hidden"
           accept="image/*"
+          aria-label="Upload profile photo"
           onChange={handleChange}
         />
       </div>

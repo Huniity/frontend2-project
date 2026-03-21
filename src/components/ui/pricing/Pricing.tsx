@@ -36,6 +36,9 @@ const PricingComponent = ({ userPlan }: { userPlan?: string }) => {
                             </span>
                             <button
                                 onClick={() => setIsAnnual(!isAnnual)}
+                                role="switch"
+                                aria-checked={isAnnual}
+                                aria-label="Toggle between monthly and annual billing"
                                 className="relative inline-flex h-8 w-14 items-center rounded-full bg-white/10 border border-white/15 transition-colors hover:bg-white/15"
                             >
                                 <span className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${isAnnual ? "translate-x-7" : "translate-x-1"}`} />

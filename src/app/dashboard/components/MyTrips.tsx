@@ -179,6 +179,7 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     e.preventDefault();
                     setConfirmDeleteId(trip.id);
                     }}
+                    aria-label={`Delete trip ${trip.title}`}
                     className="absolute bottom-4 right-4 p-2 rounded-lg bg-white/5 border border-white/10 text-gray-500 hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-colors"
                 >
                     <FiTrash2 size={14} />
@@ -189,12 +190,14 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     <button
                     onClick={() => handleDelete(trip.id)}
                     disabled={deletingId === trip.id}
+                    aria-label="Confirm delete trip"
                     className="text-xs bg-red-500 hover:bg-red-600 text-white px-2.5 py-1 rounded-lg font-medium disabled:opacity-50 transition-colors"
                     >
                     {deletingId === trip.id ? "..." : "Yes"}
                     </button>
                     <button
                     onClick={() => setConfirmDeleteId(null)}
+                    aria-label="Cancel delete"
                     className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded-lg transition-colors"
                     >
                     No

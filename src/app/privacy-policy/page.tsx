@@ -1,5 +1,11 @@
 import Footer from "@/components/ui/footer/Footer";
 
+export const metadata = {
+  title: "Privacy Policy",
+  description: "Read NomadIA's Privacy Policy to understand how we protect your data and ensure your privacy while using our AI travel planning services.",
+  alternates: { canonical: "https://be-nomadia.vercel.app/privacy-policy" },
+};
+
 export default function Policy() {
   return (
     <div className="min-h-screen bg-black text-white mt-48">

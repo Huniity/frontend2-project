@@ -5,6 +5,10 @@ import AppleButton from "@/components/ui/buttons/AppleButton";
 import LoginCard from "@/components/ui/cards/login/LoginCard";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Login",
+  robots: { index: false, follow: false },
+};
 
 const Login = () => {
     return (

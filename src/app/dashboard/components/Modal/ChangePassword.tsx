@@ -99,6 +99,7 @@ const ChangePassword = ({ isOpen, onClose }: ChangePasswordProps) => {
           name="currentPassword"
           type="password"
           placeholder="Current password"
+          aria-label="Current password"
           required
           className="w-full px-4 py-2 bg-white/5 border border-white/15 rounded-lg text-white text-sm"
         />
@@ -106,6 +107,7 @@ const ChangePassword = ({ isOpen, onClose }: ChangePasswordProps) => {
           name="newPassword"
           type="password"
           placeholder="New password"
+          aria-label="New password"
           required
           className="w-full px-4 py-2 bg-white/5 border border-white/15 rounded-lg text-white text-sm"
         />
@@ -113,6 +115,7 @@ const ChangePassword = ({ isOpen, onClose }: ChangePasswordProps) => {
           name="confirmPassword"
           type="password"
           placeholder="Confirm new password"
+          aria-label="Confirm new password"
           required
           className="w-full px-4 py-2 bg-white/5 border border-white/15 rounded-lg text-white text-sm"
         />
