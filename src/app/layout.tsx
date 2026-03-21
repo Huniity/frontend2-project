@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "@/components/auth/AuthProvider";
 import ReloadToTop from "@/components/utils/ReloadToTop";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: {
@@ -75,6 +76,7 @@ export default function RootLayout({
           <ToastContainer position="top-center" theme="dark" />
         </div>
         <GoogleAnalytics gaId="G-5L7ZVXZ2D6" />
+        <SpeedInsights />
       </body>
     </html>
   );
