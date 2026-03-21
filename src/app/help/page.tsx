@@ -62,7 +62,7 @@ export default function Help() {
           </p>
         </div>
 
-        {/* Quick Links Section */}
+ 
         <section className="mb-16">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
             gEt hElp fast
@@ -103,7 +103,7 @@ export default function Help() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+
         <section className="mb-16">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-8">
             frEqUEntly askEd qUEstiOns
@@ -143,7 +143,6 @@ export default function Help() {
           </div>
         </section>
 
-        {/* Contact Support Section */}
         <section className="mb-16 border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
             still nEEd hElp?
@@ -163,7 +162,7 @@ export default function Help() {
                 support@nomadia.com
               </a>
               <p className="text-xs text-gray-500 font-made-outer mt-2">
-                Response time: within 24 hours
+                Response time: within 48 hours
               </p>
             </div>
             <div>
@@ -171,10 +170,10 @@ export default function Help() {
                 Live Chat
               </h3>
               <p className="text-gray-400 font-made-outer mb-2">
-                Chat with our support team in real-time
+                Coming Soon! 
               </p>
               <button className="text-white font-made-outer font-bold hover:text-gray-300 transition-colors cursor-pointer">
-                Start Chat
+                Coming Soon!
               </button>
               <p className="text-xs text-gray-500 font-made-outer mt-2">
                 Available 9 AM - 10 PM UTC
@@ -183,7 +182,7 @@ export default function Help() {
           </div>
         </section>
 
-        {/* Community Section */}
+   
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
             COmmUnity blOg
