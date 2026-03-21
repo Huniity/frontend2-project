@@ -3,11 +3,6 @@
 import Footer from "@/components/ui/footer/Footer";
 import { useState } from "react";
 
-export const metadata = {
-  title: "Help",
-  description: "Get help with NomadIA — guides, tutorials and support.",
-  alternates: { canonical: "https://be-nomadia.vercel.app/help" },
-};
 
 export default function Help() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -191,15 +186,15 @@ export default function Help() {
         {/* Community Section */}
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
-            COmmUnity fOrUm
+            COmmUnity blOg
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-6">
-            Join our community forum where nomads share tips, trip recommendations,
+            Join our community blOg where nomads share tips, trip recommendations,
             and ask questions. Our community members and team regularly answer
             questions and share travel insights.
           </p>
-          <button className="border border-white/15 rounded-lg px-6 py-3 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors font-made-outer font-bold text-white">
-            Visit Forum
+          <button onClick={() => window.location.href = "/blog"} className="border border-white/15 rounded-lg px-6 py-3 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors font-made-outer font-bold text-white">
+            Visit Blog
           </button>
         </section>
       </div>

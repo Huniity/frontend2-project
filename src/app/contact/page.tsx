@@ -5,11 +5,6 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { useState } from "react";
 
-export const metadata = {
-  title: "Contact",
-  description: "Get in touch with the NomadIA team.",
-  alternates: { canonical: "https://be-nomadia.vercel.app/contact" },
-};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
