@@ -18,7 +18,7 @@ export default async function PricingPage() {
   return (
     <section className="snap-start w-full bg-black min-h-screen">
       <div className="mt-48">
-        <PricingComponent userPlan={userPlan} />
+        <PricingComponent />
       </div>
     </section>
   );

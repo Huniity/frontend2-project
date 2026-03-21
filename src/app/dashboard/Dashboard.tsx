@@ -130,7 +130,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           {activeTab === "trophies" && <Trophies  user={user} allTrophies={allTrophies} />}
           {activeTab === "mytrips"  && <MyTrips   user={user} />}
           {activeTab === "chat"     && <ChatBox />}
-          {activeTab === "pricing" && <Pricing userPlan={user.plan} />}
+          {activeTab === "pricing" && <Pricing />}
         </main>
       </div>
     </div>
