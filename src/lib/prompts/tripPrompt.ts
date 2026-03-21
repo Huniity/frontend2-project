@@ -31,6 +31,7 @@ export function buildTripGenerationPrompt({
   budgetLevel,
   numberOfPersons,
   departureCity,
+  startDate,
 }: {
   destination: string;
   numberOfDays: number;
@@ -38,6 +39,7 @@ export function buildTripGenerationPrompt({
   budgetLevel: BudgetLevel;
   numberOfPersons: number;
   departureCity: string;
+  startDate?: string;
 }) {
   const budget = BUDGET_GUIDES[budgetLevel];
   const maxTotalBudget = budgetLevel === "LOW"
@@ -45,6 +47,10 @@ export function buildTripGenerationPrompt({
     : budgetLevel === "MEDIUM"
     ? 180 * numberOfDays * numberOfPersons
     : 500 * numberOfDays * numberOfPersons;
+
+  const dateInfo = startDate
+    ? `- Travel start date: ${startDate} — factor in seasonal pricing, weather and local events`
+    : `- Travel date: not specified — use average seasonal pricing`;
 
   return `
 You are an expert travel planner. Generate a complete and detailed trip plan as a single valid JSON object. No explanation, no markdown, just the raw JSON.
@@ -56,6 +62,7 @@ Trip details:
 - Trip type: ${tripType}
 - Budget level: ${budgetLevel} — ${budget.description}
 - Number of persons: ${numberOfPersons}
+${dateInfo}
 
 STRICT BUDGET RULES — you MUST follow these exactly:
 - Per person per day (local expenses only): $${budget.perPersonPerDay}
@@ -71,9 +78,9 @@ STRICT BUDGET RULES — you MUST follow these exactly:
 
 Return ONLY this JSON structure, nothing else:
 {
-  "title": "A creative evocative trip title (e.g. '7 Magical Days in Kyoto')",
+  "title": "A creative evocative trip title",
   "summary": "2-sentence overview of the trip",
-  "totalBudget": <number between ${Math.round(maxTotalBudget * 0.7)} and ${maxTotalBudget}, local expenses only>,
+  "totalBudget": <number between ${Math.round(maxTotalBudget * 0.7)} and ${maxTotalBudget}>,
   "budgetPerDay": <totalBudget divided by ${numberOfDays}>,
   "aiTips": [
     "Practical insider tip 1 for this destination",
@@ -94,14 +101,19 @@ Return ONLY this JSON structure, nothing else:
     "departureFrom": "${departureCity}",
     "arrivalTo": "${destination}",
     "estimatedCost": <realistic flight or transport cost per person from ${departureCity} to ${destination}>,
-    "budgetNote": "Practical tip about getting from ${departureCity} to ${destination} and estimated total flight cost for ${numberOfPersons} person(s)"
+    "budgetNote": "Practical tip about getting from ${departureCity} to ${destination} and estimated total flight cost for ${numberOfPersons} person(s)",
+    "dailyTransport": {
+      "mode": "Main local transport mode (e.g. metro, taxi, bus, tuk-tuk)",
+      "estimatedCostPerDay": <realistic daily local transport cost per person in USD>,
+      "tips": "2-3 practical tips about getting around ${destination} daily (e.g. buy metro pass, use Uber, avoid taxis at night)"
+    }
   },
   "days": [
     {
       "dayNumber": 1,
       "summary": "One sentence summary of the day theme",
       "dailyCost": <realistic daily cost for ${numberOfPersons} person(s) matching budget profile>,
-      "narrative": "3-4 sentence narrative of the day: where you go, how you get there, what transport to take between spots, total cost breakdown. Written like a travel guide.",
+      "narrative": "3-4 sentence narrative of the day: where you go, how you get there, what local transport to take between spots, costs. Written like a travel guide.",
       "activities": [
         {
           "order": 1,
@@ -111,7 +123,7 @@ Return ONLY this JSON structure, nothing else:
           "category": "<SIGHTSEEING|FOOD|ADVENTURE|CULTURE|RELAXATION|SHOPPING|TRANSPORT|OTHER>",
           "startTime": "09:00",
           "endTime": "11:00",
-          "estimatedCost": <cost per person matching: ${budget.activity} for activities, ${budget.meal} for meals>,
+          "estimatedCost": <cost per person>,
           "lat": <latitude as decimal number>,
           "lng": <longitude as decimal number>
         }
@@ -126,7 +138,8 @@ Rules:
 - Include accurate GPS coordinates (lat/lng) for EVERY activity
 - Group activities naturally into morning/afternoon/evening by their startTime
 - aiTips must be practical and specific to ${destination}
-- narrative per day must mention transport between places and estimated costs
+- narrative per day must mention local transport between places and estimated costs
+- dailyTransport.estimatedCostPerDay must match ${budgetLevel} budget level
 - STRICTLY follow the budget constraints above — totalBudget must not exceed $${maxTotalBudget}
 - Return ONLY the raw JSON, no markdown fences, no explanation
 `.trim();
