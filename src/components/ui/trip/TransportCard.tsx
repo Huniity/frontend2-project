@@ -6,7 +6,7 @@ import { FaFerry } from "react-icons/fa6";
 import { FaTruckPlane } from "react-icons/fa6";
 
 
-const MODE_EMOJI: Record<string, JSX.Element> = {
+const MODE_EMOJI: Record<string, React.ReactElement> = {
   FLIGHT: <MdFlight />,
   TRAIN: <FaTrain />,
   BUS: <FaBusAlt />,
@@ -39,7 +39,7 @@ export default function TransportCard({ transportation }: { transportation: Tran
     <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
       <div>
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-xl">{MODE_EMOJI[transportation.mode] ?? "🚀"}</span>
+          <span className="text-xl">{MODE_EMOJI[transportation.mode] ?? <FaTruckPlane />}</span>
           <h3 className="font-bold text-white text-base">Getting There</h3>
         </div>
 
