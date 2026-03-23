@@ -8,6 +8,7 @@ import AuthProvider from "@/components/auth/AuthProvider";
 import ReloadToTop from "@/components/utils/ReloadToTop";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -76,6 +77,7 @@ export default function RootLayout({
           <ToastContainer position="top-center" theme="dark" />
         </div>
         <SpeedInsights/>
+        <Analytics/>
         <GoogleAnalytics gaId="G-5L7ZVXZ2D6" />
       </body>
     </html>
