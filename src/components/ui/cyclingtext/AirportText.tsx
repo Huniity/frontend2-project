@@ -33,13 +33,10 @@ const AirportText = ({ words, intervalMs = 5000 }: AirportTextProps) => {
     return () => clearInterval(interval);
   }, [words.length, intervalMs, mounted]);
 
-  // ✅ Always render the same element type — never swap between
-  // a <span> with children and a <span> with ref, as React sees
-  // these as different nodes and crashes on navigation
   return (
     <span
       ref={mounted ? ref : undefined}
-      className="font-made-outer-alt font-black text-shadow-lg"
+      className=" font-made-outer-alt font-black text-shadow-lg"
     >
       {!mounted ? words[0] : undefined}
     </span>

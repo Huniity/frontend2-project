@@ -91,8 +91,8 @@ const HomeShape = () => {
   ];
   const leftVertex = corners[3];
   const rightVertex = corners[1];
-  const leftLineEnd  = { x: leftVertex.x  - 280, y: leftVertex.y };
-  const rightLineEnd = { x: rightVertex.x + 280, y: rightVertex.y };
+  const leftLineEnd  = { x: leftVertex.x  - 345, y: leftVertex.y };
+  const rightLineEnd = { x: rightVertex.x + 345, y: rightVertex.y };
   const squarePoints = corners.map((c) => `${c.x},${c.y}`).join(" ");
 
   return (
@@ -146,7 +146,7 @@ const HomeShape = () => {
       {/* Text left */}
       <h1
         ref={textLeftRef}
-        className="absolute text-white text-6xl font-made-outer-alt pointer-events-none text-shadow-lg"
+        className=" absolute text-white xl:text-6xl xl:pb-5 font-made-outer-alt pointer-events-none text-shadow-lg"
         style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
@@ -155,8 +155,15 @@ const HomeShape = () => {
       {/* Text right */}
       <div
         ref={textRightRef}
-        className="absolute text-white text-6xl font-made-outer-alt pointer-events-none"
-        style={{ right: "13%", top: "52%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
+        className="absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center"
+        style={{ 
+          right: "27%", 
+          top: "51.5%", 
+          transform: "translateX(50%) translateY(-50%)", // ← center the div itself too
+          width: "500px",
+          zIndex: 1, 
+          willChange: "transform, opacity",
+        }}
       >
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
@@ -182,11 +189,11 @@ const HomeShape = () => {
         style={{ zIndex: 10 }}
       >
         <div className="text-center gap-12 flex flex-col items-center justify-center">
-          <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
+          {/* <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
             <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
             <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
             <h1 className="text-[8rem] font-made-outer-alt font-black mb-10 leading-12">works</h1>
-          </div>
+          </div> */}
           <HowItWorks />
         </div>
       </div>
