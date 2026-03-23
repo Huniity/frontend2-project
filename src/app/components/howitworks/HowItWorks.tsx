@@ -41,44 +41,39 @@ const HowItWorks = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
-            <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
-            <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
-            <h1 className="text-[8rem] font-made-outer-alt font-black mb-10 leading-12">works</h1>
+        <h1 className="text-center xl:text-left text-6xl xl:text-[12rem] font-made-outer-alt font-black mt-20 leading-10 xl:mb-12 xl:leading-24 pt-4">how</h1>
+        <h1 className="text-center xl:text-left text-6xl xl:text-[10rem] font-made-outer-alt font-black xl:mb-12 xl:leading-17">it</h1>
+        <h1 className="text-center xl:text-left text-6xl xl:text-[8rem] font-made-outer-alt font-black mb-10 leading-10 xl:mb-10 xl:leading-12">works</h1>
       </div>
-      <div 
-        className="grid gap-12 w-full max-w-5xl place-items-center"
-        style={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'
-        }}
-      >
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl place-items-center px-4">
         {steps.map((step) => (
           <div key={step.number} className="w-full h-70">
-            <div 
+            <div
               className="p-0.5 rounded-2xl relative h-full w-full backdrop-blur-md flex flex-col shrink-0"
               style={{
                 background: 'linear-gradient(-30deg, rgba(255, 255, 255, 0.05), transparent, rgba(255, 255, 255, 0.05))',
                 backgroundColor: 'rgba(15, 15, 15, 0.6)'
               }}
             >
-              <div 
+              <div
                 className="border-2 rounded-2xl absolute inset-0 pointer-events-none"
                 style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
               ></div>
-              <div 
+              <div
                 className="border-2 rounded-2xl absolute inset-0 pointer-events-none"
-                style={{ 
+                style={{
                   borderColor: 'rgba(255, 255, 255, 0.3)',
                   filter: 'blur(1px)'
                 }}
               ></div>
-              <div 
+              <div
                 className="border-2 rounded-2xl absolute inset-0 pointer-events-none"
-                style={{ 
+                style={{
                   borderColor: 'rgba(255, 255, 255, 0.15)',
                   filter: 'blur(4px)'
                 }}
               ></div>
-              <div 
+              <div
                 className="absolute inset-0 rounded-2xl pointer-events-none opacity-40"
                 style={{
                   background: 'linear-gradient(-30deg, rgba(255, 255, 255, 0.1), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.05))',
@@ -87,10 +82,10 @@ const HowItWorks = () => {
                   filter: 'blur(16px)'
                 }}
               ></div>
-              
-              <div className="relative z-10 p-6 flex flex-col justify-start items-center text-center w-full h-full gap-2">
-                <div className="mt-2 flex items-center justify-center shrink-0">
-                  <div 
+
+              <div className="relative z-10 p-4 xl:p-6 flex flex-col justify-start items-center text-center w-full h-full gap-2">
+                <div className="xl:mt-2 flex items-center justify-center shrink-0">
+                  <div
                     className="w-12 h-12 rounded-full border-2 flex items-center justify-center backdrop-blur-md shrink-0"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05))',
@@ -101,7 +96,7 @@ const HowItWorks = () => {
                   </div>
                 </div>
 
-                <div className="mt-2 flex items-center justify-center shrink-0 group">
+                <div className="xl:mt-2 flex items-center justify-center shrink-0 group">
                   <div className="text-white/80 transition-all duration-300 flex items-center justify-center h-6 shrink-0 group-hover:scale-110 group-hover:text-white">
                     {step.icon}
                   </div>

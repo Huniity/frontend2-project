@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AirportText from "../../../components/ui/cyclingtext/AirportText";
@@ -15,10 +15,11 @@ const HomeShape = () => {
   const textLeftRef = useRef<HTMLHeadingElement>(null);
   const textRightRef = useRef<HTMLDivElement>(null);
   const nextSectionRef = useRef<HTMLDivElement>(null);
-
+  const [dynamicSquareSize, setDynamicSquareSize] = useState(67);
+  
   useEffect(() => {
     ScrollTrigger.refresh();
-
+    
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
     const size = Math.min(window.innerWidth, window.innerHeight) * 0.15;
@@ -74,15 +75,31 @@ const HomeShape = () => {
       tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.75);
       tl.to(nextSectionRef.current, { duration: 0.5 }, 1.05);
     }, sectionRef);
+    
+    const updateSquareSize = () => {
+    const w = window.innerWidth;
+      if (w < 768) {
+        setDynamicSquareSize(105);        // mobile
+      } else if (w < 1280) {
+        setDynamicSquareSize(50);     // tablet
+      } else {
+        setDynamicSquareSize(67);    // desktop
+      }
+  };
+  updateSquareSize();
+  window.addEventListener("resize", updateSquareSize);
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
       ctx.revert();
+      window.removeEventListener("resize", updateSquareSize);
     };
   }, []);
 
+
+
   const squareCenter = { x: 500, y: 425 };
-  const squareSize = 67;
+  const squareSize = dynamicSquareSize;
   const corners = [
     { x: squareCenter.x,              y: squareCenter.y - squareSize },
     { x: squareCenter.x + squareSize, y: squareCenter.y },
@@ -122,7 +139,7 @@ const HomeShape = () => {
           ref={imageRef}
           style={{
             position: "absolute", inset: 0,
-            backgroundImage: "url(/city2.jpg)",
+            backgroundImage: "url(/city.jpg)",
             backgroundSize: "cover", backgroundPosition: "center",
             clipPath: "url(#diamond-clip)",
           }}
@@ -146,7 +163,7 @@ const HomeShape = () => {
       {/* Text left */}
       <h1
         ref={textLeftRef}
-        className=" absolute text-white xl:text-6xl xl:pb-5 font-made-outer-alt pointer-events-none text-shadow-lg"
+        className="ml-8 pb-45 text-4xl absolute text-white xl:text-6xl xl:pb-5 font-made-outer-alt pointer-events-none text-shadow-lg"
         style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
@@ -155,7 +172,7 @@ const HomeShape = () => {
       {/* Text right */}
       <div
         ref={textRightRef}
-        className="absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center"
+        className="mr-25 pt-60 text-4xl absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center"
         style={{ 
           right: "27%", 
           top: "51.5%", 
@@ -188,14 +205,14 @@ const HomeShape = () => {
         className="absolute inset-0 flex flex-col h-full w-full justify-start items-center gap-2 pt-40 opacity-0"
         style={{ zIndex: 10 }}
       >
-        <div className="text-center gap-12 flex flex-col items-center justify-center">
-          {/* <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
+        {/* <div className="text-center gap-12 flex flex-col items-center justify-center">
+          <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
             <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
             <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
             <h1 className="text-[8rem] font-made-outer-alt font-black mb-10 leading-12">works</h1>
-          </div> */}
+          </div>
+        </div> */}
           <HowItWorks />
-        </div>
       </div>
     </div>
   );

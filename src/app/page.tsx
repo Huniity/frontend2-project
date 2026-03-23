@@ -1,16 +1,3 @@
-import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
-import Counter from "@/components/ui/counter/Counter";
-import Link from "next/link";
-import Card from "@/components/ui/cards/subcard/SubCard";
-import GoldCard from "@/components/ui/cards/goldcard/GoldCard";
-import PlanButton from "@/components/ui/buttons/PlanButton";
-import { Button } from "@/components/ui/buttons/Button";
-import { PiNumberCircleSevenBold } from "react-icons/pi";
-import { HiOutlineReceiptTax } from "react-icons/hi";
-import { TbCancel } from "react-icons/tb";
-import { RiSecurePaymentFill } from "react-icons/ri";
-import { MdOutlineHourglassDisabled } from "react-icons/md";
-import HowItWorks from "@/app/components/howitworks/HowItWorks";
 import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
 import HomeShape from "@/app/components/intro/Intro";
 import Footer from "@/components/ui/footer/Footer";
@@ -18,6 +5,7 @@ import Cta from "@/app/components/cta/Cta";
 import Reviews from "./components/Reviews/Reviews";
 import Pricing from "./components/pricing/Pricing";
 import Counters from "./components/counter/Counters";
+import HowItWorks from "./components/howitworks/HowItWorks";
 
 export default function Home() {
   const jsonLd = {
@@ -52,13 +40,15 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HomeShape />
       <Counters />
+      {/* 
+      <HomeShape />
+      <HowItWorks />
       <DreamDestinations />
       <Pricing />
       <Reviews />
       <Cta />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }
