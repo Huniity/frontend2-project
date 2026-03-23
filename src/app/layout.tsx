@@ -74,11 +74,13 @@ export default function RootLayout({
               {children}
             </AuthProvider>
           </SubPlanProvider>
+        
           <ToastContainer position="top-center" theme="dark" />
+          
+          <SpeedInsights/>
+          <Analytics/>
+          <GoogleAnalytics gaId="G-5L7ZVXZ2D6" />
         </div>
-        <SpeedInsights/>
-        <Analytics/>
-        <GoogleAnalytics gaId="G-5L7ZVXZ2D6" />
       </body>
     </html>
   );
