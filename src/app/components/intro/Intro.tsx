@@ -73,7 +73,7 @@ const HomeShape = () => {
       );
 
       tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.4);
-      tl.to(nextSectionRef.current, { duration: 0.5 }, 0.75);
+      tl.to(nextSectionRef.current, { duration: 0.2 }, 0.25);
     }, sectionRef);
     
     const updateSquareSize = () => {

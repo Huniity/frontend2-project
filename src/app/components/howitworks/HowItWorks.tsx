@@ -1,6 +1,7 @@
 'use client';
 
 import { MapPin, Calendar, Sparkles, CheckCircle } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface Step {
   icon: React.ReactNode;
@@ -8,6 +9,8 @@ interface Step {
   title: string;
   description: string;
 }
+
+
 
 const HowItWorks = () => {
   const steps: Step[] = [
@@ -39,12 +42,12 @@ const HowItWorks = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
-        <h1 className="text-center xl:text-left text-6xl xl:text-[12rem] font-made-outer-alt font-black leading-10 xl:mb-12 xl:leading-24 pt-4">how</h1>
+      <div className="bg-gradient-to-b from-black to-white bg-clip-text text-transparent drop-shadow-lg">
+        <h1 className=" text-center xl:text-left text-6xl xl:text-[12rem] font-made-outer-alt font-black leading-10 xl:mb-12 xl:leading-24 pt-4">how</h1>
         <h1 className="text-center xl:text-left text-6xl xl:text-[10rem] font-made-outer-alt font-black xl:mb-12 xl:leading-17">it</h1>
         <h1 className="text-center xl:text-left text-6xl xl:text-[8rem] font-made-outer-alt font-black mb-10 leading-10 xl:mb-10 xl:leading-12">works</h1>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl place-items-center px-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl place-items-center px-4 mt-10">
         {steps.map((step) => (
           <div
             key={step.number}
@@ -52,7 +55,7 @@ const HowItWorks = () => {
           >
             <div className="p-6 flex flex-col items-center text-center h-full gap-3">
 
-              {/* Number circle */}
+              
               <div
                 className="w-12 h-12 rounded-full border-2 flex items-center justify-center shrink-0"
                 style={{
@@ -63,15 +66,15 @@ const HowItWorks = () => {
                 <span className="text-xl font-black text-white font-made-outer-alt">{step.number}</span>
               </div>
 
-              {/* Icon */}
+              
               <div className="text-white/80 flex items-center justify-center h-6 shrink-0">
                 {step.icon}
               </div>
 
-              {/* Title */}
+              
               <h3 className="text-base font-bold text-white font-made-outer-alt">{step.title}</h3>
 
-              {/* Description */}
+             
               <p className="text-xs text-gray-300 font-made-outer">{step.description}</p>
 
             </div>

@@ -10,18 +10,17 @@ const Navbar = () => {
     const pathname = usePathname();
     const [isShrunken, setIsShrunken] = useState(false);
     const [isLightBackground, setIsLightBackground] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const [forceShowNavbar, setForceShowNavbar] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const prevScrollY = useRef(0);
     const forceShowTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+    const isMountedRef = useRef(true);
 
     const hideNavbar = pathname.includes('/dashboard') || pathname.includes('/trophies');
 
     useEffect(() => {
-        setIsMounted(true);
         const checkAuth = async () => {
             const supabase = createClient();
             const { data: { user } } = await supabase.auth.getUser();
@@ -31,7 +30,7 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (!isMounted || hideNavbar) return;
+        if (!isMountedRef.current || hideNavbar) return;
 
         const navbarHeight = 20;
         let animationFrameId: number;
@@ -89,7 +88,7 @@ const Navbar = () => {
             window.removeEventListener('scroll', onScroll);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [isMounted, hideNavbar]);
+    }, [hideNavbar]);
 
     useEffect(() => {
         setIsHidden(false);
@@ -121,11 +120,11 @@ const Navbar = () => {
 
     return (
         <>
-            {/* ── Desktop Navbar ── */}
+            {/*Desktop Navbar*/}
             <div
                 className={`fixed top-0 left-1/2 z-1000 hidden md:flex justify-between items-center px-8 py-8 transition-all duration-700`}
                 style={{
-                    transform: `translateX(-50%) translateY(${!isMounted || shouldHideNavbar || hideNavbar ? '-150%' : '0'})`,
+                    transform: `translateX(-50%) translateY(${shouldHideNavbar || hideNavbar ? '-150%' : '0'})`,
                     width: isShrunken ? '90%' : '100%',
                     maxWidth: isShrunken ? '80rem' : 'none',
                     background: isShrunken ? 'rgba(255,255,255,0.1)' : 'transparent',
@@ -161,10 +160,10 @@ const Navbar = () => {
                 </nav>
             </div>
 
-            {/* ── Mobile Navbar ── */}
+            {/* Mobile Navbar */}
             <div
                 className={`fixed top-0 left-0 right-0 z-1000 md:hidden flex items-center justify-between px-5 py-4 transition-all duration-500 ${
-                    !isMounted || hideNavbar ? '-translate-y-full' : 'translate-y-0'
+                    hideNavbar ? '-translate-y-full' : 'translate-y-0'
                 }`}
                 style={{
                     background: isShrunken || mobileMenuOpen ? 'rgba(0,0,0,0.85)' : 'transparent',
@@ -172,7 +171,6 @@ const Navbar = () => {
                     borderBottom: mobileMenuOpen ? '1px solid rgba(255,255,255,0.1)' : 'none',
                 }}
             >
-                {/* Logo */}
                 <Link
                     href="/"
                     onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setMobileMenuOpen(false); }}
@@ -181,7 +179,6 @@ const Navbar = () => {
                     NOMADIA
                 </Link>
 
-                {/* Burger button */}
                 <button
                     onClick={() => setMobileMenuOpen((o) => !o)}
                     className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -193,7 +190,7 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* ── Mobile Dropdown Menu ── */}
+            {/* Mobile */}
             <div
                 className={`fixed top-15 left-0 right-0 z-999 md:hidden transition-all duration-500 ${
                     mobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -252,8 +249,8 @@ const Navbar = () => {
                 title="Show navigation"
                 aria-label="Show navigation menu"
                 style={{
-                    opacity: isMounted && isHidden && !hideNavbar ? 1 : 0,
-                    pointerEvents: isMounted && isHidden && !hideNavbar ? 'auto' : 'none',
+                    opacity: isHidden && !hideNavbar ? 1 : 0,
+                    pointerEvents: isHidden && !hideNavbar ? 'auto' : 'none',
                 }}
             >
                 <Menu />

@@ -24,35 +24,32 @@ const Reviews = () => {
   return (
     <section className="snap-start w-full py-32">
       <div className="flex flex-col w-full justify-center items-center gap-20 px-4">
-        {/* Header */}
         <div className="flex flex-col items-center gap-3">
-          <h1 className="text-5xl md:text-7xl font-made-outer-alt font-black text-white text-center max-w-3xl">
+          <h1 className="text-5xl md:text-5xl font-made-outer-alt font-black text-white text-center max-w-3xl">
             Rated by the Road
           </h1>
-          <h2 className="text-xl md:text-2xl font-made-outer-alt font-semibold text-gray-400 text-center max-w-2xl">
+          <h2 className="text-xl md:text-3xl font-made-outer-alt font-semibold text-gray-400 text-center max-w-2xl">
             Loved by the Nomads
           </h2>
         </div>
 
-        {/* Featured Testimonial */}
-        <div className="w-full max-w-3xl">
+        <div className="w-full max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.7 }}
               className="flex flex-col items-center text-center gap-8"
             >
-              {/* Quote */}
+         
               <div className="space-y-4">
-                <p className="text-2xl md:text-4xl font-made-outer text-white italic leading-relaxed">
-                  "{testimonials[current].description}"
+                <p className="text-2xl md:text-3xl font-made-outer text-white italic leading-relaxed">
+                  &quot;{testimonials[current].description}&quot;
                 </p>
               </div>
 
-              {/* Author */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="text-lg font-black text-white">
@@ -74,7 +71,6 @@ const Reviews = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation */}
           <div className="flex items-center justify-center gap-6 mt-12">
             <button
               onClick={prev}
@@ -83,22 +79,6 @@ const Reviews = () => {
             >
               <ChevronLeft size={24} />
             </button>
-
-            {/* Dots */}
-            {/* <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`transition-all duration-300 rounded-full ${
-                    index === current
-                      ? 'w-8 h-3 bg-white'
-                      : 'w-3 h-3 bg-gray-600 hover:bg-gray-500'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div> */}
 
             <button
               onClick={next}

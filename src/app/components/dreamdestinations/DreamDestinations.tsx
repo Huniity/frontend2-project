@@ -2,7 +2,10 @@
 
 import { Eye, Sparkles, Trees, Sun, MapPin, Flame, Waves, Cloud, Navigation } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
 interface Feature {
   icon: React.ReactNode;
@@ -11,6 +14,10 @@ interface Feature {
 }
 
 const DreamDestinations = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const features: Feature[] = [
     { icon: <Eye size={32} />, title: "Vast pEaks", image: "/anapurna.webp" },
     { icon: <Waves size={32} />, title: "MEsmErizing Sand", image: "/blacksand.webp" },
@@ -24,10 +31,34 @@ const DreamDestinations = () => {
     { icon: <Sparkles size={32} />, title: "City lights", image: "/tokyo3.webp" },
   ];
 
-  const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const loopFeatures = [...features, ...features];
 
   useEffect(() => {
-    // Lazy load background images with Intersection Observer
+    const ctx = gsap.context(() => {
+
+      const track = trackRef.current;
+
+      if (!track) return;
+
+      const totalWidth = track.scrollWidth / 2;
+
+      gsap.to(track, {
+        x: -totalWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -52,94 +83,66 @@ const DreamDestinations = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col xl:justify-start xl:items-center">
-      <div className="mb-16">
-        <div className="flex flex-col mt-54">
+    <div className="w-full flex flex-col items-center">
+
+      <div className="mb-16 mt-54">
         <h1
-          className="px-4.5 text-left font-black font-made-outer-alt"
+          className="px-4.5 font-black font-made-outer-alt"
           style={{
             backgroundImage: "url(/hawaii1.avif)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundAttachment: "scroll",
+            backgroundAttachment: "fixed",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            overflow: "visible",
             lineHeight: "0.75",
           }}
         >
-          <span className="block text-[5rem] xl:text-[16rem] pb-2 xl:pb-0 font-made-outer-alt">drEam</span>
-          <span className="block text-[2.5rem] xl:text-[10rem] mb-40 ml-1 font-made-outer-alt">dEstinations</span>
+          <span className="font-made-outer-alt block text-[5rem] xl:text-[16rem]">drEam</span>
+          <span className="font-made-outer-alt block text-[2.5rem] xl:text-[10rem] mb-80 ml-1">
+            dEstinations
+          </span>
         </h1>
       </div>
-        {/* <div className="flex flex-col mt-54">
-          <h1
-            className="px-4.5 text-left text-[5rem] xl:text-[16rem] font-black font-made-outer-alt"
-            style={{
-              backgroundImage: "url(/hawaii1.avif)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "scroll",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              lineHeight: "0",
-              paddingTop: "0.30em",
-              paddingBottom: "0.40em",
-              overflow: "visible",
-            }}
-          >
-            drEam
-          </h1>
-          <h1
-            className="px-5 text-left text-[2.5rem] xl:text-[10rem] font-black font-made-outer-alt"
-            style={{
-              backgroundImage: "url(/hawaii1.avif)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "scroll",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              lineHeight: "0",
-              paddingTop: "0.35em",
-              paddingBottom: "0.5em",
-              overflow: "visible",
-            }}
-          >
-            dEstinations
-          </h1>
-        </div> */}
+
+
+      <div
+        ref={containerRef}
+        className="w-full overflow-hidden mb-48"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        }}
+      >
+        <div
+          ref={trackRef}
+          className="flex gap-6 w-max px-5"
+        >
+          {loopFeatures.map((feature, index) => (
+            <div
+              key={index}
+              ref={(el) => {
+                imagesRef.current[index] = el;
+              }}
+              className="relative rounded-2xl border border-white/15 w-48 h-48 shrink-0"
+              data-bg-image={feature.image}
+              style={{
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundColor: 'rgba(255,255,255,0.05)',
+              }}
+            >
+              <div className="flex flex-col items-center justify-end h-full pb-6 gap-3">
+                <div className="text-white/80">{feature.icon}</div>
+                <p className="text-white text-sm text-center font-bold font-made-outer-alt">
+                  {feature.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="px-5 mb-48 grid grid-cols-2 md:grid-cols-5 gap-6 w-full max-w-6xl place-items-center">
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              imagesRef.current[index] = el;
-            }}
-            className="relative rounded-2xl overflow-hidden border border-white/15 hover:border-white/25 transition-all duration-300 w-full h-48"
-            data-bg-image={feature.image}
-            style={{
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            }}
-          >
-            {/* Dark overlay */}
-            <div className="relative z-10 flex flex-col items-center justify-end pb-6 h-full gap-3 group hover:gap-4 transition-all duration-300">
-              <div className="text-white/80 group-hover:text-white group-hover:scale-110 transform transition-all duration-300">
-                {feature.icon}
-              </div>
-              <p className="text-white font-bold text-center font-made-outer-alt text-sm md:text-base">
-                {feature.title}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

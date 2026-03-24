@@ -5,7 +5,7 @@ import Cta from "@/app/components/cta/Cta";
 import Reviews from "./components/Reviews/Reviews";
 import Pricing from "./components/pricing/Pricing";
 import Counters from "./components/counter/Counters";
-import HowItWorks from "./components/howitworks/HowItWorks";
+
 
 export default function Home() {
   const jsonLd = {

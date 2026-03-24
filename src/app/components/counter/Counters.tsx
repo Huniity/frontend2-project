@@ -3,8 +3,11 @@ import Counter from "@/components/ui/counter/Counter";
 const Counters = () => {
     return (
       <section className="snap-start w-full min-h-screen relative flex flex-col justify-center items-center px-6 xl:px-24 py-24 gap-6 mt-10">
-        <h1 className="text-3xl xl:text-6xl font-made-outer-alt font-normal text-white text-center xl:text-left w-full xl:pl-36 text-shadow-lg">
-          Trusted by modern travelers worldwide
+        <h1 className=" text-3xl xl:text-7xl font-made-outer-alt font-normal text-white text-center xl:text-center w-full text-shadow-lg">
+          TrUstEd by modErn travElErs
+        </h1>
+        <h1 className="mb-36 text-3xl xl:text-6xl font-made-outer-alt font-normal text-gray-400 text-center xl:text-center w-full text-shadow-lg">
+          worlwidE
         </h1>
         <div className="grid grid-cols-1 xl:flex xl:flex-row w-full justify-center items-center xl:gap-24 text-shadow-lg">
           <div className="relative p-12 h-64 flex flex-col justify-center items-center">

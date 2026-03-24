@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { Check, Flame, Circle, Receipt, X, CreditCard, Timer, TimerOff, ShieldCheck, Calendar1, ReceiptText, BookmarkX  } from "lucide-react";
+import { Check, Flame, TimerOff, ShieldCheck, Calendar1, ReceiptText, BookmarkX } from "lucide-react";
 import UpgradeButton from "@/components/ui/buttons/UpgradeButton";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { pricing } from "@/lib/utils/pricing";
-import { Button } from "@/components/ui/buttons/Button";
 
 const PricingComponent = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -30,7 +29,7 @@ const PricingComponent = () => {
     checkAuth();
   }, []);
 
-  const renderButton = (plan: any) => {
+  const renderButton = (plan: typeof pricing[number]) => {
     if (loading) {
       return (
         <button disabled className="w-full py-3 rounded-lg font-made-outer font-bold mb-8 border border-white/10 text-gray-600 cursor-not-allowed">
@@ -44,11 +43,10 @@ const PricingComponent = () => {
       return (
         <button
           onClick={() => router.push("/signin")}
-          className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${
-            plan.highlighted
+          className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${plan.highlighted
               ? "bg-white text-black hover:bg-gray-100"
               : "border border-white/20 text-white hover:bg-white/10 hover:border-white/40"
-          }`}
+            }`}
         >
           Get Started
         </button>
@@ -98,11 +96,10 @@ const PricingComponent = () => {
         plan={plan.stripePlan}
         interval={isAnnual ? "annual" : "monthly"}
         label="Get Started"
-        className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${
-          plan.highlighted
+        className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${plan.highlighted
             ? "bg-white text-black hover:bg-gray-100"
             : "border border-white/20 text-white hover:bg-white/10 hover:border-white/40"
-        }`}
+          }`}
       />
     );
   };
@@ -146,11 +143,10 @@ const PricingComponent = () => {
           {pricing.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
-                plan.highlighted
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${plan.highlighted
                   ? "border-2 border-white/30 bg-white/10 backdrop-blur-xl scale-105 md:scale-110"
                   : "border border-white/15 bg-white/5 backdrop-blur-lg hover:bg-white/8 hover:border-white/25"
-              }`}
+                }`}
             >
               <div className="p-8">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -202,22 +198,37 @@ const PricingComponent = () => {
           ))}
         </div>
 
-        <div className="flex flex-row gap-2 w-full justify-center flex-wrap mt-[-100]">
-          <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <Calendar1 size="18px" />
-          </Button>
-          <Button name="VAT Included" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <ReceiptText size="18px" />
-          </Button>
-          <Button name="Cancel Anytime" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <BookmarkX size="18px" />
-          </Button>
-          <Button name="Secure Payment" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <ShieldCheck size="18px" />
-          </Button>
-          <Button name="Instant Access" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <TimerOff size="18px" />
-          </Button>
+        <div className="flex flex-row gap-2 w-full justify-center flex-wrap mt-[-100] ">
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
+            <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
+              <Calendar1 size={18} />
+              7 Days Free Trial
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
+            <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
+              <ReceiptText size={18} />
+              VAT Included
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
+            <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
+              <BookmarkX size={18} />
+              Cancel Anytime
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
+            <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
+              <ShieldCheck size={18} />
+              Secure Payment
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
+            <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
+              <TimerOff size={18} />
+              Instant Access
+            </p>
+          </div>
         </div>
       </div>
     </div>
