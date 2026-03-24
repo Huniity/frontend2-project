@@ -19,7 +19,7 @@ const HomeShape = () => {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [diamondSize, setDiamondSize] = useState(0);
 
-  // --- Track window size ---
+  // --- Track window size via visualViewport ---
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -32,7 +32,7 @@ const HomeShape = () => {
 
     window.addEventListener("resize", handleResize);
     window.visualViewport?.addEventListener("resize", handleResize);
-    window.visualViewport?.addEventListener("scroll", handleResize); // fires when browser bar shows/hides
+    window.visualViewport?.addEventListener("scroll", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -41,57 +41,21 @@ const HomeShape = () => {
     };
   }, []);
 
-  // --- Update diamond image and SVG decorators ---
+  // --- Update diamond image clip-path only ---
   useEffect(() => {
-    const updateDiamond = () => {
-      const cx = windowSize.width / 2;
-      const cy = windowSize.height / 2;
-      const size = diamondSize;
+    const cx = windowSize.width / 2;
+    const cy = windowSize.height / 2;
+    const size = diamondSize;
 
-      // Update image clip-path
-      if (imageRef.current) {
-        imageRef.current.style.clipPath = `polygon(
-          ${cx}px ${cy - size}px,
-          ${cx + size}px ${cy}px,
-          ${cx}px ${cy + size}px,
-          ${cx - size}px ${cy}px
-        )`;
-      }
-
-      // Update SVG decorators
-      if (decoratorsRef.current) {
-        const corners = [
-          { x: cx, y: cy - size },
-          { x: cx + size, y: cy },
-          { x: cx, y: cy + size },
-          { x: cx - size, y: cy },
-        ];
-        const leftVertex = corners[3];
-        const rightVertex = corners[1];
-        const leftLineEnd = { x: leftVertex.x - 600, y: leftVertex.y };
-        const rightLineEnd = { x: rightVertex.x + 600, y: rightVertex.y };
-        const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
-
-        const polygonEl = decoratorsRef.current.querySelector("polygon");
-        const lines = decoratorsRef.current.querySelectorAll("line");
-
-        if (polygonEl) polygonEl.setAttribute("points", squarePoints);
-        if (lines[0]) {
-          lines[0].setAttribute("x1", String(leftVertex.x));
-          lines[0].setAttribute("y1", String(leftVertex.y));
-          lines[0].setAttribute("x2", String(leftLineEnd.x));
-          lines[0].setAttribute("y2", String(leftLineEnd.y));
-        }
-        if (lines[1]) {
-          lines[1].setAttribute("x1", String(rightVertex.x));
-          lines[1].setAttribute("y1", String(rightVertex.y));
-          lines[1].setAttribute("x2", String(rightLineEnd.x));
-          lines[1].setAttribute("y2", String(rightLineEnd.y));
-        }
-      }
-    };
-
-    updateDiamond();
+    if (imageRef.current) {
+      imageRef.current.style.clipPath = `polygon(
+        ${cx}px ${cy - size}px,
+        ${cx + size}px ${cy}px,
+        ${cx}px ${cy + size}px,
+        ${cx - size}px ${cy}px
+      )`;
+    }
+    // SVG decorators are driven by React state below — no imperative updates needed
   }, [windowSize, diamondSize]);
 
   // --- GSAP scroll animation ---
@@ -115,12 +79,10 @@ const HomeShape = () => {
         },
       });
 
-      // Animate text and decorators
       tl.to(decoratorsRef.current, { opacity: 0, duration: 0.2, ease: "power1.out" }, 0);
       tl.to(textLeftRef.current, { x: 250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
       tl.to(textRightRef.current, { x: -250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
 
-      // Animate diamond image
       tl.to(imageRef.current, {
         clipPath: `polygon(
           ${cx}px ${cy - expand}px,
@@ -132,7 +94,6 @@ const HomeShape = () => {
         ease: "power2.inOut",
       }, 0.1);
 
-      // Show next section
       tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.4);
     }, sectionRef);
 
@@ -142,47 +103,26 @@ const HomeShape = () => {
     };
   }, [windowSize, diamondSize]);
 
-  // --- Lazy load background image ---
-  useEffect(() => {
-    const imageElement = imageRef.current;
-    if (!imageElement) return;
+  // --- Calculate SVG decorator positions from state ---
+  const cx = windowSize.width / 2;
+  const cy = windowSize.height / 2;
+  const size = diamondSize;
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const bgImageUrl = imageElement.getAttribute("data-bg-image");
-            if (bgImageUrl) {
-              imageElement.style.backgroundImage = `url(${bgImageUrl})`;
-              observer.unobserve(imageElement);
-            }
-          }
-        });
-      },
-      { rootMargin: "50px" }
-    );
-
-    observer.observe(imageElement);
-    return () => observer.disconnect();
-  }, []);
-
-  // --- Calculate SVG decorator positions ---
-  const squareCenter = { x: windowSize.width / 2, y: windowSize.height / 2 };
-  const squareSize = diamondSize;
   const corners = [
-    { x: squareCenter.x, y: squareCenter.y - squareSize },
-    { x: squareCenter.x + squareSize, y: squareCenter.y },
-    { x: squareCenter.x, y: squareCenter.y + squareSize },
-    { x: squareCenter.x - squareSize, y: squareCenter.y },
+    { x: cx,        y: cy - size },
+    { x: cx + size, y: cy        },
+    { x: cx,        y: cy + size },
+    { x: cx - size, y: cy        },
   ];
-  const leftVertex = corners[3];
-  const rightVertex = corners[1];
-  const leftLineEnd = { x: leftVertex.x - 600, y: leftVertex.y };
+  const leftVertex   = corners[3];
+  const rightVertex  = corners[1];
+  const leftLineEnd  = { x: leftVertex.x  - 600, y: leftVertex.y  };
   const rightLineEnd = { x: rightVertex.x + 600, y: rightVertex.y };
-  const squarePoints = corners.map(c => `${c.x},${c.y}`).join(",");
+  const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
 
   return (
     <div ref={sectionRef} className="relative w-full h-screen overflow-hidden">
+
       {/* Diamond Image */}
       <div
         ref={imageRef}
@@ -192,27 +132,27 @@ const HomeShape = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           clipPath: `polygon(
-            ${squareCenter.x}px ${squareCenter.y - squareSize}px,
-            ${squareCenter.x + squareSize}px ${squareCenter.y}px,
-            ${squareCenter.x}px ${squareCenter.y + squareSize}px,
-            ${squareCenter.x - squareSize}px ${squareCenter.y}px
+            ${cx}px ${cy - size}px,
+            ${cx + size}px ${cy}px,
+            ${cx}px ${cy + size}px,
+            ${cx - size}px ${cy}px
           )`,
-          filter:
-            "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
+          filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
         }}
       />
 
-      {/* SVG decorators */}
+      {/* SVG decorators — driven purely by React state */}
       <svg
         width="100%"
         height="100%"
         viewBox={`0 0 ${windowSize.width} ${windowSize.height}`}
+        preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: 3, pointerEvents: "none" }}
       >
         <g ref={decoratorsRef}>
           <polygon points={squarePoints} fill="none" stroke="white" strokeWidth="2" />
-          <line x1={leftVertex.x} y1={leftVertex.y} x2={leftLineEnd.x} y2={leftLineEnd.y} stroke="white" strokeWidth="2" />
+          <line x1={leftVertex.x}  y1={leftVertex.y}  x2={leftLineEnd.x}  y2={leftLineEnd.y}  stroke="white" strokeWidth="2" />
           <line x1={rightVertex.x} y1={rightVertex.y} x2={rightLineEnd.x} y2={rightLineEnd.y} stroke="white" strokeWidth="2" />
         </g>
       </svg>
@@ -221,7 +161,7 @@ const HomeShape = () => {
       <h1
         ref={textLeftRef}
         className="ml-8 pb-45 text-4xl absolute text-white xl:text-6xl xl:pb-5 font-made-outer-alt pointer-events-none text-shadow-lg"
-        style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: -10, willChange: "transform, opacity" }}
+        style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
       </h1>
@@ -235,7 +175,7 @@ const HomeShape = () => {
           top: "51.5%",
           transform: "translateX(50%) translateY(-50%)",
           width: "500px",
-          zIndex: -10,
+          zIndex: 1,
           willChange: "transform, opacity",
         }}
       >
