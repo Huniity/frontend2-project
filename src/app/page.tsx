@@ -41,8 +41,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HomeShape />
-      <DreamDestinations />
       <Counters />
+      <DreamDestinations />
       <Pricing />
       <Reviews />
       {/* <div className="h-48 bg-gradient-to-b from-transparent via-black to-transparent pointer-events-none -my-24 relative z-10" /> */}

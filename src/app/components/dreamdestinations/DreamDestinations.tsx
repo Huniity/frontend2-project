@@ -70,7 +70,7 @@ const DreamDestinations = () => {
           }}
         >
           <span className="block text-[5rem] xl:text-[16rem] pb-2 xl:pb-0 font-made-outer-alt">drEam</span>
-          <span className="block text-[2.5rem] xl:text-[10rem] ml-1 font-made-outer-alt">dEstinations</span>
+          <span className="block text-[2.5rem] xl:text-[10rem] mb-40 ml-1 font-made-outer-alt">dEstinations</span>
         </h1>
       </div>
         {/* <div className="flex flex-col mt-54">
@@ -113,7 +113,7 @@ const DreamDestinations = () => {
         </div> */}
       </div>
 
-      <div className="px-5 grid grid-cols-2 md:grid-cols-5 gap-6 w-full max-w-6xl place-items-center">
+      <div className="px-5 mb-48 grid grid-cols-2 md:grid-cols-5 gap-6 w-full max-w-6xl place-items-center">
         {features.map((feature, index) => (
           <div
             key={index}

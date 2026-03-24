@@ -66,7 +66,7 @@ const HomeShape = () => {
           attr: {
             points: `${cx},${cy - expand} ${cx + expand},${cy} ${cx},${cy + expand} ${cx - expand},${cy}`,
           },
-          duration: 0.8,
+          duration: 0.5,
           ease: "power2.inOut",
         },
         0.1
