@@ -15,24 +15,83 @@ const HomeShape = () => {
   const textLeftRef = useRef<HTMLHeadingElement>(null);
   const textRightRef = useRef<HTMLDivElement>(null);
   const nextSectionRef = useRef<HTMLDivElement>(null);
-  const [dynamicSquareSize, setDynamicSquareSize] = useState(67);
-  
+
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [diamondSize, setDiamondSize] = useState(0);
+
+  // --- Track window size ---
   useEffect(() => {
-    ScrollTrigger.refresh();
-    
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    const size = Math.min(window.innerWidth, window.innerHeight) * 0.15;
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      setWindowSize({ width, height });
+      setDiamondSize(Math.min(width, height) * 0.15);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    const polygonEl = document.getElementById("diamond-polygon");
-    if (polygonEl) {
-      polygonEl.setAttribute(
-        "points",
-        `${cx},${cy - size} ${cx + size},${cy} ${cx},${cy + size} ${cx - size},${cy}`
-      );
-    }
+  // --- Update diamond image and SVG decorators ---
+  useEffect(() => {
+    const updateDiamond = () => {
+      const cx = windowSize.width / 2;
+      const cy = windowSize.height / 2;
+      const size = diamondSize;
 
-    const expand = size * 12;
+      // Update image clip-path
+      if (imageRef.current) {
+        imageRef.current.style.clipPath = `polygon(
+          ${cx}px ${cy - size}px,
+          ${cx + size}px ${cy}px,
+          ${cx}px ${cy + size}px,
+          ${cx - size}px ${cy}px
+        )`;
+      }
+
+      // Update SVG decorators
+      if (decoratorsRef.current) {
+        const corners = [
+          { x: cx, y: cy - size },
+          { x: cx + size, y: cy },
+          { x: cx, y: cy + size },
+          { x: cx - size, y: cy },
+        ];
+        const leftVertex = corners[3];
+        const rightVertex = corners[1];
+        const leftLineEnd = { x: leftVertex.x - 345, y: leftVertex.y };
+        const rightLineEnd = { x: rightVertex.x + 345, y: rightVertex.y };
+        const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
+
+        const polygonEl = decoratorsRef.current.querySelector("polygon");
+        const lines = decoratorsRef.current.querySelectorAll("line");
+
+        if (polygonEl) polygonEl.setAttribute("points", squarePoints);
+        if (lines[0]) {
+          lines[0].setAttribute("x1", String(leftVertex.x));
+          lines[0].setAttribute("y1", String(leftVertex.y));
+          lines[0].setAttribute("x2", String(leftLineEnd.x));
+          lines[0].setAttribute("y2", String(leftLineEnd.y));
+        }
+        if (lines[1]) {
+          lines[1].setAttribute("x1", String(rightVertex.x));
+          lines[1].setAttribute("y1", String(rightVertex.y));
+          lines[1].setAttribute("x2", String(rightLineEnd.x));
+          lines[1].setAttribute("y2", String(rightLineEnd.y));
+        }
+      }
+    };
+
+    updateDiamond();
+  }, [windowSize, diamondSize]);
+
+  // --- GSAP scroll animation ---
+  useEffect(() => {
+    if (!windowSize.width || !windowSize.height) return;
+
+    const cx = windowSize.width / 2;
+    const cy = windowSize.height / 2;
+    const expand = diamondSize * 12;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -44,65 +103,44 @@ const HomeShape = () => {
           pin: true,
           anticipatePin: 1,
           pinSpacing: true,
-          onKill: () => {
-            if (sectionRef.current) {
-              sectionRef.current.style.transform = "";
-              sectionRef.current.style.position = "";
-              sectionRef.current.style.top = "";
-              sectionRef.current.style.left = "";
-              sectionRef.current.style.width = "";
-            }
-          },
         },
       });
 
+      // Animate text and decorators
       tl.to(decoratorsRef.current, { opacity: 0, duration: 0.2, ease: "power1.out" }, 0);
       tl.to(textLeftRef.current, { x: 250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
       tl.to(textRightRef.current, { x: -250, opacity: 0, duration: 0.25, ease: "power2.in" }, 0);
 
-      tl.to(
-        "#diamond-polygon",
-        {
-          attr: {
-            points: `${cx},${cy - expand} ${cx + expand},${cy} ${cx},${cy + expand} ${cx - expand},${cy}`,
-          },
-          duration: 0.5,
-          ease: "power2.inOut",
-        },
-        0.1
-      );
+      // Animate diamond image
+      tl.to(imageRef.current, {
+        clipPath: `polygon(
+          ${cx}px ${cy - expand}px,
+          ${cx + expand}px ${cy}px,
+          ${cx}px ${cy + expand}px,
+          ${cx - expand}px ${cy}px
+        )`,
+        duration: 0.5,
+        ease: "power2.inOut",
+      }, 0.1);
 
+      // Show next section
       tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.4);
-      tl.to(nextSectionRef.current, { duration: 0.2 }, 0.25);
     }, sectionRef);
-    
-    const updateSquareSize = () => {
-    const w = window.innerWidth;
-      if (w < 768) {
-        setDynamicSquareSize(105);        // mobile
-      } else if (w < 1280) {
-        setDynamicSquareSize(50);     // tablet
-      } else {
-        setDynamicSquareSize(67);    // desktop
-      }
-  };
-  updateSquareSize();
-  window.addEventListener("resize", updateSquareSize);
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.getAll().forEach(t => t.kill());
       ctx.revert();
-      window.removeEventListener("resize", updateSquareSize);
     };
-  }, []);
+  }, [windowSize, diamondSize]);
 
+  // --- Lazy load background image ---
   useEffect(() => {
     const imageElement = imageRef.current;
     if (!imageElement) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const bgImageUrl = imageElement.getAttribute("data-bg-image");
             if (bgImageUrl) {
@@ -116,66 +154,56 @@ const HomeShape = () => {
     );
 
     observer.observe(imageElement);
-
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
-
-
-  const squareCenter = { x: 500, y: 425 };
-  const squareSize = dynamicSquareSize;
+  // --- Calculate SVG decorator positions ---
+  const squareCenter = { x: windowSize.width / 2, y: windowSize.height / 2 };
+  const squareSize = diamondSize;
   const corners = [
-    { x: squareCenter.x,              y: squareCenter.y - squareSize },
+    { x: squareCenter.x, y: squareCenter.y - squareSize },
     { x: squareCenter.x + squareSize, y: squareCenter.y },
-    { x: squareCenter.x,              y: squareCenter.y + squareSize },
+    { x: squareCenter.x, y: squareCenter.y + squareSize },
     { x: squareCenter.x - squareSize, y: squareCenter.y },
   ];
   const leftVertex = corners[3];
   const rightVertex = corners[1];
-  const leftLineEnd  = { x: leftVertex.x  - 345, y: leftVertex.y };
-  const rightLineEnd = { x: rightVertex.x + 345, y: rightVertex.y };
-  const squarePoints = corners.map((c) => `${c.x},${c.y}`).join(" ");
+  const leftLineEnd = { x: leftVertex.x - 600, y: leftVertex.y };
+  const rightLineEnd = { x: rightVertex.x + 600, y: rightVertex.y };
+  const squarePoints = corners.map(c => `${c.x},${c.y}`).join(",");
 
   return (
     <div ref={sectionRef} className="relative w-full h-screen overflow-hidden">
-      <div style={{ position: "absolute", inset: 0, zIndex: 2, filter: "drop-shadow(0px 0px 20px rgba(0,0,0,0.95))" }}>
-        <svg width="0" height="0" style={{ position: "absolute" }}>
-          <defs>
-            <clipPath id="diamond-clip" clipPathUnits="userSpaceOnUse">
-              {/* Points are set dynamically in useEffect */}
-              <polygon id="diamond-polygon" points="0,0" />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <div
-          ref={imageRef}
-          className="absolute inset-0"
-          // data-bg-image="/bali5.avif"
-          style={{
-            backgroundImage: "url(/mountain.avif)",
-            backgroundSize: "cover", 
-            backgroundPosition: "center",
-            clipPath: "url(#diamond-clip)",
-            filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
-            maskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
-          }}
-        />
-      </div>
+      {/* Diamond Image */}
+      <div
+        ref={imageRef}
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url(/mountain.avif)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          clipPath: `polygon(
+            ${squareCenter.x}px ${squareCenter.y - squareSize}px,
+            ${squareCenter.x + squareSize}px ${squareCenter.y}px,
+            ${squareCenter.x}px ${squareCenter.y + squareSize}px,
+            ${squareCenter.x - squareSize}px ${squareCenter.y}px
+          )`,
+          filter:
+            "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
+        }}
+      />
 
       {/* SVG decorators */}
       <svg
-        width="100%" height="100%"
-        viewBox="150 200 700 450"
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${windowSize.width} ${windowSize.height}`}
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: 3, pointerEvents: "none" }}
       >
         <g ref={decoratorsRef}>
           <polygon points={squarePoints} fill="none" stroke="white" strokeWidth="2" />
-          <line x1={leftVertex.x}  y1={leftVertex.y}  x2={leftLineEnd.x}  y2={leftLineEnd.y}  stroke="white" strokeWidth="2" />
+          <line x1={leftVertex.x} y1={leftVertex.y} x2={leftLineEnd.x} y2={leftLineEnd.y} stroke="white" strokeWidth="2" />
           <line x1={rightVertex.x} y1={rightVertex.y} x2={rightLineEnd.x} y2={rightLineEnd.y} stroke="white" strokeWidth="2" />
         </g>
       </svg>
@@ -192,23 +220,25 @@ const HomeShape = () => {
       {/* Text right */}
       <div
         ref={textRightRef}
-        className="mr-25 pt-60 text-4xl absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center"
-        style={{ 
-          right: "27%", 
-          top: "51.5%", 
-          transform: "translateX(50%) translateY(-50%)", // ← center the div itself too
+        className="mr-25 pt-60 text-4xl absolute text-white xl:mt-[-90] xl:mr-[-10] xl:text-6xl font-made-outer-alt pointer-events-none text-center"
+        style={{
+          right: "27%",
+          top: "51.5%",
+          transform: "translateX(50%) translateY(-50%)",
           width: "500px",
-          zIndex: 1, 
+          zIndex: 1,
           willChange: "transform, opacity",
         }}
       >
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
 
+      {/* Scroll indicator */}
       <div className="absolute bottom-10 w-full flex justify-center z-30">
         <ScrollIndicator />
       </div>
 
+      {/* Next Section */}
       <div
         ref={nextSectionRef}
         className="absolute inset-0 flex flex-col h-full w-full justify-start items-center gap-2 pt-10 opacity-0"
