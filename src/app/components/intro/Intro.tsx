@@ -27,14 +27,17 @@ const HomeShape = () => {
       setWindowSize({ width, height });
       setDiamondSize(Math.min(width, height) * 0.15);
     };
+
     handleResize();
-    
+
     window.addEventListener("resize", handleResize);
     window.visualViewport?.addEventListener("resize", handleResize);
-    
+    window.visualViewport?.addEventListener("scroll", handleResize); // fires when browser bar shows/hides
+
     return () => {
       window.removeEventListener("resize", handleResize);
       window.visualViewport?.removeEventListener("resize", handleResize);
+      window.visualViewport?.removeEventListener("scroll", handleResize);
     };
   }, []);
 
