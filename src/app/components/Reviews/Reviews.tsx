@@ -85,7 +85,7 @@ const Reviews = () => {
             </button>
 
             {/* Dots */}
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -98,7 +98,7 @@ const Reviews = () => {
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
-            </div>
+            </div> */}
 
             <button
               onClick={next}
