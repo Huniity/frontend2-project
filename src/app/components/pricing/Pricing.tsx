@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma/prisma";
 import PricingComponent from "@/components/ui/pricing/Pricing";
-import { BeamsBackground } from "@/components/ui/background/Background";
 
 export default async function PricingPage() {
   const supabase = await createClient();

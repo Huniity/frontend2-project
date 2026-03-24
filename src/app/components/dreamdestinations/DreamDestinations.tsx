@@ -1,6 +1,6 @@
 'use client';
 
-import { Eye, Sparkles, Stack, Sun, MapPin, Flame, Waves, Cloud, Navigation } from 'lucide-react';
+import { Eye, Sparkles, Trees, Sun, MapPin, Flame, Waves, Cloud, Navigation } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 
@@ -14,7 +14,7 @@ const DreamDestinations = () => {
   const features: Feature[] = [
     { icon: <Eye size={32} />, title: "Vast pEaks", image: "/anapurna.webp" },
     { icon: <Waves size={32} />, title: "MEsmErizing Sand", image: "/blacksand.webp" },
-    { icon: <Sparkles size={32} />, title: "LUsh forEsts", image: "/forest.avif" },
+    { icon: <Trees size={32} />, title: "LUsh forEsts", image: "/forest.avif" },
     { icon: <Cloud size={32} />, title: "Night skylinE", image: "/new_york2.webp" },
     { icon: <MapPin size={32} />, title: "paradisE Island", image: "/hawaii2.webp" },
     { icon: <Sun size={32} />, title: "goldEn light", image: "/rome.webp" },
