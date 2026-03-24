@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FiTrash2 } from "react-icons/fi";
+import { Trash2 } from "lucide-react";
 import type { UserWithRelations } from "../Dashboard";
 
 
@@ -182,7 +182,7 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     aria-label={`Delete trip ${trip.title}`}
                     className="absolute bottom-4 right-4 p-2 rounded-lg bg-white/5 border border-white/10 text-gray-500 hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-colors"
                 >
-                    <FiTrash2 size={14} />
+                    <Trash2 size={14} />
                 </button>
                 ) : (
                 <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/90 border border-red-500/30 rounded-xl px-3 py-2 shadow-lg">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { IoCheckmark } from "react-icons/io5";
+import { CheckCircle } from "lucide-react";
 
 export default function ConfirmTripButton({ tripId, status }: { tripId: string; status: string }) {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ export default function ConfirmTripButton({ tripId, status }: { tripId: string; 
   if (confirmed) {
     return (
       <div className="flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-emerald-500/20 to-green-500/20 backdrop-blur-md border border-emerald-500/30 text-emerald-300 font-made-outer-alt font-semibold">
-        <IoCheckmark className="w-5 h-5" />
+        <CheckCircle className="w-5 h-5" />
         Trip Confirmed
       </div>
     );

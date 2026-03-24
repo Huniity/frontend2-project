@@ -1,18 +1,12 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { FiCheck } from "react-icons/fi";
-import { ImFire } from "react-icons/im";
-import { pricing } from "@/lib/utils/pricing";
-import { Button } from "@/components/ui/buttons/Button";
-import { PiNumberCircleSevenBold } from "react-icons/pi";
-import { HiOutlineReceiptTax } from "react-icons/hi";
-import { TbCancel } from "react-icons/tb";
-import { RiSecurePaymentFill } from "react-icons/ri";
-import { MdOutlineHourglassDisabled } from "react-icons/md";
+import { Check, Flame, Circle, Receipt, X, CreditCard, Timer, TimerOff, ShieldCheck, Calendar1, ReceiptText, BookmarkX  } from "lucide-react";
 import UpgradeButton from "@/components/ui/buttons/UpgradeButton";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import { pricing } from "@/lib/utils/pricing";
+import { Button } from "@/components/ui/buttons/Button";
 
 const PricingComponent = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -165,7 +159,7 @@ const PricingComponent = () => {
                   </h3>
                   {plan.highlighted && (
                     <div className="shrink-0">
-                      <ImFire size="20" color="rgba(221, 132, 72, 0.92)" />
+                      <Flame size="20" color="rgba(221, 132, 72, 0.92)" />
                     </div>
                   )}
                 </div>
@@ -196,7 +190,7 @@ const PricingComponent = () => {
                 <div className="text-xs space-y-4 border-t border-white/10 pt-8">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
-                      <FiCheck className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                      <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
                       <span className="text-gray-300 font-made-outer text-sm">
                         {feature}
                       </span>
@@ -210,19 +204,19 @@ const PricingComponent = () => {
 
         <div className="flex flex-row gap-2 w-full justify-center flex-wrap mt-[-100]">
           <Button name="7 Days Free Trial" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <PiNumberCircleSevenBold size="18px" />
+            <Calendar1 size="18px" />
           </Button>
           <Button name="VAT Included" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <HiOutlineReceiptTax size="18px" />
+            <ReceiptText size="18px" />
           </Button>
           <Button name="Cancel Anytime" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <TbCancel size="18px" />
+            <BookmarkX size="18px" />
           </Button>
           <Button name="Secure Payment" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <RiSecurePaymentFill size="18px" />
+            <ShieldCheck size="18px" />
           </Button>
           <Button name="Instant Access" textColor="#8890a1" color="#0f0f0f" width="180px" height="40px" textSize="14px">
-            <MdOutlineHourglassDisabled size="18px" />
+            <TimerOff size="18px" />
           </Button>
         </div>
       </div>

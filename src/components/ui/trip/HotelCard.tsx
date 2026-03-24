@@ -1,5 +1,5 @@
 
-import { MdHotel } from "react-icons/md";
+import { Building } from "lucide-react";
 
 type Hotel = {
   id: string;
@@ -15,7 +15,7 @@ export default function HotelCard({ hotel }: { hotel: Hotel }) {
   return (
     <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-xl"><MdHotel /></span>
+        <span className="text-xl"><Building /></span>
         <h3 className="font-bold text-white text-base">Hotel</h3>
       </div>
 

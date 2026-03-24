@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { IoArrowBack } from "react-icons/io5";
-import { MdOutlineFlightTakeoff, MdOutlineEmojiEvents } from "react-icons/md";
-import { AiOutlineStar } from "react-icons/ai";
-import { RiUserLine } from "react-icons/ri";
-import { FiLogOut } from "react-icons/fi";
-import { GiMoneyStack } from "react-icons/gi";
+import {HandCoins, Target, ArrowLeft, Plane, Trophy as TrophyIcon, Star, User as UserIcon, LogOut, DollarSign } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/app/auth/actions";
@@ -44,12 +39,12 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
 
 
   const navItems = [
-    { tab: "overview" as Tab, icon: MdOutlineFlightTakeoff, label: "Overview" },
-    { tab: "settings" as Tab, icon: AiOutlineStar, label: "Settings" },
-    { tab: "trophies" as Tab, icon: MdOutlineEmojiEvents, label: "Trophies" },
-    { tab: "mytrips" as Tab, icon: MdOutlineFlightTakeoff, label: "My Trips" },
-    { tab: "chat" as Tab, icon: MdOutlineFlightTakeoff, label: "Chat" },
-    { tab: "pricing" as Tab, icon: GiMoneyStack, label: "Pricing" },
+    { tab: "overview" as Tab, icon: Target, label: "Overview" },
+    { tab: "settings" as Tab, icon: Star, label: "Settings" },
+    { tab: "trophies" as Tab, icon: TrophyIcon, label: "Trophies" },
+    { tab: "mytrips" as Tab, icon: Plane, label: "My Trips" },
+    { tab: "chat" as Tab, icon: Plane, label: "Chat" },
+    { tab: "pricing" as Tab, icon: HandCoins, label: "Pricing" },
   ];
 
   const [avatarError, setAvatarError] = useState(false);
@@ -61,7 +56,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
         <aside className="fixed top-0 left-0 h-screen w-72 border-r border-white/15 bg-white/5 backdrop-blur-xl pt-18 px-8 flex flex-col justify-between pb-8">
           <div>
             <Link href="/" className="flex items-center gap-2 text-white hover:text-gray-300 transition mb-28 font-made-outer-alt font-bold">
-              <IoArrowBack size={20} />
+              <ArrowLeft size={20} />
               Back
             </Link>
 
@@ -78,7 +73,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
                     onError={() => setAvatarError(true)}
                   />
                 ) : (
-                  <RiUserLine className="text-white" size={28} />
+                  <UserIcon className="text-white" size={28} />
                 )}
               </div>
               <div className="text-center">
@@ -105,7 +100,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
 
           <form action={signOut}>
             <button type="submit" className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium font-made-outer text-gray-500 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer bg-transparent border-none w-full">
-              <FiLogOut size={18} />
+              <LogOut size={18} />
               Log out
             </button>
           </form>

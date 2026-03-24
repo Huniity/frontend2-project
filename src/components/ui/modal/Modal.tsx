@@ -1,7 +1,7 @@
 'use client';
 
 
-import { FiX } from 'react-icons/fi';
+import { X } from 'lucide-react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -36,7 +36,7 @@ export default function Modal({ isOpen, onClose, title, children, footer }: Moda
               className="text-gray-400 hover:text-white transition-colors bg-transparent border-none cursor-pointer p-1 flex items-center justify-center"
               aria-label="Close modal"
             >
-              <FiX size={20} />
+              <X size={20} />
             </button>
           </div>
 

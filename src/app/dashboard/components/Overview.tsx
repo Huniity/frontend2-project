@@ -1,6 +1,4 @@
-import { FiChevronRight, FiEdit2 } from "react-icons/fi";
-import { MdOutlineFlightTakeoff } from "react-icons/md";
-import { AiOutlineStar } from "react-icons/ai";
+import { ChevronRight, Edit, Plane, Star } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { UserWithRelations, Tab } from "../Dashboard";
@@ -54,7 +52,7 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       <div className="grid grid-cols-4 gap-6 mb-6">
         {[
           { label: "Total Trips", value: user._count.trips },
-          { label: "Countries", value: new Set(user.trips.map(t => t.destination.split(",").pop()?.trim())).size },
+          { label: "Countries", value: new Set(user.trips.map((t: any) => t.destination.split(",").pop()?.trim())).size },
           { label: "Trophies", value: user._count.trophies },
           { label: "Plan", value: planLabel[user.plan ?? "FREE"] ?? "Free", small: true },
         ].map(({ label, value, small }) => (
@@ -85,14 +83,14 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>
             <button onClick={() => setActiveTab("mytrips")} className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1 font-made-outer bg-transparent border-none cursor-pointer">
-              View all <FiChevronRight size={12} />
+              View all <ChevronRight size={12} />
             </button>
           </div>
           <div className="space-y-4">
             {user.trips.length === 0 && (
               <p className="text-gray-500 text-sm font-made-outer">No trips yet. Plan your first one!</p>
             )}
-            {user.trips.slice(0, 3).map((trip) => (
+            {user.trips.slice(0, 3).map((trip: any) => (
               <div key={trip.id} className="flex items-center justify-between py-3 border-b border-white/5 last:border-none">
                 <div>
                   <p className="font-medium text-sm font-made-outer">{trip.destination}</p>
@@ -114,14 +112,14 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-made-outer-alt font-bold">Trophies</h2>
             <button onClick={() => setActiveTab("trophies")} className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1 font-made-outer bg-transparent border-none cursor-pointer">
-              View all <FiChevronRight size={12} />
+              View all <ChevronRight size={12} />
             </button>
           </div>
           <div className="space-y-4">
             {user.trophies.length === 0 && (
               <p className="text-gray-500 text-sm font-made-outer">No trophies yet. Start exploring!</p>
             )}
-            {user.trophies.slice(0, 3).map(({ trophy }) => (
+            {user.trophies.slice(0, 3).map(({ trophy }: any) => (
               <div key={trophy.id} className="flex items-center gap-4 py-3 border-b border-white/5 last:border-none">
                 <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center shrink-0 text-xl">
                   {trophy.icon}
@@ -141,17 +139,17 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
         <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
         <div className="grid grid-cols-3 gap-6">
           <button onClick={() => setActiveTab("mytrips")} className="text-left border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
-            <MdOutlineFlightTakeoff className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
+            <Plane className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
           </button>
           <Link href="/pricing" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
-            <FiEdit2 className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
+            <Edit className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Upgrade Plan</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Unlock more features and destinations</p>
           </Link>
           <button onClick={() => setActiveTab("settings")} className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 text-white group cursor-pointer text-left">
-            <AiOutlineStar className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
+            <Star className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Edit Preferences</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Customize your Nomadia experience</p>
           </button>

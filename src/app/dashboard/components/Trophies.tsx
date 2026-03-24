@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FiLock } from "react-icons/fi";
+import { Lock } from "lucide-react";
 import type { Trophy } from "@/generated/prisma/client";
 import type { UserWithRelations } from "../Dashboard";
 
@@ -22,8 +22,8 @@ type Filter = "all" | "earned" | "locked";
 
 export default function Trophies({ user, allTrophies }: { user: UserWithRelations; allTrophies: Trophy[] }) {
   const [trophyFilter, setTrophyFilter] = useState<Filter>("all");
-  const earnedIds = new Set(user.trophies.map((ut) => ut.trophyId));
-  const totalXP = user.trophies.reduce((sum, ut) => sum + ut.trophy.xp, 0);
+  const earnedIds = new Set(user.trophies.map((ut: any) => ut.trophyId));
+  const totalXP = user.trophies.reduce((sum: any, ut: any) => sum + ut.trophy.xp, 0);
   const completion = allTrophies.length > 0 ? Math.round((user._count.trophies / allTrophies.length) * 100) : 0;
 
   return (
@@ -84,9 +84,9 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
             if (trophyFilter === "locked") return !earnedIds.has(t.id);
             return true;
           })
-          .map((trophy) => {
+          .map((trophy: any) => {
             const isEarned = earnedIds.has(trophy.id);
-            const userTrophy = user.trophies.find((ut) => ut.trophyId === trophy.id);
+            const userTrophy = user.trophies.find((ut: any) => ut.trophyId === trophy.id);
             const config = trophyConfig[trophy.key] ?? { icon: "🏆", color: "from-gray-400 to-gray-600", gradient: "from-gray-500/20 to-gray-600/20" };
 
             return (
@@ -108,7 +108,7 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
                       ? "bg-linear-to-br from-yellow-300 to-yellow-600 border-4 border-yellow-400 drop-shadow-lg group-hover:drop-shadow-2xl shadow-yellow-500/50"
                       : "bg-white/5 border-2 border-white/15 opacity-50 group-hover:opacity-70"
                   }`}>
-                    {isEarned ? config.icon : <FiLock size={24} className="text-gray-500" />}
+                    {isEarned ? config.icon : <Lock size={24} className="text-gray-500" />}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className={`font-bold text-sm font-made-outer-alt mb-1 ${isEarned ? "text-white" : "text-gray-300"}`}>

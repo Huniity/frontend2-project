@@ -1,6 +1,6 @@
 'use client';
 
-import { FaCheck } from "react-icons/fa";
+import { Check } from "lucide-react";
 import { SubButton } from "../../buttons/Button";
 import "./SubCard.css";
 import { useContext } from "react";
@@ -61,7 +61,7 @@ const Card = (
                         <ul className="mb-6 text-gray-400 text-left space-y-4">
                             {features.map((feature, index) => (
                                 <li key={index} className="grid grid-cols-[auto_1fr] gap-3 items-center text-md">
-                                    <FaCheck className="shrink-0" />
+                                    <Check className="shrink-0" />
                                     <span>{feature}</span>
                                 </li>
                             ))}

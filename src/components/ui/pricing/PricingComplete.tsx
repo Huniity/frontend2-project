@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { FiCheck } from "react-icons/fi";
-import { ImFire } from "react-icons/im";
+import { Check, Flame } from "lucide-react";
 import { pricing } from "@/lib/utils/pricing";
 import UpgradeButton from "@/components/ui/buttons/UpgradeButton";
 import { createClient } from "@/lib/supabase/client";
@@ -158,7 +157,7 @@ const PricingCompleteComponent = () => {
                 </h3>
                 {plan.highlighted && (
                   <div className="shrink-0">
-                    <ImFire size="20" color="rgba(221, 132, 72, 0.92)" />
+                    <Flame size="20" color="rgba(221, 132, 72, 0.92)" />
                   </div>
                 )}
               </div>
@@ -189,7 +188,7 @@ const PricingCompleteComponent = () => {
               <div className="space-y-4 border-t border-white/10 pt-8">
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-start gap-3">
-                    <FiCheck className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />
                     <span className="text-gray-300 font-made-outer text-sm">
                       {feature}
                     </span>

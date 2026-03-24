@@ -1,8 +1,7 @@
 'use client'
 
 import Footer from "@/components/ui/footer/Footer";
-import { MdEmail, MdLocationOn } from "react-icons/md";
-import { IoMdArrowRoundDown } from "react-icons/io";
+import { Mail, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 
@@ -47,7 +46,7 @@ export default function Contact() {
           <div className="grid grid-cols-3 gap-12 mb-24">
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <MdEmail className="text-white" size={40} />
+                <Mail className="text-white" size={40} />
               </div>
               <div>
                 <h3 className="text-xl font-made-outer-alt font-black text-white mb-2">
@@ -61,7 +60,7 @@ export default function Contact() {
 
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <IoMdArrowRoundDown className="text-white" size={40} />
+                <ChevronDown className="text-white" size={40} />
               </div>
               <div>
                 <h3 className="text-xl font-made-outer-alt font-black text-white mb-2">
@@ -75,7 +74,7 @@ export default function Contact() {
 
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
-                <MdLocationOn className="text-white" size={40} />
+                <MapPin className="text-white" size={40} />
               </div>
               <div>
                 <h3 className="text-xl font-made-outer-alt font-black text-white mb-2">

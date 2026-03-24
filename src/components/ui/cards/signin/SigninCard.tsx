@@ -1,8 +1,6 @@
 'use client'
-import { MdEmail } from "react-icons/md";
-import { MdOutlineKey } from "react-icons/md";
-import { useState } from "react";
-import { FaUserAstronaut } from "react-icons/fa";
+import { Mail, KeyRound, User as UserIcon} from "lucide-react";
+import { useState } from "react";;
 import SigninButton from "@/components/ui/buttons/SigninButton";
 import { signUpWithEmail } from "@/app/auth/actions";
 
@@ -45,7 +43,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
         <>
             <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                 <div className="relative">
-                    <FaUserAstronaut className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="text"
                         placeholder="Username"
@@ -57,7 +55,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     />
                 </div>
                 <div className="relative">
-                    <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="email"
                         placeholder="Email"
@@ -72,7 +70,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     {isEmailInvalid && <p className="text-red-500 text-sm mt-1">Please enter a valid email address</p>}
                 </div>
                 <div className="relative">
-                    <MdOutlineKey className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <KeyRound className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="password"
                         placeholder="Password"
@@ -84,7 +82,7 @@ const SigninCard = ({ name, mutatedName }: SigninCardProps) => {
                     />
                 </div>
                 <div className="relative">
-                    <MdOutlineKey className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <KeyRound className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="password"
                         placeholder="Confirm Password"

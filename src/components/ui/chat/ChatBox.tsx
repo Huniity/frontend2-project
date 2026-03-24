@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiSend } from 'react-icons/fi';
+import { Send } from "lucide-react";
 
 type Message = {
   id: string;
@@ -219,7 +219,7 @@ const ChatBox = () => {
           disabled={isLoading || isGenerating || !input.trim()}
           className="bg-linear-to-br from-blue-500/70 to-blue-600/70 backdrop-blur-md border border-blue-400/30 rounded-xl px-5 py-3 hover:from-blue-500/90 hover:to-blue-600/90 hover:border-blue-400/50 transition-all duration-200 cursor-pointer flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
         >
-          <FiSend size={20} className="text-white" />
+          <Send size={20} className="text-white" />
         </button>
       </div>
     </div>

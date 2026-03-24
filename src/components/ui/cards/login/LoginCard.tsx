@@ -1,6 +1,5 @@
 'use client'
-import { MdEmail } from "react-icons/md";
-import { MdOutlineKey } from "react-icons/md";
+import { Mail, Key } from "lucide-react";
 import { useState, useRef } from "react";
 import LoginButton from "@/components/ui/buttons/LoginButton";
 import ForgotPasswordButton from "@/components/ui/buttons/ForgotPasswordButoon";
@@ -58,7 +57,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
         <>
             <form className="flex flex-col w-full gap-3" onSubmit={handleSubmit}>
                 <div className="relative">
-                    <MdEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="email"
                         placeholder="Email"
@@ -71,7 +70,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
                     />
                 </div>
                 <div className="relative">
-                    <MdOutlineKey className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <Key className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="password"
                         placeholder="Password"

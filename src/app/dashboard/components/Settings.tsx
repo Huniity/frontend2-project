@@ -1,12 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { RiUserLine, RiShieldKeyholeLine } from "react-icons/ri";
-import { TbPasswordFingerprint } from "react-icons/tb";
-import { MdOutlineContactMail, MdOutlineLanguage } from "react-icons/md";
-import { GiTakeMyMoney } from "react-icons/gi";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { BiLink } from "react-icons/bi";
+import { User, Key, Fingerprint, Mail, DollarSign, Bell, Link2 } from "lucide-react";
 import ChangePassword from './Modal/ChangePassword';
 import ProfilePhoto from './Modal/ProfilePhoto';
 import ContactInfo from './Modal/ContactInfo';
@@ -17,14 +12,14 @@ import type { UserWithRelations } from "../Dashboard";
 const ToastDuration = 3000;
 
 const settingsItems = [
-  { icon: RiUserLine, label: "Profile Photo", description: "" },
-  { icon: TbPasswordFingerprint, label: "Change Password", description: "" },
-  { icon: MdOutlineContactMail, label: "Contact Info", description: "" },
-  { icon: GiTakeMyMoney, label: "Manage Sub Plan", description: "" },
-  { icon: IoNotificationsOutline, label: "Notifications", description: "Coming Soon" },
-  { icon: RiShieldKeyholeLine, label: "Privacy", description: "Coming Soon" },
-  { icon: MdOutlineLanguage, label: "Language", description: "Coming Soon" },
-  { icon: BiLink, label: "Connect Accounts", description: "Coming Soon" },
+  { icon: User, label: "Profile Photo", description: "" },
+  { icon: Fingerprint, label: "Change Password", description: "" },
+  { icon: Mail, label: "Contact Info", description: "" },
+  { icon: DollarSign, label: "Manage Sub Plan", description: "" },
+  { icon: Bell, label: "Notifications", description: "Coming Soon" },
+  { icon: Key, label: "Privacy", description: "Coming Soon" },
+  { icon: Mail, label: "Language", description: "Coming Soon" },
+  { icon: Link2, label: "Connect Accounts", description: "Coming Soon" },
 ];
 
 export default function Settings({ user }: { user: UserWithRelations }) {
