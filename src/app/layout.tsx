@@ -74,7 +74,6 @@ export default function RootLayout({
               {children}
             </AuthProvider>
           </SubPlanProvider>
-        
           <ToastContainer position="top-center" theme="dark" />
           
           <SpeedInsights/>

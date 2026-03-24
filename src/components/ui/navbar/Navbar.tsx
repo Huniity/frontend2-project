@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 
@@ -33,12 +33,33 @@ const Navbar = () => {
     useEffect(() => {
         if (!isMounted || hideNavbar) return;
 
+        const navbarHeight = 20;
+        let animationFrameId: number;
+
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             const sections = document.querySelectorAll('section');
-            const firstSectionHeight = sections[0]?.offsetHeight || window.innerHeight;
+            
+            // Batch all reads first to avoid layout thrashing
+            let firstSectionHeight = 0;
+            let activeSection: Element | null = null;
+
+            if (sections.length > 0) {
+                firstSectionHeight = sections[0].clientHeight;
+                
+                // Find active section by batching reads
+                for (const section of sections) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= navbarHeight && rect.bottom >= navbarHeight) {
+                        activeSection = section;
+                        break;
+                    }
+                }
+            }
+
             const shrinkThreshold = firstSectionHeight / 2;
 
+            // Batch all state updates
             setIsShrunken(currentScrollY > shrinkThreshold);
 
             if (currentScrollY > prevScrollY.current && currentScrollY > 100) {
@@ -48,20 +69,26 @@ const Navbar = () => {
             }
             prevScrollY.current = currentScrollY;
 
-            const navbarHeight = 20;
-            sections.forEach((section) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= navbarHeight && rect.bottom >= navbarHeight) {
-                    const bgColor = window.getComputedStyle(section).backgroundColor;
-                    const isLight = bgColor.includes('255, 255, 255');
-                    setIsLightBackground(isLight);
-                }
-            });
+            // Only compute style if we have an active section
+            if (activeSection) {
+                const bgColor = window.getComputedStyle(activeSection).backgroundColor;
+                const isLight = bgColor.includes('255, 255, 255');
+                setIsLightBackground(isLight);
+            }
+        };
+
+        const onScroll = () => {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(handleScroll);
         };
 
         handleScroll();
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            cancelAnimationFrame(animationFrameId);
+        };
     }, [isMounted, hideNavbar]);
 
     useEffect(() => {
@@ -137,7 +164,7 @@ const Navbar = () => {
             {/* ── Mobile Navbar ── */}
             <div
                 className={`fixed top-0 left-0 right-0 z-1000 md:hidden flex items-center justify-between px-5 py-4 transition-all duration-500 ${
-                    !isMounted || shouldHideNavbar || hideNavbar ? '-translate-y-full' : 'translate-y-0'
+                    !isMounted || hideNavbar ? '-translate-y-full' : 'translate-y-0'
                 }`}
                 style={{
                     background: isShrunken || mobileMenuOpen ? 'rgba(0,0,0,0.85)' : 'transparent',
@@ -162,7 +189,7 @@ const Navbar = () => {
                     }`}
                     aria-label="Toggle menu"
                 >
-                    {mobileMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
+                    {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
                 </button>
             </div>
 
@@ -216,12 +243,12 @@ const Navbar = () => {
                 />
             )}
 
-            {/* ── Show navbar button (both desktop + mobile) ── */}
+            {/* ── Show navbar button (desktop only) ── */}
             <button
                 onClick={handleShowNavbar}
-                className={`fixed top-4 right-4 z-1001 w-12 h-12 rounded-full transition-all duration-300 ${
+                className={`fixed top-4 right-4 z-1001 w-12 h-12 rounded-full transition-all duration-300 hidden md:flex ${
                     isLightBackground ? 'bg-black text-white' : 'bg-white text-black'
-                } flex items-center justify-center font-bold text-lg hover:scale-110`}
+                } items-center justify-center font-bold text-lg hover:scale-110`}
                 title="Show navigation"
                 aria-label="Show navigation menu"
                 style={{
@@ -229,7 +256,7 @@ const Navbar = () => {
                     pointerEvents: isMounted && isHidden && !hideNavbar ? 'auto' : 'none',
                 }}
             >
-                <FaBars />
+                <Menu />
             </button>
         </>
     );

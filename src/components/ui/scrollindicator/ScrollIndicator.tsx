@@ -6,11 +6,22 @@ export default function ScrollIndicator() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const handleScroll = () => {
       setIsVisible(window.scrollY <= 100);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const onScroll = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (

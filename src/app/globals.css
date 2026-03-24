@@ -172,6 +172,35 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   display: none;
 }
+body {
+  background-color: #060608;
+  background-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13, 13, 22, 0.6) 0%, transparent 70%);
+  min-height: 100vh;
+}
+
+#__app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(ellipse 60% 50% at var(--x, 20%) var(--y, 30%), rgba(82, 189, 222, 0.175) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at var(--x2, 80%) var(--y2, 70%), rgba(40, 60, 100, 0.175) 0%, transparent 60%);
+  animation: gradientShift 30s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+  0%   { --x: 20%; --y: 20%; --x2: 80%; --y2: 80%; }
+  25%  { --x: 70%; --y: 10%; --x2: 30%; --y2: 90%; }
+  50%  { --x: 80%; --y: 60%; --x2: 20%; --y2: 30%; }
+  75%  { --x: 30%; --y: 80%; --x2: 70%; --y2: 20%; }
+  100% { --x: 50%; --y: 30%; --x2: 50%; --y2: 70%; }
+}
+
+@property --x  { syntax: '<percentage>'; inherits: false; initial-value: 20%; }
+@property --y  { syntax: '<percentage>'; inherits: false; initial-value: 30%; }
+@property --x2 { syntax: '<percentage>'; inherits: false; initial-value: 80%; }
+@property --y2 { syntax: '<percentage>'; inherits: false; initial-value: 70%; }
 
 html {
   -ms-overflow-style: none;

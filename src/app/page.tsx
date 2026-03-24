@@ -40,15 +40,16 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Counters />
-      {/* 
       <HomeShape />
-      <HowItWorks />
       <DreamDestinations />
+      <Counters />
       <Pricing />
       <Reviews />
+      {/* <div className="h-48 bg-gradient-to-b from-transparent via-black to-transparent pointer-events-none -my-24 relative z-10" /> */}
       <Cta />
-      <Footer /> */}
+      <Footer /> 
+      {/* 
+      */}
     </div>
   );
 }

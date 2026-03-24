@@ -2,18 +2,15 @@
 
 import { useState } from "react";
 import Footer from "@/components/ui/footer/Footer";
-import { FaPlaneDeparture, FaCreditCard } from "react-icons/fa";
-import { IoShieldCheckmark, IoAccessibility } from "react-icons/io5";
-import { HiCloudDownload } from "react-icons/hi";
-import { MdContactSupport } from "react-icons/md";
+import { Airplane, CreditCard, Shield, Download, HelpCircle, Users } from 'lucide-react';
 
 const tabs = [
-  { id: "nomadia", label: "Nomadia", icon: FaPlaneDeparture },
-  { id: "payments", label: "Payments", icon: FaCreditCard },
-  { id: "security", label: "Security", icon: IoShieldCheckmark },
-  { id: "data", label: "Data", icon: HiCloudDownload },
-  { id: "support", label: "Support", icon: MdContactSupport },
-  { id: "accessibility", label: "Accessibility", icon: IoAccessibility },
+  { id: "nomadia", label: "Nomadia", icon: Airplane },
+  { id: "payments", label: "Payments", icon: CreditCard },
+  { id: "security", label: "Security", icon: Shield },
+  { id: "data", label: "Data", icon: Download },
+  { id: "support", label: "Support", icon: HelpCircle },
+  { id: "accessibility", label: "Accessibility", icon: Users },
 ];
 
 const faqData: Record<string, { question: string; answer: string }[]> = {

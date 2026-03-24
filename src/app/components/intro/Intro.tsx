@@ -72,8 +72,8 @@ const HomeShape = () => {
         0.1
       );
 
-      tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.75);
-      tl.to(nextSectionRef.current, { duration: 0.5 }, 1.05);
+      tl.to(nextSectionRef.current, { opacity: 1, duration: 0.4, ease: "power1.in" }, 0.4);
+      tl.to(nextSectionRef.current, { duration: 0.5 }, 0.75);
     }, sectionRef);
     
     const updateSquareSize = () => {
@@ -96,6 +96,32 @@ const HomeShape = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const imageElement = imageRef.current;
+    if (!imageElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const bgImageUrl = imageElement.getAttribute("data-bg-image");
+            if (bgImageUrl) {
+              imageElement.style.backgroundImage = `url(${bgImageUrl})`;
+              observer.unobserve(imageElement);
+            }
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    observer.observe(imageElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
 
 
   const squareCenter = { x: 500, y: 425 };
@@ -114,17 +140,6 @@ const HomeShape = () => {
 
   return (
     <div ref={sectionRef} className="relative w-full h-screen overflow-hidden">
-      {/* Background */}
-      <div
-        style={{
-          position: "absolute", inset: 0, zIndex: 0,
-          backgroundImage: "url(/anapurna2.jpg)",
-          backgroundSize: "cover", backgroundPosition: "center",
-          filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
-        }}
-      />
-
-      {/* Diamond shadow wrapper */}
       <div style={{ position: "absolute", inset: 0, zIndex: 2, filter: "drop-shadow(0px 0px 20px rgba(0,0,0,0.95))" }}>
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>
@@ -135,15 +150,19 @@ const HomeShape = () => {
           </defs>
         </svg>
 
-        <div
-          ref={imageRef}
-          style={{
-            position: "absolute", inset: 0,
-            backgroundImage: "url(/city.jpg)",
-            backgroundSize: "cover", backgroundPosition: "center",
-            clipPath: "url(#diamond-clip)",
-          }}
-        />
+<div
+  ref={imageRef}
+  className="absolute inset-0"
+  data-bg-image="/bali5.avif"
+  style={{
+    backgroundSize: "cover", 
+    backgroundPosition: "center",
+    clipPath: "url(#diamond-clip)",
+    filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
+    maskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+    WebkitMaskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+  }}
+/>
       </div>
 
       {/* SVG decorators */}
@@ -185,34 +204,16 @@ const HomeShape = () => {
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
 
-      {/* Black fade gradient at bottom */}
-      <div
-        className="absolute bottom-0 w-full h-64 pointer-events-none"
-        style={{
-          zIndex: 1,
-          background: "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 15%, rgba(0, 0, 0, 0.8) 50%)",
-        }}
-      />
-
-      {/* Scroll indicator */}
       <div className="absolute bottom-10 w-full flex justify-center z-30">
         <ScrollIndicator />
       </div>
 
-      {/* Next section overlay */}
       <div
         ref={nextSectionRef}
-        className="absolute inset-0 flex flex-col h-full w-full justify-start items-center gap-2 pt-40 opacity-0"
+        className="absolute inset-0 flex flex-col h-full w-full justify-start items-center gap-2 pt-10 opacity-0"
         style={{ zIndex: 10 }}
       >
-        {/* <div className="text-center gap-12 flex flex-col items-center justify-center">
-          <div className="bg-linear-to-b from-white from-25% to-gray-700/20 bg-clip-text text-transparent leading-none">
-            <h1 className="text-[12rem] font-made-outer-alt font-black mb-12 leading-24 pt-4">how</h1>
-            <h1 className="text-[10rem] font-made-outer-alt font-black mb-12 leading-17">it</h1>
-            <h1 className="text-[8rem] font-made-outer-alt font-black mb-10 leading-12">works</h1>
-          </div>
-        </div> */}
-          <HowItWorks />
+        <HowItWorks />
       </div>
     </div>
   );

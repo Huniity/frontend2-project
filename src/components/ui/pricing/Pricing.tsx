@@ -114,13 +114,13 @@ const PricingComponent = () => {
   };
 
   return (
-    <div className="bg-black text-white">
-      <div className="max-w-7xl mx-auto pt-24 px-12 pb-24">
-        <div className="text-center mb-18">
-          <h1 className="font-made-outer-alt text-5xl font-black text-white ml-48 mr-48 text-center">
+    <div className=" text-white">
+      <div className="max-w-7xl mx-auto xl:pt-24 px-7 xl:px-12 pb-24">
+        <div className="text-center mb-12 xl:mb-18">
+          <h1 className="font-made-outer-alt text-5xl xl:text-5xl font-black text-white xl:ml-48 xl:mr-48 text-center">
             Start yoUr joUrnEy
           </h1>
-          <h2 className="font-made-outer-alt text-5xl font-black text-gray-400 ml-48 mr-48 text-center leading-22">
+          <h2 className="font-made-outer-alt text-5xl xl:text-5xl font-black text-gray-400 xl:ml-48 xl:mr-48 text-center leading-22">
             bE Nomad
           </h2>
 
@@ -148,7 +148,7 @@ const PricingComponent = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-36 h-130">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-36 min-h-130">
           {pricing.map((plan, index) => (
             <div
               key={index}

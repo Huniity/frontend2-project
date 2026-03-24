@@ -1,6 +1,5 @@
 import Footer from "@/components/ui/footer/Footer";
-import { GiCompass, GiEarthAmerica, GiHearts } from "react-icons/gi";
-import { MdGroups, MdTravelExplore, MdSecurity } from "react-icons/md";
+import { Compass, Globe, Heart, MapPin, Users, Lock } from 'lucide-react';
 
 export const metadata = {
   title: "About",
@@ -48,7 +47,7 @@ export default function About() {
         <div className="flex flex-row gap-12">
           <div className="flex-1 flex flex-col items-center gap-6 text-center">
             <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
-              <GiCompass className="text-white" size={48} />
+              <Compass className="text-white" size={48} />
             </div>
             <div>
               <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
@@ -61,7 +60,7 @@ export default function About() {
           </div>
           <div className="flex-1 flex flex-col items-center gap-6 text-center">
             <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
-              <GiEarthAmerica className="text-white" size={48} />
+              <Globe className="text-white" size={48} />
             </div>
             <div>
               <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
@@ -74,7 +73,7 @@ export default function About() {
           </div>
           <div className="flex-1 flex flex-col items-center gap-6 text-center">
             <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
-              <GiHearts className="text-white" size={48} />
+              <Heart className="text-white" size={48} />
             </div>
             <div>
               <h3 className="text-2xl font-made-outer-alt font-black text-white mb-3">
@@ -95,7 +94,7 @@ export default function About() {
         </h1>
         <div className="grid grid-cols-3 gap-12 max-w-5xl">
           <div className="flex flex-col items-center gap-4 text-center">
-            <MdTravelExplore className="text-white" size={44} />
+            <MapPin className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
               advEntUrE first
             </h3>
@@ -104,7 +103,7 @@ export default function About() {
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 text-center">
-            <MdGroups className="text-white" size={44} />
+            <Users className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
               cOmmUnity
             </h3>
@@ -113,7 +112,7 @@ export default function About() {
             </p>
           </div>
           <div className="flex flex-col items-center gap-4 text-center">
-            <MdSecurity className="text-white" size={44} />
+            <Lock className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
               trust & sAfEty
             </h3>
