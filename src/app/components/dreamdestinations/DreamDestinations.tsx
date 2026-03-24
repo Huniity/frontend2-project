@@ -55,13 +55,32 @@ const DreamDestinations = () => {
     <div className="w-full h-full flex flex-col xl:justify-start xl:items-center">
       <div className="mb-16">
         <div className="flex flex-col mt-54">
+        <h1
+          className="px-4.5 text-left font-black font-made-outer-alt"
+          style={{
+            backgroundImage: "url(/hawaii1.avif)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "scroll",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            overflow: "visible",
+            lineHeight: "0.75",
+          }}
+        >
+          <span className="block text-[5rem] xl:text-[16rem] pb-2 xl:pb-0 font-made-outer-alt">drEam</span>
+          <span className="block text-[2.5rem] xl:text-[10rem] ml-1 font-made-outer-alt">dEstinations</span>
+        </h1>
+      </div>
+        {/* <div className="flex flex-col mt-54">
           <h1
             className="px-4.5 text-left text-[5rem] xl:text-[16rem] font-black font-made-outer-alt"
             style={{
               backgroundImage: "url(/hawaii1.avif)",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundAttachment: "fixed",
+              backgroundAttachment: "scroll",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -79,7 +98,7 @@ const DreamDestinations = () => {
               backgroundImage: "url(/hawaii1.avif)",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              backgroundAttachment: "fixed",
+              backgroundAttachment: "scroll",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -91,7 +110,7 @@ const DreamDestinations = () => {
           >
             dEstinations
           </h1>
-        </div>
+        </div> */}
       </div>
 
       <div className="px-5 grid grid-cols-2 md:grid-cols-5 gap-6 w-full max-w-6xl place-items-center">

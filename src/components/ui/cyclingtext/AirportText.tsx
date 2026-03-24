@@ -33,13 +33,10 @@ const AirportText = ({ words, intervalMs = 5000 }: AirportTextProps) => {
     return () => clearInterval(interval);
   }, [words.length, intervalMs, mounted]);
 
+  if (!mounted) return null;
+
   return (
-    <span
-      ref={mounted ? ref : undefined}
-      className=" font-made-outer-alt font-black text-shadow-lg"
-    >
-      {!mounted ? words[0] : undefined}
-    </span>
+    <span ref={ref} className="font-made-outer-alt font-black text-shadow-lg" />
   );
 };
 

@@ -150,19 +150,20 @@ const HomeShape = () => {
           </defs>
         </svg>
 
-<div
-  ref={imageRef}
-  className="absolute inset-0"
-  data-bg-image="/bali5.avif"
-  style={{
-    backgroundSize: "cover", 
-    backgroundPosition: "center",
-    clipPath: "url(#diamond-clip)",
-    filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
-    maskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
-    WebkitMaskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
-  }}
-/>
+        <div
+          ref={imageRef}
+          className="absolute inset-0"
+          // data-bg-image="/bali5.avif"
+          style={{
+            backgroundImage: "url(/anapurna.webp)",
+            backgroundSize: "cover", 
+            backgroundPosition: "center",
+            clipPath: "url(#diamond-clip)",
+            filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
+            maskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+          }}
+        />
       </div>
 
       {/* SVG decorators */}

@@ -1,10 +1,11 @@
 
 import Link from "next/link";
+import Image from "next/image";
 
 const Cta = () => {
     return(
         <section className="snap-start relative w-full h-screen">
-            <div
+            {/* <div
                 className="absolute inset-0 z-0"
                 style={{
                     backgroundImage: "url(./dubai.webp)",
@@ -13,6 +14,16 @@ const Cta = () => {
                     maskImage: "linear-gradient(to bottom, transparent 1%, black 100%, black 90%, transparent 100%)",
                     WebkitMaskImage: "linear-gradient(to bottom, transparent 1%, black 100%, black 90%, transparent 100%)",
                 }}
+            /> */}
+            import Image from "next/image"
+
+            <Image
+            src="/dubai.webp"
+            alt="Dubai"
+            fill
+            className="object-cover"
+            priority={false}
+            quality={70}
             />
             <div className="relative z-20 flex flex-col h-full w-full justify-center items-center gap-12">
                 <h1 className="text-4xl xl:text-5xl font-made-outer-alt font-black mb-4 text-white text-shadow-lg">
