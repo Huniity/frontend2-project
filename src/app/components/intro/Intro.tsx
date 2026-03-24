@@ -23,13 +23,19 @@ const HomeShape = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const height = window.innerHeight;
+      const height = window.visualViewport?.height ?? window.innerHeight;
       setWindowSize({ width, height });
       setDiamondSize(Math.min(width, height) * 0.15);
     };
     handleResize();
+    
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.visualViewport?.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.visualViewport?.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   // --- Update diamond image and SVG decorators ---
@@ -59,8 +65,8 @@ const HomeShape = () => {
         ];
         const leftVertex = corners[3];
         const rightVertex = corners[1];
-        const leftLineEnd = { x: leftVertex.x - 345, y: leftVertex.y };
-        const rightLineEnd = { x: rightVertex.x + 345, y: rightVertex.y };
+        const leftLineEnd = { x: leftVertex.x - 600, y: leftVertex.y };
+        const rightLineEnd = { x: rightVertex.x + 600, y: rightVertex.y };
         const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
 
         const polygonEl = decoratorsRef.current.querySelector("polygon");
@@ -212,7 +218,7 @@ const HomeShape = () => {
       <h1
         ref={textLeftRef}
         className="ml-8 pb-45 text-4xl absolute text-white xl:text-6xl xl:pb-5 font-made-outer-alt pointer-events-none text-shadow-lg"
-        style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: 1, willChange: "transform, opacity" }}
+        style={{ left: "16%", top: "45%", transform: "translateY(-50%)", zIndex: -10, willChange: "transform, opacity" }}
       >
         ExplorE
       </h1>
@@ -226,7 +232,7 @@ const HomeShape = () => {
           top: "51.5%",
           transform: "translateX(50%) translateY(-50%)",
           width: "500px",
-          zIndex: 1,
+          zIndex: -10,
           willChange: "transform, opacity",
         }}
       >

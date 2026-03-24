@@ -35,23 +35,27 @@ const DreamDestinations = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
       const track = trackRef.current;
-
       if (!track) return;
 
-      const totalWidth = track.scrollWidth / 2;
+      // Wait a tick for layout to settle
+      const init = () => {
+        const totalWidth = track.scrollWidth / 2;
 
-      gsap.to(track, {
-        x: -totalWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
+        gsap.to(track, {
+          x: -totalWidth,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub:2,
+          },
+        });
+      };
+
+      // Use requestAnimationFrame to ensure DOM is painted
+      requestAnimationFrame(() => requestAnimationFrame(init));
 
     }, containerRef);
 
@@ -124,7 +128,7 @@ const DreamDestinations = () => {
               ref={(el) => {
                 imagesRef.current[index] = el;
               }}
-              className="relative rounded-2xl border border-white/15 w-48 h-48 shrink-0"
+              className="relative rounded-2xl border border-white/15 w-48 h-28 shrink-0"
               data-bg-image={feature.image}
               style={{
                 backgroundSize: "cover",
