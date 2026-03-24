@@ -155,7 +155,7 @@ const HomeShape = () => {
           className="absolute inset-0"
           // data-bg-image="/bali5.avif"
           style={{
-            backgroundImage: "url(/anapurna.webp)",
+            backgroundImage: "url(/mountain.avif)",
             backgroundSize: "cover", 
             backgroundPosition: "center",
             clipPath: "url(#diamond-clip)",

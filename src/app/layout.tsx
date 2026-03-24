@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning />
-      <link rel="preload" as="image" href="/anapurna.webp" fetchPriority="high" />
+      <link rel="preload" as="image" href="/mountain.avif" fetchPriority="high" />
       <link rel="preload" as="image" href="/hawaii1.avif" fetchPriority="low" />
       <body>
         <div id="__app">
