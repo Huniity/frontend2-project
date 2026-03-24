@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import Footer from "@/components/ui/footer/Footer";
-import { Airplane, CreditCard, Shield, Download, HelpCircle, Users } from 'lucide-react';
+import { Plane, CreditCard, ShieldCheck, DownloadCloud, HelpCircle, Accessibility } from 'lucide-react';
 
 const tabs = [
-  { id: "nomadia", label: "Nomadia", icon: Airplane },
+  { id: "nomadia", label: "Nomadia", icon: Plane },
   { id: "payments", label: "Payments", icon: CreditCard },
-  { id: "security", label: "Security", icon: Shield },
-  { id: "data", label: "Data", icon: Download },
+  { id: "security", label: "Security", icon: ShieldCheck },
+  { id: "data", label: "Data", icon: DownloadCloud },
   { id: "support", label: "Support", icon: HelpCircle },
-  { id: "accessibility", label: "Accessibility", icon: Users },
+  { id: "accessibility", label: "Accessibility", icon: Accessibility },
 ];
 
 const faqData: Record<string, { question: string; answer: string }[]> = {
