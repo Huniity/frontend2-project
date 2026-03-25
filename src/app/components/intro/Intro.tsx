@@ -121,7 +121,9 @@ const HomeShape = () => {
   const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
 
   return (
-    <div ref={sectionRef} className="relative w-full h-screen overflow-hidden">
+    <div ref={sectionRef} className="relative w-full overflow-hidden"
+      style={{ height: windowSize.height || "100vh" }}
+    >
 
       {/* Diamond Image */}
       <div
@@ -146,7 +148,6 @@ const HomeShape = () => {
         width="100%"
         height="100%"
         viewBox={`0 0 ${windowSize.width} ${windowSize.height}`}
-        preserveAspectRatio="none"
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: 3, pointerEvents: "none" }}
       >
