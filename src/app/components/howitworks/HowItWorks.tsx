@@ -42,10 +42,10 @@ const HowItWorks = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <div className="bg-gradient-to-b from-black to-white bg-clip-text text-transparent drop-shadow-lg">
-        <h1 className=" text-center xl:text-left text-6xl xl:text-[12rem] font-made-outer-alt font-black leading-10 xl:mb-12 xl:leading-24 pt-4">how</h1>
-        <h1 className="text-center xl:text-left text-6xl xl:text-[10rem] font-made-outer-alt font-black xl:mb-12 xl:leading-17">it</h1>
-        <h1 className="text-center xl:text-left text-6xl xl:text-[8rem] font-made-outer-alt font-black mb-10 leading-10 xl:mb-10 xl:leading-12">works</h1>
+      <div className="text-white bg-clip-text drop-shadow-lg">
+        <h1 className=" text-center xl:text-center text-6xl xl:text-[12rem] font-made-outer-alt font-black leading-10 xl:mb-12 xl:leading-24 pt-4">how</h1>
+        <h1 className="text-center xl:text-center text-6xl xl:text-[10rem] font-made-outer-alt font-black xl:mb-12 xl:leading-17">it</h1>
+        <h1 className="text-center xl:text-center text-6xl xl:text-[8rem] font-made-outer-alt font-black mb-10 leading-10 xl:mb-10 xl:leading-12">works</h1>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl place-items-center px-4 mt-10">
         {steps.map((step) => (

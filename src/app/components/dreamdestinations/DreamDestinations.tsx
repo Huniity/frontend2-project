@@ -1,6 +1,16 @@
 'use client';
 
-import { Eye, Sparkles, Trees, Sun, MapPin, Flame, Waves, Cloud, Navigation } from 'lucide-react';
+import {
+  Eye,
+  Sparkles,
+  Trees,
+  Sun,
+  MapPin,
+  Flame,
+  Waves,
+  Cloud,
+  Navigation,
+} from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,20 +25,21 @@ interface Feature {
 
 const DreamDestinations = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const features: Feature[] = [
-    { icon: <Eye size={32} />, title: "Vast pEaks", image: "/anapurna.webp" },
-    { icon: <Waves size={32} />, title: "MEsmErizing Sand", image: "/blacksand.webp" },
+    { icon: <Eye size={32} />, title: "Vast pEaks", image: "/anapurna.avif" },
+    { icon: <Waves size={32} />, title: "MEsmErizing Sand", image: "/blacksand.avif" },
     { icon: <Trees size={32} />, title: "LUsh forEsts", image: "/forest.avif" },
-    { icon: <Cloud size={32} />, title: "Night skylinE", image: "/new_york2.webp" },
-    { icon: <MapPin size={32} />, title: "paradisE Island", image: "/hawaii2.webp" },
-    { icon: <Sun size={32} />, title: "goldEn light", image: "/rome.webp" },
-    { icon: <Flame size={32} />, title: "OUtdoor lifE", image: "/backpack.webp" },
-    { icon: <MapPin size={32} />, title: "UniqUE spots", image: "/cappadocia.webp" },
-    { icon: <Navigation size={32} />, title: "bUstling strEEts", image: "/tokyo5.webp" },
-    { icon: <Sparkles size={32} />, title: "City lights", image: "/tokyo3.webp" },
+    { icon: <Cloud size={32} />, title: "Night skylinE", image: "/new_york2.avif" },
+    { icon: <MapPin size={32} />, title: "paradisE Island", image: "/hawaii2.avif" },
+    { icon: <Sun size={32} />, title: "goldEn light", image: "/rome.avif" },
+    { icon: <Flame size={32} />, title: "OUtdoor lifE", image: "/backpack.avif" },
+    { icon: <MapPin size={32} />, title: "UniqUE spots", image: "/cappadocia.avif" },
+    { icon: <Navigation size={32} />, title: "bUstling strEEts", image: "/tokyo5.avif" },
+    { icon: <Sparkles size={32} />, title: "City lights", image: "/tokyo3.avif" },
   ];
 
   const loopFeatures = [...features, ...features];
@@ -36,27 +47,60 @@ const DreamDestinations = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const track = trackRef.current;
-      if (!track) return;
+      const title = titleRef.current;
+      const container = containerRef.current;
 
-      // Wait a tick for layout to settle
+      if (!track || !title || !container) return;
+
+      gsap.set(title, {
+        opacity: 0,
+        y: 30,
+      });
+
       const init = () => {
-        const totalWidth = track.scrollWidth / 2;
+      const totalWidth = track.scrollWidth / 2;
+      const cards = imagesRef.current;
 
-        gsap.to(track, {
-          x: -totalWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub:2,
-          },
+
+      gsap.set(title, { opacity: 0, y: 30 });
+      gsap.set(cards, { opacity: 0, y: 25 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top 150%",
+          end: "bottom top",
+          scrub: 2,
+        },
+      });
+
+
+      tl.to(title, {
+        opacity: 1,
+        y: 0,
+        duration: 0.25,
+        ease: "power2.out",
+      }, 0);
+
+      tl.call(() => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: 0.06,
+          overwrite: "auto",
         });
-      };
+      }, [], 0.05);
 
-      // Use requestAnimationFrame to ensure DOM is painted
+      tl.to(track, {
+        x: -totalWidth,
+        ease: "none",
+        duration: 1,
+      }, 0);
+    };
+
       requestAnimationFrame(() => requestAnimationFrame(init));
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -88,12 +132,11 @@ const DreamDestinations = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-
-      <div className="mb-16 mt-54">
+      <div ref={titleRef} className="mb-16 mt-54">
         <h1
           className="px-4.5 font-black font-made-outer-alt"
           style={{
-            backgroundImage: "url(/hawaii1.avif)",
+            backgroundImage: "url(/hawaii2.webp)",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
@@ -102,13 +145,14 @@ const DreamDestinations = () => {
             lineHeight: "0.75",
           }}
         >
-          <span className="font-made-outer-alt block text-[5rem] xl:text-[16rem]">drEam</span>
+          <span className="font-made-outer-alt block text-[5rem] xl:text-[16rem]">
+            drEam
+          </span>
           <span className="font-made-outer-alt block text-[2.5rem] xl:text-[10rem] mb-80 ml-1">
             dEstinations
           </span>
         </h1>
       </div>
-
 
       <div
         ref={containerRef}
@@ -146,7 +190,6 @@ const DreamDestinations = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };

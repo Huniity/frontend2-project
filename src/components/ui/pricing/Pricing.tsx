@@ -1,11 +1,15 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Check, Flame, TimerOff, ShieldCheck, Calendar1, ReceiptText, BookmarkX } from "lucide-react";
 import UpgradeButton from "@/components/ui/buttons/UpgradeButton";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { pricing } from "@/lib/utils/pricing";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PricingComponent = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -13,6 +17,11 @@ const PricingComponent = () => {
   const [userPlan, setUserPlan] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const perksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -29,6 +38,64 @@ const PricingComponent = () => {
     checkAuth();
   }, []);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(headerRef.current, {
+        opacity: 0,
+        y: 24,
+      });
+
+      gsap.set(cardsRef.current, {
+        opacity: 0,
+        y: 28,
+      });
+
+      gsap.set(perksRef.current, {
+        opacity: 0,
+        y: 18,
+      });
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 65%",
+        once: true,
+        onEnter: () => {
+          const tl = gsap.timeline();
+
+          tl.to(headerRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          })
+            .to(
+              cardsRef.current,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.55,
+                ease: "power2.out",
+                stagger: 0.12,
+              },
+              "-=0.15"
+            )
+            .to(
+              perksRef.current,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                ease: "power2.out",
+              },
+              "-=0.15"
+            );
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const renderButton = (plan: typeof pricing[number]) => {
     if (loading) {
       return (
@@ -38,22 +105,21 @@ const PricingComponent = () => {
       );
     }
 
-    // Not logged in → redirect to signin
     if (!isLoggedIn) {
       return (
         <button
           onClick={() => router.push("/signin")}
-          className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${plan.highlighted
+          className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${
+            plan.highlighted
               ? "bg-white text-black hover:bg-gray-100"
               : "border border-white/20 text-white hover:bg-white/10 hover:border-white/40"
-            }`}
+          }`}
         >
           Get Started
         </button>
       );
     }
 
-    // FREE plan card
     if (!plan.stripePlan) {
       return (
         <button
@@ -65,7 +131,6 @@ const PricingComponent = () => {
       );
     }
 
-    // Already on this plan
     if (userPlan === plan.stripePlan) {
       return (
         <button
@@ -77,7 +142,6 @@ const PricingComponent = () => {
       );
     }
 
-    // Already on a different paid plan
     if (userPlan && userPlan !== "FREE" && userPlan !== plan.stripePlan) {
       return (
         <button
@@ -90,24 +154,24 @@ const PricingComponent = () => {
       );
     }
 
-    // Normal upgrade
     return (
       <UpgradeButton
         plan={plan.stripePlan}
         interval={isAnnual ? "annual" : "monthly"}
         label="Get Started"
-        className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${plan.highlighted
+        className={`w-full py-3 rounded-lg font-made-outer font-bold mb-8 transition-all duration-300 ${
+          plan.highlighted
             ? "bg-white text-black hover:bg-gray-100"
             : "border border-white/20 text-white hover:bg-white/10 hover:border-white/40"
-          }`}
+        }`}
       />
     );
   };
 
   return (
-    <div className=" text-white">
+    <div ref={sectionRef} className="text-white">
       <div className="max-w-7xl mx-auto xl:pt-24 px-7 xl:px-12 pb-24">
-        <div className="text-center mb-12 xl:mb-18">
+        <div ref={headerRef} className="text-center mb-12 xl:mb-18">
           <h1 className="font-made-outer-alt text-5xl xl:text-5xl font-black text-white xl:ml-48 xl:mr-48 text-center">
             Start yoUr joUrnEy
           </h1>
@@ -143,10 +207,15 @@ const PricingComponent = () => {
           {pricing.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${plan.highlighted
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
+                plan.highlighted
                   ? "border-2 border-white/30 bg-white/10 backdrop-blur-xl scale-105 md:scale-110"
                   : "border border-white/15 bg-white/5 backdrop-blur-lg hover:bg-white/8 hover:border-white/25"
-                }`}
+              }`}
+              style={{ willChange: "transform, opacity" }}
             >
               <div className="p-8">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -198,7 +267,10 @@ const PricingComponent = () => {
           ))}
         </div>
 
-        <div className="flex flex-row gap-2 w-full justify-center flex-wrap mt-[-100] ">
+        <div
+          ref={perksRef}
+          className="flex flex-row gap-2 w-full justify-center flex-wrap mt-[-100]"
+        >
           <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg px-4 py-2 flex items-center gap-2 text-sm text-gray-400 font-made-outer font-bold">
             <p className="flex items-center gap-1 px-2 py-1 text-gray-400 font-black font-made-outer text-sm ">
               <Calendar1 size={18} />
