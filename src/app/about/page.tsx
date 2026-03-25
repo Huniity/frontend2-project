@@ -10,22 +10,23 @@ export const metadata = {
 export default function About() {
   return (
       <>
-      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-8 px-12">
+      <div className="w-full flex flex-col justify-center items-center gap-8 px-12 mb-24 mt-48">
         <div className="text-center space-y-6 max-w-4xl">
           <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg">
             aboUt
           </h1>
-          <h2 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg leading-tight">
-            nomaDia
+          <h2 className="text-6xl font-made-outer-alt font-black text-gray-500 text-shadow-lg leading-tight">
+            Us
           </h2>
           <p className="text-lg font-made-outer text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Born from a passion for discovery, we're redefining how the world travels with smart tools, curated destinations, and a vibrant community.
+            Born from a passion for discovery, we&apos;re redefining how the world travels with smart tools, curated destinations, and a vibrant community.
           </p>
         </div>
       </div>
-
-      {/* Mission */}
-      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-12 px-24">
+      
+      <div className="my-8 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
+      
+      <div className="w-full flex flex-col justify-center items-center gap-12 px-24 mb-24 mt-24">
         <div className="text-center">
           <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg mb-8 leading-tight">
             oUr
@@ -39,12 +40,14 @@ export default function About() {
         </div>
       </div>
 
-      {/* What We Offer */}
-      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-16 px-24">
+      <div className="my-8 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
+
+
+      <div className="w-full flex flex-col justify-center items-center gap-16 px-24 mb-24 mt-24">
         <h1 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg text-center">
           what wE offEr
         </h1>
-        <div className="flex flex-row gap-12">
+        <div className="flex flex-col xl:flex-row gap-12">
           <div className="flex-1 flex flex-col items-center gap-6 text-center">
             <div className="w-24 h-24 rounded-full border-2 border-white flex items-center justify-center">
               <Compass className="text-white" size={48} />
@@ -86,13 +89,14 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Values */}
-      <div className="snap-start w-full bg-black h-screen flex flex-col justify-center items-center gap-16 px-24">
+      
+      <div className="my-8 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
+      
+      <div className="w-full flex flex-col justify-center items-center gap-16 px-24 mb-64 mt-24">
         <h1 className="text-6xl font-made-outer-alt font-black text-white text-shadow-lg text-center">
           what wE stand for
         </h1>
-        <div className="grid grid-cols-3 gap-12 max-w-5xl">
+        <div className="xl:grid xl:grid-cols-3 flex flex-col gap-12 max-w-5xl">
           <div className="flex flex-col items-center gap-4 text-center">
             <MapPin className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
@@ -105,7 +109,7 @@ export default function About() {
           <div className="flex flex-col items-center gap-4 text-center">
             <Users className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
-              cOmmUnity
+              COmmUnity
             </h3>
             <p className="text-gray-400 font-made-outer text-sm">
               Growing nomads sharing tips, stories, and inspiration together.
@@ -114,7 +118,7 @@ export default function About() {
           <div className="flex flex-col items-center gap-4 text-center">
             <Lock className="text-white" size={44} />
             <h3 className="text-xl font-made-outer-alt font-black text-white">
-              trust & sAfEty
+              trUst & sAfEty
             </h3>
             <p className="text-gray-400 font-made-outer text-sm">
               Secure, verified, transparent. Travel with peace of mind.

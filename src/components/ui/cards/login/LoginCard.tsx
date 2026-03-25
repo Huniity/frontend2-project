@@ -1,5 +1,5 @@
 'use client'
-import { Mail, Key } from "lucide-react";
+import { Mail, KeyRound } from "lucide-react";
 import { useState, useRef } from "react";
 import LoginButton from "@/components/ui/buttons/LoginButton";
 import ForgotPasswordButton from "@/components/ui/buttons/ForgotPasswordButoon";
@@ -70,7 +70,7 @@ const LoginCard = ({ name, mutatedName, namePassword, mutatedNamePassword }: Log
                     />
                 </div>
                 <div className="relative">
-                    <Key className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
+                    <KeyRound className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
                     <input
                         type="password"
                         placeholder="Password"

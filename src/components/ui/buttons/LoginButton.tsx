@@ -1,6 +1,4 @@
-"use client"
 
-import { toast } from "react-toastify";
 import { forwardRef } from "react";
 
 interface LoginButtonProps {

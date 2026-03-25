@@ -37,16 +37,9 @@ export default function TripPageClient({ trip }: { trip: any }) {
 
   return (
     <div
-      className="min-h-screen bg-black text-white"
-      style={{
-        backgroundImage: "url(/city.jpg)",
-        backgroundAttachment: "fixed",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        filter: "grayscale(0.3) contrast(1) saturate(2) sepia(0.15)",
-      }}
+      className="min-h-screen text-white"
     >
-      <div className="pt-64 max-w-7xl mx-auto px-8 py-8">
+      <div className="pt-64 w-9/10 xl:max-w-7xl mx-auto px-8 py-8 ">
         <div className="py-8 px-8 bg-black/50 backdrop-blur-md rounded-2xl border border-white/20">
 
           {/* Day Navigation + Confirm Button */}
@@ -117,7 +110,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
               {/* Left: Overview */}
               <div className="col-span-2">
                 <div className="mb-8">
@@ -204,8 +197,8 @@ export default function TripPageClient({ trip }: { trip: any }) {
               </div>
 
               {/* Right: Map */}
-              <div className="col-span-1">
-                <div className="mt-25 top-24 rounded-2xl overflow-hidden border border-white/15 bg-black/40" style={{ height: "500px" }}>
+              <div className="col-span-1 ">
+                <div className="w-63 xl:w-full h-80 xl:h-200 mt-25 top-24 rounded-2xl overflow-hidden border border-white/15 bg-black/40 " >
                   <TripMap activities={mapActivities} selectedDay={selectedDay} />
                 </div>
               </div>

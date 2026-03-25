@@ -8,20 +8,20 @@ export const metadata = {
 
 export default function Policy() {
   return (
-    <div className="min-h-screen bg-black text-white mt-48">
-      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
+    <div className="min-h-screen text-white mt-48">
+      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8 text-center xl:text-left">
         <div className="mb-16">
           <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
-            Privacy POlicy
+            privaCy poliCy
           </h1>
-          <p className="text-gray-400 font-made-outer text-lg">
+          <p className=" text-gray-400 font-made-outer text-lg">
             Last updated: March 12, 2026
           </p>
         </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            OUr COmmitmEnt tO YOUr Privacy
+            oUr CommitmEnt to yoUr privaCy
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             At Nomadia, we take your privacy seriously. This Privacy Policy explains
@@ -34,7 +34,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            InfOrmatiOn WE COllEct
+            information wE CollECt
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We collect information about you in several ways:
@@ -42,7 +42,7 @@ export default function Policy() {
           <div className="space-y-4">
             <div>
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
-                InfOrmatiOn YOu PrOvidE
+                Information You Provide
               </h3>
               <p className="text-gray-300 font-made-outer">
                 This includes information you provide when registering for an account,
@@ -53,7 +53,7 @@ export default function Policy() {
             </div>
             <div>
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
-                AUtOmatically COllEctEd InfOrmatiOn
+                Automatically Collected Information
               </h3>
               <p className="text-gray-300 font-made-outer">
                 When you use our Service, we automatically collect certain information
@@ -63,7 +63,7 @@ export default function Policy() {
             </div>
             <div>
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
-                COOkiEs & SimilAr TEchnOlOgiEs
+                Cookies & Similar Technologies
               </h3>
               <p className="text-gray-300 font-made-outer">
                 We use cookies and similar tracking technologies to enhance your
@@ -76,12 +76,12 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            HOw WE UsE YOUR InfOrmatiOn
+            how wE UsE yoUr informatiOn
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We use the information we collect for various purposes:
           </p>
-          <ul className="list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
+          <ul className="text-left list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
             <li>Processing transactions and sending related information</li>
             <li>Sending promotional emails and marketing communications</li>
             <li>Improving and personalizing your experience</li>
@@ -94,13 +94,13 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            DATA SHAring & DisCLOsUrE
+            data Sharing & disClOsUrE
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We do not sell or rent your personal information to third parties. However,
             we may share your information with:
           </p>
-          <ul className="list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
+          <ul className="text-left list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
             <li>Service providers who assist in operating our website and services</li>
             <li>Payment processors and financial institutions for transaction processing</li>
             <li>Law enforcement or government agencies as required by law</li>
@@ -111,7 +111,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            DATA SEcUrIty
+            data sECUrity
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We implement appropriate technical and organizational measures to protect
@@ -125,12 +125,12 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            YOUR RIGHTS
+            yoUr rights
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Depending on your location, you may have the following rights:
           </p>
-          <ul className="list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
+          <ul className="text-left list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
             <li>Right to access your personal information</li>
             <li>Right to correct inaccurate data</li>
             <li>Right to delete your personal information</li>
@@ -142,7 +142,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            COOkiEs
+            CookiEs
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Our Service uses cookies to enhance functionality and user experience. You
@@ -153,7 +153,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            THIRD-PARTY LINKS
+            third-party Links
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Our Service may contain links to third-party websites and services that are
@@ -166,7 +166,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            CHILDREN{"'"}S PRIVACY
+            ChildrEn&apos;s privaCy
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Our Service is not intended for children under the age of 13. We do not
@@ -179,7 +179,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            DATA RETENTION
+            data rEtEntion
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We retain your personal information for as long as necessary to provide our
@@ -190,7 +190,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            INTERNATIONAL TRANSFERS
+            intErnatiOnal data transfErs
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             Your personal information may be transferred to, stored in, and processed
@@ -202,7 +202,7 @@ export default function Policy() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            CHANGES TO THIS POLICY
+            ChangEs to this poliCy
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             We may update this Privacy Policy from time to time to reflect changes in
@@ -214,7 +214,7 @@ export default function Policy() {
 
         <section className="border-t border-white/10 pt-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            COntact Us
+            ContaCt Us
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             If you have questions about this Privacy Policy or our privacy practices,

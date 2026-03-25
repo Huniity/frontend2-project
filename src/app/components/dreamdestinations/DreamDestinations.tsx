@@ -142,13 +142,13 @@ const DreamDestinations = () => {
             backgroundAttachment: "fixed",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            lineHeight: "0.75",
+            lineHeight: "0.65",
           }}
         >
           <span className="font-made-outer-alt block text-[5rem] xl:text-[16rem]">
             drEam
           </span>
-          <span className="font-made-outer-alt block text-[2.5rem] xl:text-[10rem] mb-80 ml-1">
+          <span className="font-made-outer-alt block text-[2.5rem] xl:text-[10rem] mb-80 ml-1 leading-35">
             dEstinations
           </span>
         </h1>

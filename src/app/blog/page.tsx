@@ -189,7 +189,7 @@ const Blog = () => {
                     <div className="text-center mb-24 flex flex-col items-center gap-6">
                         <div>
                             <h1 className="text-6xl font-made-outer-alt font-black mb-4 text-shadow-lg">
-                                Our Blog
+                                OUr Blog
                             </h1>
                             <p className="text-gray-400 font-made-outer-alt text-3xl mb-6">
                                 Stories, tips, and insights from the Nomadia community
@@ -202,10 +202,10 @@ const Blog = () => {
                                     setEditingBlog(null)
                                     setShowForm(true)
                                 }}
-                                className="flex items-center gap-2 px-6 py-3 rounded-lg font-made-outer font-bold transition-all duration-300 bg-white text-black hover:bg-gray-100"
+                                className="flex items-center gap-2 px-6 py-3 rounded-lg font-made-outer-alt font-bold transition-all duration-300 bg-white text-black hover:bg-gray-100"
                             >
-                                <Plus size={18} />
-                                Create Post
+                                <Plus size={18} strokeWidth={5}/>
+                                CrEatE post
                             </button>
                         )}
                     </div>
@@ -237,7 +237,7 @@ const Blog = () => {
                                         <div className="flex-1">
                                             <div className="h-px bg-linear-to-r from-transparent via-white/30 to-transparent"></div>
                                         </div>
-                                        <h2 className="text-3xl font-made-outer-alt font-bold whitespace-nowrap px-4">
+                                        <h2 className="text-2xl xl:text-3xl font-made-outer-alt font-bold whitespace-nowrap px-4">
                                             {section.category}
                                         </h2>
                                         <div className="flex-1">
@@ -255,7 +255,7 @@ const Blog = () => {
                                                 <div className="p-8 flex flex-col h-full">
                                                     {/* Category Tag & Actions */}
                                                     <div className="flex items-start justify-between mb-3 gap-2">
-                                                        <span className="inline-block px-3 py-1 text-xs font-made-outer font-bold text-white/60 border border-white/15 rounded-full bg-white/5">
+                                                        <span className="inline-block px-3 py-1 text-xs font-made-outer font-bold text-white/60 border border-white/15 rounded-md bg-white/5">
                                                             {post.category}
                                                         </span>
                                                         {user?.id === post.userId && (

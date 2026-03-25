@@ -5,17 +5,20 @@ import AppleButton from "@/components/ui/buttons/AppleButton";
 import LoginCard from "@/components/ui/cards/login/LoginCard";
 import Link from "next/link";
 
+
 export const metadata = {
   title: "Login",
   robots: { index: false, follow: false },
 };
 
-const Login = () => {
-    return (
+const Login = async () => {
+
+  return (
+
         <section className="snap-start w-full min-h-screen overflow-clip flex items-center justify-center">
             <div className="absolute inset-0" ></div>
             <div 
-              className="w-full max-w-md rounded-lg overflow-hidden relative p-0.5 backdrop-blur-xl"
+              className="w-9/10 xl:w-full max-w-md rounded-lg overflow-hidden relative p-0.5 backdrop-blur-xl"
               style={{
                 background: 'linear-gradient(-30deg, rgba(255, 255, 255, 0.05), transparent, rgba(255, 255, 255, 0.05))',
               }}
@@ -51,7 +54,7 @@ const Login = () => {
               <div className="relative z-10 p-8 flex flex-col items-center justify-center gap-6">
                 <div className="text-center space-y-2 mb-2">
                     <h1 className="text-3xl font-bold text-white text-shadow-lg font-made-outer-alt">WElComE baCk</h1>
-                    <p className="text-sm text-white text-shadow-lg font-made-outer">Let{"'"}s Continue your journey.</p>
+                    <p className="text-sm text-gray-400 text-shadow-lg font-made-outer">Let{"'"}s Continue your journey.</p>
                 </div>
                 
                 <LoginCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" namePassword="Forgot Password?" mutatedNamePassword="Processing..." />

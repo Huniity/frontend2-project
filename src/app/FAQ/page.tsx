@@ -68,15 +68,15 @@ export default function FAQ() {
   const ActiveIcon = tabs.find((t) => t.id === activeTab)?.icon;
 
   return (
-    <div className="min-h-screen bg-black text-white mt-48">
-      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
+    <div className="min-h-screen text-white mt-48">
+      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
 
 
         <div className="mb-16">
-          <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+          <h1 className="text-center xl:text-left text-3xl xl:text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
             frEqUEntly askEd qUEstiOns
           </h1>
-          <p className="text-gray-400 font-made-outer text-lg">
+          <p className="text-center xl:text-left text-gray-400 font-made-outer text-lg">
             Learn how Nomadia works, how we handle payments, and how your data stays protected.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function FAQ() {
           <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
             brOwsE by tOpiC
           </h2>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid xl:grid-cols-3 gap-4">
             {tabs.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}

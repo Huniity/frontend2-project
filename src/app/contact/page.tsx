@@ -27,15 +27,15 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-black min-h-screen text-white">
+    <div className="min-h-screen text-white">
       {/* Hero */}
       <div className="w-full pt-32 pb-20 px-12">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg">
-            gEt In tOUch
+            gEt In tOUCh
           </h1>
           <p className="text-lg font-made-outer text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Have questions? We'd love to hear from you. Reach out to us anytime.
+            Have questions? We&apos;d love to hear from you. Reach out to us anytime.
           </p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export default function Contact() {
       {/* Contact Info Cards */}
       <div className="w-full px-12 py-20">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-3 gap-12 mb-24">
+          <div className="grid xl:grid xl:grid-cols-3 gap-12 mb-24">
             <div className="flex flex-col items-center gap-6 text-center">
               <div className="w-20 h-20 rounded-full border-2 border-white flex items-center justify-center">
                 <Mail className="text-white" size={40} />
@@ -81,7 +81,7 @@ export default function Contact() {
                   lOcatiOn
                 </h3>
                 <p className="text-gray-400 font-made-outer">
-                  Portugal, FARO
+                  _Etic Algarve, Faro
                 </p>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-12">
-            <h2 className="text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-12 text-center">
+            <h2 className="text-3xl xl:text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-12 text-center">
               sEnd a mEssagE
             </h2>
             <form onSubmit={handleSubmit} className="space-y-6">

@@ -36,5 +36,5 @@ export default async function DashboardPage() {
 
   if (!dbUser) redirect("/login");
 
-  return <Dashboard user={dbUser as any} allTrophies={allTrophies} />;
+  return <Dashboard user={dbUser} allTrophies={allTrophies} />;
 }

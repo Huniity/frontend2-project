@@ -8,10 +8,10 @@ export const metadata = {
 
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-black text-white mt-48">
-      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
+    <div className="min-h-screen text-white mt-48">
+      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8 text-center xl:text-left">
         <div className="mb-16">
-          <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+          <h1 className="text-4xl xl:text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
             tErms & Conditions
           </h1>
           <p className="text-gray-400 font-made-outer text-lg">
@@ -21,13 +21,13 @@ export default function Terms() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-made-outer-alt font-bold mb-4">
-            WElCOmE
+            wElComE
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
-            Welcome to Nomadia ({"'"}Company{"'"}, {"'"}we{"'"}, {"'"}our{"'"}, or {"'"}us{"'"}). These Terms and
-            Conditions ({"'"}Terms{"'"}) govern your access to and use of our website, mobile
+            Welcome to Nomadia (&apos;Company&apos;, &apos;we&apos;, &apos;our&apos;, or &apos;us&apos;). These Terms and
+            Conditions (&apos;Terms&apos;) govern your access to and use of our website, mobile
             application, and all services provided by Nomadia (collectively, the
-            {"'"}Service{"'"}). By accessing or using Nomadia, you agree to be bound by these
+            &apos;Service&apos;). By accessing or using Nomadia, you agree to be bound by these
             Terms. If you do not agree with any part of these Terms, you may not use
             the Service.
           </p>
@@ -43,12 +43,12 @@ export default function Terms() {
             transitory viewing only. This is the grant of a license, not a transfer of
             title, and under this license you may not:
           </p>
-          <ul className="list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
+          <ul className="text-left list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
             <li>Modifying or copying the materials</li>
             <li>Using the materials for any commercial purpose or for any public display</li>
             <li>Attempting to reverse engineer any software contained on Nomadia</li>
             <li>Removing any copyright or other proprietary notations from the materials</li>
-            <li>Transferring the materials to another person or {"'"}mirroring{"'"} the materials on any other server</li>
+            <li>Transferring the materials to another person or &apos;mirroring&apos; the materials on any other server</li>
           </ul>
         </section>
 
@@ -72,7 +72,7 @@ export default function Terms() {
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
             You agree that you will not:
           </p>
-          <ul className="list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
+          <ul className="text-left list-disc list-inside text-gray-300 font-made-outer space-y-2 ml-4">
             <li>Use the Service for any illegal or unauthorized purpose</li>
             <li>Engage in any conduct that violates these Terms</li>
             <li>Harass, abuse, or harm any person or entity</li>
@@ -112,7 +112,7 @@ export default function Terms() {
             disClaImEr
           </h2>
           <p className="text-gray-300 font-made-outer leading-relaxed mb-4">
-            The Service is provided on an {"'"}AS IS{"'"} and {"'"}AS AVAILABLE{"'"} basis. Nomadia
+            The Service is provided on an &apos;AS IS&apos; and &apos;AS AVAILABLE&apos; basis. Nomadia
             makes no representations or warranties of any kind, express or implied,
             including but not limited to the warranties of merchantability, fitness for
             a particular purpose, and non-infringement. We do not warrant that the

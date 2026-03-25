@@ -51,23 +51,23 @@ export default function Help() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white mt-48">
-      <div className="max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
+    <div className="min-h-screen text-white mt-48">
+      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
         <div className="mb-16">
-          <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+          <h1 className="text-center xl:text-left text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
             hElp CEntEr
           </h1>
-          <p className="text-gray-400 font-made-outer text-lg">
+          <p className="text-center xl:text-left text-gray-400 font-made-outer text-lg">
             Find answers to common questions and get support when you need it.
           </p>
         </div>
 
  
         <section className="mb-16">
-          <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
+          <h2 className="text-2xl font-made-outer-alt font-bold mb-6 text-center xl:text-left">
             gEt hElp fast
           </h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid xl:grid-cols-2 gap-4">
             <button className="border border-white/15 rounded-lg p-6 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer text-left">
               <h3 className="text-lg font-made-outer font-bold text-white mb-2">
                 Account & Login
@@ -105,7 +105,7 @@ export default function Help() {
 
 
         <section className="mb-16">
-          <h2 className="text-2xl font-made-outer-alt font-bold mb-8">
+          <h2 className="text-2xl font-made-outer-alt font-bold mb-8 text-center xl:text-left">
             frEqUEntly askEd qUEstiOns
           </h2>
           <div className="space-y-4">
@@ -144,10 +144,10 @@ export default function Help() {
         </section>
 
         <section className="mb-16 border-t border-white/10 pt-12">
-          <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
+          <h2 className="text-2xl font-made-outer-alt font-bold mb-6 text-center xl:text-left">
             still nEEd hElp?
           </h2>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid xl:grid-cols-2 gap-8 xl:text-left text-center">
             <div>
               <h3 className="text-lg font-made-outer font-bold text-white mb-4">
                 Email Support
@@ -183,11 +183,11 @@ export default function Help() {
         </section>
 
    
-        <section className="border-t border-white/10 pt-12">
-          <h2 className="text-2xl font-made-outer-alt font-bold mb-6">
+        <section className="border-t border-white/10 pt-12 items-center text-center">
+          <h2 className="text-2xl font-made-outer-alt font-bold mb-6 text-center xl:text-left">
             COmmUnity blOg
           </h2>
-          <p className="text-gray-300 font-made-outer leading-relaxed mb-6">
+          <p className="text-gray-300 font-made-outer leading-relaxed mb-6 text-center xl:text-left">
             Join our community blOg where nomads share tips, trip recommendations,
             and ask questions. Our community members and team regularly answer
             questions and share travel insights.

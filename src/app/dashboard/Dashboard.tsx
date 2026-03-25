@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {HandCoins, Target, ArrowLeft, Plane, Trophy as TrophyIcon, Star, User as UserIcon, LogOut, DollarSign } from "lucide-react";
+import {HandCoins, Target, ArrowLeft, Plane, Trophy as TrophyIcon, Star, User as UserIcon, LogOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/app/auth/actions";
