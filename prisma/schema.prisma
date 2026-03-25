@@ -18,8 +18,22 @@ model User {
   last_name  String?
   username   String?      @unique
   reviews    Review[]
+  posts      Blog[]
   trips      Trip[]
   trophies   UserTrophy[]
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  userId      String
+  category    Category
+  title       String
+  description String
+  content     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Trip {
@@ -148,6 +162,13 @@ model UserTrophy {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, trophyId])
+}
+
+enum Category {
+  PLAN_HACKS
+  TRAVEL_TIPS
+  COMMUNITY_HELP
+  DESTINATION_GUIDE
 }
 
 enum Plan {

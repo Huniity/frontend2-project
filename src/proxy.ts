@@ -80,7 +80,6 @@ const PUBLIC_ROUTES = [
   "/pricing",
   "/about",
   "/contact",
-  "/blog",
   "/FAQ",
   "/help",
   "/policy",
