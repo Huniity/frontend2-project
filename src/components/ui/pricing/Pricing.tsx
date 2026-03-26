@@ -235,7 +235,7 @@ const PricingComponent = () => {
                 <div className="mb-8">
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-black font-made-outer-alt text-white">
-                      {plan.monthlyPrice === 0 ? "frEE" : isAnnual ? `$${plan.annualPrice}` : `${plan.price}`}
+                      {plan.monthlyPrice === 0 ? "frEE" : isAnnual ? `€${plan.annualPrice}` : `${plan.price}`}
                     </span>
                     {plan.monthlyPrice > 0 && (
                       <span className="text-gray-400 font-made-outer">
@@ -245,7 +245,7 @@ const PricingComponent = () => {
                   </div>
                   {isAnnual && plan.monthlyPrice > 0 && (
                     <p className="text-xs text-gray-500 font-made-outer mt-2">
-                      ${(plan.annualPrice / 12).toFixed(2)} per month
+                      €{(plan.annualPrice / 12).toFixed(2)} per month
                     </p>
                   )}
                 </div>

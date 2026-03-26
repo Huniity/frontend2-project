@@ -17,7 +17,7 @@
     },
     {
       name: "glObEtrOttEr",
-      price: "$7.99",
+      price: "€7.99",
       period: "/month",
       description: "For frequent adventures",
       monthlyPrice: 7.99,
@@ -34,7 +34,7 @@
     },
     {
       name: "nOmad",
-      price: "$11.99",
+      price: "€11.99",
       period: "/month",
       description: "The ultimate travel experience",
       monthlyPrice: 11.99,
