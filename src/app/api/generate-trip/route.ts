@@ -10,16 +10,12 @@ import type { TripType, BudgetLevel } from "@/generated/prisma/client";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
 export async function POST(req: NextRequest) {
-  console.log("🔥 [generate-trip] START");
   try {
-    console.log("🔥 [generate-trip] checking auth...");
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
-      console.log("🔥 [generate-trip] unauthorized");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    console.log("🔥 [generate-trip] user ok:", user.id);
 
     const dbUser = await prisma.user.findUnique({
       where: { id: user.id },
@@ -27,7 +23,6 @@ export async function POST(req: NextRequest) {
     });
     const plan = (dbUser?.plan ?? "FREE") as PlanKey;
     const limits = PLAN_LIMITS[plan];
-    console.log("🔥 [generate-trip] plan:", plan, "model:", limits.model);
 
     const body = await req.json();
     const { destination, numberOfDays, tripType, budgetLevel, numberOfPersons, departureCity } = body as {
@@ -38,10 +33,8 @@ export async function POST(req: NextRequest) {
       numberOfPersons: number;
       departureCity: string;
     };
-    console.log("🔥 [generate-trip] body:", { destination, numberOfDays, tripType, budgetLevel, numberOfPersons, departureCity });
 
     if (!destination || !numberOfDays || !tripType || !budgetLevel || !numberOfPersons) {
-      console.log("🔥 [generate-trip] missing fields");
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -49,7 +42,6 @@ export async function POST(req: NextRequest) {
       destination, numberOfDays, tripType, budgetLevel, numberOfPersons, departureCity,
     });
 
-    console.log("🔥 [generate-trip] creating trip in DB...");
     const trip = await prisma.trip.create({
       data: {
         userId: user.id,
@@ -63,9 +55,7 @@ export async function POST(req: NextRequest) {
         aiPrompt: prompt,
       },
     });
-    console.log("🔥 [generate-trip] trip created:", trip.id);
 
-    console.log("🔥 [generate-trip] calling Gemini...");
     const response = await ai.models.generateContent({
       model: limits.model,
       contents: prompt,
@@ -76,24 +66,17 @@ export async function POST(req: NextRequest) {
       },
     });
     const raw = response.text ?? "";
-    console.log("🔥 [generate-trip] Gemini responded, length:", raw.length);
-    console.log("🔥 [generate-trip] preview:", raw.substring(0, 300));
 
     let parsed: any;
     try {
       const clean = raw.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
       parsed = JSON.parse(clean);
-      console.log("🔥 [generate-trip] parsed ok — title:", parsed.title, "days:", parsed.days?.length);
     } catch (parseErr) {
-      console.error("🔥 [generate-trip] JSON PARSE FAILED:", parseErr);
-      console.error("🔥 [generate-trip] raw:", raw.substring(0, 500));
       await prisma.trip.update({ where: { id: trip.id }, data: { status: "DRAFT" } });
       return NextResponse.json({ error: "Failed to parse AI response" }, { status: 500 });
     }
 
-    console.log("🔥 [generate-trip] starting transaction...");
     await prisma.$transaction(async (tx) => {
-      console.log("🔥 [generate-trip] updating trip...");
       await tx.trip.update({
         where: { id: trip.id },
         data: {
@@ -107,7 +90,6 @@ export async function POST(req: NextRequest) {
       });
 
       if (parsed.hotel) {
-        console.log("🔥 [generate-trip] saving hotel...");
         await tx.hotel.create({
           data: {
             tripId: trip.id,
@@ -122,7 +104,6 @@ export async function POST(req: NextRequest) {
       }
 
       if (parsed.transportation) {
-        console.log("🔥 [generate-trip] saving transportation...");
         await tx.transportation.create({
           data: {
             tripId: trip.id,
@@ -140,7 +121,6 @@ export async function POST(req: NextRequest) {
       }
 
       for (const day of parsed.days ?? []) {
-        console.log("🔥 [generate-trip] saving day:", day.dayNumber);
         const savedDay = await tx.day.create({
           data: {
             tripId: trip.id,
@@ -152,7 +132,6 @@ export async function POST(req: NextRequest) {
         });
 
         for (const activity of day.activities ?? []) {
-          console.log("🔥 [generate-trip] saving activity:", activity.title);
           await tx.activity.create({
             data: {
               dayId: savedDay.id,
@@ -173,17 +152,11 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    // Award trophies
-    console.log("🔥 [generate-trip] checking trophies...");
     await checkAndAwardTrophies(user.id, { tripType, budgetLevel });
 
-    console.log("🔥 [generate-trip] ALL DONE, tripId:", trip.id);
     return NextResponse.json({ tripId: trip.id });
 
   } catch (error: any) {
-    console.error("🔥 [generate-trip] CAUGHT ERROR:", error?.message ?? String(error));
-    console.error("🔥 [generate-trip] code:", error?.code);
-    console.error("🔥 [generate-trip] status:", error?.status);
 
     if (error?.status === 429) {
       return NextResponse.json(
