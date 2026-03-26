@@ -43,7 +43,7 @@ const HowItWorks = () => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url(/tokyo.jpg)",
+          backgroundImage: "url(/tokyo.avif)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",

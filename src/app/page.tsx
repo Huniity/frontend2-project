@@ -151,7 +151,7 @@ const IntroPage = () => {
         onClick={handleDiamondClick}
         className="absolute inset-0 cursor-pointer"
         style={{
-          backgroundImage: "url(/tokyo.jpg)",
+          backgroundImage: "url(/tokyo.avif)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           clipPath: `polygon(
