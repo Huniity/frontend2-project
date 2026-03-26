@@ -134,16 +134,17 @@ const IntroPage = () => {
   const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
 
   return (
-    <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-    
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden"
-      style={{ height: windowSize.height || "100vh" }}
-    >
+    <>
+      <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      <div
+        ref={containerRef}
+        className="relative w-full overflow-hidden"
+        style={{ height: windowSize.height || "100vh" }}
+      >
       <div
         ref={imageRef}
         onClick={handleDiamondClick}
@@ -224,6 +225,7 @@ const IntroPage = () => {
         </div>
       </motion.div>
     </div>
+    </>
   );
 };
 
