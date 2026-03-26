@@ -39,7 +39,6 @@ const PricingCompleteComponent = () => {
       );
     }
 
-    // Not logged in → redirect to signin
     if (!isLoggedIn) {
       return (
         <button
@@ -55,7 +54,6 @@ const PricingCompleteComponent = () => {
       );
     }
 
-    // FREE plan card
     if (!plan.stripePlan) {
       return (
         <button
@@ -66,8 +64,6 @@ const PricingCompleteComponent = () => {
         </button>
       );
     }
-
-    // Already on this plan
     if (userPlan === plan.stripePlan) {
       return (
         <button
@@ -79,7 +75,6 @@ const PricingCompleteComponent = () => {
       );
     }
 
-    // Already on a different paid plan
     if (userPlan && userPlan !== "FREE" && userPlan !== plan.stripePlan) {
       return (
         <button
@@ -92,7 +87,7 @@ const PricingCompleteComponent = () => {
       );
     }
 
-    // Normal upgrade
+
     return (
       <UpgradeButton
         plan={plan.stripePlan}
@@ -109,7 +104,7 @@ const PricingCompleteComponent = () => {
 
   return (
     <div className="max-w-6xl mx-auto pt-24 px-12 pb-24">
-      {/* Header */}
+
       <div className="text-center mb-18">
         <motion.h1 
           className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg"
@@ -130,7 +125,6 @@ const PricingCompleteComponent = () => {
           Choose the perfect plan for your travel style
         </motion.p>
 
-        {/* Toggle */}
         <div className="flex flex-col items-center justify-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-2">
             <span className={`font-made-outer font-bold ${!isAnnual ? "text-white" : "text-gray-400"}`}>
@@ -152,7 +146,6 @@ const PricingCompleteComponent = () => {
         </div>
       </div>
 
-      {/* Pricing Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-36">
         {pricing.map((plan, index) => (
           <motion.div
@@ -217,7 +210,6 @@ const PricingCompleteComponent = () => {
         ))}
       </div>
 
-      {/* Comparison Table */}
       <div className="mb-16">
         <motion.h2 
           className="text-3xl font-made-outer-alt font-bold mb-8 text-center"
@@ -240,19 +232,17 @@ const PricingCompleteComponent = () => {
             </thead>
             <tbody>
               {[
-                { label: "Trips per year", values: ["5", "Unlimited", "Unlimited"] },
+                { label: "Trips per month", values: ["5", "10", "Unlimited"] },
                 { label: "Itinerary planning", values: ["✓", "✓", "✓"] },
                 { label: "Offline map downloads", values: ["—", "✓", "✓"] },
                 { label: "AI trip recommendations", values: ["—", "✓", "✓"] },
-                { label: "Collaboration with friends", values: ["—", "✓", "✓"] },
-                { label: "Photo gallery storage", values: ["2 gb", "5 gb", "100 gb"] },
+                { label: "Collaboration with friends", values: ["Coming Soon", "Coming Soon", "Coming Soon"] },
                 { label: "Travel budget tracking", values: ["—", "✓", "✓"] },
-                { label: "Offline access", values: ["—", "—", "✓"] },
-                { label: "Live chat support", values: ["—", "—", "✓"] },
+                { label: "Offline access", values: ["Coming Soon", "Coming Soon", "Coming Soon"] },
+                { label: "Live chat support", values: ["Coming Soon", "Coming Soon", "Coming Soon"] },
                 { label: "Custom trip templates", values: ["—", "—", "✓"] },
-                { label: "Travel insurance quotes", values: ["—", "—", "✓"] },
+                { label: "Travel insurance quotes", values: ["Coming Soon", "Coming Soon", "Coming Soon"] },
                 { label: "VIP community access", values: ["—", "—", "✓"] },
-                { label: "Exclusive travel deals", values: ["—", "—", "✓"] },
               ].map((row, i, arr) => (
                 <tr key={row.label} className={`${i < arr.length - 1 ? "border-b border-white/10" : ""} hover:bg-white/5 transition-colors`}>
                   <td className="p-6 font-made-outer text-gray-300">{row.label}</td>
@@ -268,7 +258,6 @@ const PricingCompleteComponent = () => {
         </div>
       </div>
 
-      {/* FAQ Section */}
       <div className="border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl p-12 mb-16">
         <motion.h2 
           className="text-3xl font-made-outer-alt font-bold mb-8 text-center"
@@ -296,7 +285,6 @@ const PricingCompleteComponent = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl p-12 text-center">
         <motion.h2 
           className="text-3xl font-made-outer-alt font-bold mb-4"
