@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning />
-      <link rel="preload" as="image" href="/tokyo.jpg" fetchPriority="high" />
+      <link rel="preload" as="image" href="/tokyo.avif" fetchPriority="high" />
       <body>
         <div id="__app">
           <Navbar />
