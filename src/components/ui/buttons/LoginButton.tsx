@@ -23,7 +23,7 @@ const LoginButton = forwardRef<HTMLButtonElement, LoginButtonProps>(({ name, mut
             name="login"
             disabled={isLoading || isDisabled} 
             onKeyDown={handleKeyDown}
-            className="border border-white/50 w-full py-3 rounded-md bg-white/90 font-made-outer text-lg text-black font-bold hover:from-stone-500 hover:to-black/50 transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="border border-white/50 w-full py-3 rounded-md bg-white/90 font-made-outer text-md text-black font-semibold transition-all duration-200 text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:bg-white hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-105"
         >
             {isLoading ? (
                 <>

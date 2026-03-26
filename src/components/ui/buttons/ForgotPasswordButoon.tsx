@@ -15,7 +15,7 @@ const ForgotPasswordButton = ({ namePassword, mutatedNamePassword, isLoadingPass
             name="forgotPassword"
             disabled={isLoadingPassword} 
             onClick={() => toast.success("An e-mail with password reset instructions has been sent to your inbox.")}
-            className="border border-white/10 w-full py-3 rounded-md bg-black/50 font-made-outer text-white font-bold hover:bg-stone-500 hover:to-black/50 transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="border border-white/10 w-full py-3 rounded-md bg-black/50 font-made-outer text-white font-medium hover:bg-stone-500 hover:to-black/50 transition-colors text-shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
             {isLoadingPassword ? (
                 <>

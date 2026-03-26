@@ -91,7 +91,6 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Award THE_INFLUENCER trophy if this is user's first blog post
     const blogCount = await prisma.blog.count({
       where: { userId: user.id },
     });
