@@ -7,6 +7,34 @@ import AirportText from "@/components/ui/cyclingtext/AirportText";
 import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
 
 const IntroPage = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NomadIA",
+    "author": {
+      "@type": "Person",
+      "name": "Adrien Dejonc"
+    },
+    "datePublished": "2026-03-26",
+    "dateModified": "2026-03-26",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NomadIA"
+    },
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered travel planner that generates personalized day-by-day itineraries, budget breakdowns, and travel tips.",
+    "url": "https://be-nomadia.vercel.app",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Nomad Monthly", "price": "11.99", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Globetrotter Monthly", "price": "7.99", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Nomad Annual", "price": "119.99", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Globetrotter Annual", "price": "79.99", "priceCurrency": "EUR" },
+    ],
+  };
+
+
   const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
   const clickRef = useRef<HTMLDivElement>(null);
@@ -106,6 +134,11 @@ const IntroPage = () => {
   const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
 
   return (
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+    
     <div
       ref={containerRef}
       className="relative w-full overflow-hidden"
