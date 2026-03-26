@@ -16,6 +16,7 @@ const trophyConfig: Record<string, { icon: string; color: string; gradient: stri
   BUDGET_MASTER:   { icon: "💰", color: "from-emerald-400 to-emerald-600", gradient: "from-emerald-500/20 to-emerald-600/20" },
   LUXURY_TRAVELER: { icon: "💎", color: "from-cyan-400 to-cyan-600",     gradient: "from-cyan-500/20 to-cyan-600/20" },
   TRIP_EDITOR:     { icon: "✏️", color: "from-orange-400 to-orange-600", gradient: "from-orange-500/20 to-orange-600/20" },
+  THE_INFLUENCER:  { icon: "📸", color: "from-teal-400 to-teal-600",     gradient: "from-teal-500/20 to-teal-600/20" },
 };
 
 type Filter = "all" | "earned" | "locked";
@@ -35,7 +36,6 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
         </p>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 mb-14">
         {[
           { label: "Earned",          value: user._count.trophies },
@@ -49,8 +49,6 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
           </div>
         ))}
       </div>
-
-      {/* Progress bar */}
       <div className="mb-14">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-made-outer text-gray-400">Progress</p>
@@ -61,7 +59,6 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
         </div>
       </div>
 
-      {/* Filter */}
       <div className="flex gap-2 mb-8">
         {(["all", "earned", "locked"] as Filter[]).map((f) => (
           <button
@@ -76,7 +73,6 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
         ))}
       </div>
 
-      {/* Grid */}
       <div className="grid grid-cols-2 xl:grid-cols-3 gap-8">
         {allTrophies
           .filter((t) => {

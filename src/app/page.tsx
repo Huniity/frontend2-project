@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import AirportText from "@/components/ui/cyclingtext/AirportText";
 import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
+import UserReviews from "@/app/components/Reviews/UserReviews";
 
 const IntroPage = () => {
   const jsonLd = {

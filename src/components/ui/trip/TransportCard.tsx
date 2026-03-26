@@ -54,7 +54,7 @@ export default function TransportCard({ transportation }: { transportation: Tran
         {transportation.estimatedCost != null && (
           <div className="flex justify-between text-sm mt-3 border-t border-white/8 pt-3">
             <span className="text-gray-500">Est. cost/person</span>
-            <span className="text-amber-400 font-semibold">${transportation.estimatedCost}</span>
+            <span className="text-amber-400 font-semibold">€{transportation.estimatedCost}</span>
           </div>
         )}
 
@@ -65,7 +65,6 @@ export default function TransportCard({ transportation }: { transportation: Tran
         )}
       </div>
 
-      {/* Daily local transport */}
       {dailyTransport && (
         <div className="border-t border-white/10 pt-4">
           <div className="flex items-center gap-2 mb-3">
@@ -79,7 +78,7 @@ export default function TransportCard({ transportation }: { transportation: Tran
           {dailyTransport.estimatedCostPerDay != null && (
             <div className="flex justify-between text-sm mt-2">
               <span className="text-gray-500">Est. cost/day/person</span>
-              <span className="text-amber-400 font-semibold">${dailyTransport.estimatedCostPerDay}</span>
+              <span className="text-amber-400 font-semibold">€{dailyTransport.estimatedCostPerDay}</span>
             </div>
           )}
 

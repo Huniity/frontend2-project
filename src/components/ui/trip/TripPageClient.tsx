@@ -42,7 +42,6 @@ export default function TripPageClient({ trip }: { trip: any }) {
       <div className="pt-36 sm:pt-32 md:pt-44 w-full sm:w-11/12 md:w-9/10 xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8">
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 bg-black/50 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20">
 
-          {/* Day Navigation + Confirm Button */}
           <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex gap-2 overflow-x-auto pb-2 flex-1">
               <button
@@ -74,11 +73,8 @@ export default function TripPageClient({ trip }: { trip: any }) {
             </div>
           </div>
 
-
-          {/* Main Content */}
           {currentDay ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-              {/* Left: Day Details */}
               <div className="lg:col-span-2">
                 <div className="mb-6 md:mb-8">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-made-outer-alt font-bold mb-2">Day {currentDay.dayNumber}</h2>
@@ -93,7 +89,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
                   {currentDay.dailyCost != null && (
                     <div className="bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6">
                       <p className="text-xs text-emerald-300 uppercase tracking-wider font-made-outer mb-2">Est. Cost</p>
-                      <p className="text-2xl sm:text-3xl font-bold font-made-outer-alt text-emerald-200">${currentDay.dailyCost}</p>
+                      <p className="text-2xl sm:text-3xl font-bold font-made-outer-alt text-emerald-200">€{currentDay.dailyCost}</p>
                     </div>
                   )}
                 </div>
@@ -102,7 +98,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
                 <DayNarrative day={currentDay} />
               </div>
 
-              {/* Right: Map */}
+
               <div className="lg:col-span-1">
                 <div className="sticky top-20 sm:top-24 rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-black/40" style={{ height: "300px", minHeight: "300px" }}>
                   <TripMap activities={mapActivities} selectedDay={selectedDay} />
@@ -111,7 +107,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-              {/* Left: Overview */}
+
               <div className="lg:col-span-2">
                 <div className="mb-6 md:mb-8">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-made-outer-alt font-bold mb-2">Trip Overview</h2>
@@ -143,7 +139,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
                     </div>
                   )}
                 </div>
-                  {/* Hotel + Transport Cards */}
+
                 {(hotel || transportation) && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6 md:mb-8 border-b border-white/10 pb-6 md:pb-8">
                     {hotel && <HotelCard hotel={hotel} />}
@@ -151,7 +147,6 @@ export default function TripPageClient({ trip }: { trip: any }) {
                   </div>
                 )}
 
-                {/* Days Grid */}
                 <div className="space-y-2 sm:space-y-3">
                   {activeDays.map((day: any) => (
                     <button
@@ -196,7 +191,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
                 </div>
               </div>
 
-              {/* Right: Map */}
+
               <div className="lg:col-span-1">
                 <div className="w-full h-64 sm:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-black/40 mt-6 lg:mt-0">
                   <TripMap activities={mapActivities} selectedDay={selectedDay} />

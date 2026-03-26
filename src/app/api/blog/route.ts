@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma/prisma";
+import { awardTrophy } from "@/lib/utils/trophies";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -89,6 +90,15 @@ export async function POST(request: NextRequest) {
         },
       },
     });
+
+    // Award THE_INFLUENCER trophy if this is user's first blog post
+    const blogCount = await prisma.blog.count({
+      where: { userId: user.id },
+    });
+
+    if (blogCount === 1) {
+      await awardTrophy(user.id, "THE_INFLUENCER");
+    }
 
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {

@@ -37,13 +37,13 @@ export default function HotelCard({ hotel }: { hotel: Hotel }) {
         {hotel.pricePerNight != null && (
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Per night</span>
-            <span className="text-white font-medium">${hotel.pricePerNight}</span>
+            <span className="text-white font-medium">€{hotel.pricePerNight}</span>
           </div>
         )}
         {hotel.totalCost != null && (
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Total stay</span>
-            <span className="text-amber-400 font-semibold">${hotel.totalCost}</span>
+            <span className="text-amber-400 font-semibold">€{hotel.totalCost}</span>
           </div>
         )}
       </div>

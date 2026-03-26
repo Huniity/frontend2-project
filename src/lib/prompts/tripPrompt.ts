@@ -65,22 +65,27 @@ Trip details:
 ${dateInfo}
 
 STRICT BUDGET RULES — you MUST follow these exactly:
-- Per person per day (local expenses only): $${budget.perPersonPerDay}
-- Hotel per night: $${budget.hotel}
-- Per meal cost: $${budget.meal}
-- Per activity cost: $${budget.activity}
-- Max totalBudget for this trip: $${maxTotalBudget}
-- totalBudget must be between $${Math.round(maxTotalBudget * 0.7)} and $${maxTotalBudget}
+- Currency: ALL PRICES MUST BE IN EUROS (€)
+- Per person per day (local expenses only): €${budget.perPersonPerDay}
+- Hotel per night: €${budget.hotel}
+- Per meal cost: €${budget.meal}
+- Per activity cost: €${budget.activity}
+- Max totalBudget for this trip: €${maxTotalBudget}
+- totalBudget MUST be the SUM of all local costs: (hotel total cost + all daily activity costs + all meal costs)
+- Calculate totalBudget by summing: hotel.totalCost + sum of all activities estimatedCost + meals throughout trip
+- Ensure the sum of all components equals totalBudget — NO component costs should exist outside this total
 - totalBudget covers ONLY local expenses (hotel + food + activities) — do NOT include flights
 - Flight/transport cost from ${departureCity} to ${destination} is tracked separately in the transportation field
-- All individual estimatedCost values must match the budget profile above
+- All individual estimatedCost values must match the budget profile above and be in euros
 - budgetPerDay = totalBudget / ${numberOfDays}
+- IMPORTANT: After generating all days and activities, calculate totalBudget as the exact sum of hotel.totalCost + all activities + all meals
+- REMINDER: Every single price in the response must be in euros, not any other currency
 
 Return ONLY this JSON structure, nothing else:
 {
   "title": "A creative evocative trip title",
   "summary": "2-sentence overview of the trip",
-  "totalBudget": <number between ${Math.round(maxTotalBudget * 0.7)} and ${maxTotalBudget}>,
+  "totalBudget": <CALCULATE as: hotel.totalCost + sum of all activity estimatedCosts across all days>,
   "budgetPerDay": <totalBudget divided by ${numberOfDays}>,
   "aiTips": [
     "Practical insider tip 1 for this destination",
@@ -104,7 +109,7 @@ Return ONLY this JSON structure, nothing else:
     "budgetNote": "Practical tip about getting from ${departureCity} to ${destination} and estimated total flight cost for ${numberOfPersons} person(s)",
     "dailyTransport": {
       "mode": "Main local transport mode (e.g. metro, taxi, bus, tuk-tuk)",
-      "estimatedCostPerDay": <realistic daily local transport cost per person in USD>,
+      "estimatedCostPerDay": <realistic daily local transport cost per person in EUR>,
       "tips": "2-3 practical tips about getting around ${destination} daily (e.g. buy metro pass, use Uber, avoid taxis at night)"
     }
   },
@@ -140,7 +145,9 @@ Rules:
 - aiTips must be practical and specific to ${destination}
 - narrative per day must mention local transport between places and estimated costs
 - dailyTransport.estimatedCostPerDay must match ${budgetLevel} budget level
-- STRICTLY follow the budget constraints above — totalBudget must not exceed $${maxTotalBudget}
+- CRITICAL: totalBudget MUST equal the exact sum of (hotel.totalCost + all activities estimatedCost + all meals during trip + transportation.estimatedCost and dailyTransport.estimatedCostPerDay * ${numberOfDays} * ${numberOfPersons})
+- Ensure all component costs sum correctly — every euro in components must be accounted for in totalBudget
+- STRICTLY follow the budget constraints above — totalBudget must not exceed €${maxTotalBudget}
 - Return ONLY the raw JSON, no markdown fences, no explanation
 `.trim();
 }

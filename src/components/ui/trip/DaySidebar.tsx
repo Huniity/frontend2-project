@@ -13,7 +13,6 @@ export default function DaySidebar({ days, selectedDay, onSelect, destination }:
           📍 {destination}
         </p>
 
-        {/* Vista Geral */}
         <button
           onClick={() => onSelect(null)}
           className={`w-full flex items-center gap-4 px-4 py-4 rounded-2xl mb-2 transition-all text-left border font-made-outer ${
@@ -28,12 +27,12 @@ export default function DaySidebar({ days, selectedDay, onSelect, destination }:
             📅
           </div>
           <div className="flex-1">
-            <p className="text-sm font-bold">Vista Geral</p>
-            <p className="text-xs text-gray-400 mt-0.5">Todos os dias</p>
+            <p className="text-sm font-bold">Overall Overview</p>
+            <p className="text-xs text-gray-400 mt-0.5">All days</p>
           </div>
         </button>
 
-        {/* Days */}
+
         <div className="space-y-2 mt-4">
           {days.map((day: any) => (
             <button
@@ -51,7 +50,7 @@ export default function DaySidebar({ days, selectedDay, onSelect, destination }:
                 {day.dayNumber}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold truncate">Día {day.dayNumber}</p>
+                <p className="text-sm font-bold truncate">Day {day.dayNumber}</p>
                 <p className="text-xs text-gray-400 truncate mt-0.5">{day.summary ?? "—"}</p>
               </div>
               <span className="text-xs text-gray-500 shrink-0 font-semibold">{day.activities.length}</span>

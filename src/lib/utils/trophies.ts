@@ -6,7 +6,7 @@ type TrophyKey =
   | "FIRST_TRIP" | "THIRD_TRIP" | "TEN_TRIPS"
   | "FIRST_REVIEW" | "ADVENTURER" | "ROMANTIC"
   | "CONTINENT_HOPPER" | "WORLD_EXPLORER" | "BUDGET_MASTER" | "LUXURY_TRAVELER"
-  | "TRIP_EDITOR";
+  | "TRIP_EDITOR" | "THE_INFLUENCER";
 
 type TrophyContext = {
   tripType?: string;

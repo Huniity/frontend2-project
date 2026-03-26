@@ -157,7 +157,6 @@ const ChatBox = () => {
         <p className="text-sm text-gray-400 font-made-outer mt-1">Plan your next adventure</p>
       </div>
 
-      {/* Messages Container - Fixed Height with Scroll */}
       <div className="overflow-y-auto space-y-4 mb-6 flex-1 min-h-0 pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
         {messages.map((msg) => (
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -171,7 +170,6 @@ const ChatBox = () => {
           </div>
         ))}
 
-        {/* Typing indicator */}
         {isLoading && (
           <div className="flex justify-start">
             <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-4 flex gap-2 items-center">
@@ -186,18 +184,16 @@ const ChatBox = () => {
           </div>
         )}
 
-        {/* Generating banner */}
         {isGenerating && (
-          <div className="bg-linear-to-r from-amber-500/15 to-orange-500/15 border border-amber-500/40 rounded-2xl px-6 py-4 text-base text-amber-200 font-made-outer flex items-center gap-3 backdrop-blur-md shadow-lg shadow-amber-500/10">
-            <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
-            <span>Building your trip to <span className="font-bold text-amber-100">{tripData?.destination}</span>... this may take a few seconds</span>
+          <div className="bg-linear-to-r from-emerald-300/15 to-emerald-500/15 border border-emerald-500/30 rounded-2xl px-6 py-4 text-base text-emerald-200 font-made-outer flex items-center gap-3 backdrop-blur-md shadow-lg shadow-emerald-500/10">
+            <div className="w-2 h-2 rounded-full bg-emerald-500/20 animate-pulse shrink-0" />
+            <span>Building your trip to <span className="font-bold text-emerald-300">{tripData?.destination}</span>... this may take a few seconds</span>
           </div>
         )}
 
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Section */}
       <div className="border-t border-white/10 pt-4 flex gap-3 shrink-0">
         <input
           type="text"

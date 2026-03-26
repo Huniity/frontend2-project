@@ -12,7 +12,8 @@ import Overview from "./components/Overview";
 import Settings from "./components/Settings";
 import Trophies from "./components/Trophies";
 import MyTrips from "./components/MyTrips";
-import ChatBox from "@/components/ui/chat/ChatBox";
+import LeaveReview from "./components/LeaveReview";
+import ChatBox from "./components/ChatBox";
 import Pricing from "@/components/ui/pricing/Pricing";
 
 export type UserWithRelations = User & {
@@ -21,7 +22,7 @@ export type UserWithRelations = User & {
   _count: { trips: number; trophies: number };
 };
 
-export type Tab = "overview" | "settings" | "trophies" | "mytrips" | "chat" | "pricing";
+export type Tab = "overview" | "settings" | "trophies" | "mytrips" | "review" | "chat" | "pricing";
 
 export default function Dashboard({ user, allTrophies }: { user: UserWithRelations; allTrophies: Trophy[] }) {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
@@ -44,6 +45,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
     { tab: "settings" as Tab, icon: Star, label: "Settings" },
     { tab: "trophies" as Tab, icon: TrophyIcon, label: "Trophies" },
     { tab: "mytrips" as Tab, icon: Plane, label: "My Trips" },
+    { tab: "review" as Tab, icon: Star, label: "Leave a Review" },
     { tab: "chat" as Tab, icon: Plane, label: "Chat" },
     { tab: "pricing" as Tab, icon: HandCoins, label: "Pricing" },
   ];
@@ -52,7 +54,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
     <div className="min-h-screen text-white ">
       <div className="flex h-screen flex-col lg:flex-row">
         <div className="lg:hidden fixed top-0 left-0 right-0 h-16 border-b border-white/15 bg-black/80 backdrop-blur-xl px-4 flex items-center justify-between z-40">
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-gray-300 transition font-made-outer-alt font-bold text-sm">
+          <Link href="/nomadia" className="flex items-center gap-2 text-white hover:text-gray-300 transition font-made-outer-alt font-bold text-sm">
             <ArrowLeft size={18} />
             Back
           </Link>
@@ -75,7 +77,7 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 fixed lg:relative top-16 lg:top-0 left-0 h-[calc(100vh-4rem)] lg:h-screen w-64 lg:w-72 border-r border-white/15 bg-black/95 lg:bg-white/5 backdrop-blur-xl px-4 lg:px-8 flex flex-col justify-between pb-8 pt-4 lg:pt-8 transition-transform duration-300 z-40 lg:z-auto overflow-y-auto lg:overflow-y-hidden`}>
           <div>
-            <Link href="/" className="hidden lg:flex items-center gap-2 text-white hover:text-gray-300 transition mb-20 lg:mb-28 font-made-outer-alt font-bold text-sm lg:text-base">
+            <Link href="/nomadia" className="hidden lg:flex items-center gap-2 text-white hover:text-gray-300 transition mb-20 lg:mb-28 font-made-outer-alt font-bold text-sm lg:text-base">
               <ArrowLeft size={20} />
               Back
             </Link>
@@ -134,7 +136,8 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
             {activeTab === "overview"  && <Overview  user={user} setActiveTab={setActiveTab} />}
             {activeTab === "settings" && <Settings user={user} />}
             {activeTab === "trophies" && <Trophies  user={user} allTrophies={allTrophies} />}
-            {activeTab === "mytrips"  && <MyTrips   user={user} />}
+            {activeTab === "mytrips"  && <MyTrips   user={user} setActiveTab={setActiveTab} />}
+            {activeTab === "review"   && <LeaveReview user={user} />}
             {activeTab === "chat"     && <ChatBox />}
             {activeTab === "pricing" && <Pricing />}
           </div>

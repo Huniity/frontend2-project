@@ -2,18 +2,18 @@ import HowItWorks from "@/app/components/howitworks/HowItWorks";
 import Counters from "@/app/components/counter/Counters";
 import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
 import Pricing from "@/app/components/pricing/Pricing";
-import Reviews from "@/app/components/Reviews/Reviews";
+import UserReviews from "@/app/components/Reviews/UserReviews";
 import Cta from "@/app/components/cta/Cta";
 import Footer from "@/components/ui/footer/Footer";
 
-export default function HomePage() {
+export default function Nomadia() {
   return (
     <div>
       <HowItWorks />
       <Counters />
       <DreamDestinations />
       <Pricing />
-      <Reviews />
+      <UserReviews />
       <Cta />
       <Footer />
     </div>

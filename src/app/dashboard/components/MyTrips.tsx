@@ -16,6 +16,8 @@ const STATUS_STYLES: Record<string, string> = {
 
 type Filter = "ALL" | "DRAFT" | "CONFIRMED" | "COMPLETED";
 
+type Tab = "overview" | "settings" | "trophies" | "mytrips" | "review" | "chat" | "pricing";
+
 type Trip = {
   id: string;
   title: string;
@@ -27,7 +29,7 @@ type Trip = {
   createdAt: Date | string;
 };
 
-export default function MyTrips({ user }: { user: UserWithRelations }) {
+export default function MyTrips({ user, setActiveTab }: { user: UserWithRelations; setActiveTab: (tab: Tab) => void }) {
   const [filter, setFilter] = useState<Filter>("ALL");
   const [trips, setTrips] = useState<Trip[]>(user.trips);
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -53,15 +55,12 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
 
   return (
     <div>
-      {/* Header */}
       <div className="mb-10">
         <h1 className="text-3xl font-made-outer-alt font-bold mb-2">My Trips</h1>
         <p className="text-gray-500 text-sm font-made-outer">
           View and manage all your planned adventures in one place.
         </p>
       </div>
-
-      {/* Filters + New Trip */}
       <div className="flex flex-col items-center justify-between mb-8">
         <div className="grid grid-cols-2 xl:flex gap-4 xl:gap-2">
           {(["ALL", "DRAFT", "CONFIRMED", "COMPLETED"] as Filter[]).map((f) => (
@@ -84,15 +83,14 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
           ))}
         </div>
 
-        <Link
-          href="/agent"
-          className="mt-4 xl:mt-0 px-4 py-2 rounded-xl border border-gray-400 text-gray-400 hover:text-white hover:bg-white/5 bg-transparent text-sm font-semibold font-made-outer transition-colors no-underline"
+        <button
+          onClick={() => setActiveTab("chat")}
+          className="mt-4 xl:mt-0 px-4 py-2 rounded-lg border border-gray-400 text-gray-400 hover:text-white hover:bg-white/5 bg-transparent text-sm font-medium font-made-outer transition-colors no-underline"
         >
           + New Trip
-        </Link>
+        </button>
       </div>
 
-      {/* Empty state */}
       {filtered.length === 0 && (
         <div className="text-center py-20 border border-white/10 rounded-2xl bg-white/5">
           <p className="text-4xl mb-4">✈️</p>
@@ -111,14 +109,12 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
         </div>
       )}
 
-      {/* Cards grid */}
       <div className="grid xl:grid-cols-3 gap-6">
         {filtered.map((trip) => (
           <div key={trip.id} className="relative group">
             <Link href={`/trips/${trip.id}`} className="no-underline">
               <div className="border border-white/15 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-lg hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col">
 
-                {/* Color banner */}
                 <div className={`h-2 w-full ${
                   trip.status === "CONFIRMED"
                     ? "bg-linear-to-r from-black/10 to-emerald-500"
@@ -130,16 +126,14 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                 }`} />
 
                 <div className="p-5 flex flex-col flex-1 gap-3">
-                  {/* Top row */}
                   <div className="flex items-center justify-between">
                     <span className={`text-[11px] px-2.5 py-1 rounded-full border font-medium font-made-outer ${STATUS_STYLES[trip.status]}`}>
                       {trip.status.charAt(0) + trip.status.slice(1).toLowerCase()}
                     </span>
                   </div>
 
-                  {/* Title + destination */}
                   <div>
-                    <p className="font-bold text-white font-made-outer-alt leading-tight line-clamp-2">
+                    <p className="font-bold text-white font-made-outer leading-tight line-clamp-2">
                       {trip.title}
                     </p>
                     <p className="text-xs text-gray-500 font-made-outer mt-1">
@@ -147,7 +141,6 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     </p>
                   </div>
 
-                  {/* Stats */}
                   <div className="flex items-center gap-3 flex-wrap mt-auto pt-3 border-t border-white/5">
                     <span className="text-xs text-gray-400 font-made-outer">
                       📅 {trip.numberOfDays} days
@@ -157,12 +150,10 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
                     </span>
                     {trip.totalBudget && (
                       <span className="text-xs text-gray-400 font-made-outer">
-                        💰 ${trip.totalBudget.toLocaleString()}
+                        💰 €{trip.totalBudget.toLocaleString()}
                       </span>
                     )}
                   </div>
-
-                  {/* Date */}
                   <p className="text-[11px] text-gray-600 font-made-outer">
                     Created {new Date(trip.createdAt).toLocaleDateString("en-US", {
                       month: "short", day: "numeric", year: "numeric",
@@ -172,7 +163,6 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
               </div>
             </Link>
 
-            {/* Delete button — shown on hover */}
             {confirmDeleteId !== trip.id ? (
                 <button
                     onClick={(e) => {

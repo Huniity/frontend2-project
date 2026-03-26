@@ -23,7 +23,6 @@ export default function DayDetail({ day }: { day: any }) {
 
   return (
     <div className="mb-8">
-      {/* Day header */}
       <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10 ">
         <div>
           <h2 className="text-3xl font-made-outer-alt font-bold text-white">Day {day.dayNumber}</h2>
@@ -31,7 +30,6 @@ export default function DayDetail({ day }: { day: any }) {
         </div>
       </div>
 
-      {/* Grouped activities */}
       {(["morning", "afternoon", "evening"] as const).map((period) => {
         const acts = grouped[period];
         if (acts.length === 0) return null;
@@ -39,12 +37,10 @@ export default function DayDetail({ day }: { day: any }) {
 
         return (
           <div key={period} className="mb-8">
-            {/* Period header */}
             <div className={`flex items-center gap-3 mb-4 ${color}`}>
               <span className="font-made-outer-alt font-bold text-base">{label}</span>
             </div>
 
-            {/* Activities */}
             <div className="space-y-3">
               {acts.map((activity) => (
                 <div
