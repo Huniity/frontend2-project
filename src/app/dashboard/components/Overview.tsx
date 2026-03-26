@@ -49,14 +49,14 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
         {[
           { label: "Total Trips", value: user._count.trips },
           { label: "Countries", value: new Set(user.trips.map((t: any) => t.destination.split(",").pop()?.trim())).size },
           { label: "Trophies", value: user._count.trophies },
           { label: "Plan", value: planLabel[user.plan ?? "FREE"] ?? "Free", small: true },
         ].map(({ label, value, small }) => (
-          <div key={label} className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
+          <div key={label} className="h-36 border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
             <p className="text-xs text-gray-500 mb-1 uppercase tracking-wider font-made-outer">{label}</p>
             <p className={`font-bold ${small ? "text-xl mt-1" : "text-3xl"}`}>{value}</p>
             {/* Show expiry only on the Plan card */}
@@ -78,7 +78,7 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       </div>
 
       {/* Recent trips + trophies */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid xl:grid-cols-2 gap-6">
         <div className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-made-outer-alt font-bold">Recent Trips</h2>
@@ -137,7 +137,7 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
       {/* Quick actions */}
       <div className="mt-14">
         <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid xl:grid-cols-3 gap-6">
           <button onClick={() => setActiveTab("mytrips")} className="text-left border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <Plane className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>

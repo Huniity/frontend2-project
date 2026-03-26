@@ -62,8 +62,8 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
       </div>
 
       {/* Filters + New Trip */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex gap-2">
+      <div className="flex flex-col items-center justify-between mb-8">
+        <div className="grid grid-cols-2 xl:flex gap-4 xl:gap-2">
           {(["ALL", "DRAFT", "CONFIRMED", "COMPLETED"] as Filter[]).map((f) => (
             <button
               key={f}
@@ -86,7 +86,7 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
 
         <Link
           href="/agent"
-          className="px-4 py-2 rounded-xl border border-gray-400 text-gray-400 hover:text-white hover:bg-white/5 bg-transparent text-sm font-semibold font-made-outer transition-colors no-underline"
+          className="mt-4 xl:mt-0 px-4 py-2 rounded-xl border border-gray-400 text-gray-400 hover:text-white hover:bg-white/5 bg-transparent text-sm font-semibold font-made-outer transition-colors no-underline"
         >
           + New Trip
         </Link>
@@ -112,7 +112,7 @@ export default function MyTrips({ user }: { user: UserWithRelations }) {
       )}
 
       {/* Cards grid */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid xl:grid-cols-3 gap-6">
         {filtered.map((trip) => (
           <div key={trip.id} className="relative group">
             <Link href={`/trips/${trip.id}`} className="no-underline">

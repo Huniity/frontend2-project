@@ -36,7 +36,7 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-6 mb-14">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 mb-14">
         {[
           { label: "Earned",          value: user._count.trophies },
           { label: "Total Available", value: allTrophies.length },
@@ -77,7 +77,7 @@ export default function Trophies({ user, allTrophies }: { user: UserWithRelation
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 xl:grid-cols-3 gap-8">
         {allTrophies
           .filter((t) => {
             if (trophyFilter === "earned") return earnedIds.has(t.id);

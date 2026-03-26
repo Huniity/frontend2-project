@@ -112,7 +112,7 @@ export default function Settings({ user }: { user: UserWithRelations }) {
       </div>
 
       {/* Settings grid */}
-      <div className="grid grid-cols-4 gap-y-14 gap-x-10 w-225">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-y-14 gap-x-10 xl:max-w-3/4">
         {settingsItems.map((item) => (
           <button
             key={item.label}
