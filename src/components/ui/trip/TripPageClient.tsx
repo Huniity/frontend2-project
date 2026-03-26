@@ -69,7 +69,7 @@ export default function TripPageClient({ trip }: { trip: any }) {
               ))}
             </div>
             <div className="shrink-0 w-full sm:w-auto">
-              <ConfirmTripButton tripId={trip.id} status={trip.status} />
+              <ConfirmTripButton tripSlug={trip.slug} status={trip.status} />
             </div>
           </div>
 

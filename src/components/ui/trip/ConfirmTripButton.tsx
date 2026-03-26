@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircle } from "lucide-react";
 
-export default function ConfirmTripButton({ tripId, status }: { tripId: string; status: string }) {
+export default function ConfirmTripButton({ tripSlug, status }: { tripSlug: string; status: string }) {
   const [loading, setLoading] = useState(false);
   const [confirmed, setConfirmed] = useState(status === "CONFIRMED");
   const router = useRouter();
@@ -21,7 +21,7 @@ export default function ConfirmTripButton({ tripId, status }: { tripId: string; 
   const handleConfirm = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/trips/${tripId}/confirm`, { method: "POST" });
+      const res = await fetch(`/api/trips/${tripSlug}/confirm`, { method: "POST" });
       if (!res.ok) throw new Error("Failed to confirm");
       setConfirmed(true);
       router.refresh();

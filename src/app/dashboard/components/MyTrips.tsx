@@ -20,6 +20,7 @@ type Tab = "overview" | "settings" | "trophies" | "mytrips" | "review" | "chat" 
 
 type Trip = {
   id: string;
+  slug: string;
   title: string;
   destination: string;
   numberOfDays: number;
@@ -39,10 +40,10 @@ export default function MyTrips({ user, setActiveTab }: { user: UserWithRelation
     filter === "ALL" ? true : t.status === filter
   );
 
-  const handleDelete = async (tripId: string) => {
+  const handleDelete = async (tripSlug: string, tripId: string) => {
     setDeletingId(tripId);
     try {
-      const res = await fetch(`/api/trips/${tripId}`, { method: "DELETE" });
+      const res = await fetch(`/api/trips/${tripSlug}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Failed to delete");
       setTrips((prev) => prev.filter((t) => t.id !== tripId));
       setConfirmDeleteId(null);
@@ -112,7 +113,7 @@ export default function MyTrips({ user, setActiveTab }: { user: UserWithRelation
       <div className="grid xl:grid-cols-3 gap-6">
         {filtered.map((trip) => (
           <div key={trip.id} className="relative group">
-            <Link href={`/trips/${trip.id}`} className="no-underline">
+            <Link href={`/trips/${trip.slug}`} className="no-underline">
               <div className="border border-white/15 rounded-2xl overflow-hidden bg-white/5 backdrop-blur-lg hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:scale-[1.02] h-full flex flex-col">
 
                 <div className={`h-2 w-full ${
@@ -178,7 +179,7 @@ export default function MyTrips({ user, setActiveTab }: { user: UserWithRelation
                 <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/90 border border-red-500/30 rounded-xl px-3 py-2 shadow-lg">
                     <span className="text-xs text-gray-300 font-made-outer mr-1">Delete?</span>
                     <button
-                    onClick={() => handleDelete(trip.id)}
+                    onClick={() => handleDelete(trip.slug, trip.id)}
                     disabled={deletingId === trip.id}
                     aria-label="Confirm delete trip"
                     className="text-xs bg-red-500 hover:bg-red-600 text-white px-2.5 py-1 rounded-lg font-medium disabled:opacity-50 transition-colors"

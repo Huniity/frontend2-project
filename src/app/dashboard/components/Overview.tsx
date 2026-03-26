@@ -1,4 +1,4 @@
-import { ChevronRight, Edit, Plane, Star } from "lucide-react";
+import { ChevronRight, Edit, Plane, Star, Rss } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { UserWithRelations, Tab } from "../Dashboard";
@@ -135,12 +135,17 @@ export default function Overview({ user, setActiveTab }: { user: UserWithRelatio
 
       <div className="mt-14">
         <h2 className="text-lg font-made-outer-alt font-bold mb-6">Quick Actions</h2>
-        <div className="grid xl:grid-cols-3 gap-6">
+        <div className="grid xl:grid-cols-4 gap-6">
           <button onClick={() => setActiveTab("mytrips")} className="text-left border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <Plane className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Plan a New Trip</p>
             <p className="text-xs text-gray-500 mt-1 font-made-outer">Start building your next adventure</p>
           </button>
+          <Link href="/blog" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 text-white group cursor-pointer text-left">
+            <Rss className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
+            <p className="font-medium text-sm font-made-outer">Visit Community Blog</p>
+            <p className="text-xs text-gray-500 mt-1 font-made-outer">Read the latest articles and updates</p>
+          </Link>
           <Link href="/pricing" className="border border-white/15 rounded-2xl p-6 bg-white/5 backdrop-blur-lg hover:bg-white/10 transition-all duration-300 no-underline text-white group">
             <Edit className="text-gray-400 group-hover:text-white transition-colors mb-3" size={24} />
             <p className="font-medium text-sm font-made-outer">Upgrade Plan</p>

@@ -8,15 +8,15 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function TripPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function TripPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
 
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
   const trip = await prisma.trip.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       days: {
         orderBy: { dayNumber: "asc" },

@@ -38,6 +38,7 @@ model Blog {
 
 model Trip {
   id             String          @id @default(cuid())
+  slug           String          @unique
   userId         String
   title          String
   destination    String

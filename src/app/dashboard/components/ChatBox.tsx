@@ -61,7 +61,7 @@ const ChatBox = () => {
         if (!res.ok) throw new Error('Generation failed');
 
         const data = await res.json();
-        router.push(`/trips/${data.tripId}`);
+        router.push(`/trips/${data.tripSlug}`);
 
       } catch (err) {
         console.error(err);

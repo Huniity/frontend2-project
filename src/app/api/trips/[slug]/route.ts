@@ -4,19 +4,19 @@ import { prisma } from "@/lib/prisma/prisma";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { id } = await params;
+  const { slug } = await params;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const trip = await prisma.trip.findUnique({ where: { id } });
+  const trip = await prisma.trip.findUnique({ where: { slug } });
   if (!trip || trip.userId !== user.id) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  await prisma.trip.delete({ where: { id } });
+  await prisma.trip.delete({ where: { id: trip.id } });
 
   return NextResponse.json({ success: true });
 }

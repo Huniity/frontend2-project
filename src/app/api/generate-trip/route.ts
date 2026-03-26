@@ -6,6 +6,9 @@ import { PLAN_LIMITS, PlanKey } from "@/lib/utils/plans";
 import { buildTripGenerationPrompt } from "@/lib/prompts/tripPrompt";
 import { checkAndAwardTrophies } from "@/lib/utils/trophies";
 import type { TripType, BudgetLevel } from "@/generated/prisma/client";
+import slugify from "slugify";
+import { nanoid } from "nanoid";
+
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
@@ -42,9 +45,13 @@ export async function POST(req: NextRequest) {
       destination, numberOfDays, tripType, budgetLevel, numberOfPersons, departureCity,
     });
 
+    const slug = slugify(`${destination}-${numberOfDays}-days-${tripType}`, { lower: true, strict: true})
+      + `-` + nanoid(6);
+
     const trip = await prisma.trip.create({
       data: {
         userId: user.id,
+        slug,
         title: `${numberOfDays} Days in ${destination}`,
         destination,
         tripType,
@@ -154,7 +161,7 @@ export async function POST(req: NextRequest) {
 
     await checkAndAwardTrophies(user.id, { tripType, budgetLevel });
 
-    return NextResponse.json({ tripId: trip.id });
+    return NextResponse.json({ tripId: trip.id, tripSlug: trip.slug });
 
   } catch (error: any) {
 
