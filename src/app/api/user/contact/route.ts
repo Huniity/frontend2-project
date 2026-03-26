@@ -16,7 +16,6 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: "Nothing to update" }, { status: 400 });
     }
 
-    // Verify password before allowing changes
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email: user.email!,
       password,
@@ -26,7 +25,6 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
     }
 
-    // Update in Prisma
     const updated = await prisma.user.update({
       where: { id: user.id },
       data: {

@@ -1,5 +1,7 @@
 'use client'
+
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { createClient } from '@/lib/supabase/client'
 import Navbar from '@/components/ui/navbar/Navbar'
 import Footer from '@/components/ui/footer/Footer'
@@ -183,10 +185,19 @@ const Blog = () => {
     return (
         <>
             <Navbar />
-            <div className="min-h-screen text-white mt-24 py-32">
+            <motion.div 
+              className="min-h-screen text-white mt-24 py-32"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
                 <div className="max-w-6xl mx-auto px-4 md:px-12">
-                    {/* Header with Create Button */}
-                    <div className="text-center mb-24 flex flex-col items-center gap-6">
+                    <motion.div 
+                      className="text-center mb-24 flex flex-col items-center gap-6"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                    >
                         <div>
                             <h1 className="text-6xl font-made-outer-alt font-black mb-4 text-shadow-lg">
                                 OUr Blog
@@ -208,7 +219,7 @@ const Blog = () => {
                                 CrEatE post
                             </button>
                         )}
-                    </div>
+                    </motion.div>
 
                     {posts.length === 0 && !loading ? (
                         <div className="text-center py-16">
@@ -286,17 +297,14 @@ const Blog = () => {
                                                         {post.title}
                                                     </h3>
 
-                                                    {/* Meta Information */}
                                                     <p className="text-xs text-gray-500 font-made-outer mb-4">
                                                         By {post.user?.username || 'Anonymous'} | {post.date}
                                                     </p>
 
-                                                    {/* Post Description */}
                                                     <p className="text-gray-300 font-made-outer text-sm mb-6 grow line-clamp-3">
                                                         {post.description}
                                                     </p>
 
-                                                    {/* Read More Button */}
                                                     <button 
                                                         onClick={() => setSelectedPost(post)}
                                                         className="w-full py-2 px-6 rounded-lg font-made-outer font-bold transition-all duration-300 border border-white/20 text-white hover:bg-white/10 hover:border-white/40"
@@ -308,7 +316,6 @@ const Blog = () => {
                                         ))}
                                     </div>
 
-                                    {/* Category Divider */}
                                     {index < groupedPosts.length - 1 && (
                                         <div className="my-8 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"></div>
                                     )}
@@ -318,7 +325,6 @@ const Blog = () => {
                     )}
                 </div>
 
-                {/* Blog Form Modal */}
                 {showForm && (
                     <BlogForm
                         blog={editingBlog ? {
@@ -337,12 +343,11 @@ const Blog = () => {
                     />
                 )}
 
-                {/* Post Detail Modal */}
                 <PostModal
                     post={selectedPost}
                     onClose={() => setSelectedPost(null)}
                 />
-            </div>
+            </motion.div>
             <Footer />
         </>
     )

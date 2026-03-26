@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Check, Flame } from "lucide-react";
 import { pricing } from "@/lib/utils/pricing";
 import UpgradeButton from "@/components/ui/buttons/UpgradeButton";
@@ -110,12 +111,24 @@ const PricingCompleteComponent = () => {
     <div className="max-w-6xl mx-auto pt-24 px-12 pb-24">
       {/* Header */}
       <div className="text-center mb-18">
-        <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+        <motion.h1 
+          className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           simplE, trAnspArEnt priCing
-        </h1>
-        <p className="text-gray-400 font-made-outer text-lg mb-24">
+        </motion.h1>
+        <motion.p 
+          className="text-gray-400 font-made-outer text-lg mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           Choose the perfect plan for your travel style
-        </p>
+        </motion.p>
 
         {/* Toggle */}
         <div className="flex flex-col items-center justify-center mb-12">
@@ -142,8 +155,12 @@ const PricingCompleteComponent = () => {
       {/* Pricing Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-36">
         {pricing.map((plan, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
             className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
               plan.highlighted
                 ? "border-2 border-white/30 bg-white/10 backdrop-blur-xl scale-105 md:scale-110"
@@ -196,15 +213,21 @@ const PricingCompleteComponent = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {/* Comparison Table */}
       <div className="mb-16">
-        <h2 className="text-3xl font-made-outer-alt font-bold mb-8 text-center">
+        <motion.h2 
+          className="text-3xl font-made-outer-alt font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           dEtailEd COmparisOn
-        </h2>
+        </motion.h2>
         <div className="overflow-x-auto border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl">
           <table className="w-full">
             <thead>
@@ -247,9 +270,15 @@ const PricingCompleteComponent = () => {
 
       {/* FAQ Section */}
       <div className="border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl p-12 mb-16">
-        <h2 className="text-3xl font-made-outer-alt font-bold mb-8 text-center">
+        <motion.h2 
+          className="text-3xl font-made-outer-alt font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           frEqUEntly askEd qUEstiOns
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             { q: "Can I change plans anytime?", a: "Yes! You can upgrade, downgrade, or cancel your subscription at any time. Changes take effect immediately." },
@@ -269,12 +298,24 @@ const PricingCompleteComponent = () => {
 
       {/* CTA Section */}
       <div className="border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl p-12 text-center">
-        <h2 className="text-3xl font-made-outer-alt font-bold mb-4">
+        <motion.h2 
+          className="text-3xl font-made-outer-alt font-bold mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           rEady tO start yOUr advEntUrE?
-        </h2>
-        <p className="text-gray-400 font-made-outer text-lg mb-8">
+        </motion.h2>
+        <motion.p 
+          className="text-gray-400 font-made-outer text-lg mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           Join thousands of travelers exploring the world with Nomadia
-        </p>
+        </motion.p>
         <button
           onClick={() => router.push(isLoggedIn ? "/dashboard" : "/signin")}
           className="px-8 py-4 bg-white text-black rounded-lg font-made-outer font-bold text-lg hover:bg-gray-100 transition-colors"

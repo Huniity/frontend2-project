@@ -39,14 +39,12 @@ const Navbar = () => {
             const currentScrollY = window.scrollY;
             const sections = document.querySelectorAll('section');
             
-            // Batch all reads first to avoid layout thrashing
             let firstSectionHeight = 0;
             let activeSection: Element | null = null;
 
             if (sections.length > 0) {
                 firstSectionHeight = sections[0].clientHeight;
                 
-                // Find active section by batching reads
                 for (const section of sections) {
                     const rect = section.getBoundingClientRect();
                     if (rect.top <= navbarHeight && rect.bottom >= navbarHeight) {
@@ -58,7 +56,6 @@ const Navbar = () => {
 
             const shrinkThreshold = firstSectionHeight / 2;
 
-            // Batch all state updates
             setIsShrunken(currentScrollY > shrinkThreshold);
 
             if (currentScrollY > prevScrollY.current && currentScrollY > 100) {
@@ -68,7 +65,6 @@ const Navbar = () => {
             }
             prevScrollY.current = currentScrollY;
 
-            // Only compute style if we have an active section
             if (activeSection) {
                 const bgColor = window.getComputedStyle(activeSection).backgroundColor;
                 const isLight = bgColor.includes('255, 255, 255');
@@ -98,7 +94,6 @@ const Navbar = () => {
         prevScrollY.current = 0;
     }, [pathname]);
 
-    // Close mobile menu on resize to desktop
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 768) setMobileMenuOpen(false);
@@ -120,7 +115,6 @@ const Navbar = () => {
 
     return (
         <>
-            {/*Desktop Navbar*/}
             <div
                 className={`fixed top-0 left-1/2 z-1000 hidden md:flex justify-between items-center px-8 py-8 transition-all duration-700`}
                 style={{
@@ -160,7 +154,6 @@ const Navbar = () => {
                 </nav>
             </div>
 
-            {/* Mobile Navbar */}
             <div
                 className={`fixed top-0 left-0 right-0 z-1000 md:hidden flex items-center justify-between px-5 py-4 transition-all duration-500 ${
                     hideNavbar ? '-translate-y-full' : 'translate-y-0'
@@ -190,7 +183,6 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile */}
             <div
                 className={`fixed top-15 left-0 right-0 z-999 md:hidden transition-all duration-500 ${
                     mobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
@@ -232,7 +224,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* ── Backdrop overlay when menu open ── */}
             {mobileMenuOpen && (
                 <div
                     className="fixed inset-0 z-998 md:hidden"
@@ -240,7 +231,6 @@ const Navbar = () => {
                 />
             )}
 
-            {/* ── Show navbar button (desktop only) ── */}
             <button
                 onClick={handleShowNavbar}
                 className={`fixed top-4 right-4 z-1001 w-12 h-12 rounded-full transition-all duration-300 hidden md:flex ${

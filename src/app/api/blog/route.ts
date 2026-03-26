@@ -2,7 +2,6 @@ import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-// GET all blog posts
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -53,7 +52,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST create a new blog post
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();

@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion';
 import Footer from "@/components/ui/footer/Footer";
 import { Mail, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -29,16 +30,31 @@ export default function Contact() {
   return (
     <div className="min-h-screen text-white">
       {/* Hero */}
-      <div className="w-full pt-32 pb-20 px-12">
+      <motion.div 
+        className="w-full pt-32 pb-20 px-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg">
+          <motion.h1 
+            className="text-7xl font-made-outer-alt font-black text-white text-shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             gEt In tOUCh
-          </h1>
-          <p className="text-lg font-made-outer text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            className="text-lg font-made-outer text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Have questions? We&apos;d love to hear from you. Reach out to us anytime.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Contact Info Cards */}
       <div className="w-full px-12 py-20">
@@ -89,9 +105,15 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-12">
-            <h2 className="text-3xl xl:text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-12 text-center">
+            <motion.h2 
+              className="text-3xl xl:text-5xl font-made-outer-alt font-black text-white text-shadow-lg mb-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
               sEnd a mEssagE
-            </h2>
+            </motion.h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
                 <div className="flex flex-col">

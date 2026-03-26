@@ -110,7 +110,6 @@ const DreamDestinations = () => {
         gsap.set(track, { x: 0 * 0.2});
         gsap.set(track2, { x: -totalWidth2 * 0.2 });
 
-        // Cards — one shot
         gsap.to([...cards, ...cards2], {
           opacity: 1,
           y: 0,
@@ -124,7 +123,6 @@ const DreamDestinations = () => {
           },
         });
 
-        // Row 1 — moves left
         gsap.to(track, {
           x: -totalWidth * 0.4,
           ease: "none",
@@ -136,7 +134,6 @@ const DreamDestinations = () => {
           },
         });
 
-        // Row 2 — moves right
         gsap.to(track2, {
           x: 0 * 0.4,
           ease: "none",
@@ -209,7 +206,6 @@ const DreamDestinations = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Title — h1 never gets transform applied, preserves fixed background */}
       <div className="mb-16 mt-54">
         <h1
           className="parallax-text px-4.5 font-black font-made-outer-alt"
@@ -232,7 +228,6 @@ const DreamDestinations = () => {
         </h1>
       </div>
 
-      {/* Cards container */}
       <div
         ref={containerRef}
         className="w-full overflow-hidden mb-48 flex flex-col gap-4"
@@ -243,7 +238,6 @@ const DreamDestinations = () => {
             "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
         }}
       >
-        {/* Row 1 — moves left */}
         <div ref={trackRef} className="flex gap-6 w-max px-5">
           {row1Features.map((feature, index) =>
             renderCard(feature, index, imagesRef),

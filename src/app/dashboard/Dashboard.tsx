@@ -51,7 +51,6 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
   return (
     <div className="min-h-screen text-white ">
       <div className="flex h-screen flex-col lg:flex-row">
-        {/* Mobile Header */}
         <div className="lg:hidden fixed top-0 left-0 right-0 h-16 border-b border-white/15 bg-black/80 backdrop-blur-xl px-4 flex items-center justify-between z-40">
           <Link href="/" className="flex items-center gap-2 text-white hover:text-gray-300 transition font-made-outer-alt font-bold text-sm">
             <ArrowLeft size={18} />
@@ -65,7 +64,6 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           </button>
         </div>
 
-        {/* Mobile Menu Overlay */}
         {sidebarOpen && (
           <div
             className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-30 mt-16"
@@ -73,7 +71,6 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           />
         )}
 
-        {/* Sidebar */}
         <aside className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 fixed lg:relative top-16 lg:top-0 left-0 h-[calc(100vh-4rem)] lg:h-screen w-64 lg:w-72 border-r border-white/15 bg-black/95 lg:bg-white/5 backdrop-blur-xl px-4 lg:px-8 flex flex-col justify-between pb-8 pt-4 lg:pt-8 transition-transform duration-300 z-40 lg:z-auto overflow-y-auto lg:overflow-y-hidden`}>
@@ -132,7 +129,6 @@ export default function Dashboard({ user, allTrophies }: { user: UserWithRelatio
           </form>
         </aside>
 
-        {/* Main content */}
         <main className="flex-1 w-full mt-16 lg:mt-0 overflow-y-auto h-[calc(100vh-4rem)] lg:h-screen">
           <div className="px-4 lg:px-16 py-6 lg:py-8 pb-12 min-h-full">
             {activeTab === "overview"  && <Overview  user={user} setActiveTab={setActiveTab} />}

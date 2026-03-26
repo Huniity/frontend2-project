@@ -101,7 +101,6 @@ export async function updatePassword (formData: FormData) {
 
   const email = userData.user.email!;
 
-  // Re-authenticate the user with their current password
   const { error: signInError } = await supabase.auth.signInWithPassword({
     email,
     password: currentPassword,
@@ -111,7 +110,6 @@ export async function updatePassword (formData: FormData) {
     return { error: "Current password is incorrect" };
   }
 
-  // Update to the new password
   const { error: updateError } = await supabase.auth.updateUser({
     password: newPassword,
   });

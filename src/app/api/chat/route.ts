@@ -9,7 +9,6 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
 export async function POST(req: NextRequest) {
   try {
-    // 1. Auth
     const supabase = await createClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
 
@@ -17,7 +16,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // 2. Get user plan → model + token limits
     const dbUser = await prisma.user.findUnique({
       where: { id: user.id },
       select: { plan: true },
@@ -26,7 +24,6 @@ export async function POST(req: NextRequest) {
     const plan = (dbUser?.plan ?? "FREE") as PlanKey;
     const limits = PLAN_LIMITS[plan];
 
-    // 3. Parse body
     const body = await req.json();
     const { messages } = body as {
       messages: { role: "user" | "assistant"; content: string }[];
@@ -36,13 +33,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid messages" }, { status: 400 });
     }
 
-    // 4. Drop any leading assistant messages — Gemini requires history to start with "user"
     const trimmed = [...messages];
     while (trimmed.length > 0 && trimmed[0].role === "assistant") {
       trimmed.shift();
     }
 
-    // 5. Separate history from the last user message
     const history = trimmed.slice(0, -1).map((msg) => ({
       role: msg.role === "assistant" ? "model" : "user",
       parts: [{ text: msg.content }],
@@ -50,7 +45,6 @@ export async function POST(req: NextRequest) {
 
     const lastMessage = trimmed[trimmed.length - 1].content;
 
-    // 6. Call Gemini with new @google/genai SDK
     const chat = ai.chats.create({
       model: limits.model,
       config: {
@@ -63,7 +57,6 @@ export async function POST(req: NextRequest) {
     const result = await chat.sendMessage({ message: lastMessage });
     const assistantMessage = result.text ?? "";
 
-    // 7. Check if AI finished collecting all answers
     let tripData = null;
     const jsonMatch = assistantMessage.match(/```json\s*([\s\S]*?)```/);
     if (jsonMatch) {

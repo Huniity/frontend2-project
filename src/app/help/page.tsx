@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from "framer-motion";
 import Footer from "@/components/ui/footer/Footer";
 import { useState } from "react";
 
@@ -52,14 +53,29 @@ export default function Help() {
 
   return (
     <div className="min-h-screen text-white mt-48">
-      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8">
+      <motion.div 
+        className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="mb-16">
-          <h1 className="text-center xl:text-left text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+          <motion.h1 
+            className="text-center xl:text-left text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             hElp CEntEr
-          </h1>
-          <p className="text-center xl:text-left text-gray-400 font-made-outer text-lg">
+          </motion.h1>
+          <motion.p 
+            className="text-center xl:text-left text-gray-400 font-made-outer text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Find answers to common questions and get support when you need it.
-          </p>
+          </motion.p>
         </div>
 
  
@@ -196,7 +212,7 @@ export default function Help() {
             Visit Blog
           </button>
         </section>
-      </div>
+      </motion.div>
 
       <Footer />
     </div>

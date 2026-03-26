@@ -17,7 +17,6 @@ const Reviews = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLHeadingElement>(null);
 
-  // Auto slider
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -25,7 +24,6 @@ const Reviews = () => {
     return () => clearInterval(timer);
   }, [testimonials.length]);
 
-  // GSAP heading animation
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set([titleRef.current, subtitleRef.current], {
@@ -66,7 +64,6 @@ const Reviews = () => {
     <section ref={sectionRef} className="snap-start w-full py-32">
       <div className="flex flex-col w-full justify-center items-center gap-20 px-4">
 
-        {/* Titles */}
         <div className="flex flex-col items-center gap-3">
           <h1
             ref={titleRef}
@@ -83,7 +80,6 @@ const Reviews = () => {
           </h2>
         </div>
 
-        {/* Testimonial */}
         <div className="w-full max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -121,7 +117,6 @@ const Reviews = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Controls */}
           <div className="flex items-center justify-center gap-6 mt-12">
             <button
               onClick={prev}

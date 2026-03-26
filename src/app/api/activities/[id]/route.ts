@@ -34,7 +34,6 @@ export async function PATCH(
     },
   });
 
-  // Award TRIP_EDITOR trophy
   await awardTrophy(user.id, "TRIP_EDITOR");
 
   return NextResponse.json(updated);

@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
-const INACTIVITY_LIMIT = 60 * 60 * 1000; // 1 hour
-const WARNING_BEFORE = 60 * 1000; // show warning 1 minute before logout
+const INACTIVITY_LIMIT = 60 * 60 * 1000;
+const WARNING_BEFORE = 60 * 1000;
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -50,18 +50,15 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     };
 
     const resetTimer = () => {
-      // Clear all timers
       if (timerRef.current) clearTimeout(timerRef.current);
       if (warningRef.current) clearTimeout(warningRef.current);
       if (countdownRef.current) clearInterval(countdownRef.current);
       setShowWarning(false);
 
-      // Set warning timer
       warningRef.current = setTimeout(() => {
         startCountdown();
       }, INACTIVITY_LIMIT - WARNING_BEFORE);
 
-      // Set logout timer
       timerRef.current = setTimeout(() => {
         doLogout();
       }, INACTIVITY_LIMIT);
@@ -83,8 +80,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const handleStayLoggedIn = () => {
     if (countdownRef.current) clearInterval(countdownRef.current);
     setShowWarning(false);
-    // Resetting timers is handled by the next user interaction
-    // but we force a reset here too
     const supabase = createClient();
     supabase.auth.refreshSession();
   };
@@ -93,15 +88,11 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     <>
       {children}
 
-      {/* Inactivity warning modal */}
       {showWarning && (
         <div className="fixed inset-0 z-9999 flex items-center justify-center p-4">
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-          {/* Modal */}
           <div className="relative w-full max-w-sm bg-[#111] border border-white/10 rounded-2xl p-6 text-white shadow-2xl">
-            {/* Icon */}
             <div className="w-12 h-12 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-2xl mx-auto mb-4">
               ⏱️
             </div>
@@ -119,7 +110,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               </span>
             </p>
 
-            {/* Progress bar */}
             <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden mb-6">
               <div
                 className="h-full bg-orange-500 rounded-full transition-all duration-1000"

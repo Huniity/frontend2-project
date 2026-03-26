@@ -52,7 +52,6 @@ const HowItWorks = () => {
         }}
       />
 
-      {/* Title cascade */}
       <div className="relative z-10 text-white drop-shadow-lg text-shadow-lg overflow-hidden">
         {["how", "it", "works"].map((word, i) => (
           <motion.h1
@@ -67,7 +66,6 @@ const HowItWorks = () => {
         ))}
       </div>
 
-      {/* Cards */}
       <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl place-items-center px-4 mt-10">
         {steps.map((step, index) => (
           <motion.div

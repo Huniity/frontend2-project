@@ -1,23 +1,25 @@
+'use client';
+
+import { motion } from "framer-motion";
 import SigninCard from "@/components/ui/cards/signin/SigninCard";
 import Link from "next/link";
 import DiscordButton from "@/components/ui/buttons/DiscordButton";
 import GoogleButton from "@/components/ui/buttons/GoogleButton";
 import AppleButton from "@/components/ui/buttons/AppleButton";
 
-export const metadata = {
-  title: "Sign Up",
-  robots: { index: false, follow: false },
-};
 
 const Signin = () => {
     return (
         <section className="snap-start w-full min-h-screen overflow-clip flex items-center justify-center">
             <div className="absolute inset-0" ></div>
-            <div 
+            <motion.div 
               className="w-9/10 xl:w-full max-w-md rounded-lg overflow-hidden relative p-0.5 backdrop-blur-xl"
               style={{
                 background: 'linear-gradient(-30deg, rgba(255, 255, 255, 0.05), transparent, rgba(255, 255, 255, 0.05))',
               }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
             >
               <div 
                 className="border-2 rounded-lg absolute inset-0 pointer-events-none"
@@ -48,22 +50,45 @@ const Signin = () => {
               ></div>
 
               <div className="relative z-10 p-8 flex flex-col items-center justify-center gap-6">
-                <div className="text-center space-y-2 mb-2">
+                <motion.div 
+                  className="text-center space-y-2 mb-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                     <h1 className="text-3xl font-bold text-white text-shadow-lg font-made-outer-alt">bEComE a Nomad</h1>
                     <p className="text-sm text-gray-400 text-shadow-lg font-made-outer">Let{"'"}s plan your next adventure.</p>
-                </div>
+                </motion.div>
                 
-                <SigninCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <SigninCard name="Grab Your Backpack" mutatedName="Backpacking your stuff" />
+                </motion.div>
                 
-                <div className="flex flex-row gap-3 w-full justify-center">
+                <motion.div 
+                  className="flex flex-row gap-3 w-full justify-center"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
                     <DiscordButton name="Discord" showName={false} isLoading={false} />
                     <GoogleButton name="Google" showName={false} isLoading={false} />
                     <AppleButton name="Apple" showName={false} isLoading={false} />
-                </div>
+                </motion.div>
                 
-                <p className="text-sm text-gray-400 text-center font-made-outer">Already have an account? <Link href="/login" className="text-white font-made-outer cursor-pointer hover:underline">Login</Link></p>
+                <motion.p 
+                  className="text-sm text-gray-400 text-center font-made-outer"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  Already have an account? <Link href="/login" className="text-white font-made-outer cursor-pointer hover:underline">Login</Link>
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
         </section>
     )
 }

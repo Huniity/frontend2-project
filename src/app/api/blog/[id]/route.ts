@@ -2,7 +2,6 @@ import { createClient } from "@/lib/supabase/server";
 import { prisma } from "@/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-// PUT update a blog post
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -63,7 +62,6 @@ export async function PUT(
   }
 }
 
-// DELETE a blog post
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }

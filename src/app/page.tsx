@@ -1,62 +1,7 @@
-// import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
-// import HomeShape from "@/app/components/intro/Intro";
-// import Footer from "@/components/ui/footer/Footer";
-// import Cta from "@/app/components/cta/Cta";
-// import Reviews from "./components/Reviews/Reviews";
-// import Pricing from "./components/pricing/Pricing";
-// import Counters from "./components/counter/Counters";
-
-
-// export default function Home() {
-//   const jsonLd = {
-//     "@context": "https://schema.org",
-//     "@type": "SoftwareApplication",
-//     "name": "NomadIA",
-//     "author": {
-//       "@type": "Person",
-//       "name": "Adrien Dejonc"
-//     },
-//     "datePublished": "2026-03-26",
-//     "dateModified": "2026-03-26",
-//     "publisher": {
-//       "@type": "Organization",
-//       "name": "NomadIA"
-//     },
-//     "applicationCategory": "TravelApplication",
-//     "operatingSystem": "Web",
-//     "description": "AI-powered travel planner that generates personalized day-by-day itineraries, budget breakdowns, and travel tips.",
-//     "url": "https://be-nomadia.vercel.app",
-//     "offers": [
-//       { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "EUR" },
-//       { "@type": "Offer", "name": "Nomad Monthly", "price": "11.99", "priceCurrency": "EUR" },
-//       { "@type": "Offer", "name": "Globetrotter Monthly", "price": "7.99", "priceCurrency": "EUR" },
-//       { "@type": "Offer", "name": "Nomad Annual", "price": "119.99", "priceCurrency": "EUR" },
-//       { "@type": "Offer", "name": "Globetrotter Annual", "price": "79.99", "priceCurrency": "EUR" },
-//     ],
-//   };
-//   return (
-//     <div>
-//       <script
-//         type="application/ld+json"
-//         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-//       />
-//       <HomeShape />
-//       <Counters />
-//       <DreamDestinations />
-//       <Pricing />
-//       <Reviews />
-//       {/* <div className="h-48 bg-gradient-to-b from-transparent via-black to-transparent pointer-events-none -my-24 relative z-10" /> */}
-//       <Cta />
-//       <Footer /> 
-//       {/* 
-//       */}
-//     </div>
-//   );
-// }
-
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import AirportText from "@/components/ui/cyclingtext/AirportText";
 import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
@@ -194,18 +139,22 @@ const IntroPage = () => {
         className="absolute inset-0 w-full h-full"
         style={{ zIndex: 3, pointerEvents: "none" }}
       >
-        <g ref={decoratorsRef}>
+        <motion.g 
+          ref={decoratorsRef}
+          animate={{ opacity: [1, 0.4, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
           <polygon points={squarePoints} fill="none" stroke="white" strokeWidth="2" />
           <line x1={leftVertex.x}  y1={leftVertex.y}  x2={leftLineEnd.x}  y2={leftLineEnd.y}  stroke="white" strokeWidth="2" />
           <line x1={rightVertex.x} y1={rightVertex.y} x2={rightLineEnd.x} y2={rightLineEnd.y} stroke="white" strokeWidth="2" />
-        </g>
+        </motion.g>
       </svg>
 
       <h1
         ref={textLeftRef}
         className="text-4xl absolute text-white xl:text-7xl font-made-outer-alt pointer-events-none text-shadow-lg
-                  left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2
-                  xl:left-[10%] xl:translate-x-0"
+                  left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2
+                  xl:left-[10%] xl:top-[43%] xl:translate-x-0"
         style={{ zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
@@ -214,7 +163,7 @@ const IntroPage = () => {
       <div
         ref={textRightRef}
         className="text-4xl absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center
-                  left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2
+                  left-1/2 top-[65%] -translate-x-1/2 -translate-y-1/2
                   xl:left-auto xl:right-[24%] xl:top-[56%] xl:translate-x-1/2"
         style={{
           width: "600px",
@@ -225,14 +174,22 @@ const IntroPage = () => {
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
 
-      <div ref={clickRef} className="absolute bottom-10 w-full flex flex-col items-center gap-2 z-30 pointer-events-none">
+      <motion.div 
+        ref={clickRef} 
+        className="absolute bottom-10 w-full flex flex-col items-center gap-2 z-30 pointer-events-none"
+        animate={{ opacity: [0.4, 1, 0.4] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
         <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
-          tap to enter
+          click the square
+        </p>
+        <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+          to gain access
         </p>
         <div ref={scrollRef}>
         <ScrollIndicator />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

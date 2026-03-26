@@ -132,7 +132,6 @@ export async function POST(req: NextRequest) {
             arrivalTo: parsed.transportation.arrivalTo ?? null,
             estimatedCost: parsed.transportation.estimatedCost ?? null,
             budgetNote: parsed.transportation.budgetNote ?? null,
-            // Store dailyTransport as JSON in notes field
             notes: parsed.transportation.dailyTransport
               ? JSON.stringify(parsed.transportation.dailyTransport)
               : null,

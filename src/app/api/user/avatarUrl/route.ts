@@ -50,7 +50,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to upload avatar" }, { status: 500 });
     }
 
-    // Get permanent public URL
     const { data: publicUrlData } = adminClient.storage
       .from("User_Avatar")
       .getPublicUrl(fileName);

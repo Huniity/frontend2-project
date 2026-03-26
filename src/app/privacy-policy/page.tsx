@@ -1,22 +1,34 @@
-import Footer from "@/components/ui/footer/Footer";
+'use client';
 
-export const metadata = {
-  title: "Privacy Policy",
-  description: "Read NomadIA's Privacy Policy to understand how we protect your data and ensure your privacy while using our AI travel planning services.",
-  alternates: { canonical: "https://be-nomadia.vercel.app/privacy-policy" },
-};
+import { motion } from 'framer-motion';
+import Footer from "@/components/ui/footer/Footer";
 
 export default function Policy() {
   return (
     <div className="min-h-screen text-white mt-48">
-      <div className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8 text-center xl:text-left">
+      <motion.div 
+        className="w-9/10 xl:max-w-4xl mx-auto pt-24 px-12 pb-24 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-xl my-8 text-center xl:text-left"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="mb-16">
-          <h1 className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg">
+          <motion.h1 
+            className="text-5xl font-made-outer-alt font-black mb-4 text-shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             privaCy poliCy
-          </h1>
-          <p className=" text-gray-400 font-made-outer text-lg">
+          </motion.h1>
+          <motion.p 
+            className="text-gray-400 font-made-outer text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Last updated: March 12, 2026
-          </p>
+          </motion.p>
         </div>
 
         <section className="mb-12">
@@ -225,7 +237,7 @@ export default function Policy() {
             <p>Address: Etic_ Algarve</p>
           </div>
         </section>
-      </div>
+      </motion.div>
       <Footer />
     </div>
   );
