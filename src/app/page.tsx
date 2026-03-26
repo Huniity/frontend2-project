@@ -188,7 +188,7 @@ const IntroPage = () => {
         ref={textLeftRef}
         className="text-4xl absolute text-white xl:text-7xl font-made-outer-alt pointer-events-none text-shadow-lg
                   left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2
-                  xl:left-[10%] xl:top-[43%] xl:translate-x-0"
+                  xl:left-[13%] xl:top-[43%] xl:translate-x-0"
         style={{ zIndex: 1, willChange: "transform, opacity" }}
       >
         ExplorE
@@ -198,7 +198,7 @@ const IntroPage = () => {
         ref={textRightRef}
         className="text-4xl absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center
                   left-1/2 top-[65%] -translate-x-1/2 -translate-y-1/2
-                  xl:left-auto xl:right-[24%] xl:top-[56%] xl:translate-x-1/2"
+                  xl:left-auto xl:right-[26%] xl:top-[56%] xl:translate-x-1/2"
         style={{
           width: "600px",
           zIndex: 1,
