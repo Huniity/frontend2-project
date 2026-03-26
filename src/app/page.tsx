@@ -181,10 +181,10 @@ const IntroPage = () => {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
-          click the square
+          explore the world with us
         </p>
         <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
-          to gain access
+          by clicking the diamond
         </p>
         <div ref={scrollRef}>
         <ScrollIndicator />

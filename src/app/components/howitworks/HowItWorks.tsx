@@ -39,7 +39,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div className="mt-36 w-full h-full flex flex-col justify-center items-center">
+    <div className="mt-12 xl:mt-36 w-full h-full flex flex-col justify-center items-center">
       <div
         className="absolute inset-0"
         style={{
@@ -56,7 +56,7 @@ const HowItWorks = () => {
         {["how", "it", "works"].map((word, i) => (
           <motion.h1
             key={word}
-            className="text-center text-6xl xl:text-[8rem] font-made-outer-alt font-black leading-10 xl:mb-6 xl:leading-14 pt-8"
+            className="text-center text-6xl xl:text-[8rem] font-made-outer-alt font-black leading-0 mb-7 mt-18 xl:mb-6 xl:leading-14"
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: i * 0.15, ease: "easeOut" }}
