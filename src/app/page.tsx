@@ -215,10 +215,10 @@ const IntroPage = () => {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <div ref={clickRef}>
-          <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+          <p className="text-center text-white/40 text-xs font-made-outer tracking-widest uppercase">
             explore the world with us
           </p>
-          <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+          <p className="text-center text-white/40 text-xs font-made-outer tracking-widest uppercase">
             by clicking the diamond
           </p>
         </div>
