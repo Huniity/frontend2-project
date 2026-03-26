@@ -72,14 +72,14 @@ const Reviews = () => {
             ref={titleRef}
             className="text-5xl md:text-5xl font-made-outer-alt font-black text-white text-center max-w-3xl"
           >
-            Rated by the Road
+            ratEd by thE road
           </h1>
 
           <h2
             ref={subtitleRef}
             className="text-xl md:text-5xl font-made-outer-alt font-black text-gray-400 text-center max-w-2xl"
           >
-            Loved by the Nomads
+            lovEd by thE nomads
           </h2>
         </div>
 
@@ -95,7 +95,7 @@ const Reviews = () => {
               className="flex flex-col items-center text-center gap-8"
             >
               <div className="space-y-4">
-                <p className="text-2xl md:text-3xl font-made-outer text-white italic leading-relaxed">
+                <p className="text-2xl md:text-2xl font-made-outer text-white italic leading-relaxed">
                   &quot;{testimonials[current].description}&quot;
                 </p>
               </div>

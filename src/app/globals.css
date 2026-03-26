@@ -131,3 +131,9 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@media (max-width: 768px) {
+  .parallax-text {
+    background-attachment: scroll !important;
+  }
+}

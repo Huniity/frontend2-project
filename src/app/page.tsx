@@ -1,55 +1,240 @@
-import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
-import HomeShape from "@/app/components/intro/Intro";
-import Footer from "@/components/ui/footer/Footer";
-import Cta from "@/app/components/cta/Cta";
-import Reviews from "./components/Reviews/Reviews";
-import Pricing from "./components/pricing/Pricing";
-import Counters from "./components/counter/Counters";
+// import DreamDestinations from "@/app/components/dreamdestinations/DreamDestinations";
+// import HomeShape from "@/app/components/intro/Intro";
+// import Footer from "@/components/ui/footer/Footer";
+// import Cta from "@/app/components/cta/Cta";
+// import Reviews from "./components/Reviews/Reviews";
+// import Pricing from "./components/pricing/Pricing";
+// import Counters from "./components/counter/Counters";
 
 
-export default function Home() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "NomadIA",
-    "author": {
-      "@type": "Person",
-      "name": "Adrien Dejonc"
-    },
-    "datePublished": "2026-03-26",
-    "dateModified": "2026-03-26",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NomadIA"
-    },
-    "applicationCategory": "TravelApplication",
-    "operatingSystem": "Web",
-    "description": "AI-powered travel planner that generates personalized day-by-day itineraries, budget breakdowns, and travel tips.",
-    "url": "https://be-nomadia.vercel.app",
-    "offers": [
-      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Nomad Monthly", "price": "11.99", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Globetrotter Monthly", "price": "7.99", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Nomad Annual", "price": "119.99", "priceCurrency": "EUR" },
-      { "@type": "Offer", "name": "Globetrotter Annual", "price": "79.99", "priceCurrency": "EUR" },
-    ],
+// export default function Home() {
+//   const jsonLd = {
+//     "@context": "https://schema.org",
+//     "@type": "SoftwareApplication",
+//     "name": "NomadIA",
+//     "author": {
+//       "@type": "Person",
+//       "name": "Adrien Dejonc"
+//     },
+//     "datePublished": "2026-03-26",
+//     "dateModified": "2026-03-26",
+//     "publisher": {
+//       "@type": "Organization",
+//       "name": "NomadIA"
+//     },
+//     "applicationCategory": "TravelApplication",
+//     "operatingSystem": "Web",
+//     "description": "AI-powered travel planner that generates personalized day-by-day itineraries, budget breakdowns, and travel tips.",
+//     "url": "https://be-nomadia.vercel.app",
+//     "offers": [
+//       { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "EUR" },
+//       { "@type": "Offer", "name": "Nomad Monthly", "price": "11.99", "priceCurrency": "EUR" },
+//       { "@type": "Offer", "name": "Globetrotter Monthly", "price": "7.99", "priceCurrency": "EUR" },
+//       { "@type": "Offer", "name": "Nomad Annual", "price": "119.99", "priceCurrency": "EUR" },
+//       { "@type": "Offer", "name": "Globetrotter Annual", "price": "79.99", "priceCurrency": "EUR" },
+//     ],
+//   };
+//   return (
+//     <div>
+//       <script
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+//       />
+//       <HomeShape />
+//       <Counters />
+//       <DreamDestinations />
+//       <Pricing />
+//       <Reviews />
+//       {/* <div className="h-48 bg-gradient-to-b from-transparent via-black to-transparent pointer-events-none -my-24 relative z-10" /> */}
+//       <Cta />
+//       <Footer /> 
+//       {/* 
+//       */}
+//     </div>
+//   );
+// }
+
+"use client";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import gsap from "gsap";
+import AirportText from "@/components/ui/cyclingtext/AirportText";
+import ScrollIndicator from "@/components/ui/scrollindicator/ScrollIndicator";
+
+const IntroPage = () => {
+  const router = useRouter();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const clickRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const decoratorsRef = useRef<SVGGElement>(null);
+  const textLeftRef = useRef<HTMLHeadingElement>(null);
+  const textRightRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [diamondSize, setDiamondSize] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.visualViewport?.height ?? window.innerHeight;
+      setWindowSize({ width, height });
+      setDiamondSize(Math.min(width, height) * 0.15);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    window.visualViewport?.addEventListener("resize", handleResize);
+    window.visualViewport?.addEventListener("scroll", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.visualViewport?.removeEventListener("resize", handleResize);
+      window.visualViewport?.removeEventListener("scroll", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    router.prefetch("/home");
+  }, [router]);
+
+  useEffect(() => {
+    const cx = windowSize.width / 2;
+    const cy = windowSize.height / 2;
+    const size = diamondSize;
+
+    if (imageRef.current) {
+      imageRef.current.style.clipPath = `polygon(
+        ${cx}px ${cy - size}px,
+        ${cx + size}px ${cy}px,
+        ${cx}px ${cy + size}px,
+        ${cx - size}px ${cy}px
+      )`;
+    }
+  }, [windowSize, diamondSize]);
+
+  const handleDiamondClick = () => {
+    if (animating) return;
+    setAnimating(true);
+
+    const cx = windowSize.width / 2;
+    const cy = windowSize.height / 2;
+    const expand = diamondSize * 12;
+
+    gsap.to(decoratorsRef.current, { opacity: 0, duration: 0.3, ease: "power2.out" });
+    gsap.to(textLeftRef.current,   { x: 250, opacity: 0, duration: 0.8, ease: "power2.in" });
+    gsap.to(textRightRef.current,  { x: -150, opacity: 0, duration: 0.8, ease: "power2.in" });
+    gsap.to(clickRef.current,     { opacity: 0, duration: 0.3, ease: "power2.out" });
+    gsap.to(scrollRef.current,    { opacity: 0, duration: 0.3, ease: "power2.out" });
+
+    gsap.to(imageRef.current, {
+      clipPath: `polygon(
+        ${cx}px ${cy - expand}px,
+        ${cx + expand}px ${cy}px,
+        ${cx}px ${cy + expand}px,
+        ${cx - expand}px ${cy}px
+      )`,
+      duration: 1.8,
+      ease: "power2.inOut",
+      delay: 0.15,
+    });
+
+    setTimeout(() => {
+      router.push("/nomadia");
+    }, 1200);
   };
+
+  const cx = windowSize.width / 2;
+  const cy = windowSize.height / 2;
+  const size = diamondSize;
+
+  const corners = [
+    { x: cx,        y: cy - size },
+    { x: cx + size, y: cy        },
+    { x: cx,        y: cy + size },
+    { x: cx - size, y: cy        },
+  ];
+  const leftVertex   = corners[3];
+  const rightVertex  = corners[1];
+  const leftLineEnd  = { x: leftVertex.x  - 600, y: leftVertex.y  };
+  const rightLineEnd = { x: rightVertex.x + 600, y: rightVertex.y };
+  const squarePoints = corners.map(c => `${c.x},${c.y}`).join(" ");
+
   return (
-    <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden"
+      style={{ height: windowSize.height || "100vh" }}
+    >
+      <div
+        ref={imageRef}
+        onClick={handleDiamondClick}
+        className="absolute inset-0 cursor-pointer"
+        style={{
+          backgroundImage: "url(/tokyo.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          clipPath: `polygon(
+            ${cx}px ${cy - size}px,
+            ${cx + size}px ${cy}px,
+            ${cx}px ${cy + size}px,
+            ${cx - size}px ${cy}px
+          )`,
+          filter: "brightness(1.1) contrast(1.1) saturate(1.5) sepia(0.2) grayscale(0.2) hue-rotate(10deg)",
+          maskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to top, transparent 1%, black 50%, black 90%, transparent 100%)",
+          zIndex: 4,
+        }}
       />
-      <HomeShape />
-      <Counters />
-      <DreamDestinations />
-      <Pricing />
-      <Reviews />
-      {/* <div className="h-48 bg-gradient-to-b from-transparent via-black to-transparent pointer-events-none -my-24 relative z-10" /> */}
-      <Cta />
-      <Footer /> 
-      {/* 
-      */}
+
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${windowSize.width} ${windowSize.height}`}
+        className="absolute inset-0 w-full h-full"
+        style={{ zIndex: 3, pointerEvents: "none" }}
+      >
+        <g ref={decoratorsRef}>
+          <polygon points={squarePoints} fill="none" stroke="white" strokeWidth="2" />
+          <line x1={leftVertex.x}  y1={leftVertex.y}  x2={leftLineEnd.x}  y2={leftLineEnd.y}  stroke="white" strokeWidth="2" />
+          <line x1={rightVertex.x} y1={rightVertex.y} x2={rightLineEnd.x} y2={rightLineEnd.y} stroke="white" strokeWidth="2" />
+        </g>
+      </svg>
+
+      <h1
+        ref={textLeftRef}
+        className="text-4xl absolute text-white xl:text-7xl font-made-outer-alt pointer-events-none text-shadow-lg
+                  left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2
+                  xl:left-[10%] xl:translate-x-0"
+        style={{ zIndex: 1, willChange: "transform, opacity" }}
+      >
+        ExplorE
+      </h1>
+
+      <div
+        ref={textRightRef}
+        className="text-4xl absolute text-white xl:text-6xl font-made-outer-alt pointer-events-none text-center
+                  left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2
+                  xl:left-auto xl:right-[24%] xl:top-[56%] xl:translate-x-1/2"
+        style={{
+          width: "600px",
+          zIndex: 1,
+          willChange: "transform, opacity",
+        }}
+      >
+        <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
+      </div>
+
+      <div ref={clickRef} className="absolute bottom-10 w-full flex flex-col items-center gap-2 z-30 pointer-events-none">
+        <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+          tap to enter
+        </p>
+        <div ref={scrollRef}>
+        <ScrollIndicator />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default IntroPage;

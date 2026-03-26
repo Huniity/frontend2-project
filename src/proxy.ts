@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 const PUBLIC_ROUTES = [
   "/",
+  "/nomadia",
   "/login",
   "/signin",
   "/pricing",
