@@ -208,20 +208,21 @@ const IntroPage = () => {
         <AirportText words={["LandsCapEs", "CitIEs", "CUltuREs", "With Us", "Any TimE", "AnywHErE"]} />
       </div>
 
-      <motion.div 
-        ref={clickRef} 
+      <motion.div  
         className="absolute bottom-10 w-full flex flex-col items-center gap-2 z-30 pointer-events-none"
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
-          explore the world with us
-        </p>
-        <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
-          by clicking the diamond
-        </p>
+        <div ref={clickRef}>
+          <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+            explore the world with us
+          </p>
+          <p className="text-white/40 text-xs font-made-outer tracking-widest uppercase">
+            by clicking the diamond
+          </p>
+        </div>
         <div ref={scrollRef}>
-        <ScrollIndicator />
+          <ScrollIndicator />
         </div>
       </motion.div>
     </div>
